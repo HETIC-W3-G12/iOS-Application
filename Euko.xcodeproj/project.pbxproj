@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3A42F7A5C9ED9482D6A6EAD2 /* Pods_Euko.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5E2071583A9DCDD53C28CDF1 /* Pods_Euko.framework */; };
 		5713B01D219ACAB0001D9324 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5713B01C219ACAB0001D9324 /* AppDelegate.swift */; };
 		5713B01F219ACAB0001D9324 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5713B01E219ACAB0001D9324 /* ViewController.swift */; };
 		5713B022219ACAB0001D9324 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5713B020219ACAB0001D9324 /* Main.storyboard */; };
@@ -14,6 +15,7 @@
 		5713B027219ACAB1001D9324 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5713B026219ACAB1001D9324 /* Assets.xcassets */; };
 		5713B02A219ACAB1001D9324 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5713B028219ACAB1001D9324 /* LaunchScreen.storyboard */; };
 		5713B035219ACAB1001D9324 /* EukoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5713B034219ACAB1001D9324 /* EukoTests.swift */; };
+		D9081AF5C24CD981B57E88FA /* Pods_EukoTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2E97DDA1E1FCA067628EB106 /* Pods_EukoTests.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -27,6 +29,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		11EC2400E0878F817E3CECCA /* Pods-EukoTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EukoTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-EukoTests/Pods-EukoTests.release.xcconfig"; sourceTree = "<group>"; };
+		257280F01BF655A7E6C430D1 /* Pods-EukoTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EukoTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-EukoTests/Pods-EukoTests.debug.xcconfig"; sourceTree = "<group>"; };
+		2E97DDA1E1FCA067628EB106 /* Pods_EukoTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_EukoTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5713B019219ACAB0001D9324 /* Euko.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Euko.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5713B01C219ACAB0001D9324 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5713B01E219ACAB0001D9324 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -38,6 +43,9 @@
 		5713B030219ACAB1001D9324 /* EukoTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = EukoTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		5713B034219ACAB1001D9324 /* EukoTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EukoTests.swift; sourceTree = "<group>"; };
 		5713B036219ACAB1001D9324 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		5E2071583A9DCDD53C28CDF1 /* Pods_Euko.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Euko.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		BBD221E7AC7B39964B46AD53 /* Pods-Euko.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Euko.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Euko/Pods-Euko.debug.xcconfig"; sourceTree = "<group>"; };
+		E964081CFB7F6CA766F74518 /* Pods-Euko.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Euko.release.xcconfig"; path = "Pods/Target Support Files/Pods-Euko/Pods-Euko.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -45,6 +53,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3A42F7A5C9ED9482D6A6EAD2 /* Pods_Euko.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -52,6 +61,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D9081AF5C24CD981B57E88FA /* Pods_EukoTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -64,6 +74,8 @@
 				5713B01B219ACAB0001D9324 /* Euko */,
 				5713B033219ACAB1001D9324 /* EukoTests */,
 				5713B01A219ACAB0001D9324 /* Products */,
+				D2070AF8CFA99F6C92733B3E /* Pods */,
+				F16425929B440E39BB560710 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -99,6 +111,26 @@
 			path = EukoTests;
 			sourceTree = "<group>";
 		};
+		D2070AF8CFA99F6C92733B3E /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				BBD221E7AC7B39964B46AD53 /* Pods-Euko.debug.xcconfig */,
+				E964081CFB7F6CA766F74518 /* Pods-Euko.release.xcconfig */,
+				257280F01BF655A7E6C430D1 /* Pods-EukoTests.debug.xcconfig */,
+				11EC2400E0878F817E3CECCA /* Pods-EukoTests.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		F16425929B440E39BB560710 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				5E2071583A9DCDD53C28CDF1 /* Pods_Euko.framework */,
+				2E97DDA1E1FCA067628EB106 /* Pods_EukoTests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -106,9 +138,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 5713B039219ACAB1001D9324 /* Build configuration list for PBXNativeTarget "Euko" */;
 			buildPhases = (
+				392C1999C1C21713812E9BA5 /* [CP] Check Pods Manifest.lock */,
 				5713B015219ACAB0001D9324 /* Sources */,
 				5713B016219ACAB0001D9324 /* Frameworks */,
 				5713B017219ACAB0001D9324 /* Resources */,
+				1465B45D899F0E677D9C3E61 /* [CP] Embed Pods Frameworks */,
+				8BC38A0DEB4853A02903139E /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -123,9 +158,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 5713B03C219ACAB1001D9324 /* Build configuration list for PBXNativeTarget "EukoTests" */;
 			buildPhases = (
+				9603B72E11676B2F8CE8D981 /* [CP] Check Pods Manifest.lock */,
 				5713B02C219ACAB1001D9324 /* Sources */,
 				5713B02D219ACAB1001D9324 /* Frameworks */,
 				5713B02E219ACAB1001D9324 /* Resources */,
+				71CCB2BC39BC69E3E72149ED /* [CP] Embed Pods Frameworks */,
+				8DB1498F57C2C3604F19A23A /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -194,6 +232,110 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		1465B45D899F0E677D9C3E61 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-Euko/Pods-Euko-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
+				"${BUILT_PRODUCTS_DIR}/AlamofireImage/AlamofireImage.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AlamofireImage.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Euko/Pods-Euko-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		392C1999C1C21713812E9BA5 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Euko-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		71CCB2BC39BC69E3E72149ED /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-EukoTests/Pods-EukoTests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		8BC38A0DEB4853A02903139E /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Euko/Pods-Euko-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		8DB1498F57C2C3604F19A23A /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-EukoTests/Pods-EukoTests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		9603B72E11676B2F8CE8D981 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-EukoTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		5713B015219ACAB0001D9324 /* Sources */ = {
@@ -362,14 +504,13 @@
 		};
 		5713B03A219ACAB1001D9324 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = BBD221E7AC7B39964B46AD53 /* Pods-Euko.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = Euko/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-				);
+				IPHONEOS_DEPLOYMENT_TARGET = 10;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = EUKO.Euko;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
@@ -379,14 +520,13 @@
 		};
 		5713B03B219ACAB1001D9324 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = E964081CFB7F6CA766F74518 /* Pods-Euko.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = Euko/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-				);
+				IPHONEOS_DEPLOYMENT_TARGET = 10;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = EUKO.Euko;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
@@ -396,16 +536,13 @@
 		};
 		5713B03D219ACAB1001D9324 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 257280F01BF655A7E6C430D1 /* Pods-EukoTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = EukoTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = EUKO.EukoTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
@@ -416,16 +553,13 @@
 		};
 		5713B03E219ACAB1001D9324 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 11EC2400E0878F817E3CECCA /* Pods-EukoTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = EukoTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = EUKO.EukoTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
