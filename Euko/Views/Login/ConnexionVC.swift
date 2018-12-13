@@ -37,6 +37,7 @@ extension ConnexionVC {
 //MARK: IBAction
 extension ConnexionVC {
     @IBAction func connectAction(_ sender: Any) {
+        //TODO: Request API Here before mooving to the next view
     }
 }
 
