@@ -32,6 +32,7 @@ extension InscriptionVC {
         
         self.title = "Inscription"
         self.setupView()
+        self.view.addDismisKeyBoardOnTouch()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -88,7 +89,7 @@ extension InscriptionVC: UITextFieldDelegate {
     }
     
     func adjustingHeight(show:Bool) {
-        let changeInHeight:CGFloat = (40.0) * (show ? 1 : -1)
+        let changeInHeight:CGFloat = (45.0) * (show ? 1 : -1)
         self.bottomConstraint.constant += changeInHeight
     }
     

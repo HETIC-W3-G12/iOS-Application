@@ -15,6 +15,7 @@ class ConnexionVC: UIViewController {
     @IBOutlet weak var connexionButton: UIButton!
     @IBOutlet weak var signInButton: UIButton!
     @IBOutlet weak var connexionBackground: UIView!
+    
 }
 
 //MARK: override
@@ -23,6 +24,7 @@ extension ConnexionVC {
         super.viewDidLoad()
         
         self.setupView()
+        self.view.addDismisKeyBoardOnTouch()
     }
 
     override func viewWillAppear(_ animated: Bool) {

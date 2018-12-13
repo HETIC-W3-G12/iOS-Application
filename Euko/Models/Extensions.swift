@@ -17,3 +17,9 @@ extension UIViewController {
         self.present(alert, animated: true)
     }
 }
+
+extension UIView {
+    func addDismisKeyBoardOnTouch(){
+        self.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(UIView.endEditing(_:))))
+    }
+}
