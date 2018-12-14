@@ -10,11 +10,22 @@ import UIKit
 
 class ProjectCell: UITableViewCell {
 
+    @IBOutlet weak var shadowView: UIView!
     @IBOutlet weak var insideView: UIView!
+    @IBOutlet weak var infoLabel: UILabel!
+    @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet weak var descriptionLabel: UITextView!
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+        
+        self.insideView.layer.cornerRadius = 8
+        
+        self.shadowView.layer.cornerRadius = 8
+        self.shadowView.layer.shadowColor = UIColor.darkGray.cgColor
+        self.shadowView.layer.shadowOpacity = 1
+        self.shadowView.layer.shadowOffset = .zero
+        self.shadowView.layer.shadowRadius = 5
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

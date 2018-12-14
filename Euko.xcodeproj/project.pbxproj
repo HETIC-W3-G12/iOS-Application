@@ -17,6 +17,7 @@
 		571EB6DD21B91F70008D4227 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 571EB6DC21B91F70008D4227 /* User.swift */; };
 		572294F821C3DFA000C106BC /* ProjectListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 572294F721C3DFA000C106BC /* ProjectListVC.swift */; };
 		572294FA21C3E04700C106BC /* ProjectCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 572294F921C3E04700C106BC /* ProjectCell.swift */; };
+		572294FC21C4449200C106BC /* Project.swift in Sources */ = {isa = PBXBuildFile; fileRef = 572294FB21C4449200C106BC /* Project.swift */; };
 		5776C18E21BA6C9A00E51C59 /* ConnexionVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5776C18D21BA6C9A00E51C59 /* ConnexionVC.swift */; };
 		5776C19021BA75A600E51C59 /* InscriptionVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5776C18F21BA75A600E51C59 /* InscriptionVC.swift */; };
 		5776C19221BA8EE100E51C59 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5776C19121BA8EE100E51C59 /* Extensions.swift */; };
@@ -50,6 +51,7 @@
 		571EB6DC21B91F70008D4227 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		572294F721C3DFA000C106BC /* ProjectListVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectListVC.swift; sourceTree = "<group>"; };
 		572294F921C3E04700C106BC /* ProjectCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectCell.swift; sourceTree = "<group>"; };
+		572294FB21C4449200C106BC /* Project.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Project.swift; sourceTree = "<group>"; };
 		5776C18D21BA6C9A00E51C59 /* ConnexionVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnexionVC.swift; sourceTree = "<group>"; };
 		5776C18F21BA75A600E51C59 /* InscriptionVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InscriptionVC.swift; sourceTree = "<group>"; };
 		5776C19121BA8EE100E51C59 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
@@ -136,6 +138,7 @@
 			children = (
 				571EB6DC21B91F70008D4227 /* User.swift */,
 				5776C19121BA8EE100E51C59 /* Extensions.swift */,
+				572294FB21C4449200C106BC /* Project.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -395,6 +398,7 @@
 				572294F821C3DFA000C106BC /* ProjectListVC.swift in Sources */,
 				5776C18E21BA6C9A00E51C59 /* ConnexionVC.swift in Sources */,
 				5713B025219ACAB0001D9324 /* Euko.xcdatamodeld in Sources */,
+				572294FC21C4449200C106BC /* Project.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
