@@ -15,6 +15,8 @@
 		5713B02A219ACAB1001D9324 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5713B028219ACAB1001D9324 /* LaunchScreen.storyboard */; };
 		5713B035219ACAB1001D9324 /* EukoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5713B034219ACAB1001D9324 /* EukoTests.swift */; };
 		571EB6DD21B91F70008D4227 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 571EB6DC21B91F70008D4227 /* User.swift */; };
+		572294F821C3DFA000C106BC /* ProjectListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 572294F721C3DFA000C106BC /* ProjectListVC.swift */; };
+		572294FA21C3E04700C106BC /* ProjectCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 572294F921C3E04700C106BC /* ProjectCell.swift */; };
 		5776C18E21BA6C9A00E51C59 /* ConnexionVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5776C18D21BA6C9A00E51C59 /* ConnexionVC.swift */; };
 		5776C19021BA75A600E51C59 /* InscriptionVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5776C18F21BA75A600E51C59 /* InscriptionVC.swift */; };
 		5776C19221BA8EE100E51C59 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5776C19121BA8EE100E51C59 /* Extensions.swift */; };
@@ -46,6 +48,8 @@
 		5713B034219ACAB1001D9324 /* EukoTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EukoTests.swift; sourceTree = "<group>"; };
 		5713B036219ACAB1001D9324 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		571EB6DC21B91F70008D4227 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		572294F721C3DFA000C106BC /* ProjectListVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectListVC.swift; sourceTree = "<group>"; };
+		572294F921C3E04700C106BC /* ProjectCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectCell.swift; sourceTree = "<group>"; };
 		5776C18D21BA6C9A00E51C59 /* ConnexionVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnexionVC.swift; sourceTree = "<group>"; };
 		5776C18F21BA75A600E51C59 /* InscriptionVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InscriptionVC.swift; sourceTree = "<group>"; };
 		5776C19121BA8EE100E51C59 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
@@ -121,6 +125,7 @@
 		571EB6DA21B91F47008D4227 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				572294F621C3DF6900C106BC /* ProjectList */,
 				5776C18C21BA6C7C00E51C59 /* Login */,
 			);
 			path = Views;
@@ -133,6 +138,15 @@
 				5776C19121BA8EE100E51C59 /* Extensions.swift */,
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		572294F621C3DF6900C106BC /* ProjectList */ = {
+			isa = PBXGroup;
+			children = (
+				572294F721C3DFA000C106BC /* ProjectListVC.swift */,
+				572294F921C3E04700C106BC /* ProjectCell.swift */,
+			);
+			path = ProjectList;
 			sourceTree = "<group>";
 		};
 		5776C18C21BA6C7C00E51C59 /* Login */ = {
@@ -376,7 +390,9 @@
 				5776C19021BA75A600E51C59 /* InscriptionVC.swift in Sources */,
 				5776C19221BA8EE100E51C59 /* Extensions.swift in Sources */,
 				571EB6DD21B91F70008D4227 /* User.swift in Sources */,
+				572294FA21C3E04700C106BC /* ProjectCell.swift in Sources */,
 				5713B01D219ACAB0001D9324 /* AppDelegate.swift in Sources */,
+				572294F821C3DFA000C106BC /* ProjectListVC.swift in Sources */,
 				5776C18E21BA6C9A00E51C59 /* ConnexionVC.swift in Sources */,
 				5713B025219ACAB0001D9324 /* Euko.xcdatamodeld in Sources */,
 			);
