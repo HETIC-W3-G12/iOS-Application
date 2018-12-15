@@ -15,9 +15,13 @@
 		5713B02A219ACAB1001D9324 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5713B028219ACAB1001D9324 /* LaunchScreen.storyboard */; };
 		5713B035219ACAB1001D9324 /* EukoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5713B034219ACAB1001D9324 /* EukoTests.swift */; };
 		571EB6DD21B91F70008D4227 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 571EB6DC21B91F70008D4227 /* User.swift */; };
+		572294F821C3DFA000C106BC /* ProjectListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 572294F721C3DFA000C106BC /* ProjectListVC.swift */; };
+		572294FA21C3E04700C106BC /* ProjectCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 572294F921C3E04700C106BC /* ProjectCell.swift */; };
+		572294FC21C4449200C106BC /* Project.swift in Sources */ = {isa = PBXBuildFile; fileRef = 572294FB21C4449200C106BC /* Project.swift */; };
 		5776C18E21BA6C9A00E51C59 /* ConnexionVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5776C18D21BA6C9A00E51C59 /* ConnexionVC.swift */; };
 		5776C19021BA75A600E51C59 /* InscriptionVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5776C18F21BA75A600E51C59 /* InscriptionVC.swift */; };
 		5776C19221BA8EE100E51C59 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5776C19121BA8EE100E51C59 /* Extensions.swift */; };
+		57E46A3521C4785800FB7236 /* ProjectVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57E46A3421C4785800FB7236 /* ProjectVC.swift */; };
 		D9081AF5C24CD981B57E88FA /* Pods_EukoTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2E97DDA1E1FCA067628EB106 /* Pods_EukoTests.framework */; };
 /* End PBXBuildFile section */
 
@@ -46,9 +50,13 @@
 		5713B034219ACAB1001D9324 /* EukoTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EukoTests.swift; sourceTree = "<group>"; };
 		5713B036219ACAB1001D9324 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		571EB6DC21B91F70008D4227 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		572294F721C3DFA000C106BC /* ProjectListVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectListVC.swift; sourceTree = "<group>"; };
+		572294F921C3E04700C106BC /* ProjectCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectCell.swift; sourceTree = "<group>"; };
+		572294FB21C4449200C106BC /* Project.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Project.swift; sourceTree = "<group>"; };
 		5776C18D21BA6C9A00E51C59 /* ConnexionVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnexionVC.swift; sourceTree = "<group>"; };
 		5776C18F21BA75A600E51C59 /* InscriptionVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InscriptionVC.swift; sourceTree = "<group>"; };
 		5776C19121BA8EE100E51C59 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		57E46A3421C4785800FB7236 /* ProjectVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectVC.swift; sourceTree = "<group>"; };
 		5E2071583A9DCDD53C28CDF1 /* Pods_Euko.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Euko.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		BBD221E7AC7B39964B46AD53 /* Pods-Euko.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Euko.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Euko/Pods-Euko.debug.xcconfig"; sourceTree = "<group>"; };
 		E964081CFB7F6CA766F74518 /* Pods-Euko.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Euko.release.xcconfig"; path = "Pods/Target Support Files/Pods-Euko/Pods-Euko.release.xcconfig"; sourceTree = "<group>"; };
@@ -121,6 +129,8 @@
 		571EB6DA21B91F47008D4227 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				57E46A3321C4783400FB7236 /* Project */,
+				572294F621C3DF6900C106BC /* ProjectList */,
 				5776C18C21BA6C7C00E51C59 /* Login */,
 			);
 			path = Views;
@@ -131,8 +141,18 @@
 			children = (
 				571EB6DC21B91F70008D4227 /* User.swift */,
 				5776C19121BA8EE100E51C59 /* Extensions.swift */,
+				572294FB21C4449200C106BC /* Project.swift */,
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		572294F621C3DF6900C106BC /* ProjectList */ = {
+			isa = PBXGroup;
+			children = (
+				572294F721C3DFA000C106BC /* ProjectListVC.swift */,
+				572294F921C3E04700C106BC /* ProjectCell.swift */,
+			);
+			path = ProjectList;
 			sourceTree = "<group>";
 		};
 		5776C18C21BA6C7C00E51C59 /* Login */ = {
@@ -142,6 +162,14 @@
 				5776C18F21BA75A600E51C59 /* InscriptionVC.swift */,
 			);
 			path = Login;
+			sourceTree = "<group>";
+		};
+		57E46A3321C4783400FB7236 /* Project */ = {
+			isa = PBXGroup;
+			children = (
+				57E46A3421C4785800FB7236 /* ProjectVC.swift */,
+			);
+			path = Project;
 			sourceTree = "<group>";
 		};
 		D2070AF8CFA99F6C92733B3E /* Pods */ = {
@@ -376,9 +404,13 @@
 				5776C19021BA75A600E51C59 /* InscriptionVC.swift in Sources */,
 				5776C19221BA8EE100E51C59 /* Extensions.swift in Sources */,
 				571EB6DD21B91F70008D4227 /* User.swift in Sources */,
+				572294FA21C3E04700C106BC /* ProjectCell.swift in Sources */,
 				5713B01D219ACAB0001D9324 /* AppDelegate.swift in Sources */,
+				572294F821C3DFA000C106BC /* ProjectListVC.swift in Sources */,
 				5776C18E21BA6C9A00E51C59 /* ConnexionVC.swift in Sources */,
 				5713B025219ACAB0001D9324 /* Euko.xcdatamodeld in Sources */,
+				57E46A3521C4785800FB7236 /* ProjectVC.swift in Sources */,
+				572294FC21C4449200C106BC /* Project.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -552,7 +584,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = EUKO.Euko;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -572,7 +604,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = EUKO.Euko;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};

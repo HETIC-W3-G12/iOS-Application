@@ -5,7 +5,8 @@ Aplication iOS pour EUKO
 ## Branches
 
 - master : branche de production
-- connexion-inscription : branche de developpement des interfaces de connexion et insciption
+- connexion-inscription : branche liée à l'issue #9
+- projectsLists : branche liée à l'issue #7
 
 ## Pré-requis
 

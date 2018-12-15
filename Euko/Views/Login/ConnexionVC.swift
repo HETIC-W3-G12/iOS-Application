@@ -38,6 +38,9 @@ extension ConnexionVC {
 extension ConnexionVC {
     @IBAction func connectAction(_ sender: Any) {
         //TODO: Request API Here before mooving to the next view
+        //TODO: Set next VC to a Root VC
+        let vc = self.storyboard?.instantiateViewController(withIdentifier: "ProjectListVC") as! ProjectListVC
+        self.navigationController?.pushViewController(vc, animated: true)
     }
 }
 
@@ -46,5 +49,7 @@ extension ConnexionVC {
     func setupView(){
         self.connexionButton.layer.cornerRadius = self.connexionButton.frame.height / 2
         self.connexionBackground.layer.cornerRadius = 10
+        
+        self.connexionBackground.dropShadow(color: UIColor.black, opacity: 0.5, offSet: .zero, radius: 10, scale: true)
     }
 }
