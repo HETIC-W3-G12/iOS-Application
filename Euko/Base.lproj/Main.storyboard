@@ -140,7 +140,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="ytz-2C-XO7">
-                                <rect key="frame" x="0.0" y="20" width="414" height="716"/>
+                                <rect key="frame" x="0.0" y="64" width="414" height="672"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="project_cell_identifier" rowHeight="340" id="PBG-3h-R6r" customClass="ProjectCell" customModule="Euko" customModuleProvider="target">
@@ -229,13 +229,16 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="VA3-YO-fcb"/>
                     </view>
+                    <navigationItem key="navigationItem" id="BkB-Uo-4h0">
+                        <barButtonItem key="backBarButtonItem" title="Retour" id="EVc-GJ-Upd"/>
+                    </navigationItem>
                     <connections>
                         <outlet property="tableView" destination="ytz-2C-XO7" id="POD-9J-naF"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tcN-Bk-8fd" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2359" y="27"/>
+            <point key="canvasLocation" x="3536" y="24"/>
         </scene>
         <!--ProjectVC-->
         <scene sceneID="Eyc-Jm-NY5">
@@ -335,7 +338,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="OMp-VS-lAI" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3316" y="27"/>
+            <point key="canvasLocation" x="4439" y="24"/>
         </scene>
         <!--InscriptionVC-->
         <scene sceneID="6Bv-1u-j4b">
@@ -461,7 +464,7 @@
         <!--Navigation Controller-->
         <scene sceneID="F9d-zL-uYo">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="3J5-DY-e2c" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="connexionNavigationController" automaticallyAdjustsScrollViewInsets="NO" useStoryboardIdentifierAsRestorationIdentifier="YES" id="3J5-DY-e2c" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="HBd-0H-nDV">
                         <rect key="frame" x="0.0" y="20" width="414" height="44"/>
@@ -483,6 +486,31 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="UDH-aj-AKl" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="146" y="27"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="3dC-5J-Xla">
+            <objects>
+                <navigationController storyboardIdentifier="projectNavigationController" automaticallyAdjustsScrollViewInsets="NO" useStoryboardIdentifierAsRestorationIdentifier="YES" id="8Oa-PN-NYc" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Bfx-2W-gSQ">
+                        <rect key="frame" x="0.0" y="20" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="tintColor" red="0.26961710280000001" green="0.32166420029999998" blue="0.4908023997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <textAttributes key="titleTextAttributes">
+                            <color key="textColor" red="0.26961710280000001" green="0.32166420029999998" blue="0.4908023997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        </textAttributes>
+                        <textAttributes key="largeTitleTextAttributes">
+                            <color key="textColor" red="0.26961710280000001" green="0.32166420029999998" blue="0.4908023997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        </textAttributes>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="B9Z-Pt-gS1" kind="relationship" relationship="rootViewController" id="v34-56-vsA"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="bOx-CI-5jG" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2599" y="25"/>
         </scene>
     </scenes>
     <resources>

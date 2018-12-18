@@ -39,8 +39,10 @@ extension ConnexionVC {
     @IBAction func connectAction(_ sender: Any) {
         //TODO: Request API Here before mooving to the next view
         //TODO: Set next VC to a Root VC
-        let vc = self.storyboard?.instantiateViewController(withIdentifier: "ProjectListVC") as! ProjectListVC
-        self.navigationController?.pushViewController(vc, animated: true)
+        let vc = self.storyboard?.instantiateViewController(withIdentifier: "projectNavigationController") as! UINavigationController
+        
+        let appdelegate = UIApplication.shared.delegate as! AppDelegate
+        appdelegate.window!.rootViewController = vc
     }
 }
 
