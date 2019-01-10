@@ -178,6 +178,49 @@
                                                             <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
+                                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XiE-1a-HSx" customClass="Triangle" customModule="Euko" customModuleProvider="target">
+                                                            <rect key="frame" x="294" y="0.0" width="90" height="90"/>
+                                                            <subviews>
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="+15€" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7bf-J3-1c0">
+                                                                    <rect key="frame" x="32" y="8" width="50" height="50"/>
+                                                                    <fontDescription key="fontDescription" name="AvenirNext-DemiBold" family="Avenir Next" pointSize="17"/>
+                                                                    <color key="textColor" white="0.94999999999999996" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                    <nil key="highlightedColor"/>
+                                                                </label>
+                                                            </subviews>
+                                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="height" constant="90" id="2ea-yK-kwb"/>
+                                                                <constraint firstItem="7bf-J3-1c0" firstAttribute="top" secondItem="XiE-1a-HSx" secondAttribute="top" constant="8" id="8uh-jx-n4X"/>
+                                                                <constraint firstItem="7bf-J3-1c0" firstAttribute="leading" secondItem="XiE-1a-HSx" secondAttribute="leading" constant="32" id="O6s-wK-jRA"/>
+                                                                <constraint firstAttribute="trailing" secondItem="7bf-J3-1c0" secondAttribute="trailing" constant="8" id="WqO-QI-Z7b"/>
+                                                                <constraint firstAttribute="width" secondItem="XiE-1a-HSx" secondAttribute="height" multiplier="1:1" id="eqa-Nz-BCM"/>
+                                                                <constraint firstAttribute="bottom" secondItem="7bf-J3-1c0" secondAttribute="bottom" constant="32" id="qVc-7F-rKS"/>
+                                                            </constraints>
+                                                            <userDefinedRuntimeAttributes>
+                                                                <userDefinedRuntimeAttribute type="color" keyPath="color">
+                                                                    <color key="value" red="0.8871748096456854" green="0.087595228592042315" blue="0.0044024555844526326" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                </userDefinedRuntimeAttribute>
+                                                                <userDefinedRuntimeAttribute type="number" keyPath="firstPointX">
+                                                                    <real key="value" value="0.0"/>
+                                                                </userDefinedRuntimeAttribute>
+                                                                <userDefinedRuntimeAttribute type="number" keyPath="firstPointY">
+                                                                    <real key="value" value="0.0"/>
+                                                                </userDefinedRuntimeAttribute>
+                                                                <userDefinedRuntimeAttribute type="number" keyPath="secondPointX">
+                                                                    <real key="value" value="1"/>
+                                                                </userDefinedRuntimeAttribute>
+                                                                <userDefinedRuntimeAttribute type="number" keyPath="secondPointY">
+                                                                    <real key="value" value="0.0"/>
+                                                                </userDefinedRuntimeAttribute>
+                                                                <userDefinedRuntimeAttribute type="number" keyPath="thirdPointX">
+                                                                    <real key="value" value="1"/>
+                                                                </userDefinedRuntimeAttribute>
+                                                                <userDefinedRuntimeAttribute type="number" keyPath="thirdPointY">
+                                                                    <real key="value" value="1"/>
+                                                                </userDefinedRuntimeAttribute>
+                                                            </userDefinedRuntimeAttributes>
+                                                        </view>
                                                     </subviews>
                                                     <color key="backgroundColor" red="0.51416219559999998" green="0.83938270810000004" blue="0.53199260569999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <constraints>
@@ -188,10 +231,12 @@
                                                         <constraint firstItem="v2R-ch-IX7" firstAttribute="top" secondItem="wev-Vs-Vy1" secondAttribute="bottom" constant="8" id="LiC-LT-uQI"/>
                                                         <constraint firstAttribute="trailing" secondItem="vyT-dv-Jid" secondAttribute="trailing" constant="8" id="PNF-5y-YUE"/>
                                                         <constraint firstAttribute="trailing" secondItem="wev-Vs-Vy1" secondAttribute="trailing" constant="8" id="SJP-Rl-iRt"/>
+                                                        <constraint firstItem="XiE-1a-HSx" firstAttribute="top" secondItem="bKw-Is-KYN" secondAttribute="top" id="aie-iV-aSf"/>
                                                         <constraint firstItem="wev-Vs-Vy1" firstAttribute="top" secondItem="vyT-dv-Jid" secondAttribute="bottom" constant="8" id="ciO-BJ-XOx"/>
                                                         <constraint firstAttribute="trailing" secondItem="v2R-ch-IX7" secondAttribute="trailing" constant="8" id="dGq-Ns-C0W"/>
                                                         <constraint firstItem="wev-Vs-Vy1" firstAttribute="leading" secondItem="bKw-Is-KYN" secondAttribute="leading" constant="8" id="gec-H3-GF4"/>
                                                         <constraint firstItem="wev-Vs-Vy1" firstAttribute="height" secondItem="vyT-dv-Jid" secondAttribute="height" id="ohs-3z-7tH"/>
+                                                        <constraint firstAttribute="trailing" secondItem="XiE-1a-HSx" secondAttribute="trailing" id="raW-ru-FCR"/>
                                                     </constraints>
                                                 </view>
                                             </subviews>
@@ -215,6 +260,7 @@
                                             <outlet property="insideView" destination="bKw-Is-KYN" id="nTT-Oz-nqF"/>
                                             <outlet property="shadowView" destination="AS2-fh-egk" id="LJA-2u-K4S"/>
                                             <outlet property="titleLabel" destination="wev-Vs-Vy1" id="BVo-XZ-LXe"/>
+                                            <outlet property="triangleLabel" destination="7bf-J3-1c0" id="DqO-iR-52n"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -248,7 +294,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tcN-Bk-8fd" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3536" y="24"/>
+            <point key="canvasLocation" x="3534.7826086956525" y="23.64130434782609"/>
         </scene>
         <!--Financer-->
         <scene sceneID="Eyc-Jm-NY5">

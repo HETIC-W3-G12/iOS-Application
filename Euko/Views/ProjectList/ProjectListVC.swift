@@ -33,6 +33,8 @@ extension ProjectListVC {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.setProjects()
+
         self.tableView.dataSource = self
         self.tableView.delegate = self
         
@@ -41,7 +43,6 @@ extension ProjectListVC {
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        self.setProjects()
         super.viewWillAppear(animated)
     }
     
@@ -58,6 +59,7 @@ extension ProjectListVC {
     func setProjects(){
         
         self.turnAvctivityOn()
+        self.projects = []
         
         Alamofire.request("https://euko-api-staging.herokuapp.com/projects", method: .get).validate().responseJSON { response in
             switch response.result {
