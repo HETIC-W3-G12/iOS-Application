@@ -9,6 +9,7 @@ target 'Euko' do
 
   # Pods for Euko
   pod 'Alamofire'
+  pod 'SwiftyJSON'
   
   target 'EukoTests' do
     inherit! :search_paths
