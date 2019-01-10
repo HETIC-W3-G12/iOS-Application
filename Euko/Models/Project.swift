@@ -9,24 +9,26 @@
 import Foundation
 
 class Project {
-    var uid:String!
-    var user_uid:String!
+    var id:Int!
     var title:String!
     var description:String!
+    var state:String!
     var price:Int!
     var timeLaps:Int!
     var interests:Float!
     var finalPrice:Float!
+    var date:Date
     
-    init(uid:String!, user_uid:String!, title:String!, description:String!,
-         price:Int!, timeLaps:Int!, interests:Float!, finalPrice:Float!) {
-        self.uid = uid
-        self.user_uid = user_uid
+    init(id:Int!, title:String!, description:String!, state:String!,
+         price:Int!, timeLaps:Int!, interests:Float!, finalPrice:Float!, date:Date) {
+        self.id = id
         self.title = title
         self.description = description
+        self.state = state
         self.price = price
         self.timeLaps = timeLaps
         self.interests = interests
         self.finalPrice = finalPrice
+        self.date = date
     }
 }
