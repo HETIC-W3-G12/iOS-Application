@@ -13,17 +13,59 @@ import SwiftyJSON
 class ProjectListVC: UIViewController {
 
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     
     var projects:[Project] = []
     
+    func turnAvctivityOn(){
+        self.activityIndicator.isHidden = false
+        self.activityIndicator.startAnimating()
+    }
+    
+    func turnAvctivityOff(){
+        self.activityIndicator.isHidden = true
+        self.activityIndicator.stopAnimating()
+    }
+}
+
+//MARK override
+extension ProjectListVC {
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        self.tableView.dataSource = self
+        self.tableView.delegate = self
+        
+        let HomeButton = UIBarButtonItem(title: "Menu", style: UIBarButtonItem.Style.done, target: self, action: #selector(self.homeAction(_:)))
+        self.navigationItem.leftBarButtonItem = HomeButton
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        self.setProjects()
+        super.viewWillAppear(animated)
+    }
+    
+    @objc func homeAction(_ sender:UIBarButtonItem!)
+    {
+        let vc = self.storyboard?.instantiateViewController(withIdentifier: "HomeVC") as! HomeVC
+        self.navigationController?.pushViewController(vc, animated: true)
+    }
+}
+
+
+//MARK Server Bridge
+extension ProjectListVC {
     func setProjects(){
+        
+        self.turnAvctivityOn()
+        
         Alamofire.request("https://euko-api-staging.herokuapp.com/projects", method: .get).validate().responseJSON { response in
             switch response.result {
             case .success(let value):
                 let jsonTab = JSON(value)
                 var i:Int = 0
                 var json:JSON = jsonTab[i]
-
+                
                 while (json != JSON.null){
                     print(json)
                     let id = json["id"].int ?? 0
@@ -55,6 +97,7 @@ class ProjectListVC: UIViewController {
                     i += 1
                     json = jsonTab[(i)]
                 }
+                self.turnAvctivityOff()
                 self.tableView.reloadData()
             case .failure(let error):
                 print(error)
@@ -63,29 +106,6 @@ class ProjectListVC: UIViewController {
     }
 }
 
-//MARK override
-extension ProjectListVC {
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-        self.tableView.dataSource = self
-        self.tableView.delegate = self
-        
-        let HomeButton = UIBarButtonItem(title: "Menu", style: UIBarButtonItem.Style.done, target: self, action: #selector(self.homeAction(_:)))
-        self.navigationItem.leftBarButtonItem = HomeButton
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        self.setProjects()
-        super.viewWillAppear(animated)
-    }
-    
-    @objc func homeAction(_ sender:UIBarButtonItem!)
-    {
-        let vc = self.storyboard?.instantiateViewController(withIdentifier: "HomeVC") as! HomeVC
-        self.navigationController?.pushViewController(vc, animated: true)
-    }
-}
 
 //MARK: TableViewDelegate TableViewDataSource
 extension ProjectListVC: UITableViewDelegate, UITableViewDataSource{
