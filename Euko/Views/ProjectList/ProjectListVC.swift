@@ -122,6 +122,8 @@ extension ProjectListVC: UITableViewDelegate, UITableViewDataSource{
         
         cell.titleLabel.text = self.projects[indexPath.row].title
         cell.descriptionLabel.text = self.projects[indexPath.row].description
+        cell.triangleLabel.text = String(format: "+ %.f €",
+                                         self.projects[indexPath.row].finalPrice - Float(self.projects[indexPath.row].price))
         
         let price:Int = self.projects[indexPath.row].price
         let timeLaps:Int = self.projects[indexPath.row].timeLaps
