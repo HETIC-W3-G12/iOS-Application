@@ -52,12 +52,19 @@ extension ProjectListVC {
         self.setFakeProjects()
         self.tableView.dataSource = self
         self.tableView.delegate = self
+        
+        let HomeButton = UIBarButtonItem(title: "Menu", style: UIBarButtonItem.Style.done, target: self, action: #selector(self.homeAction(_:)))
+        self.navigationItem.leftBarButtonItem = HomeButton
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
-        self.navigationController?.navigationBar.isHidden = false
+    }
+    
+    @objc func homeAction(_ sender:UIBarButtonItem!)
+    {
+        let vc = self.storyboard?.instantiateViewController(withIdentifier: "HomeVC") as! HomeVC
+        self.navigationController?.pushViewController(vc, animated: true)
     }
 }
 
