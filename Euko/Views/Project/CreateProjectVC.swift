@@ -28,21 +28,14 @@ class CreateProjectVC: UIViewController {
         
         self.descriptionTextView.delegate = self
         
-        self.containerView.layer.cornerRadius = 8
-        self.descriptionTextView.layer.cornerRadius = 3
-        self.validateButton.layer.cornerRadius = self.validateButton.frame.height / 2
+        self.containerView.roundBorder(radius: 8)
+        self.descriptionTextView.roundBorder(radius: 3)
+        self.shadowButton.roundBorder()
+        self.validateButton.roundBorder()
         
-        self.shadowView.layer.cornerRadius = 8
-        self.shadowView.layer.shadowColor = UIColor.black.cgColor
-        self.shadowView.layer.shadowOpacity = 0.7
-        self.shadowView.layer.shadowOffset = CGSize(width: -3, height: 3)
-        self.shadowView.layer.shadowRadius = 2
+        self.shadowView.setSpecificShadow()
+        self.shadowButton.setSpecificShadow()
         
-        self.shadowButton.layer.cornerRadius = self.shadowButton.frame.height / 2
-        self.shadowButton.layer.shadowColor = UIColor.black.cgColor
-        self.shadowButton.layer.shadowOpacity = 0.7
-        self.shadowButton.layer.shadowOffset = CGSize(width: -3, height: 3)
-        self.shadowButton.layer.shadowRadius = 1
     }
         
     @IBAction func validateAction(_ sender: Any) {

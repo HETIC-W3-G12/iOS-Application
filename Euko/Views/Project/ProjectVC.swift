@@ -17,26 +17,40 @@ class ProjectVC: UIViewController {
     @IBOutlet weak var firstInformationLabel: UILabel!
     @IBOutlet weak var secondInformationLabel: UILabel!
     @IBOutlet weak var payButton: UIButton!
-    
-    
+  
     var project:Project!
     
+    @IBAction func payAction(_ sender: Any) {
+        
+    }
+}
+
+// MARK: override
+extension ProjectVC {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.payButton.layer.cornerRadius = self.payButton.frame.height / 2
-        self.shadowButton.layer.cornerRadius = self.shadowButton.frame.height / 2
-        self.shadowButton.layer.shadowColor = UIColor.black.cgColor
-        self.shadowButton.layer.shadowOpacity = 0.7
-        self.shadowButton.layer.shadowOffset = CGSize(width: -3, height: 3)
-        self.shadowButton.layer.shadowRadius = 1
-        
-        self.descriptionTextView.layer.cornerRadius = 5
+        self.setupView()
     }
-    
+
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+
+        self.setupField()
+    }
+}
+
+// MARK: other functions
+extension ProjectVC{
+    func setupView(){
+        self.descriptionTextView.roundBorder(radius: 5)
+        self.shadowButton.roundBorder()
+        self.payButton.roundBorder()
         
+        self.shadowButton.setSpecificShadow()
+    }
+    
+    func setupField(){
         self.titleLabel.text = self.project.title
         self.descriptionTextView.text = self.project.description
         
@@ -55,9 +69,6 @@ class ProjectVC: UIViewController {
             self.textViewHeightConstraint.constant = self.descriptionTextView.contentSize.height + 26
             self.descriptionTextView.isScrollEnabled = false
         }
-    }
-    
-    @IBAction func payAction(_ sender: Any) {
-        
+
     }
 }

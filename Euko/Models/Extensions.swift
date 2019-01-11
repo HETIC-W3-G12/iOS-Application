@@ -35,6 +35,22 @@ extension UIView {
         //layer.rasterizationScale = scale ? UIScreen.main.scale : 1
         layer.rasterizationScale = 1
     }
+    
+    func setSpecificShadow(){
+        self.layer.cornerRadius = 8
+        self.layer.shadowColor = UIColor.black.cgColor
+        self.layer.shadowOpacity = 0.7
+        self.layer.shadowOffset = CGSize(width: -3, height: 3)
+        self.layer.shadowRadius = 2
+    }
+    
+    func roundBorder(){
+        self.layer.cornerRadius = self.frame.height / 2
+    }
+    
+    func roundBorder(radius:CGFloat){
+        self.layer.cornerRadius = radius
+    }
 }
 
 extension String
