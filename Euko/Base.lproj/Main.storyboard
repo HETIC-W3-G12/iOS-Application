@@ -798,6 +798,9 @@
                                         <color key="textColor" red="0.26961710280000001" green="0.32166420029999998" blue="0.4908023997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="17"/>
                                         <textInputTraits key="textInputTraits"/>
+                                        <connections>
+                                            <action selector="startEditTitle:" destination="ASf-KS-sUU" eventType="editingDidBegin" id="AGo-Q3-a1r"/>
+                                        </connections>
                                     </textField>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="340" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="1dw-Q9-ekj">
                                         <rect key="frame" x="12" y="66" width="75" height="30"/>
@@ -807,12 +810,18 @@
                                         <color key="textColor" red="0.26961710280000001" green="0.32166420029999998" blue="0.4908023997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="17"/>
                                         <textInputTraits key="textInputTraits"/>
+                                        <connections>
+                                            <action selector="startEditPrice:" destination="ASf-KS-sUU" eventType="editingDidBegin" id="MMh-L8-YRO"/>
+                                        </connections>
                                     </textField>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="4" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="F6M-1x-sj6">
                                         <rect key="frame" x="12" y="108" width="75" height="30"/>
                                         <color key="textColor" red="0.26961710280000001" green="0.32166420029999998" blue="0.4908023997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="17"/>
                                         <textInputTraits key="textInputTraits"/>
+                                        <connections>
+                                            <action selector="startEditTime:" destination="ASf-KS-sUU" eventType="editingDidBegin" id="gj0-jG-y1y"/>
+                                        </connections>
                                     </textField>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="mois" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iXv-cM-VUp">
                                         <rect key="frame" x="91" y="111.33333333333334" width="295" height="23.333333333333343"/>

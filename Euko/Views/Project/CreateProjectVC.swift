@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Alamofire
 
 class CreateProjectVC: UIViewController {
 
@@ -24,6 +25,8 @@ class CreateProjectVC: UIViewController {
         super.viewDidLoad()
         
         self.view.addDismisKeyBoardOnTouch()
+        
+        self.descriptionTextView.delegate = self
         
         self.containerView.layer.cornerRadius = 8
         self.descriptionTextView.layer.cornerRadius = 3
@@ -43,5 +46,82 @@ class CreateProjectVC: UIViewController {
     }
     
     @IBAction func validateAction(_ sender: Any) {
+        
+        let title = self.titletextField.text ?? ""
+        let desc = self.descriptionTextView.text ?? ""
+        let price = Int(self.priceTexfield.text!) ?? 0
+        let time = Int(self.timeLapsTextField.text!) ?? 0
+        
+        let state = "valid"
+        let interests = 0.1
+        
+        var somethingIsWrong = false
+        
+        let parameters: Parameters = ["title": title,
+                                      "description": desc,
+                                      "price": price,
+                                      "interests": interests,
+                                      "state": state,
+                                      "timeLaps": time]
+        
+        
+        if (title == ""){
+            UIView.animate(withDuration: 0.5, animations: {
+                self.titletextField.backgroundColor = UIColor(red: 1, green: 0, blue: 0, alpha: 0.7)
+            })
+            somethingIsWrong = true
+        }
+        if (desc == ""){
+            UIView.animate(withDuration: 0.5, animations: {
+                self.descriptionTextView.backgroundColor = UIColor(red: 1, green: 0, blue: 0, alpha: 0.7)
+            })
+            somethingIsWrong = true
+        }
+        if (price < 100 || price > 760){
+            UIView.animate(withDuration: 0.5, animations: {
+                self.priceTexfield.backgroundColor = UIColor(red: 1, green: 0, blue: 0, alpha: 0.7)
+            })
+            somethingIsWrong = true
+        }
+        if (time < 1 || time > 12) {
+            UIView.animate(withDuration: 0.5, animations: {
+                self.timeLapsTextField.backgroundColor = UIColor(red: 1, green: 0, blue: 0, alpha: 0.7)
+            })
+            somethingIsWrong = true
+        }
+        if (!somethingIsWrong) {
+           // Alamofire.request("https://euko-api-staging.herokuapp.com/projects",
+             //                 method: .post,
+               //               parameters: parameters)
+        }
+        else {
+            self.showBadParametersAlert()
+        }
+    }
+}
+
+extension CreateProjectVC: UITextViewDelegate{
+    
+    func textViewDidBeginEditing(_ textView: UITextView){
+        self.descriptionTextView.backgroundColor = UIColor.white
+    }
+    
+    @IBAction func startEditPrice(_ sender: Any) {
+        self.priceTexfield.backgroundColor = UIColor.white
+    }
+    
+    @IBAction func startEditTime(_ sender: Any) {
+        self.timeLapsTextField.backgroundColor = UIColor.white
+    }
+    
+    @IBAction func startEditTitle(_ sender: Any) {
+        self.titletextField.backgroundColor = UIColor.white
+    }
+    
+    
+    
+    func showBadParametersAlert(){
+        self.showSingleAlert(title: "Certains champs sont incorrects",
+                             message: "Le prix doit être compris entre 100 et 760€.\n\nLa durée de l'emprunt entre 1 et 12 mois.")
     }
 }
