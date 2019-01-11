@@ -15,6 +15,8 @@ class ProjectListVC: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     
+    let setProjectsTimer = Timer.scheduledTimer(timeInterval: 300.0, target: self, selector: #selector(ProjectListVC.setProjects), userInfo: nil, repeats: true)
+    
     var projects:[Project] = []
     
     func turnAvctivityOn(){
@@ -56,7 +58,7 @@ extension ProjectListVC {
 
 //MARK Server Bridge
 extension ProjectListVC {
-    func setProjects(){
+    @objc func setProjects(){
         
         self.turnAvctivityOn()
         self.projects = []
