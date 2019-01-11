@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Alamofire
 
 class InscriptionVC: UIViewController {
 
@@ -55,7 +56,7 @@ extension InscriptionVC {
         if (mail.count == 0 || password.count == 0 || confirmation.count == 0){
             self.showSingleAlert(title: "Erreur", message: "Veuillez indiquer tous les champs")
         } else if (password == confirmation) {
-            //TODO: REQUETE API INSCRIPTION
+            self.signUp(username: mail, password: password)
         }
         else {
             self.showSingleAlert(title: "Erreur", message: "Le mot de passe et la confirmation ne sont pas identiques")
@@ -95,5 +96,29 @@ extension InscriptionVC: UITextFieldDelegate {
     
     func hidekeyboard(){
         self.view.endEditing(true)
+    }
+}
+
+//MARK: Server Bridge
+extension InscriptionVC {
+    func signUp(username:String, password:String){
+        
+        let parameters:Parameters = ["email": username,
+                                     "password": password]
+        
+        // TODO: Check the url
+        Alamofire.request("https://euko-api-staging.herokuapp.com/users/sign_up",
+                          method: .post,
+                          parameters: parameters).validate().responseJSON {
+            response in
+            switch response.result {
+            case .success(let value):
+                print(value)
+                self.showSingleAlert(title: "Inscription reussie", message: "Connectez-vous pour continuer")
+                self.navigationController?.popViewController(animated: true)
+            case .failure(let error):
+                print(error)
+            }
+        }
     }
 }
