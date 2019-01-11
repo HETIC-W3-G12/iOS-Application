@@ -65,12 +65,14 @@ extension ProjectListVC {
 extension ProjectListVC {
     @objc func setProjects(){
         
-        self.turnAvctivityOn()
-        self.projects = []
+        if (self.projects.count > 0){
+            self.turnAvctivityOn()
+        }
         
         Alamofire.request("https://euko-api-staging.herokuapp.com/projects", method: .get).validate().responseJSON { response in
             switch response.result {
             case .success(let value):
+                self.projects = []
                 let jsonTab = JSON(value)
                 var i:Int = 0
                 var json:JSON = jsonTab[i]
