@@ -23,6 +23,8 @@
 		5776C18E21BA6C9A00E51C59 /* ConnexionVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5776C18D21BA6C9A00E51C59 /* ConnexionVC.swift */; };
 		5776C19021BA75A600E51C59 /* InscriptionVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5776C18F21BA75A600E51C59 /* InscriptionVC.swift */; };
 		5776C19221BA8EE100E51C59 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5776C19121BA8EE100E51C59 /* Extensions.swift */; };
+		57D4896221E797CF00D6D1C1 /* GradientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57D4896121E797CF00D6D1C1 /* GradientView.swift */; };
+		57D4896421E797EE00D6D1C1 /* Triangle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57D4896321E797EE00D6D1C1 /* Triangle.swift */; };
 		57E46A3521C4785800FB7236 /* ProjectVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57E46A3421C4785800FB7236 /* ProjectVC.swift */; };
 		57FE665521CD4DBF00D40854 /* MoneyBackVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57FE665421CD4DBF00D40854 /* MoneyBackVC.swift */; };
 		57FE665721CD523000D40854 /* MoneyBackCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57FE665621CD523000D40854 /* MoneyBackCell.swift */; };
@@ -62,6 +64,8 @@
 		5776C18D21BA6C9A00E51C59 /* ConnexionVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnexionVC.swift; sourceTree = "<group>"; };
 		5776C18F21BA75A600E51C59 /* InscriptionVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InscriptionVC.swift; sourceTree = "<group>"; };
 		5776C19121BA8EE100E51C59 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		57D4896121E797CF00D6D1C1 /* GradientView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradientView.swift; sourceTree = "<group>"; };
+		57D4896321E797EE00D6D1C1 /* Triangle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Triangle.swift; sourceTree = "<group>"; };
 		57E46A3421C4785800FB7236 /* ProjectVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectVC.swift; sourceTree = "<group>"; };
 		57FE665421CD4DBF00D40854 /* MoneyBackVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoneyBackVC.swift; sourceTree = "<group>"; };
 		57FE665621CD523000D40854 /* MoneyBackCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoneyBackCell.swift; sourceTree = "<group>"; };
@@ -137,6 +141,7 @@
 		571EB6DA21B91F47008D4227 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				57D4896021E797B000D6D1C1 /* Personalized Views */,
 				57FE665321CD4D7D00D40854 /* Remboursements */,
 				573022B321C994560000A495 /* Home */,
 				57E46A3321C4783400FB7236 /* Project */,
@@ -180,6 +185,15 @@
 				5776C18F21BA75A600E51C59 /* InscriptionVC.swift */,
 			);
 			path = Login;
+			sourceTree = "<group>";
+		};
+		57D4896021E797B000D6D1C1 /* Personalized Views */ = {
+			isa = PBXGroup;
+			children = (
+				57D4896121E797CF00D6D1C1 /* GradientView.swift */,
+				57D4896321E797EE00D6D1C1 /* Triangle.swift */,
+			);
+			path = "Personalized Views";
 			sourceTree = "<group>";
 		};
 		57E46A3321C4783400FB7236 /* Project */ = {
@@ -433,6 +447,7 @@
 			files = (
 				5776C19021BA75A600E51C59 /* InscriptionVC.swift in Sources */,
 				57FE665721CD523000D40854 /* MoneyBackCell.swift in Sources */,
+				57D4896221E797CF00D6D1C1 /* GradientView.swift in Sources */,
 				5776C19221BA8EE100E51C59 /* Extensions.swift in Sources */,
 				571EB6DD21B91F70008D4227 /* User.swift in Sources */,
 				572294FA21C3E04700C106BC /* ProjectCell.swift in Sources */,
@@ -445,6 +460,7 @@
 				57E46A3521C4785800FB7236 /* ProjectVC.swift in Sources */,
 				573022B521C998B10000A495 /* HomeVC.swift in Sources */,
 				572294FC21C4449200C106BC /* Project.swift in Sources */,
+				57D4896421E797EE00D6D1C1 /* Triangle.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -611,7 +627,10 @@
 				DEVELOPMENT_TEAM = 8Y66274G68;
 				INFOPLIST_FILE = Euko/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = EUKO.Euko;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
@@ -628,7 +647,10 @@
 				DEVELOPMENT_TEAM = 8Y66274G68;
 				INFOPLIST_FILE = Euko/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = EUKO.Euko;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
@@ -644,7 +666,11 @@
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = EukoTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = EUKO.EukoTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
@@ -661,7 +687,11 @@
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = EukoTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = EUKO.EukoTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;

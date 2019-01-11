@@ -691,14 +691,69 @@
                                     <action selector="moneyBackAction:" destination="AQ7-bd-jl6" eventType="touchUpInside" id="VZ0-7V-iku"/>
                                 </connections>
                             </button>
+                            <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="s2D-3t-VpJ" customClass="GradientView" customModule="Euko" customModuleProvider="target">
+                                <rect key="frame" x="107" y="266" width="200" height="40"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="shadowX">
+                                        <real key="value" value="0.0"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="shadowY">
+                                        <real key="value" value="-3"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="shadowBlur">
+                                        <real key="value" value="25"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="20"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="topColor">
+                                        <color key="value" red="0.51416219559999998" green="0.83938270810000004" blue="0.53199260569999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="bottomColor">
+                                        <color key="value" red="0.36882715869999999" green="0.4398832896" blue="0.66967692379999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="startPointX">
+                                        <real key="value" value="1"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="startPointY">
+                                        <real key="value" value="1"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="endPointX">
+                                        <real key="value" value="0.0"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="endPointY">
+                                        <real key="value" value="1"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="shadowColor">
+                                        <color key="value" red="0.83553594414060917" green="0.3865537922260906" blue="0.10520245685384726" alpha="0.6969445634164384" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hDe-qf-ryO">
+                                <rect key="frame" x="107" y="266" width="200" height="40"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="baY-zG-HVm"/>
+                                    <constraint firstAttribute="width" constant="200" id="j92-pF-d8o"/>
+                                </constraints>
+                                <state key="normal" title="Button">
+                                    <color key="titleColor" white="0.94999999999999996" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="hDe-qf-ryO" firstAttribute="top" secondItem="s2D-3t-VpJ" secondAttribute="top" id="0ug-mM-aSv"/>
                             <constraint firstItem="jPh-iC-uHa" firstAttribute="top" secondItem="KyF-Xp-7KM" secondAttribute="bottom" constant="32" id="1XH-xy-h9P"/>
                             <constraint firstItem="KyF-Xp-7KM" firstAttribute="centerX" secondItem="so8-ep-fGz" secondAttribute="centerX" id="568-uQ-okd"/>
+                            <constraint firstItem="hDe-qf-ryO" firstAttribute="bottom" secondItem="s2D-3t-VpJ" secondAttribute="bottom" id="8dg-B7-qyF"/>
+                            <constraint firstItem="KyF-Xp-7KM" firstAttribute="top" secondItem="hDe-qf-ryO" secondAttribute="bottom" constant="32" id="Bhx-TE-yJR"/>
                             <constraint firstItem="jPh-iC-uHa" firstAttribute="leading" secondItem="YST-DX-rkO" secondAttribute="leading" constant="-2" id="DaO-ov-Pkb"/>
                             <constraint firstItem="jPh-iC-uHa" firstAttribute="bottom" secondItem="YST-DX-rkO" secondAttribute="bottom" constant="2" id="GNt-SX-SDd"/>
+                            <constraint firstItem="hDe-qf-ryO" firstAttribute="centerX" secondItem="so8-ep-fGz" secondAttribute="centerX" id="MbF-ox-Okm"/>
                             <constraint firstItem="jPh-iC-uHa" firstAttribute="top" secondItem="YST-DX-rkO" secondAttribute="top" constant="-2" id="SRq-h3-Dt1"/>
+                            <constraint firstItem="hDe-qf-ryO" firstAttribute="leading" secondItem="s2D-3t-VpJ" secondAttribute="leading" id="U7P-11-h8t"/>
                             <constraint firstItem="KyF-Xp-7KM" firstAttribute="leading" secondItem="YVi-m5-YYu" secondAttribute="leading" constant="-2" id="XJN-TI-XtJ"/>
                             <constraint firstItem="KyF-Xp-7KM" firstAttribute="trailing" secondItem="YVi-m5-YYu" secondAttribute="trailing" constant="2" id="ZPS-LC-H3f"/>
                             <constraint firstItem="KyF-Xp-7KM" firstAttribute="top" secondItem="YVi-m5-YYu" secondAttribute="top" constant="-2" id="cS4-r4-MeG"/>
@@ -708,6 +763,7 @@
                             <constraint firstItem="jPh-iC-uHa" firstAttribute="trailing" secondItem="KyF-Xp-7KM" secondAttribute="trailing" id="net-Ug-QUV"/>
                             <constraint firstItem="jPh-iC-uHa" firstAttribute="leading" secondItem="KyF-Xp-7KM" secondAttribute="leading" id="oI7-FS-5WH"/>
                             <constraint firstItem="KyF-Xp-7KM" firstAttribute="bottom" secondItem="YVi-m5-YYu" secondAttribute="bottom" constant="2" id="ohN-pt-MJi"/>
+                            <constraint firstItem="hDe-qf-ryO" firstAttribute="trailing" secondItem="s2D-3t-VpJ" secondAttribute="trailing" id="zaZ-eh-Qgg"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="gAM-Y6-c2T"/>
                     </view>
