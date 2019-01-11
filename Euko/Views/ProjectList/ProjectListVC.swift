@@ -15,7 +15,7 @@ class ProjectListVC: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     
-    //let setProjectsTimer = Timer.scheduledTimer(timeInterval: 300.0, target: self, selector: #selector(ProjectListVC.setProjects), userInfo: nil, repeats: true)
+    let setProjectsTimer = Timer.scheduledTimer(timeInterval: 120.0, target: self, selector: #selector(ProjectListVC.setProjects), userInfo: nil, repeats: true)
     
     var projects:[Project] = []
     
@@ -57,6 +57,12 @@ extension ProjectListVC {
     {
         let vc = self.storyboard?.instantiateViewController(withIdentifier: "HomeVC") as! HomeVC
         self.navigationController?.pushViewController(vc, animated: true)
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        
+        self.setProjectsTimer.invalidate()
     }
 }
 
