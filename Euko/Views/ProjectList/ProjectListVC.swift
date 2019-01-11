@@ -19,14 +19,18 @@ class ProjectListVC: UIViewController {
     
     var projects:[Project] = []
     
-    func turnAvctivityOn(){
+    func turnAvctivityOn() {
         self.activityIndicator.isHidden = false
         self.activityIndicator.startAnimating()
     }
     
-    func turnAvctivityOff(){
+    func turnAvctivityOff() {
         self.activityIndicator.isHidden = true
         self.activityIndicator.stopAnimating()
+    }
+    
+    func orderProjectsByDate() {
+        self.projects.sort(by: {$0.date.compare($1.date) == .orderedDescending})
     }
 }
 
@@ -46,6 +50,7 @@ extension ProjectListVC {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        self.setProjects()
     }
     
     @objc func homeAction(_ sender:UIBarButtonItem!)
@@ -102,6 +107,7 @@ extension ProjectListVC {
                     json = jsonTab[(i)]
                 }
                 self.turnAvctivityOff()
+                self.orderProjectsByDate()
                 self.tableView.reloadData()
             case .failure(let error):
                 print(error)

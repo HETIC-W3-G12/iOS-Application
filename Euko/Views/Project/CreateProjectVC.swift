@@ -44,7 +44,7 @@ class CreateProjectVC: UIViewController {
         self.shadowButton.layer.shadowOffset = CGSize(width: -3, height: 3)
         self.shadowButton.layer.shadowRadius = 1
     }
-    
+        
     @IBAction func validateAction(_ sender: Any) {
         
         let title = self.titletextField.text ?? ""
@@ -89,10 +89,9 @@ class CreateProjectVC: UIViewController {
             })
             somethingIsWrong = true
         }
+        
         if (!somethingIsWrong) {
-           // Alamofire.request("https://euko-api-staging.herokuapp.com/projects",
-             //                 method: .post,
-               //               parameters: parameters)
+            self.createProjectWithParameters(parameters: parameters)
         }
         else {
             self.showBadParametersAlert()
@@ -100,6 +99,7 @@ class CreateProjectVC: UIViewController {
     }
 }
 
+// MARK: Error Handling
 extension CreateProjectVC: UITextViewDelegate{
     
     func textViewDidBeginEditing(_ textView: UITextView){
@@ -117,11 +117,25 @@ extension CreateProjectVC: UITextViewDelegate{
     @IBAction func startEditTitle(_ sender: Any) {
         self.titletextField.backgroundColor = UIColor.white
     }
-    
-    
-    
+        
     func showBadParametersAlert(){
         self.showSingleAlert(title: "Certains champs sont incorrects",
                              message: "Le prix doit être compris entre 100 et 760€.\n\nLa durée de l'emprunt entre 1 et 12 mois.")
+    }
+}
+
+// MARK: Server Bridge
+extension CreateProjectVC {
+    func createProjectWithParameters(parameters: Parameters){
+        Alamofire.request("https://euko-api-staging.herokuapp.com/projects", method: .post, parameters: parameters).validate().responseJSON{ response in
+            switch response.result {
+            case .success(let value):
+                print(value)
+                self.navigationController?.popToRootViewController(animated: true)
+                
+            case.failure(let error):
+                print(error)
+            }
+        }
     }
 }
