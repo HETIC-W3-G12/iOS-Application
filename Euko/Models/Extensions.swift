@@ -98,3 +98,15 @@ extension String
         return range(of: String(c), options: .backwards)?.lowerBound.encodedOffset
     }
 }
+
+extension UserDefaults {
+    static let TOKEN_FLAG = "tokenFlag"
+    
+    static func setToken(token:String){
+        UserDefaults.standard.set(token, forKey:TOKEN_FLAG)
+    }
+    
+    static func getToken() -> String? {
+        return UserDefaults.standard.value(forKey: TOKEN_FLAG) as? String
+    }
+}

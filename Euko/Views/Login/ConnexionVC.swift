@@ -82,10 +82,8 @@ extension ConnexionVC {
             case .success(let value):
                 print(value)
                 let json = JSON(value)
-                print(json["user"]["email"])
-                print(json["user"]["id"])
-                print(json["user"]["password"])
-                print(json["token"])
+                
+                UserDefaults.setToken(token: json["token"].string!)
                 self.nextVC()
             case .failure(let error):
                 print(error)

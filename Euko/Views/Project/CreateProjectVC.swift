@@ -27,15 +27,14 @@ class CreateProjectVC: UIViewController {
         self.view.addDismisKeyBoardOnTouch()
         
         self.descriptionTextView.delegate = self
-        
+
+        self.shadowView.setSpecificShadow()
+        self.shadowButton.setSpecificShadow()
+
         self.containerView.roundBorder(radius: 8)
         self.descriptionTextView.roundBorder(radius: 3)
         self.shadowButton.roundBorder()
         self.validateButton.roundBorder()
-        
-        self.shadowView.setSpecificShadow()
-        self.shadowButton.setSpecificShadow()
-        
     }
         
     @IBAction func validateAction(_ sender: Any) {
@@ -120,15 +119,30 @@ extension CreateProjectVC: UITextViewDelegate{
 // MARK: Server Bridge
 extension CreateProjectVC {
     func createProjectWithParameters(parameters: Parameters){
-        Alamofire.request("https://euko-api-staging.herokuapp.com/projects", method: .post, parameters: parameters).validate().responseJSON{ response in
-            switch response.result {
-            case .success(let value):
-                print(value)
-                self.navigationController?.popToRootViewController(animated: true)
-                
-            case.failure(let error):
-                print(error)
+        
+        let token:String = UserDefaults.getToken() ?? ""
+        
+        if (token != ""){
+            let bearer:String = "Bearer \(token)"
+            
+            let headers: HTTPHeaders = [
+                "Authorization": bearer,
+                "Accept": "application/json"]
+            
+            Alamofire.request("https://euko-api-staging.herokuapp.com/projects", method: .post, parameters: parameters, headers:headers).validate().responseJSON{ response in
+                switch response.result {
+                case .success(let value):
+                    print(value)
+                    self.navigationController?.popToRootViewController(animated: true)
+                    
+                case.failure(let error):
+                    print(error)
+                    self.showSingleAlert(title: "Une erreure s'est produite", message: "Veuillez vérifier votre connexion internet.")
+                }
             }
+        } else {
+            // No Token ID... User should reconnect ? Should never appear
         }
+        
     }
 }
