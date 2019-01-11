@@ -37,8 +37,6 @@ extension ConnexionVC {
 //MARK: IBAction
 extension ConnexionVC {
     @IBAction func connectAction(_ sender: Any) {
-        //TODO: Request API Here before mooving to the next view
-        //TODO: Set next VC to a Root VC
         let vc = self.storyboard?.instantiateViewController(withIdentifier: "projectNavigationController") as! UINavigationController
         
         let appdelegate = UIApplication.shared.delegate as! AppDelegate
@@ -54,4 +52,9 @@ extension ConnexionVC {
         
         self.connexionBackground.dropShadow(color: UIColor.black, opacity: 0.5, offSet: .zero, radius: 10, scale: true)
     }
+}
+
+//MARK: Server Bridge
+extension ConnexionVC {
+    //TODO: Request API Here before mooving to the next view
 }
