@@ -21,6 +21,9 @@ class CreateProjectVC: UIViewController {
     @IBOutlet weak var shadowView: UIView!
     @IBOutlet weak var shadowButton: UIView!
     
+    let dev:String = "https://euko-api-staging-pr-30.herokuapp.com"
+    let prod:String = "https://euko-api-staging.herokuapp.com"
+
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -129,10 +132,11 @@ extension CreateProjectVC {
                 "Authorization": bearer,
                 "Accept": "application/json"]
             
-            Alamofire.request("https://euko-api-staging.herokuapp.com/projects", method: .post, parameters: parameters, headers:headers).validate().responseJSON{ response in
+            Alamofire.request(String(self.dev + "/projects"), method: .post, parameters: parameters, headers:headers).validate().responseJSON{ response in
                 switch response.result {
                 case .success(let value):
                     print(value)
+                    
                     self.navigationController?.popToRootViewController(animated: true)
                     
                 case.failure(let error):

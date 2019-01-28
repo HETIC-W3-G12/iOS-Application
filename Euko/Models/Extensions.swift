@@ -39,8 +39,8 @@ extension UIView {
     func setSpecificShadow(){
         self.layer.cornerRadius = 8
         self.layer.shadowColor = UIColor.black.cgColor
-        self.layer.shadowOpacity = 0.7
-        self.layer.shadowOffset = CGSize(width: -3, height: 3)
+        self.layer.shadowOpacity = 0.3
+        self.layer.shadowOffset = CGSize(width: -4, height: 4)
         self.layer.shadowRadius = 2
     }
     
@@ -101,6 +101,7 @@ extension String
 
 extension UserDefaults {
     static let TOKEN_FLAG = "tokenFlag"
+    static let LOAN_FLAG = "loanFlag"
     
     static func setToken(token:String){
         UserDefaults.standard.set(token, forKey:TOKEN_FLAG)
@@ -109,4 +110,13 @@ extension UserDefaults {
     static func getToken() -> String? {
         return UserDefaults.standard.value(forKey: TOKEN_FLAG) as? String
     }
+    
+    static func setLoan(loan:Bool){
+        UserDefaults.standard.set(loan, forKey:LOAN_FLAG)
+    }
+    
+    static func getLoan() -> Bool! {
+        return UserDefaults.standard.value(forKey: LOAN_FLAG) as! Bool
+    }
+    
 }

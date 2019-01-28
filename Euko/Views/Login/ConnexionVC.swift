@@ -18,6 +18,8 @@ class ConnexionVC: UIViewController {
     @IBOutlet weak var signInButton: UIButton!
     @IBOutlet weak var connexionBackground: UIView!
     
+    let dev:String = "https://euko-api-staging-pr-30.herokuapp.com"
+    let prod:String = "https://euko-api-staging.herokuapp.com"
 }
 
 //MARK: override
@@ -42,12 +44,16 @@ extension ConnexionVC {
         
         let username = self.emailTF.text ?? ""
         let password = self.passwordTF.text ?? ""
-        
+
         if (username == "" || password == ""){
             // TODO: Error on textfields
         } else {
-            self.connect(username: username, password: password)
+            //self.connect(username: username, password: password)
+            self.nextVC()
         }
+        self.nextVC()
+        UserDefaults.setLoan(loan: true)
+
     }
 }
 
@@ -74,7 +80,7 @@ extension ConnexionVC {
         let parameters:Parameters = ["email": username,
                                      "password": password]
         
-        Alamofire.request("https://euko-api-staging.herokuapp.com/users/sign_in",
+        Alamofire.request(self.dev + "/users/sign_in",
                           method: .post,
                           parameters:parameters).validate().responseJSON {
             response in
@@ -84,6 +90,8 @@ extension ConnexionVC {
                 let json = JSON(value)
                 
                 UserDefaults.setToken(token: json["token"].string!)
+                // TODO: Check if a user has a loan already...
+                UserDefaults.setLoan(loan: true)
                 self.nextVC()
             case .failure(let error):
                 print(error)

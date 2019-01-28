@@ -17,18 +17,20 @@ class ProjectCell: UITableViewCell {
     @IBOutlet weak var descriptionLabel: UILabel!
     @IBOutlet weak var triangleLabel: UILabel!
     
+    @IBOutlet weak var topConstraint: NSLayoutConstraint!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         
         self.triangleLabel.transform = CGAffineTransform(rotationAngle: .pi/4)
         
-        self.insideView.layer.cornerRadius = 8
+        self.insideView.layer.cornerRadius = 0
         
-        self.shadowView.layer.cornerRadius = 10
+        self.shadowView.layer.cornerRadius = 0
         self.shadowView.layer.shadowColor = UIColor.black.cgColor
-        self.shadowView.layer.shadowOpacity = 0.7
-        self.shadowView.layer.shadowOffset = CGSize(width: -2, height: 2)
-        self.shadowView.layer.shadowRadius = 2
+        self.shadowView.layer.shadowOpacity = 0.2
+        self.shadowView.layer.shadowOffset = CGSize(width: -5, height: 5)
+        self.shadowView.layer.shadowRadius = 3
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
