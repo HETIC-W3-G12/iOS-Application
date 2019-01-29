@@ -392,15 +392,12 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" showsHorizontalScrollIndicator="NO" editable="NO" textAlignment="justified" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yyl-mP-V39">
-                                <rect key="frame" x="16" y="189" width="382" height="250"/>
-                                <color key="backgroundColor" red="0.51416219559999998" green="0.83938270810000004" blue="0.53199260569999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" editable="NO" textAlignment="justified" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yyl-mP-V39">
+                                <rect key="frame" x="16" y="191.33333333333334" width="382" height="292.33333333333326"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <rect key="contentStretch" x="1" y="0.0" width="1" height="1"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="250" id="m20-VE-qLE"/>
-                                </constraints>
                                 <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
-                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="17"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
@@ -531,24 +528,33 @@
                                 </userDefinedRuntimeAttributes>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XPi-a2-bNg">
-                                <rect key="frame" x="12" y="52" width="31" height="30"/>
+                                <rect key="frame" x="12" y="36" width="31" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="31" id="06g-GY-gZS"/>
                                     <constraint firstAttribute="height" constant="30" id="7tX-1m-sbu"/>
                                 </constraints>
-                                <state key="normal" image="back-arrow"/>
+                                <state key="normal" image="back-arrow-blue"/>
+                                <connections>
+                                    <action selector="backAction:" destination="tZ8-hq-7Zx" eventType="touchUpInside" id="7mU-na-QdL"/>
+                                </connections>
                             </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JUT-gS-0of">
-                                <rect key="frame" x="0.0" y="147" width="414" height="1"/>
+                                <rect key="frame" x="0.0" y="131" width="414" height="1"/>
                                 <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="1" id="kU1-Me-gJM"/>
                                 </constraints>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Gew-5H-Yhd">
-                                <rect key="frame" x="16" y="94" width="382" height="29"/>
+                                <rect key="frame" x="16" y="78" width="382" height="29"/>
                                 <fontDescription key="fontDescription" name="AvenirNext-Bold" family="Avenir Next" pointSize="21"/>
                                 <color key="textColor" red="0.2696171027970008" green="0.32166420027541143" blue="0.49080239968832484" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xy1-AA-8hJ">
+                                <rect key="frame" x="19" y="148" width="379" height="27.333333333333343"/>
+                                <fontDescription key="fontDescription" name="AvenirNext-DemiBold" family="Avenir Next" pointSize="20"/>
+                                <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
@@ -557,15 +563,20 @@
                             <constraint firstItem="JUT-gS-0of" firstAttribute="leading" secondItem="K2W-jD-Beo" secondAttribute="leading" id="6Mj-RX-Ls4"/>
                             <constraint firstItem="K2W-jD-Beo" firstAttribute="trailing" secondItem="Gew-5H-Yhd" secondAttribute="trailing" constant="16" id="6qa-Ug-cNK"/>
                             <constraint firstItem="JUT-gS-0of" firstAttribute="top" secondItem="Gew-5H-Yhd" secondAttribute="bottom" constant="24" id="8Ca-9k-uln"/>
+                            <constraint firstItem="4pW-3P-hK3" firstAttribute="top" secondItem="yyl-mP-V39" secondAttribute="bottom" constant="32" id="9Zp-0Z-TqX"/>
                             <constraint firstItem="Gew-5H-Yhd" firstAttribute="leading" secondItem="K2W-jD-Beo" secondAttribute="leading" constant="16" id="Far-n8-ewT"/>
                             <constraint firstItem="Gew-5H-Yhd" firstAttribute="top" secondItem="XPi-a2-bNg" secondAttribute="bottom" constant="12" id="HBi-ch-lcZ"/>
+                            <constraint firstItem="xy1-AA-8hJ" firstAttribute="top" secondItem="JUT-gS-0of" secondAttribute="bottom" constant="16" id="P08-gY-iz2"/>
+                            <constraint firstItem="yyl-mP-V39" firstAttribute="top" secondItem="xy1-AA-8hJ" secondAttribute="bottom" constant="16" id="Q4g-sC-ZkE"/>
+                            <constraint firstItem="yyl-mP-V39" firstAttribute="leading" secondItem="xy1-AA-8hJ" secondAttribute="leading" constant="-3" id="RgE-jC-Mf3"/>
                             <constraint firstItem="K2W-jD-Beo" firstAttribute="trailing" secondItem="JUT-gS-0of" secondAttribute="trailing" id="T6V-hs-dzm"/>
                             <constraint firstItem="K2W-jD-Beo" firstAttribute="trailing" secondItem="yyl-mP-V39" secondAttribute="trailing" constant="16" id="T7a-cc-LhI"/>
                             <constraint firstItem="yyl-mP-V39" firstAttribute="leading" secondItem="K2W-jD-Beo" secondAttribute="leading" constant="16" id="Xb7-bO-ddI"/>
                             <constraint firstItem="4pW-3P-hK3" firstAttribute="bottom" secondItem="K2W-jD-Beo" secondAttribute="bottom" id="b1w-jb-wen"/>
                             <constraint firstItem="4pW-3P-hK3" firstAttribute="leading" secondItem="K2W-jD-Beo" secondAttribute="leading" id="eP3-1u-aWC"/>
+                            <constraint firstItem="yyl-mP-V39" firstAttribute="trailing" secondItem="xy1-AA-8hJ" secondAttribute="trailing" id="gEI-Dz-EWa"/>
                             <constraint firstItem="4pW-3P-hK3" firstAttribute="trailing" secondItem="K2W-jD-Beo" secondAttribute="trailing" id="v7k-kv-LIA"/>
-                            <constraint firstItem="XPi-a2-bNg" firstAttribute="top" secondItem="K2W-jD-Beo" secondAttribute="top" constant="32" id="xH7-wK-HxQ"/>
+                            <constraint firstItem="XPi-a2-bNg" firstAttribute="top" secondItem="K2W-jD-Beo" secondAttribute="top" constant="16" id="xH7-wK-HxQ"/>
                             <constraint firstItem="XPi-a2-bNg" firstAttribute="leading" secondItem="K2W-jD-Beo" secondAttribute="leading" constant="12" id="zWV-A3-Xkq"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="K2W-jD-Beo"/>
@@ -576,7 +587,7 @@
                         <outlet property="firstInformationLabel" destination="LHQ-VH-y1t" id="BO3-Bw-kWf"/>
                         <outlet property="payButton" destination="NYG-ey-aAE" id="q4U-7h-qjO"/>
                         <outlet property="secondInformationLabel" destination="KfB-Gx-qx7" id="6N7-Xu-xiy"/>
-                        <outlet property="textViewHeightConstraint" destination="m20-VE-qLE" id="b4w-gj-pYz"/>
+                        <outlet property="secondTitleLabel" destination="xy1-AA-8hJ" id="gxo-P3-wFi"/>
                         <outlet property="titleLabel" destination="Gew-5H-Yhd" id="1OJ-In-dyz"/>
                     </connections>
                 </viewController>
@@ -1193,6 +1204,7 @@
     </scenes>
     <resources>
         <image name="back-arrow" width="64" height="60"/>
+        <image name="back-arrow-blue" width="64" height="60"/>
         <image name="ecureuil" width="5500" height="4184"/>
         <image name="home-interface" width="512" height="512"/>
         <image name="logo" width="300" height="75"/>

@@ -17,11 +17,16 @@ class ProjectVC: UIViewController {
     @IBOutlet weak var secondInformationLabel: UILabel!
     @IBOutlet weak var payButton: UIButton!
     @IBOutlet weak var buttonShadowView: UIView!
+    @IBOutlet weak var secondTitleLabel: UILabel!
     
     var project:Project!
     
     @IBAction func payAction(_ sender: Any) {
         
+    }
+    
+    @IBAction func backAction(_ sender: Any) {
+        self.navigationController?.popViewController(animated: true)
     }
 }
 
@@ -36,7 +41,14 @@ extension ProjectVC {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
+        self.navigationController?.navigationBar.isHidden = true
         self.setupField()
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        
+        self.navigationController?.navigationBar.isHidden = false
     }
 }
 
@@ -51,7 +63,10 @@ extension ProjectVC{
     }
     
     func setupField(){
-        self.titleLabel.text = self.project.title
+        
+        
+        self.titleLabel.text = String(format: "%d€ pendant %d mois", self.project.price, self.project.timeLaps)
+        self.secondTitleLabel.text = self.project.title
         self.descriptionTextView.text = self.project.description
         
         let interests:Float = self.project.interests * 100
@@ -59,7 +74,7 @@ extension ProjectVC{
         
         let margin:Float = self.project.finalPrice - Float(self.project.price)
         self.secondInformationLabel.text = String(format: "%.2f€",  margin)
-        
+        /*
         if (self.descriptionTextView.contentSize.height > 250) {
             self.textViewHeightConstraint.constant = 250
             self.descriptionTextView.isScrollEnabled = true
@@ -67,6 +82,6 @@ extension ProjectVC{
             self.textViewHeightConstraint.constant = self.descriptionTextView.contentSize.height + 26
             self.descriptionTextView.isScrollEnabled = false
         }
-
+*/
     }
 }
