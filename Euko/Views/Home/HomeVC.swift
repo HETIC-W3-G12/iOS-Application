@@ -9,12 +9,17 @@
 import UIKit
 
 class HomeVC: UIViewController {
-
     @IBOutlet weak var createProjectButton: UIButton!
+    
     @IBOutlet weak var shadowButton: UIView!
     @IBOutlet weak var moneyBackButton: UIButton!
+    
     @IBOutlet weak var shadow2Button: UIView!
-        
+    @IBOutlet weak var backButton: UIButton!
+    
+    @IBOutlet weak var shadowProfil: UIView!
+    @IBOutlet weak var profilButton: UIButton!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -23,29 +28,16 @@ class HomeVC: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        self.checkHasLoan()
-        self.setupButtons()
+        self.navigationController?.navigationBar.isHidden = true
     }
     
-    func setupButtons(){
-            self.moneyBackButton.isHidden = !UserDefaults.getLoan()
-            self.shadow2Button.isHidden = !UserDefaults.getLoan()
-            
-            self.createProjectButton.isHidden = UserDefaults.getLoan()
-            self.shadowButton.isHidden = UserDefaults.getLoan()
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(true)
+        self.navigationController?.navigationBar.isHidden = false
     }
-    
-    func setupViews(){
-        self.createProjectButton.roundBorder()
-        self.moneyBackButton.roundBorder()
-        
-        self.shadowButton.setSpecificShadow()
-        self.shadow2Button.setSpecificShadow()
-        
-        self.shadowButton.roundBorder()
-        self.shadow2Button.roundBorder()
-    }
-    
+}
+
+extension HomeVC {
     @IBAction func moneyBackAction(_ sender: Any) {
         let vc = self.storyboard?.instantiateViewController(withIdentifier: "MoneyBackVC") as! MoneyBackVC
         self.navigationController?.pushViewController(vc, animated: true)
@@ -56,8 +48,24 @@ class HomeVC: UIViewController {
         self.navigationController?.pushViewController(vc, animated: true)
     }
     
-    func checkHasLoan(){
-        UserDefaults.getLoan() ? UserDefaults.setLoan(loan: false) : UserDefaults.setLoan(loan: true)
+    @IBAction func backAction(_ sender: Any) {
+        self.navigationController?.popViewController(animated: true)
     }
-    
+
+}
+
+extension HomeVC {
+    func setupViews(){
+        self.profilButton.roundBorder()
+        self.createProjectButton.roundBorder()
+        self.moneyBackButton.roundBorder()
+        
+        self.shadowProfil.setSpecificShadow()
+        self.shadowButton.setSpecificShadow()
+        self.shadow2Button.setSpecificShadow()
+        
+        self.shadowProfil.roundBorder()
+        self.shadowButton.roundBorder()
+        self.shadow2Button.roundBorder()
+    }
 }

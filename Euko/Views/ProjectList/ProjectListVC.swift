@@ -43,6 +43,11 @@ class ProjectListVC: UIViewController {
     func orderProjectsByDate() {
         self.projects.sort(by: {$0.date.compare($1.date) == .orderedDescending})
     }
+    
+    @IBAction func goToHomeAction(_ sender: Any) {
+        let vc = self.storyboard?.instantiateViewController(withIdentifier: "HomeVC") as! HomeVC
+        self.navigationController?.pushViewController(vc, animated: true)
+    }
 }
 
 //MARK override
