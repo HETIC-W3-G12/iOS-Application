@@ -74,14 +74,5 @@ extension ProjectVC{
         
         let margin:Float = self.project.finalPrice - Float(self.project.price)
         self.secondInformationLabel.text = String(format: "%.2f€",  margin)
-        /*
-        if (self.descriptionTextView.contentSize.height > 250) {
-            self.textViewHeightConstraint.constant = 250
-            self.descriptionTextView.isScrollEnabled = true
-        } else {
-            self.textViewHeightConstraint.constant = self.descriptionTextView.contentSize.height + 26
-            self.descriptionTextView.isScrollEnabled = false
-        }
-*/
     }
 }

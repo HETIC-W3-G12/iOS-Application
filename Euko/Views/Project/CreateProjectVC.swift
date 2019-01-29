@@ -11,19 +11,25 @@ import Alamofire
 
 class CreateProjectVC: UIViewController {
 
+    @IBOutlet weak var backButton: UIButton!
     
     @IBOutlet weak var titletextField: UITextField!
-    @IBOutlet weak var priceTexfield: UITextField!
-    @IBOutlet weak var timeLapsTextField: UITextField!
+    @IBOutlet weak var interestsLabel: UILabel!
+    @IBOutlet weak var priceLabel: UILabel!
+    @IBOutlet weak var priceSlider: UISlider!
+    @IBOutlet weak var timeLapsLabel: UILabel!
+    @IBOutlet weak var timeLapsSlider: UISlider!
+    
     @IBOutlet weak var descriptionTextView: UITextView!
     @IBOutlet weak var validateButton: UIButton!
-    @IBOutlet weak var containerView: UIView!
-    @IBOutlet weak var shadowView: UIView!
     @IBOutlet weak var shadowButton: UIView!
     
     let dev:String = "https://euko-api-staging-pr-30.herokuapp.com"
     let prod:String = "https://euko-api-staging.herokuapp.com"
+}
 
+// MARK: overrides
+extension CreateProjectVC {
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -31,91 +37,106 @@ class CreateProjectVC: UIViewController {
         
         self.descriptionTextView.delegate = self
 
-        self.shadowView.setSpecificShadow()
         self.shadowButton.setSpecificShadow()
 
-        self.containerView.roundBorder(radius: 8)
         self.descriptionTextView.roundBorder(radius: 3)
         self.shadowButton.roundBorder()
         self.validateButton.roundBorder()
-    }
         
+        self.setInterests()
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        self.navigationController?.navigationBar.isHidden = false
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.navigationController?.navigationBar.isHidden = true
+    }
+}
+
+// MARK: Actions
+extension CreateProjectVC {
+    @IBAction func priceChanged(_ sender: Any) {
+        self.priceLabel.text = String(format: "%.f euros", ceil(self.priceSlider.value) * 10)
+        self.setInterests()
+    }
+    
+    @IBAction func timeLapsChanged(_ sender: Any) {
+        self.timeLapsLabel.text = String(format: "%.f mois", self.timeLapsSlider.value)
+        self.setInterests()
+    }
+    
+    @IBAction func backAction(_ sender: Any) {
+        self.navigationController?.popViewController(animated: true)
+    }
+    
     @IBAction func validateAction(_ sender: Any) {
         
         let title = self.titletextField.text ?? ""
         let desc = self.descriptionTextView.text ?? ""
-        let price = Int(self.priceTexfield.text!) ?? 0
-        let time = Int(self.timeLapsTextField.text!) ?? 0
-        
-        let state = "valid"
+        let price = Int(ceil(self.priceSlider.value) * 10)
+        let time = Int(self.timeLapsSlider.value)
+        let state = 1 //Enum in backend : 1 = valid
         let interests = 0.1
         
-        var somethingIsWrong = false
-        
-        let parameters: Parameters = ["title": title,
-                                      "description": desc,
-                                      "price": price,
-                                      "interests": interests,
-                                      "state": state,
-                                      "timeLaps": time]
-        
-        
-        if (title == ""){
-            UIView.animate(withDuration: 0.5, animations: {
-                self.titletextField.backgroundColor = UIColor(red: 1, green: 0, blue: 0, alpha: 0.7)
-            })
-            somethingIsWrong = true
-        }
-        if (desc == ""){
-            UIView.animate(withDuration: 0.5, animations: {
-                self.descriptionTextView.backgroundColor = UIColor(red: 1, green: 0, blue: 0, alpha: 0.7)
-            })
-            somethingIsWrong = true
-        }
-        if (price < 100 || price > 760){
-            UIView.animate(withDuration: 0.5, animations: {
-                self.priceTexfield.backgroundColor = UIColor(red: 1, green: 0, blue: 0, alpha: 0.7)
-            })
-            somethingIsWrong = true
-        }
-        if (time < 1 || time > 12) {
-            UIView.animate(withDuration: 0.5, animations: {
-                self.timeLapsTextField.backgroundColor = UIColor(red: 1, green: 0, blue: 0, alpha: 0.7)
-            })
-            somethingIsWrong = true
-        }
-        
-        if (!somethingIsWrong) {
+        if (self.areTextFieldsCorrects(title: title, description: desc)) {
+            let parameters: Parameters = ["title": title,
+                                          "description": desc,
+                                          "price": price,
+                                          "interests": interests,
+                                          "state": state,
+                                          "timeLaps": time]
+            
             self.createProjectWithParameters(parameters: parameters)
         }
         else {
             self.showBadParametersAlert()
         }
     }
+
+    @IBAction func startEditTitle(_ sender: Any) {
+        self.titletextField.backgroundColor = UIColor.white
+    }
 }
 
-// MARK: Error Handling
+// MARK: Functions
+extension CreateProjectVC {
+    func showBadParametersAlert(){
+        self.showSingleAlert(title: "Certains champs sont incorrects",
+                             message: "Le prix doit être compris entre 100 et 760€.\n\nLa durée de l'emprunt entre 1 et 12 mois.")
+    }
+    
+    func setInterests(){
+        self.interestsLabel.text = String(format: "%.f€",
+                                          ((ceil(self.priceSlider.value) * 10) * 0.1 / 12) * self.timeLapsSlider.value)
+    }
+    
+    func areTextFieldsCorrects(title:String, description:String) -> Bool {
+        if (title == ""){
+            UIView.animate(withDuration: 0.5, animations: {
+                self.titletextField.backgroundColor = UIColor(red: 1, green: 0, blue: 0, alpha: 0.7)
+            })
+            return false
+        }
+        if (description == ""){
+            UIView.animate(withDuration: 0.5, animations: {
+                self.descriptionTextView.backgroundColor = UIColor(red: 1, green: 0, blue: 0, alpha: 0.7)
+            })
+            return false
+        }
+        return true
+    }
+
+}
+
+// MARK: UITextViewDelegate
 extension CreateProjectVC: UITextViewDelegate{
     
     func textViewDidBeginEditing(_ textView: UITextView){
         self.descriptionTextView.backgroundColor = UIColor.white
-    }
-    
-    @IBAction func startEditPrice(_ sender: Any) {
-        self.priceTexfield.backgroundColor = UIColor.white
-    }
-    
-    @IBAction func startEditTime(_ sender: Any) {
-        self.timeLapsTextField.backgroundColor = UIColor.white
-    }
-    
-    @IBAction func startEditTitle(_ sender: Any) {
-        self.titletextField.backgroundColor = UIColor.white
-    }
-        
-    func showBadParametersAlert(){
-        self.showSingleAlert(title: "Certains champs sont incorrects",
-                             message: "Le prix doit être compris entre 100 et 760€.\n\nLa durée de l'emprunt entre 1 et 12 mois.")
     }
 }
 
@@ -132,7 +153,7 @@ extension CreateProjectVC {
                 "Authorization": bearer,
                 "Accept": "application/json"]
             
-            Alamofire.request(String(self.dev + "/projects"), method: .post, parameters: parameters, headers:headers).validate().responseJSON{ response in
+            Alamofire.request(String(self.prod + "/projects"), method: .post, parameters: parameters, headers:headers).validate().responseJSON{ response in
                 switch response.result {
                 case .success(let value):
                     print(value)
