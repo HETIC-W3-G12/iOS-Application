@@ -20,12 +20,18 @@ class CreateProjectVC: UIViewController {
     @IBOutlet weak var timeLapsLabel: UILabel!
     @IBOutlet weak var timeLapsSlider: UISlider!
     
+    @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var descriptionTextView: UITextView!
     @IBOutlet weak var validateButton: UIButton!
     @IBOutlet weak var shadowButton: UIView!
     
+    @IBOutlet weak var keyboardConstraint: NSLayoutConstraint!
+    
     let dev:String = "https://euko-api-staging-pr-30.herokuapp.com"
     let prod:String = "https://euko-api-staging.herokuapp.com"
+    
+    var keyboardHeight:CGFloat = 200
+    var keyboardAnimation:Float = 0
 }
 
 // MARK: overrides
@@ -44,6 +50,15 @@ extension CreateProjectVC {
         self.validateButton.roundBorder()
         
         self.setInterests()
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
+    }
+    
+    @objc func keyboardWillShow(notification: NSNotification) {
+        if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
+            self.keyboardHeight = keyboardSize.height
+            print(keyboardHeight)
+        }
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -134,9 +149,12 @@ extension CreateProjectVC {
 
 // MARK: UITextViewDelegate
 extension CreateProjectVC: UITextViewDelegate{
-    
     func textViewDidBeginEditing(_ textView: UITextView){
-        self.descriptionTextView.backgroundColor = UIColor.white
+        self.scrollView.setContentOffset(CGPoint(x: 0, y: self.keyboardHeight), animated: true)
+    }
+    
+    func textViewDidEndEditing(_ textView: UITextView) {
+        self.scrollView.setContentOffset(CGPoint(x: 0, y: 0), animated: true)
     }
 }
 
@@ -157,7 +175,6 @@ extension CreateProjectVC {
                 switch response.result {
                 case .success(let value):
                     print(value)
-                    
                     self.navigationController?.popToRootViewController(animated: true)
                     
                 case.failure(let error):
@@ -168,6 +185,5 @@ extension CreateProjectVC {
         } else {
             // No Token ID... User should reconnect ? Should never appear
         }
-        
     }
 }

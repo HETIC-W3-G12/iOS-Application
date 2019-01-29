@@ -1111,8 +1111,15 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="900"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gi6-5m-9zb">
+                                <rect key="frame" x="0.0" y="880" width="414" height="20"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="20" id="cme-Le-mdt"/>
+                                </constraints>
+                            </view>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cuK-PU-ze6">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="900"/>
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="880"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="vous serons demandés" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iXv-cM-VUp">
                                         <rect key="frame" x="48" y="241" width="318" height="29"/>
@@ -1355,10 +1362,13 @@
                         </subviews>
                         <color key="backgroundColor" red="0.94117647059999998" green="0.95294117649999999" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
+                            <constraint firstItem="gi6-5m-9zb" firstAttribute="bottom" secondItem="tzh-mq-4ur" secondAttribute="bottom" id="ATu-02-xsJ"/>
                             <constraint firstItem="cuK-PU-ze6" firstAttribute="leading" secondItem="eEZ-on-A96" secondAttribute="leading" id="B5H-sT-0V4"/>
+                            <constraint firstItem="gi6-5m-9zb" firstAttribute="trailing" secondItem="tzh-mq-4ur" secondAttribute="trailing" id="LSM-Yl-yQh"/>
+                            <constraint firstItem="gi6-5m-9zb" firstAttribute="top" secondItem="cuK-PU-ze6" secondAttribute="bottom" id="ZCf-EK-qMq"/>
                             <constraint firstItem="tzh-mq-4ur" firstAttribute="trailing" secondItem="cuK-PU-ze6" secondAttribute="trailing" id="asF-DJ-5Gd"/>
+                            <constraint firstItem="gi6-5m-9zb" firstAttribute="leading" secondItem="tzh-mq-4ur" secondAttribute="leading" id="h2P-3p-XhA"/>
                             <constraint firstItem="cuK-PU-ze6" firstAttribute="top" secondItem="tzh-mq-4ur" secondAttribute="top" constant="-20" id="qMl-F8-iIG"/>
-                            <constraint firstItem="tzh-mq-4ur" firstAttribute="bottom" secondItem="cuK-PU-ze6" secondAttribute="bottom" id="yOe-PM-5zs"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="tzh-mq-4ur"/>
                     </view>
@@ -1367,8 +1377,10 @@
                         <outlet property="backButton" destination="G4K-qa-u91" id="uSW-Yb-jjd"/>
                         <outlet property="descriptionTextView" destination="jUd-n7-bSc" id="AXw-Zf-VRT"/>
                         <outlet property="interestsLabel" destination="mvF-Ji-Kw2" id="9RR-4g-X0s"/>
+                        <outlet property="keyboardConstraint" destination="cme-Le-mdt" id="Y29-VW-efR"/>
                         <outlet property="priceLabel" destination="gn0-pj-t3u" id="6Q6-Kk-FgU"/>
                         <outlet property="priceSlider" destination="OUc-RO-QjX" id="oHY-2W-05B"/>
+                        <outlet property="scrollView" destination="cuK-PU-ze6" id="4DA-aV-000"/>
                         <outlet property="shadowButton" destination="fTj-sH-78l" id="mdD-rc-d9f"/>
                         <outlet property="timeLapsLabel" destination="V3D-4c-ada" id="pcK-0M-XPq"/>
                         <outlet property="timeLapsSlider" destination="trR-N2-Xfx" id="9Fe-kM-2QS"/>
