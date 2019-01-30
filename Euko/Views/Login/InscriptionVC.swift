@@ -115,7 +115,7 @@ extension InscriptionVC {
         let parameters:Parameters = ["email": username,
                                      "password": password]
         
-        Alamofire.request(self.dev + "/users/sign_up",
+        Alamofire.request(self.prod + "/users/sign_up",
                           method: .post,
                           parameters: parameters).validate().responseJSON {
             response in

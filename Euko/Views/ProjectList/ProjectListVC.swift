@@ -78,9 +78,7 @@ extension ProjectListVC {
 
         self.navigationController?.navigationBar.isHidden = true
 
-        
-        // To remove :
-        //self.setProjects()
+        self.setProjects()
         self.turnAvctivityOff()
     }
     
@@ -106,7 +104,7 @@ extension ProjectListVC {
             self.turnAvctivityOn()
         }
         
-        Alamofire.request(String(self.dev + "/projects"), method: .get).validate().responseJSON { response in
+        Alamofire.request(String(self.prod + "/projects"), method: .get).validate().responseJSON { response in
             switch response.result {
             case .success(let value):
                 self.projects = []

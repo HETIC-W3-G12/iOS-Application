@@ -48,12 +48,9 @@ extension ConnexionVC {
         if (username == "" || password == ""){
             // TODO: Error on textfields
         } else {
-            //self.connect(username: username, password: password)
-            self.nextVC()
+            self.connect(username: username, password: password)
+            //self.nextVC()
         }
-        self.nextVC()
-        UserDefaults.setLoan(loan: true)
-
     }
 }
 
@@ -80,7 +77,7 @@ extension ConnexionVC {
         let parameters:Parameters = ["email": username,
                                      "password": password]
         
-        Alamofire.request(self.dev + "/users/sign_in",
+        Alamofire.request(self.prod + "/users/sign_in",
                           method: .post,
                           parameters:parameters).validate().responseJSON {
             response in

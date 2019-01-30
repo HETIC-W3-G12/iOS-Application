@@ -171,6 +171,8 @@ extension CreateProjectVC {
                 "Authorization": bearer,
                 "Accept": "application/json"]
             
+            print(parameters)
+            
             Alamofire.request(String(self.prod + "/projects"), method: .post, parameters: parameters, headers:headers).validate().responseJSON{ response in
                 switch response.result {
                 case .success(let value):
