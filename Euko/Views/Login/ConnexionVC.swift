@@ -12,11 +12,11 @@ import SwiftyJSON
 
 class ConnexionVC: UIViewController {
 
+    @IBOutlet weak var connexionShadow: UIView!
     @IBOutlet weak var emailTF: UITextField!
     @IBOutlet weak var passwordTF: UITextField!
     @IBOutlet weak var connexionButton: UIButton!
     @IBOutlet weak var signInButton: UIButton!
-    @IBOutlet weak var connexionBackground: UIView!
     
     let dev:String = "https://euko-api-staging-pr-30.herokuapp.com"
     let prod:String = "https://euko-api-staging.herokuapp.com"
@@ -57,10 +57,10 @@ extension ConnexionVC {
 //MARK: Other functions
 extension ConnexionVC {
     func setupView(){
-        self.connexionButton.layer.cornerRadius = self.connexionButton.frame.height / 2
-        self.connexionBackground.layer.cornerRadius = 10
+        self.connexionButton.roundBorder()
         
-        self.connexionBackground.dropShadow(color: UIColor.black, opacity: 0.5, offSet: .zero, radius: 10, scale: true)
+        self.connexionShadow.setSpecificShadow()
+        self.connexionShadow.roundBorder()
     }
     
     func nextVC(){
