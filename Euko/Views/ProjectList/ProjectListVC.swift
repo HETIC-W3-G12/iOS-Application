@@ -14,8 +14,11 @@ import SwiftyJSON
 
 class ProjectListVC: UIViewController {
 
+    @IBOutlet weak var shadowView: UIView!
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
+    @IBOutlet weak var askForMoneyButton: UIButton!
+    @IBOutlet weak var dashboardButton: UIButton!
     
     let dev:String = "https://euko-api-staging-pr-30.herokuapp.com"
     let prod:String = "https://euko-api-staging.herokuapp.com"
@@ -59,6 +62,12 @@ extension ProjectListVC {
 
         self.tableView.dataSource = self
         self.tableView.delegate = self
+        
+        self.askForMoneyButton.roundBorder()
+        self.dashboardButton.roundBorder()
+        
+        self.shadowView.setSpecificShadow()
+        self.shadowView.roundBorder()
         
         let HomeButton = UIBarButtonItem(title: "Menu", style: UIBarButtonItem.Style.done, target: self, action: #selector(self.homeAction(_:)))
         self.navigationItem.leftBarButtonItem = HomeButton

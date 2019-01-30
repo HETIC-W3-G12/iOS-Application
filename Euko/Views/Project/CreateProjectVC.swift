@@ -153,7 +153,7 @@ extension CreateProjectVC: UITextViewDelegate{
         self.scrollView.setContentOffset(CGPoint(x: 0, y: self.keyboardHeight), animated: true)
     }
     
-    func textViewDidEndEditing(_ textView: UITextView) {
+    func textViewDidEndEditing(_ textView: UITextView){
         self.scrollView.setContentOffset(CGPoint(x: 0, y: 0), animated: true)
     }
 }
