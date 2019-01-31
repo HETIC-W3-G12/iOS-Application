@@ -20,11 +20,11 @@ class MoneyBackVC: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var projectListButton: UIButton!
     
-    let loan:Project = Project(id: 0, title: "test loan", description: "loan test", state: "valid", price: 400, timeLaps: 12, interests: 0.1, finalPrice: 440, date: Date(timeIntervalSince1970: 16))
+    let loan:Project = Project(id: 0, title: "test loan", description: "loan test", state: 1, price: 400, timeLaps: 12, interests: 0.1, finalPrice: 440, date: Date(timeIntervalSince1970: 16))
     
-    let projects:[Project] = [Project(id: 0, title: "test project", description: "testdesc", state: "valid", price: 300, timeLaps: 12, interests: 0.1, finalPrice: 330, date: Date(timeIntervalSince1970: 13)),
-                              Project(id: 0, title: "test project 2", description: "testdesc 2", state: "valid", price: 600, timeLaps: 12, interests: 0.1, finalPrice: 660, date: Date(timeIntervalSince1970: 14)),
-                              Project(id: 0, title: "test project 3", description: "testdesc 3", state: "valid", price: 100, timeLaps: 12, interests: 0.1, finalPrice: 110, date: Date(timeIntervalSince1970: 15))]
+    let projects:[Project] = [Project(id: 0, title: "test project", description: "testdesc", state: 1, price: 300, timeLaps: 12, interests: 0.1, finalPrice: 330, date: Date(timeIntervalSince1970: 13)),
+                              Project(id: 0, title: "test project 2", description: "testdesc 2", state: 1, price: 600, timeLaps: 12, interests: 0.1, finalPrice: 660, date: Date(timeIntervalSince1970: 14)),
+                              Project(id: 0, title: "test project 3", description: "testdesc 3", state: 1, price: 100, timeLaps: 12, interests: 0.1, finalPrice: 110, date: Date(timeIntervalSince1970: 15))]
     
     override func viewDidLoad() {
         super.viewDidLoad()

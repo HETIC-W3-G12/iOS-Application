@@ -12,14 +12,14 @@ class Project {
     var id:Int!
     var title:String!
     var description:String!
-    var state:String!
+    var state:Int!
     var price:Int!
     var timeLaps:Int!
     var interests:Float!
     var finalPrice:Float!
     var date:Date
     
-    init(id:Int!, title:String!, description:String!, state:String!,
+    init(id:Int!, title:String!, description:String!, state:Int!,
          price:Int!, timeLaps:Int!, interests:Float!, finalPrice:Float!, date:Date) {
         self.id = id
         self.title = title

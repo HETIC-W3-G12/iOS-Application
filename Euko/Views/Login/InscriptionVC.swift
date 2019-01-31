@@ -18,7 +18,7 @@ class InscriptionVC: UIViewController {
     @IBOutlet weak var shadowButtonView: UIView!
     @IBOutlet weak var backButton: UIButton!
     
-    let dev:String = "https://euko-api-staging-pr-30.herokuapp.com"
+    let dev:String = "https://euko-api-staging-pr-34.herokuapp.com"
     let prod:String = "https://euko-api-staging.herokuapp.com"
     
     var user: User = User(email: nil)
@@ -115,7 +115,7 @@ extension InscriptionVC {
         let parameters:Parameters = ["email": username,
                                      "password": password]
         
-        Alamofire.request(self.prod + "/users/sign_up",
+        Alamofire.request(self.dev + "/users/sign_up",
                           method: .post,
                           parameters: parameters).validate().responseJSON {
             response in

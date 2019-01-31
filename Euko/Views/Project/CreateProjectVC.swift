@@ -27,14 +27,14 @@ class CreateProjectVC: UIViewController {
     
     @IBOutlet weak var keyboardConstraint: NSLayoutConstraint!
     
-    let dev:String = "https://euko-api-staging-pr-30.herokuapp.com"
+    let dev:String = "https://euko-api-staging-pr-34.herokuapp.com"
     let prod:String = "https://euko-api-staging.herokuapp.com"
     
     var keyboardHeight:CGFloat = 200
     var keyboardAnimation:Float = 0
 }
 
-// MARK: overrides
+// MARK:- overrides
 extension CreateProjectVC {
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -72,7 +72,7 @@ extension CreateProjectVC {
     }
 }
 
-// MARK: Actions
+// MARK:- Actions
 extension CreateProjectVC {
     @IBAction func priceChanged(_ sender: Any) {
         self.priceLabel.text = String(format: "%.f euros", ceil(self.priceSlider.value) * 10)
@@ -117,7 +117,7 @@ extension CreateProjectVC {
     }
 }
 
-// MARK: Functions
+// MARK:- Functions
 extension CreateProjectVC {
     func showBadParametersAlert(){
         self.showSingleAlert(title: "Certains champs sont incorrects",
@@ -147,7 +147,7 @@ extension CreateProjectVC {
 
 }
 
-// MARK: UITextViewDelegate
+// MARK:- UITextViewDelegate
 extension CreateProjectVC: UITextViewDelegate{
     func textViewDidBeginEditing(_ textView: UITextView){
         self.scrollView.setContentOffset(CGPoint(x: 0, y: self.keyboardHeight), animated: true)
@@ -158,7 +158,7 @@ extension CreateProjectVC: UITextViewDelegate{
     }
 }
 
-// MARK: Server Bridge
+// MARK:- Server Bridge
 extension CreateProjectVC {
     func createProjectWithParameters(parameters: Parameters){
         
@@ -173,7 +173,7 @@ extension CreateProjectVC {
             
             print(parameters)
             
-            Alamofire.request(String(self.prod + "/projects"), method: .post, parameters: parameters, headers:headers).validate().responseJSON{ response in
+            Alamofire.request(String(self.dev + "/projects"), method: .post, parameters: parameters, headers:headers).validate().responseJSON{ response in
                 switch response.result {
                 case .success(let value):
                     print(value)

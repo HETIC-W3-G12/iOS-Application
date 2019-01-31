@@ -20,17 +20,17 @@ class ProjectListVC: UIViewController {
     @IBOutlet weak var askForMoneyButton: UIButton!
     @IBOutlet weak var dashboardButton: UIButton!
     
-    let dev:String = "https://euko-api-staging-pr-30.herokuapp.com"
+    let dev:String = "https://euko-api-staging-pr-34.herokuapp.com"
     let prod:String = "https://euko-api-staging.herokuapp.com"
     
     var projects:[Project] = [Project(id: 0, title: "Velo", description: "Je n'ai pas les moyens pour une voiture c'est pourquoi j'ai besoin d'un velo pour aller au travail et eviter les retards des transports en commun.",
-                                      state: "valid", price: 200, timeLaps: 3,
+                                      state: 1, price: 200, timeLaps: 3,
                                       interests: 0.17, finalPrice: (200 + (200 * (0.17/12) * 3)), date: Date(timeIntervalSince1970: 13)),
                               Project(id: 0, title: "Four combiné", description: "J'aimerai faire des plats dignes de ce noms pour mes enfants.",
-                                      state: "valid", price: 350, timeLaps: 7,
+                                      state: 1, price: 350, timeLaps: 7,
                                       interests: 0.17, finalPrice: (350 + (350 * (0.17/12) * 7)), date: Date(timeIntervalSince1970: 14)),
                               Project(id: 0, title: "Nouvelles Balenciaga", description: "Elles coutent chères et je veux garder mes amies, donc en achetant ces chaussures j'espere qu'elles me continuerons de me consieder. :)",
-                                      state: "valid", price: 630, timeLaps: 9,
+                                      state: 1, price: 630, timeLaps: 9,
                                       interests: 0.17, finalPrice: (630 + (630 * (0.17/12) * 9)), date: Date(timeIntervalSince1970: 15))]
     
     func turnAvctivityOn() {
@@ -104,7 +104,7 @@ extension ProjectListVC {
             self.turnAvctivityOn()
         }
         
-        Alamofire.request(String(self.prod + "/projects"), method: .get).validate().responseJSON { response in
+        Alamofire.request(String(self.dev + "/projects"), method: .get).validate().responseJSON { response in
             switch response.result {
             case .success(let value):
                 self.projects = []
@@ -119,9 +119,9 @@ extension ProjectListVC {
                     let description = json["description"].string ?? "Aucune description..."
                     let price = json["price"].int ?? 0
                     let interest = json["interests"].float ?? 0
-                    let state = json["state"].string!
+                    let state = json["state"].int ?? 1
                     let timeLaps = json["timeLaps"].int ?? 0
-                    let dateStr = json["createdAt"].string!.substring(to: 9)
+                    let dateStr = json["createdDate"].string!.substring(to: 9)
                     
                     let dateFormatter = DateFormatter()
                     dateFormatter.dateFormat = "yyyy-MM-dd"

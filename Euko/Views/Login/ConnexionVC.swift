@@ -18,7 +18,11 @@ class ConnexionVC: UIViewController {
     @IBOutlet weak var connexionButton: UIButton!
     @IBOutlet weak var signInButton: UIButton!
     
-    let dev:String = "https://euko-api-staging-pr-30.herokuapp.com"
+    @IBOutlet weak var activityView: UIView!
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
+    
+    
+    let dev:String = "https://euko-api-staging-pr-34.herokuapp.com"
     let prod:String = "https://euko-api-staging.herokuapp.com"
 }
 
@@ -61,6 +65,9 @@ extension ConnexionVC {
         
         self.connexionShadow.setSpecificShadow()
         self.connexionShadow.roundBorder()
+        
+        self.activityView.layer.cornerRadius = 5
+        self.activityView.isHidden = true
     }
     
     func nextVC(){
@@ -74,15 +81,21 @@ extension ConnexionVC {
 extension ConnexionVC {
     func connect(username:String, password:String){
         
+        self.activityView.isHidden = false
+        self.activityIndicator.startAnimating()
+
         let parameters:Parameters = ["email": username,
                                      "password": password]
         
-        Alamofire.request(self.prod + "/users/sign_in",
+        Alamofire.request(self.dev + "/users/sign_in",
                           method: .post,
                           parameters:parameters).validate().responseJSON {
             response in
             switch response.result {
             case .success(let value):
+                self.activityView.isHidden = true
+                self.activityIndicator.stopAnimating()
+                
                 print(value)
                 let json = JSON(value)
                 
@@ -91,6 +104,8 @@ extension ConnexionVC {
                 UserDefaults.setLoan(loan: true)
                 self.nextVC()
             case .failure(let error):
+                self.activityView.isHidden = true
+                self.activityIndicator.stopAnimating()
                 print(error)
             }
         }

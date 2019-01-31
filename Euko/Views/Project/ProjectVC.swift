@@ -30,7 +30,7 @@ class ProjectVC: UIViewController {
     }
 }
 
-// MARK: override
+// MARK:- override
 extension ProjectVC {
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -52,7 +52,7 @@ extension ProjectVC {
     }
 }
 
-// MARK: other functions
+// MARK:- other functions
 extension ProjectVC{
     func setupView(){
         self.buttonShadowView.setSpecificShadow()
