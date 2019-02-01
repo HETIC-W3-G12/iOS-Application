@@ -20,9 +20,14 @@ class ProjectListVC: UIViewController {
     @IBOutlet weak var askForMoneyButton: UIButton!
     @IBOutlet weak var dashboardButton: UIButton!
     
+    @IBOutlet weak var nothingLabel: UILabel!
+    
     let dev:String = "https://euko-api-staging-pr-34.herokuapp.com"
     let prod:String = "https://euko-api-staging.herokuapp.com"
     
+    var projects:[Project] = []
+    
+    /*
     var projects:[Project] = [Project(id: 0, title: "Velo", description: "Je n'ai pas les moyens pour une voiture c'est pourquoi j'ai besoin d'un velo pour aller au travail et eviter les retards des transports en commun.",
                                       state: 1, price: 200, timeLaps: 3,
                                       interests: 0.17, finalPrice: (200 + (200 * (0.17/12) * 3)), date: Date(timeIntervalSince1970: 13)),
@@ -32,6 +37,7 @@ class ProjectListVC: UIViewController {
                               Project(id: 0, title: "Nouvelles Balenciaga", description: "Elles coutent chères et je veux garder mes amies, donc en achetant ces chaussures j'espere qu'elles me continuerons de me consieder. :)",
                                       state: 1, price: 630, timeLaps: 9,
                                       interests: 0.17, finalPrice: (630 + (630 * (0.17/12) * 9)), date: Date(timeIntervalSince1970: 15))]
+ */
     
     func turnAvctivityOn() {
         self.activityIndicator.isHidden = false
@@ -45,6 +51,15 @@ class ProjectListVC: UIViewController {
     
     func orderProjectsByDate() {
         self.projects.sort(by: {$0.date.compare($1.date) == .orderedDescending})
+        self.checkNumberOfProjects()
+    }
+    
+    func checkNumberOfProjects(){
+        if (self.projects.count != 0){
+            self.nothingLabel.isHidden = true
+        } else {
+            self.nothingLabel.isHidden = false
+        }
     }
     
     @IBAction func goToHomeAction(_ sender: Any) {

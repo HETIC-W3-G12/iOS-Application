@@ -18,6 +18,9 @@ class InscriptionVC: UIViewController {
     @IBOutlet weak var shadowButtonView: UIView!
     @IBOutlet weak var backButton: UIButton!
     
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
+    @IBOutlet weak var activityView: UIView!
+    
     let dev:String = "https://euko-api-staging-pr-34.herokuapp.com"
     let prod:String = "https://euko-api-staging.herokuapp.com"
     
@@ -29,6 +32,8 @@ class InscriptionVC: UIViewController {
 extension InscriptionVC {
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.stopActivity()
         
         self.confirmationTF.delegate = self
         self.emailTF.delegate = self
@@ -82,6 +87,18 @@ extension InscriptionVC {
         self.signInButton.layer.cornerRadius = self.signInButton.frame.height / 2
         self.confirmationTF.keyboardType = .default
         self.passwordTF.keyboardType = .default
+        
+        self.activityView.layer.cornerRadius = 5
+    }
+    
+    func startAcitiviy(){
+        self.activityIndicator.startAnimating()
+        self.activityView.isHidden = false
+    }
+    
+    func stopActivity(){
+        self.activityView.isHidden = true
+        self.activityIndicator.stopAnimating()
     }
 }
 
@@ -112,6 +129,8 @@ extension InscriptionVC: UITextFieldDelegate {
 extension InscriptionVC {
     func signUp(username:String, password:String){
         
+        self.startAcitiviy()
+
         let parameters:Parameters = ["email": username,
                                      "password": password]
         
@@ -121,10 +140,14 @@ extension InscriptionVC {
             response in
             switch response.result {
             case .success(let value):
+                self.stopActivity()
                 print(value)
-                self.showSingleAlert(title: "Inscription reussie", message: "Connectez-vous pour continuer")
-                self.navigationController?.popViewController(animated: true)
+                self.showSingleAlertWithCompletion(title: "Inscription reussie", message: "Connectez-vous pour continuer", handler: { _ in 
+                    self.navigationController?.popViewController(animated: true)
+                })
             case .failure(let error):
+                self.stopActivity()
+                self.showSingleAlert(title: "Un probleme est survenu...", message: "Veuillez verifiez votre connexion internet")
                 print(error)
             }
         }

@@ -20,11 +20,11 @@ class MoneyBackVC: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var projectListButton: UIButton!
     
-    let loan:Project = Project(id: 0, title: "test loan", description: "loan test", state: 1, price: 400, timeLaps: 12, interests: 0.1, finalPrice: 440, date: Date(timeIntervalSince1970: 16))
+    let loan:Project = Project(id: 0, title: "Vélo", description: "J'ai besoin d'un vélo pour aller au travail tous les jours sans avoir a prendre les transports en commun ni m'acheter une voiture.", state: 1, price: 350, timeLaps: 12, interests: 0.1, finalPrice: 385, date: Date(timeIntervalSince1970: 16))
     
-    let projects:[Project] = [Project(id: 0, title: "test project", description: "testdesc", state: 1, price: 300, timeLaps: 12, interests: 0.1, finalPrice: 330, date: Date(timeIntervalSince1970: 13)),
-                              Project(id: 0, title: "test project 2", description: "testdesc 2", state: 1, price: 600, timeLaps: 12, interests: 0.1, finalPrice: 660, date: Date(timeIntervalSince1970: 14)),
-                              Project(id: 0, title: "test project 3", description: "testdesc 3", state: 1, price: 100, timeLaps: 12, interests: 0.1, finalPrice: 110, date: Date(timeIntervalSince1970: 15))]
+    let projects:[Project] = [Project(id: 0, title: "Balenciaga", description: "J'en ai vraiment trop besoin !", state: 1, price: 300, timeLaps: 12, interests: 0.1, finalPrice: 330, date: Date(timeIntervalSince1970: 13)),
+                              Project(id: 0, title: "Projet de test 2", description: "Description de test 2", state: 1, price: 100, timeLaps: 12, interests: 0.1, finalPrice: 110, date: Date(timeIntervalSince1970: 15)),
+                              Project(id: 0, title: "Projet de test 3", description: "Description de test 3", state: 1, price: 100, timeLaps: 12, interests: 0.1, finalPrice: 110, date: Date(timeIntervalSince1970: 15))]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -49,6 +49,7 @@ class MoneyBackVC: UIViewController {
     @IBAction func seeMoreAction(_ sender: Any) {
         let vc = self.storyboard?.instantiateViewController(withIdentifier: "ProjectVC") as! ProjectVC
         vc.project = self.loan
+        vc.isLoan = true
         self.navigationController?.pushViewController(vc, animated: true)
     }
     
@@ -77,6 +78,7 @@ extension MoneyBackVC: UITableViewDelegate, UITableViewDataSource {
         
         let vc = self.storyboard?.instantiateViewController(withIdentifier: "ProjectVC") as! ProjectVC
         vc.project = self.projects[indexPath.row]
+        vc.isLoan = false
         self.navigationController?.pushViewController(vc, animated: true)
         
     }

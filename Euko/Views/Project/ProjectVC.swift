@@ -10,7 +10,6 @@ import UIKit
 
 class ProjectVC: UIViewController {
 
-    @IBOutlet weak var textViewHeightConstraint: NSLayoutConstraint!
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var descriptionTextView: UITextView!
     @IBOutlet weak var firstInformationLabel: UILabel!
@@ -18,11 +17,12 @@ class ProjectVC: UIViewController {
     @IBOutlet weak var payButton: UIButton!
     @IBOutlet weak var buttonShadowView: UIView!
     @IBOutlet weak var secondTitleLabel: UILabel!
+    @IBOutlet weak var changingLabel: UILabel!
     
     var project:Project!
+    var isLoan:Bool!
     
     @IBAction func payAction(_ sender: Any) {
-        
     }
     
     @IBAction func backAction(_ sender: Any) {
@@ -63,16 +63,23 @@ extension ProjectVC{
     }
     
     func setupField(){
-        
-        
-        self.titleLabel.text = String(format: "%d€ pendant %d mois", self.project.price, self.project.timeLaps)
         self.secondTitleLabel.text = self.project.title
         self.descriptionTextView.text = self.project.description
         
+        self.titleLabel.text = String(format: "%d€ pendant %d mois", self.project.price, self.project.timeLaps)
         let interests:Float = self.project.interests * 100
         self.firstInformationLabel.text = String(format: "%.2f%%", interests)
-        
-        let margin:Float = self.project.finalPrice - Float(self.project.price)
-        self.secondInformationLabel.text = String(format: "%.2f€",  margin)
+
+        if (self.isLoan){
+            self.payButton.isHidden = true
+            let totalAmount = self.project.finalPrice!
+            self.secondInformationLabel.text = String(format: "%.2f€",  totalAmount)
+            self.changingLabel.text = "à rembourser"
+        } else {
+            self.payButton.isHidden = true
+            let margin:Float = self.project.finalPrice - Float(self.project.price)
+            self.secondInformationLabel.text = String(format: "%.2f€",  margin)
+            self.changingLabel.text = "de bénéfices"
+        }
     }
 }
