@@ -186,6 +186,17 @@
                                     <constraint firstAttribute="width" constant="70" id="i7z-b7-xmK"/>
                                 </constraints>
                             </view>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="l4z-Ue-xGF">
+                                <rect key="frame" x="165" y="514" width="45" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.58341925760000002" green="0.44754971360000001" blue="0.0090423024789999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <state key="normal" title="Signer">
+                                    <color key="titleColor" red="0.94117647059999998" green="0.95294117649999999" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <connections>
+                                    <segue destination="Fbv-gW-9by" kind="show" id="X2J-bo-sM8"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
@@ -1735,7 +1746,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="NMf-Fq-7M3" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="6222" y="-824"/>
+            <point key="canvasLocation" x="3534" y="875"/>
         </scene>
         <!--Empruntez-->
         <scene sceneID="Jli-Xq-8g9">
@@ -1796,7 +1807,7 @@
                                             <constraint firstAttribute="height" constant="48" id="jAF-QI-7Fs"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" name="AvenirNext-DemiBold" family="Avenir Next" pointSize="17"/>
-                                        <state key="normal" title="Faire ma demande !">
+                                        <state key="normal" title="Poursuivre">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
                                         <connections>
@@ -2057,18 +2068,21 @@
                                         <color key="textColor" red="0.23137254900000001" green="0.3294117647" blue="0.83529411760000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ocO-8L-kNY">
-                                        <rect key="frame" x="121" y="614" width="143" height="30"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ocO-8L-kNY">
+                                        <rect key="frame" x="111" y="619" width="143" height="30"/>
                                         <state key="normal" title="Un pret vous engage">
                                             <color key="titleColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fiF-Ip-zUU">
-                                        <rect key="frame" x="121" y="669" width="153" height="30"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fiF-Ip-zUU">
+                                        <rect key="frame" x="72.5" y="559" width="220" height="48"/>
                                         <color key="backgroundColor" red="0.23137254900000001" green="0.3294117647" blue="0.83529411760000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <state key="normal" title="Confirmer la demande">
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="220" id="UYQ-gE-7yp"/>
+                                            <constraint firstAttribute="height" constant="48" id="tTw-ID-7IU"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="AvenirNext-DemiBold" family="Avenir Next" pointSize="17"/>
+                                        <state key="normal" title="Poursuivre">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
                                     </button>
@@ -2123,13 +2137,17 @@
                                     <constraint firstItem="Rv2-8F-2Om" firstAttribute="leading" secondItem="CNr-dl-lxP" secondAttribute="leading" id="Iie-vg-sgA"/>
                                     <constraint firstItem="Usc-OJ-kgi" firstAttribute="trailing" secondItem="CNr-dl-lxP" secondAttribute="trailing" id="NDQ-Yv-29R"/>
                                     <constraint firstItem="Rv2-8F-2Om" firstAttribute="trailing" secondItem="CNr-dl-lxP" secondAttribute="trailing" id="PP0-8u-PBz"/>
+                                    <constraint firstItem="fiF-Ip-zUU" firstAttribute="centerX" secondItem="HwW-1W-ETA" secondAttribute="centerX" id="UXZ-Qo-Mec"/>
                                     <constraint firstItem="vA0-du-eRU" firstAttribute="top" secondItem="syc-Ka-b2p" secondAttribute="bottom" constant="32" id="Uzv-Ti-Xgb"/>
                                     <constraint firstItem="lTZ-Zh-phY" firstAttribute="top" secondItem="dbu-DA-inJ" secondAttribute="bottom" id="bGx-0X-fg1"/>
                                     <constraint firstItem="Usc-OJ-kgi" firstAttribute="leading" secondItem="Rv2-8F-2Om" secondAttribute="leading" id="bTh-8x-Jzy"/>
+                                    <constraint firstItem="ocO-8L-kNY" firstAttribute="centerX" secondItem="HwW-1W-ETA" secondAttribute="centerX" id="bpO-XH-6tf"/>
                                     <constraint firstItem="pMc-Mc-biV" firstAttribute="leading" secondItem="HwW-1W-ETA" secondAttribute="leading" constant="24" id="cS0-Kg-A7w"/>
                                     <constraint firstItem="syc-Ka-b2p" firstAttribute="trailing" secondItem="CNr-dl-lxP" secondAttribute="trailing" id="dJf-az-FlZ"/>
+                                    <constraint firstAttribute="bottom" secondItem="ocO-8L-kNY" secondAttribute="bottom" constant="8" id="ebZ-XU-Ano"/>
                                     <constraint firstItem="Rv2-8F-2Om" firstAttribute="top" secondItem="CNr-dl-lxP" secondAttribute="bottom" constant="24" id="fP1-SD-IXn"/>
                                     <constraint firstItem="syc-Ka-b2p" firstAttribute="leading" secondItem="Rv2-8F-2Om" secondAttribute="leading" id="feX-WF-3c4"/>
+                                    <constraint firstItem="ocO-8L-kNY" firstAttribute="top" secondItem="fiF-Ip-zUU" secondAttribute="bottom" constant="12" id="hBc-j4-5tA"/>
                                     <constraint firstItem="syc-Ka-b2p" firstAttribute="top" secondItem="Usc-OJ-kgi" secondAttribute="bottom" constant="24" id="kgr-Ld-y6e"/>
                                     <constraint firstItem="dbu-DA-inJ" firstAttribute="leading" secondItem="pMc-Mc-biV" secondAttribute="trailing" constant="6" id="ktH-We-iEL"/>
                                     <constraint firstItem="Czp-DR-Kw0" firstAttribute="top" secondItem="HwW-1W-ETA" secondAttribute="top" constant="16" id="ruC-DU-ivG"/>
@@ -2150,7 +2168,71 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vl2-A4-1X6" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5205.7971014492759" y="-824.18478260869574"/>
+            <point key="canvasLocation" x="5234" y="-824"/>
+        </scene>
+        <!--Creation ContractVC-->
+        <scene sceneID="wCz-Nx-M9G">
+            <objects>
+                <viewController storyboardIdentifier="CreationContractVC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Fbv-gW-9by" customClass="CreationContractVC" customModule="Euko" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="nR3-82-2Db">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jJp-Yk-Xm1" customClass="SHFSignatureView" customModule="Euko" customModuleProvider="target">
+                                <rect key="frame" x="12" y="455" width="351" height="200"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="200" id="aJh-y3-gn8"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="bgSignatureView">
+                                        <color key="value" red="0.94117647059999998" green="0.95294117649999999" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="lineWidth">
+                                        <real key="value" value="1"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="lineColor">
+                                        <color key="value" red="0.23137254900000001" green="0.3294117647" blue="0.83529411760000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qcK-4w-rt6">
+                                <rect key="frame" x="314" y="417" width="49" height="30"/>
+                                <state key="normal" title="Effacer"/>
+                                <connections>
+                                    <action selector="clearAction:" destination="Fbv-gW-9by" eventType="touchUpInside" id="z4E-et-ZrZ"/>
+                                </connections>
+                            </button>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="7Y6-Zf-EnU">
+                                <rect key="frame" x="67.5" y="96" width="240" height="128"/>
+                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="128" id="Ssa-OH-LcP"/>
+                                    <constraint firstAttribute="width" constant="240" id="mQ2-MX-CKP"/>
+                                </constraints>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="Yzl-ev-idu" firstAttribute="trailing" secondItem="jJp-Yk-Xm1" secondAttribute="trailing" constant="12" id="6TR-0y-Rgk"/>
+                            <constraint firstItem="qcK-4w-rt6" firstAttribute="trailing" secondItem="jJp-Yk-Xm1" secondAttribute="trailing" id="8GX-fc-dCa"/>
+                            <constraint firstItem="7Y6-Zf-EnU" firstAttribute="centerX" secondItem="nR3-82-2Db" secondAttribute="centerX" id="HTf-is-Mdt"/>
+                            <constraint firstItem="jJp-Yk-Xm1" firstAttribute="top" secondItem="qcK-4w-rt6" secondAttribute="bottom" constant="8" id="JQF-Bw-j83"/>
+                            <constraint firstItem="jJp-Yk-Xm1" firstAttribute="leading" secondItem="Yzl-ev-idu" secondAttribute="leading" constant="12" id="gHL-Yf-mWt"/>
+                            <constraint firstItem="7Y6-Zf-EnU" firstAttribute="top" secondItem="Yzl-ev-idu" secondAttribute="top" constant="32" id="gUu-uo-egp"/>
+                            <constraint firstItem="Yzl-ev-idu" firstAttribute="bottom" secondItem="jJp-Yk-Xm1" secondAttribute="bottom" constant="12" id="yuA-rg-LIc"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="Yzl-ev-idu"/>
+                    </view>
+                    <connections>
+                        <outlet property="clearButton" destination="qcK-4w-rt6" id="8h9-d9-PaG"/>
+                        <outlet property="drawSpaceView" destination="jJp-Yk-Xm1" id="U9D-ej-xJX"/>
+                        <outlet property="signatureImageView" destination="7Y6-Zf-EnU" id="3wd-X1-DYt"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="s58-ad-OID" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1081" y="-51"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="3dC-5J-Xla">

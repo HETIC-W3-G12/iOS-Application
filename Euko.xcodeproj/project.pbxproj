@@ -25,6 +25,8 @@
 		5776C18E21BA6C9A00E51C59 /* ConnexionVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5776C18D21BA6C9A00E51C59 /* ConnexionVC.swift */; };
 		5776C19021BA75A600E51C59 /* InscriptionVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5776C18F21BA75A600E51C59 /* InscriptionVC.swift */; };
 		5776C19221BA8EE100E51C59 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5776C19121BA8EE100E51C59 /* Extensions.swift */; };
+		57A879AA223A6D8300BC2A79 /* CreationContractVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57A879A9223A6D8300BC2A79 /* CreationContractVC.swift */; };
+		57A879AD223A6DE400BC2A79 /* SHFSignatureView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57A879AC223A6DE400BC2A79 /* SHFSignatureView.swift */; };
 		57B8D8AF22386214009B8223 /* InscriptionNextVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57B8D8AE22386214009B8223 /* InscriptionNextVC.swift */; };
 		57D4896221E797CF00D6D1C1 /* GradientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57D4896121E797CF00D6D1C1 /* GradientView.swift */; };
 		57D4896421E797EE00D6D1C1 /* Triangle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57D4896321E797EE00D6D1C1 /* Triangle.swift */; };
@@ -69,6 +71,8 @@
 		5776C18D21BA6C9A00E51C59 /* ConnexionVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnexionVC.swift; sourceTree = "<group>"; };
 		5776C18F21BA75A600E51C59 /* InscriptionVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InscriptionVC.swift; sourceTree = "<group>"; };
 		5776C19121BA8EE100E51C59 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		57A879A9223A6D8300BC2A79 /* CreationContractVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreationContractVC.swift; sourceTree = "<group>"; };
+		57A879AC223A6DE400BC2A79 /* SHFSignatureView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SHFSignatureView.swift; sourceTree = "<group>"; };
 		57B8D8AE22386214009B8223 /* InscriptionNextVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InscriptionNextVC.swift; sourceTree = "<group>"; };
 		57D4896121E797CF00D6D1C1 /* GradientView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradientView.swift; sourceTree = "<group>"; };
 		57D4896321E797EE00D6D1C1 /* Triangle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Triangle.swift; sourceTree = "<group>"; };
@@ -123,6 +127,7 @@
 		5713B01B219ACAB0001D9324 /* Euko */ = {
 			isa = PBXGroup;
 			children = (
+				57A879AB223A6DB900BC2A79 /* SHFSignature */,
 				571EB6DB21B91F50008D4227 /* Models */,
 				571EB6DA21B91F47008D4227 /* Views */,
 				5713B01C219ACAB0001D9324 /* AppDelegate.swift */,
@@ -193,6 +198,23 @@
 			path = Connexion;
 			sourceTree = "<group>";
 		};
+		57A879A8223A6D3400BC2A79 /* Creation */ = {
+			isa = PBXGroup;
+			children = (
+				573022B721C998F90000A495 /* CreateProjectVC.swift */,
+				57A879A9223A6D8300BC2A79 /* CreationContractVC.swift */,
+			);
+			path = Creation;
+			sourceTree = "<group>";
+		};
+		57A879AB223A6DB900BC2A79 /* SHFSignature */ = {
+			isa = PBXGroup;
+			children = (
+				57A879AC223A6DE400BC2A79 /* SHFSignatureView.swift */,
+			);
+			path = SHFSignature;
+			sourceTree = "<group>";
+		};
 		57B8D8AD223805D4009B8223 /* Inscription */ = {
 			isa = PBXGroup;
 			children = (
@@ -216,8 +238,8 @@
 		57E46A3321C4783400FB7236 /* Project */ = {
 			isa = PBXGroup;
 			children = (
+				57A879A8223A6D3400BC2A79 /* Creation */,
 				57E46A3421C4785800FB7236 /* ProjectVC.swift */,
-				573022B721C998F90000A495 /* CreateProjectVC.swift */,
 			);
 			path = Project;
 			sourceTree = "<group>";
@@ -462,9 +484,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				57A879AD223A6DE400BC2A79 /* SHFSignatureView.swift in Sources */,
 				5776C19021BA75A600E51C59 /* InscriptionVC.swift in Sources */,
 				57FE665721CD523000D40854 /* MoneyBackCell.swift in Sources */,
 				57D4896221E797CF00D6D1C1 /* GradientView.swift in Sources */,
+				57A879AA223A6D8300BC2A79 /* CreationContractVC.swift in Sources */,
 				575B446E2239109E00FD5C97 /* InscriptionValidationVC.swift in Sources */,
 				5776C19221BA8EE100E51C59 /* Extensions.swift in Sources */,
 				571EB6DD21B91F70008D4227 /* User.swift in Sources */,

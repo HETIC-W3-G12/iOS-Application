@@ -89,7 +89,10 @@ extension CreateProjectVC {
     }
     
     @IBAction func validateAction(_ sender: Any) {
+        let vc = self.storyboard?.instantiateViewController(withIdentifier: "CreationContractVC") as! CreationContractVC
         
+        self.navigationController?.pushViewController(vc, animated: true)
+/*
         let title = self.titletextField.text ?? ""
         let desc = self.descriptionTextView.text ?? ""
         let price = Int(ceil(self.priceSlider.value) * 10)
@@ -110,6 +113,7 @@ extension CreateProjectVC {
         else {
             self.showBadParametersAlert()
         }
+ */
     }
 
     @IBAction func startEditTitle(_ sender: Any) {
