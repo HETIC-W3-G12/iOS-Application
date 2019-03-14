@@ -52,8 +52,8 @@ extension ConnexionVC {
         if (username == "" || password == ""){
             // TODO: Error on textfields
         } else {
-            self.connect(username: username, password: password)
-            //self.nextVC()
+            //self.connect(username: username, password: password)
+            self.nextVC()
         }
     }
 }
