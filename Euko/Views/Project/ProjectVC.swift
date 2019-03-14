@@ -10,54 +10,76 @@ import UIKit
 
 class ProjectVC: UIViewController {
 
-    @IBOutlet weak var textViewHeightConstraint: NSLayoutConstraint!
-    @IBOutlet weak var shadowButton: UIView!
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var descriptionTextView: UITextView!
     @IBOutlet weak var firstInformationLabel: UILabel!
     @IBOutlet weak var secondInformationLabel: UILabel!
     @IBOutlet weak var payButton: UIButton!
-    
+    @IBOutlet weak var buttonShadowView: UIView!
+    @IBOutlet weak var secondTitleLabel: UILabel!
+    @IBOutlet weak var changingLabel: UILabel!
     
     var project:Project!
+    var isLoan:Bool!
     
+    @IBAction func payAction(_ sender: Any) {
+    }
+    
+    @IBAction func backAction(_ sender: Any) {
+        self.navigationController?.popViewController(animated: true)
+    }
+}
+
+// MARK:- override
+extension ProjectVC {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.payButton.layer.cornerRadius = self.payButton.frame.height / 2
-        self.shadowButton.layer.cornerRadius = self.shadowButton.frame.height / 2
-        self.shadowButton.layer.shadowColor = UIColor.black.cgColor
-        self.shadowButton.layer.shadowOpacity = 0.7
-        self.shadowButton.layer.shadowOffset = CGSize(width: -3, height: 3)
-        self.shadowButton.layer.shadowRadius = 1
-        
-        self.descriptionTextView.layer.cornerRadius = 5
+        self.setupView()
     }
-    
+
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        self.titleLabel.text = self.project.title
-        self.descriptionTextView.text = self.project.description
-        
-        let price:Int = self.project.price
-        let timeLaps:Int = self.project.timeLaps
-        self.firstInformationLabel.text = "\(price)€ sur \(timeLaps) mois"
-        
-        let interests:Float = self.project.interests * 100
-        let margin:Float = self.project.finalPrice - Float(self.project.price)
-        self.secondInformationLabel.text = String(format: "%.2f%% intérêts | %.2f€ de bénéfices", interests,  margin)
-        
-        if (self.descriptionTextView.contentSize.height > 250) {
-            self.textViewHeightConstraint.constant = 250
-            self.descriptionTextView.isScrollEnabled = true
-        } else {
-            self.textViewHeightConstraint.constant = self.descriptionTextView.contentSize.height + 26
-            self.descriptionTextView.isScrollEnabled = false
-        }
+        self.navigationController?.navigationBar.isHidden = true
+        self.setupField()
     }
     
-    @IBAction func payAction(_ sender: Any) {
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
         
+        self.navigationController?.navigationBar.isHidden = false
+    }
+}
+
+// MARK:- other functions
+extension ProjectVC{
+    func setupView(){
+        self.buttonShadowView.setSpecificShadow()
+        
+        self.descriptionTextView.roundBorder(radius: 5)
+        self.buttonShadowView.roundBorder()
+        self.payButton.roundBorder()
+    }
+    
+    func setupField(){
+        self.secondTitleLabel.text = self.project.title
+        self.descriptionTextView.text = self.project.description
+        
+        self.titleLabel.text = String(format: "%d€ pendant %d mois", self.project.price, self.project.timeLaps)
+        let interests:Float = self.project.interests * 100
+        self.firstInformationLabel.text = String(format: "%.2f%%", interests)
+
+        if (self.isLoan){
+            self.payButton.isHidden = true
+            let totalAmount = self.project.finalPrice!
+            self.secondInformationLabel.text = String(format: "%.2f€",  totalAmount)
+            self.changingLabel.text = "à rembourser"
+        } else {
+            self.payButton.isHidden = false
+            let margin:Float = self.project.finalPrice - Float(self.project.price)
+            self.secondInformationLabel.text = String(format: "%.2f€",  margin)
+            self.changingLabel.text = "de bénéfices"
+        }
     }
 }

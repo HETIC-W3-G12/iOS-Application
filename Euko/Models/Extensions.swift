@@ -16,6 +16,14 @@ extension UIViewController {
         
         self.present(alert, animated: true)
     }
+    
+    func showSingleAlertWithCompletion(title:String, message:String, handler: ((UIAlertAction) -> Void)? = nil){
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        
+        alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: handler))
+        
+        self.present(alert, animated: true)
+    }
 }
 
 extension UIView {
@@ -34,6 +42,22 @@ extension UIView {
         layer.shouldRasterize = true
         //layer.rasterizationScale = scale ? UIScreen.main.scale : 1
         layer.rasterizationScale = 1
+    }
+    
+    func setSpecificShadow(){
+        self.layer.cornerRadius = 8
+        self.layer.shadowColor = UIColor.black.cgColor
+        self.layer.shadowOpacity = 0.3
+        self.layer.shadowOffset = CGSize(width: -4, height: 4)
+        self.layer.shadowRadius = 2
+    }
+    
+    func roundBorder(){
+        self.layer.cornerRadius = self.frame.height / 2
+    }
+    
+    func roundBorder(radius:CGFloat){
+        self.layer.cornerRadius = radius
     }
 }
 
@@ -81,4 +105,26 @@ extension String
     func lastIndexOfCharacter(_ c: Character) -> Int? {
         return range(of: String(c), options: .backwards)?.lowerBound.encodedOffset
     }
+}
+
+extension UserDefaults {
+    static let TOKEN_FLAG = "tokenFlag"
+    static let LOAN_FLAG = "loanFlag"
+    
+    static func setToken(token:String){
+        UserDefaults.standard.set(token, forKey:TOKEN_FLAG)
+    }
+    
+    static func getToken() -> String? {
+        return UserDefaults.standard.value(forKey: TOKEN_FLAG) as? String
+    }
+    
+    static func setLoan(loan:Bool){
+        UserDefaults.standard.set(loan, forKey:LOAN_FLAG)
+    }
+    
+    static func getLoan() -> Bool! {
+        return UserDefaults.standard.value(forKey: LOAN_FLAG) as! Bool
+    }
+    
 }

@@ -10,20 +10,123 @@ import UIKit
 import Alamofire
 import SwiftyJSON
 
+
+
 class ProjectListVC: UIViewController {
 
+    @IBOutlet weak var shadowView: UIView!
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
+    @IBOutlet weak var askForMoneyButton: UIButton!
+    @IBOutlet weak var dashboardButton: UIButton!
+    
+    @IBOutlet weak var nothingLabel: UILabel!
+    
+    let dev:String = "https://euko-api-staging-pr-34.herokuapp.com"
+    let prod:String = "https://euko-api-staging.herokuapp.com"
     
     var projects:[Project] = []
     
-    func setProjects(){
-        Alamofire.request("https://euko-api-staging.herokuapp.com/projects", method: .get).validate().responseJSON { response in
+    /*
+    var projects:[Project] = [Project(id: 0, title: "Velo", description: "Je n'ai pas les moyens pour une voiture c'est pourquoi j'ai besoin d'un velo pour aller au travail et eviter les retards des transports en commun.",
+                                      state: 1, price: 200, timeLaps: 3,
+                                      interests: 0.17, finalPrice: (200 + (200 * (0.17/12) * 3)), date: Date(timeIntervalSince1970: 13)),
+                              Project(id: 0, title: "Four combiné", description: "J'aimerai faire des plats dignes de ce noms pour mes enfants.",
+                                      state: 1, price: 350, timeLaps: 7,
+                                      interests: 0.17, finalPrice: (350 + (350 * (0.17/12) * 7)), date: Date(timeIntervalSince1970: 14)),
+                              Project(id: 0, title: "Nouvelles Balenciaga", description: "Elles coutent chères et je veux garder mes amies, donc en achetant ces chaussures j'espere qu'elles me continuerons de me consieder. :)",
+                                      state: 1, price: 630, timeLaps: 9,
+                                      interests: 0.17, finalPrice: (630 + (630 * (0.17/12) * 9)), date: Date(timeIntervalSince1970: 15))]
+ */
+    
+    func turnAvctivityOn() {
+        self.activityIndicator.isHidden = false
+        self.activityIndicator.startAnimating()
+    }
+    
+    func turnAvctivityOff() {
+        self.activityIndicator.isHidden = true
+        self.activityIndicator.stopAnimating()
+    }
+    
+    func orderProjectsByDate() {
+        self.projects.sort(by: {$0.date.compare($1.date) == .orderedDescending})
+        self.checkNumberOfProjects()
+    }
+    
+    func checkNumberOfProjects(){
+        if (self.projects.count != 0){
+            self.nothingLabel.isHidden = true
+        } else {
+            self.nothingLabel.isHidden = false
+        }
+    }
+    
+    @IBAction func goToHomeAction(_ sender: Any) {
+        let vc = self.storyboard?.instantiateViewController(withIdentifier: "HomeVC") as! HomeVC
+        self.navigationController?.pushViewController(vc, animated: true)
+    }
+}
+
+//MARK override
+extension ProjectListVC {
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        self.navigationController?.navigationBar.isHidden = true
+
+        self.tableView.dataSource = self
+        self.tableView.delegate = self
+        
+        self.askForMoneyButton.roundBorder()
+        self.dashboardButton.roundBorder()
+        
+        self.shadowView.setSpecificShadow()
+        self.shadowView.roundBorder()
+        
+        let HomeButton = UIBarButtonItem(title: "Menu", style: UIBarButtonItem.Style.done, target: self, action: #selector(self.homeAction(_:)))
+        self.navigationItem.leftBarButtonItem = HomeButton
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+
+        self.navigationController?.navigationBar.isHidden = true
+
+        self.setProjects()
+        self.turnAvctivityOff()
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        
+        self.navigationController?.navigationBar.isHidden = false
+    }
+    
+    @objc func homeAction(_ sender:UIBarButtonItem!)
+    {
+        let vc = self.storyboard?.instantiateViewController(withIdentifier: "HomeVC") as! HomeVC
+        self.navigationController?.pushViewController(vc, animated: true)
+    }
+}
+
+
+//MARK Server Bridge
+extension ProjectListVC {
+    @objc func setProjects(){
+        
+        if (self.projects.count > 0){
+            self.turnAvctivityOn()
+        }
+        
+        Alamofire.request(String(self.dev + "/projects"), method: .get).validate().responseJSON { response in
             switch response.result {
             case .success(let value):
+                self.projects = []
                 let jsonTab = JSON(value)
                 var i:Int = 0
                 var json:JSON = jsonTab[i]
-
+                
                 while (json != JSON.null){
                     print(json)
                     let id = json["id"].int ?? 0
@@ -31,9 +134,9 @@ class ProjectListVC: UIViewController {
                     let description = json["description"].string ?? "Aucune description..."
                     let price = json["price"].int ?? 0
                     let interest = json["interests"].float ?? 0
-                    let state = json["state"].string!
+                    let state = json["state"].int ?? 1
                     let timeLaps = json["timeLaps"].int ?? 0
-                    let dateStr = json["createdAt"].string!.substring(to: 9)
+                    let dateStr = json["createdDate"].string!.substring(to: 9)
                     
                     let dateFormatter = DateFormatter()
                     dateFormatter.dateFormat = "yyyy-MM-dd"
@@ -55,6 +158,8 @@ class ProjectListVC: UIViewController {
                     i += 1
                     json = jsonTab[(i)]
                 }
+                self.turnAvctivityOff()
+                self.orderProjectsByDate()
                 self.tableView.reloadData()
             case .failure(let error):
                 print(error)
@@ -63,29 +168,6 @@ class ProjectListVC: UIViewController {
     }
 }
 
-//MARK override
-extension ProjectListVC {
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-        self.tableView.dataSource = self
-        self.tableView.delegate = self
-        
-        let HomeButton = UIBarButtonItem(title: "Menu", style: UIBarButtonItem.Style.done, target: self, action: #selector(self.homeAction(_:)))
-        self.navigationItem.leftBarButtonItem = HomeButton
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        self.setProjects()
-        super.viewWillAppear(animated)
-    }
-    
-    @objc func homeAction(_ sender:UIBarButtonItem!)
-    {
-        let vc = self.storyboard?.instantiateViewController(withIdentifier: "HomeVC") as! HomeVC
-        self.navigationController?.pushViewController(vc, animated: true)
-    }
-}
 
 //MARK: TableViewDelegate TableViewDataSource
 extension ProjectListVC: UITableViewDelegate, UITableViewDataSource{
@@ -98,12 +180,20 @@ extension ProjectListVC: UITableViewDelegate, UITableViewDataSource{
         let cell = self.tableView.dequeueReusableCell(withIdentifier: "project_cell_identifier", for: indexPath) as! ProjectCell
         cell.selectionStyle = .none
         
+        if (indexPath.row != 0){
+            cell.topConstraint.constant = 10
+        } else {
+            cell.topConstraint.constant = 25
+        }
+        
         cell.titleLabel.text = self.projects[indexPath.row].title
         cell.descriptionLabel.text = self.projects[indexPath.row].description
+        cell.triangleLabel.text = String(format: "+ %.f €",
+                                         self.projects[indexPath.row].finalPrice - Float(self.projects[indexPath.row].price))
         
         let price:Int = self.projects[indexPath.row].price
         let timeLaps:Int = self.projects[indexPath.row].timeLaps
-        cell.infoLabel.text = "\(price)€ - \(timeLaps) mois"
+        cell.infoLabel.text = "\(price)€ pendant \(timeLaps) mois"
         
         return cell
     }
@@ -115,6 +205,7 @@ extension ProjectListVC: UITableViewDelegate, UITableViewDataSource{
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let vc = self.storyboard?.instantiateViewController(withIdentifier: "ProjectVC") as! ProjectVC
         vc.project = self.projects[indexPath.row]
+        vc.isLoan = false
         self.navigationController?.pushViewController(vc, animated: true)
     }
 
