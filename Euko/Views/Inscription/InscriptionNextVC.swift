@@ -23,7 +23,22 @@ class InscriptionNextVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.saveButton.roundBorder()
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        self.navigationController?.isNavigationBarHidden = true
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        
+        self.navigationController?.isNavigationBarHidden = true
+    }
+
     
     func checkAllFields() -> Bool {
         if (self.lastNameTextField.text?.count ?? 0 >= 2

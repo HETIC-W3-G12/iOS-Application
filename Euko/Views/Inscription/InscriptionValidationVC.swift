@@ -25,6 +25,7 @@ class InscriptionValidationVC: UIViewController, UIImagePickerControllerDelegate
     @IBOutlet weak var selfieImageView: UIImageView!
     
     let imagePicker = UIImagePickerController()
+    var isTakingSelfie:Bool = false
 
     var user:User = User()
     
@@ -38,17 +39,38 @@ class InscriptionValidationVC: UIViewController, UIImagePickerControllerDelegate
         self.imagePicker.delegate = self
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        self.navigationController?.isNavigationBarHidden = true
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        
+        self.navigationController?.isNavigationBarHidden = true
+    }
+    
     @IBAction func backAction(_ sender: Any) {
         self.navigationController?.popViewController(animated: true)
     }
     
     @IBAction func takeSelfie(_ sender: Any) {
+        self.isTakingSelfie = true
+        self.presentImagePickerFromCamera(source: .savedPhotosAlbum)
     }
     
     @IBAction func addIdentitycard(_ sender: Any) {
+        self.isTakingSelfie = false
+        self.presentImagePickerFromCamera(source: .savedPhotosAlbum)
     }
     
     @IBAction func validateInscription(_ sender: Any) {
+        self.showSingleAlertWithCompletion(title: "Inscription validée",
+                                           message: "Vous pouvez maintenant vous connecter",
+                                           handler: { _ in
+                                            self.navigationController?.popToRootViewController(animated: true)})
+        
     }
     
     func presentImagePickerFromCamera(source:UIImagePickerController.SourceType = .savedPhotosAlbum){
@@ -61,11 +83,15 @@ class InscriptionValidationVC: UIViewController, UIImagePickerControllerDelegate
     func imagePickerController(_ picker: UIImagePickerController,
                                didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]){
         if let pickedImage = info[UIImagePickerController.InfoKey.originalImage] as? UIImage {
-            self.selfieImageView.image = pickedImage
+            if (self.isTakingSelfie){
+                self.selfieImageView.image = pickedImage
+            } else {
+                self.identityImageView.image = pickedImage
+            }
+            dismiss(animated: true, completion: nil)
         }
-        dismiss(animated: true, completion: nil)
     }
-    
+        
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
         dismiss(animated: true, completion: nil)
     }
