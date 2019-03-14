@@ -126,5 +126,12 @@ extension UserDefaults {
     static func getLoan() -> Bool! {
         return UserDefaults.standard.value(forKey: LOAN_FLAG) as! Bool
     }
-    
+}
+
+extension UINavigationBar {
+    func transparentNavigationBar() {
+        self.setBackgroundImage(UIImage(), for: .default)
+        self.shadowImage = UIImage()
+        self.isTranslucent = true
+    }
 }
