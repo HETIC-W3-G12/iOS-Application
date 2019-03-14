@@ -1711,7 +1711,7 @@
         <scene sceneID="HO6-Jf-Qy6">
             <objects>
                 <navigationController id="ZG2-gt-jpO" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="" selectedImage="profile" id="iv6-7B-ITj"/>
+                    <tabBarItem key="tabBarItem" title="" image="profile" landscapeImage="profile" largeContentSizeImage="profile" selectedImage="profile" id="iv6-7B-ITj"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="2M9-oX-u6S">
                         <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -1724,25 +1724,106 @@
             </objects>
             <point key="canvasLocation" x="3534" y="-1621"/>
         </scene>
-        <!--View Controller-->
+        <!--ProfileVC-->
         <scene sceneID="ams-Ht-e4c">
             <objects>
-                <viewController id="p7v-Xh-iJA" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ProfileVC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="p7v-Xh-iJA" customClass="ProfileVC" customModule="Euko" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="H0J-8h-7cf">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Profil" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GYG-GD-9dQ">
-                                <rect key="frame" x="168" y="323" width="39.5" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iWH-AD-StH" customClass="Polygon" customModule="Euko" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="64" width="375" height="160"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DsB-48-DlI">
+                                        <rect key="frame" x="12" y="16" width="31" height="30"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="31" id="7C4-bX-rAs"/>
+                                            <constraint firstAttribute="height" constant="30" id="q0V-TC-On1"/>
+                                        </constraints>
+                                        <state key="normal" image="back-arrow"/>
+                                        <connections>
+                                            <action selector="backAction:" destination="ASf-KS-sUU" eventType="touchUpInside" id="HXa-zj-Zjn"/>
+                                        </connections>
+                                    </button>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Publiez votre projet" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="66K-Ej-gRF">
+                                        <rect key="frame" x="24" y="66" width="201" height="29"/>
+                                        <fontDescription key="fontDescription" name="AvenirNext-Bold" family="Avenir Next" pointSize="21"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FCd-S1-G90">
+                                        <rect key="frame" x="0.0" y="95" width="60" height="7"/>
+                                        <color key="backgroundColor" red="0.53333333329999999" green="1" blue="0.53725490200000003" alpha="1" colorSpace="calibratedRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="60" id="cgM-xK-R6U"/>
+                                            <constraint firstAttribute="height" constant="7" id="jeG-bv-Gpb"/>
+                                        </constraints>
+                                    </view>
+                                    <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="Zr3-pY-OGu">
+                                        <rect key="frame" x="0.0" y="120" width="375" height="33"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="32" id="idY-dr-wg4"/>
+                                        </constraints>
+                                        <segments>
+                                            <segment title="Profil"/>
+                                            <segment title="History"/>
+                                        </segments>
+                                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </segmentedControl>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="160" id="7RT-Xr-s6D"/>
+                                    <constraint firstAttribute="trailing" secondItem="Zr3-pY-OGu" secondAttribute="trailing" id="FzD-t3-DKU"/>
+                                    <constraint firstItem="DsB-48-DlI" firstAttribute="top" secondItem="iWH-AD-StH" secondAttribute="top" constant="16" id="H6i-ZO-adG"/>
+                                    <constraint firstItem="66K-Ej-gRF" firstAttribute="leading" secondItem="iWH-AD-StH" secondAttribute="leading" constant="24" id="JcS-Ha-3sS"/>
+                                    <constraint firstItem="66K-Ej-gRF" firstAttribute="top" secondItem="DsB-48-DlI" secondAttribute="bottom" constant="20" id="OHL-wm-Cgi"/>
+                                    <constraint firstAttribute="bottom" secondItem="Zr3-pY-OGu" secondAttribute="bottom" constant="8" id="Scl-r8-Mqm"/>
+                                    <constraint firstItem="FCd-S1-G90" firstAttribute="leading" secondItem="iWH-AD-StH" secondAttribute="leading" id="U0O-cd-L8G"/>
+                                    <constraint firstItem="Zr3-pY-OGu" firstAttribute="leading" secondItem="iWH-AD-StH" secondAttribute="leading" id="UXd-o6-k1j"/>
+                                    <constraint firstItem="FCd-S1-G90" firstAttribute="top" secondItem="66K-Ej-gRF" secondAttribute="bottom" id="uQl-jx-LMC"/>
+                                    <constraint firstItem="DsB-48-DlI" firstAttribute="leading" secondItem="iWH-AD-StH" secondAttribute="leading" constant="12" id="wWE-Wb-qMd"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="topColor">
+                                        <color key="value" red="0.40000000000000002" green="0.4941176471" blue="0.99215686270000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="bottomColor">
+                                        <color key="value" red="0.23137254900000001" green="0.3294117647" blue="0.83529411760000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="firstPointX">
+                                        <real key="value" value="0.0"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="firstPointY">
+                                        <real key="value" value="0.0"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="secondPointX">
+                                        <real key="value" value="0.0"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="secondPointY">
+                                        <real key="value" value="1"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="gradientStartPointX">
+                                        <real key="value" value="0.0"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="gradientStartPointY">
+                                        <real key="value" value="0.0"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="gradientEndPointX">
+                                        <real key="value" value="1"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="gradientEndPointY">
+                                        <real key="value" value="1"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </view>
                         </subviews>
-                        <color key="backgroundColor" red="0.38431372549999998" green="0.47843137250000001" blue="0.97647058819999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="GYG-GD-9dQ" firstAttribute="centerX" secondItem="H0J-8h-7cf" secondAttribute="centerX" id="DHE-lY-0yN"/>
-                            <constraint firstItem="GYG-GD-9dQ" firstAttribute="centerY" secondItem="H0J-8h-7cf" secondAttribute="centerY" id="We1-lS-jp2"/>
+                            <constraint firstAttribute="trailing" secondItem="iWH-AD-StH" secondAttribute="trailing" id="QBY-rm-cSC"/>
+                            <constraint firstItem="iWH-AD-StH" firstAttribute="top" secondItem="H0J-8h-7cf" secondAttribute="top" constant="64" id="hYr-gt-hPr"/>
+                            <constraint firstItem="iWH-AD-StH" firstAttribute="leading" secondItem="gwj-nx-dzu" secondAttribute="leading" id="wB0-3B-nvp"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="gwj-nx-dzu"/>
                     </view>
@@ -1762,7 +1843,7 @@
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gi6-5m-9zb">
                                 <rect key="frame" x="0.0" y="851" width="414" height="0.0"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="backgroundColor" red="0.38431372549999998" green="0.47843137250000001" blue="0.97647058819999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" id="cme-Le-mdt"/>
                                 </constraints>
@@ -1841,7 +1922,7 @@
                                                 </connections>
                                             </button>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Publiez votre projet" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="E9Q-I1-V53">
-                                                <rect key="frame" x="24" y="65" width="201" height="30"/>
+                                                <rect key="frame" x="24" y="66" width="201" height="29"/>
                                                 <fontDescription key="fontDescription" name="AvenirNext-Bold" family="Avenir Next" pointSize="21"/>
                                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <nil key="highlightedColor"/>
@@ -1880,6 +1961,7 @@
                                             <constraint firstItem="RJC-AZ-Yxl" firstAttribute="centerX" secondItem="Y39-mG-z0S" secondAttribute="centerX" id="3lg-nR-SAO"/>
                                             <constraint firstItem="RJC-AZ-Yxl" firstAttribute="leading" secondItem="Y39-mG-z0S" secondAttribute="leading" constant="54" id="8DT-Lo-EfA"/>
                                             <constraint firstItem="lrz-02-zaf" firstAttribute="top" secondItem="E9Q-I1-V53" secondAttribute="bottom" id="DCN-tn-JLc"/>
+                                            <constraint firstItem="E9Q-I1-V53" firstAttribute="top" secondItem="G4K-qa-u91" secondAttribute="bottom" constant="20" id="E1v-gZ-sVV"/>
                                             <constraint firstItem="G4K-qa-u91" firstAttribute="leading" secondItem="Y39-mG-z0S" secondAttribute="leading" constant="12" id="IUB-gb-ELk"/>
                                             <constraint firstItem="drZ-0g-I29" firstAttribute="leading" secondItem="RJC-AZ-Yxl" secondAttribute="leading" id="KfU-2S-h0w"/>
                                             <constraint firstItem="drZ-0g-I29" firstAttribute="top" secondItem="RJC-AZ-Yxl" secondAttribute="bottom" id="MUB-BG-Kky"/>
@@ -1889,8 +1971,6 @@
                                             <constraint firstItem="RJC-AZ-Yxl" firstAttribute="top" secondItem="lrz-02-zaf" secondAttribute="bottom" constant="29" id="haC-0r-cDR"/>
                                             <constraint firstItem="E9Q-I1-V53" firstAttribute="leading" secondItem="Y39-mG-z0S" secondAttribute="leading" constant="24" id="rln-xr-8ZO"/>
                                             <constraint firstItem="drZ-0g-I29" firstAttribute="trailing" secondItem="RJC-AZ-Yxl" secondAttribute="trailing" id="s2u-Rq-SC4"/>
-                                            <constraint firstItem="E9Q-I1-V53" firstAttribute="centerY" secondItem="Y39-mG-z0S" secondAttribute="centerY" id="xbJ-lm-AfK"/>
-                                            <constraint firstItem="G4K-qa-u91" firstAttribute="top" secondItem="Y39-mG-z0S" secondAttribute="top" constant="16" id="y51-4Q-y44"/>
                                             <constraint firstItem="RJC-AZ-Yxl" firstAttribute="bottom" secondItem="Y39-mG-z0S" secondAttribute="bottom" constant="11" id="z9X-d2-nD8"/>
                                         </constraints>
                                         <userDefinedRuntimeAttributes>
@@ -2328,7 +2408,7 @@ compter du 01 Février 2019.</string>
         <scene sceneID="3dC-5J-Xla">
             <objects>
                 <navigationController storyboardIdentifier="projectNavigationController" automaticallyAdjustsScrollViewInsets="NO" useStoryboardIdentifierAsRestorationIdentifier="YES" id="8Oa-PN-NYc" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="" selectedImage="projects" id="LMr-is-mfe"/>
+                    <tabBarItem key="tabBarItem" title="" image="projects" landscapeImage="projects" largeContentSizeImage="projects" selectedImage="projects" id="LMr-is-mfe"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" barStyle="black" translucent="NO" id="Bfx-2W-gSQ">
                         <rect key="frame" x="0.0" y="20" width="375" height="44"/>
@@ -2588,7 +2668,7 @@ compter du 01 Février 2019.</string>
         <scene sceneID="GPK-oy-5GW">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="p8q-AA-c2u" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="" selectedImage="wallet" id="ebC-O1-oIb"/>
+                    <tabBarItem key="tabBarItem" title="" image="wallet" landscapeImage="wallet" largeContentSizeImage="wallet" selectedImage="wallet" id="ebC-O1-oIb"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="YP5-h4-MDW">
                         <rect key="frame" x="0.0" y="20" width="375" height="44"/>

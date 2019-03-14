@@ -28,6 +28,7 @@
 		57A879AA223A6D8300BC2A79 /* CreationContractVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57A879A9223A6D8300BC2A79 /* CreationContractVC.swift */; };
 		57A879AD223A6DE400BC2A79 /* SHFSignatureView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57A879AC223A6DE400BC2A79 /* SHFSignatureView.swift */; };
 		57B8D8AF22386214009B8223 /* InscriptionNextVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57B8D8AE22386214009B8223 /* InscriptionNextVC.swift */; };
+		57C34410223AA6E8007A0B03 /* ProfileVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57C3440F223AA6E8007A0B03 /* ProfileVC.swift */; };
 		57D4896221E797CF00D6D1C1 /* GradientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57D4896121E797CF00D6D1C1 /* GradientView.swift */; };
 		57D4896421E797EE00D6D1C1 /* Triangle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57D4896321E797EE00D6D1C1 /* Triangle.swift */; };
 		57E46A3521C4785800FB7236 /* ProjectVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57E46A3421C4785800FB7236 /* ProjectVC.swift */; };
@@ -74,6 +75,7 @@
 		57A879A9223A6D8300BC2A79 /* CreationContractVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreationContractVC.swift; sourceTree = "<group>"; };
 		57A879AC223A6DE400BC2A79 /* SHFSignatureView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SHFSignatureView.swift; sourceTree = "<group>"; };
 		57B8D8AE22386214009B8223 /* InscriptionNextVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InscriptionNextVC.swift; sourceTree = "<group>"; };
+		57C3440F223AA6E8007A0B03 /* ProfileVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileVC.swift; sourceTree = "<group>"; };
 		57D4896121E797CF00D6D1C1 /* GradientView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradientView.swift; sourceTree = "<group>"; };
 		57D4896321E797EE00D6D1C1 /* Triangle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Triangle.swift; sourceTree = "<group>"; };
 		57E46A3421C4785800FB7236 /* ProjectVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectVC.swift; sourceTree = "<group>"; };
@@ -152,6 +154,7 @@
 		571EB6DA21B91F47008D4227 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				57C3440E223AA6D4007A0B03 /* Profile */,
 				57B8D8AD223805D4009B8223 /* Inscription */,
 				57D4896021E797B000D6D1C1 /* Personalized Views */,
 				57FE665321CD4D7D00D40854 /* Remboursements */,
@@ -223,6 +226,14 @@
 				575B446D2239109E00FD5C97 /* InscriptionValidationVC.swift */,
 			);
 			path = Inscription;
+			sourceTree = "<group>";
+		};
+		57C3440E223AA6D4007A0B03 /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+				57C3440F223AA6E8007A0B03 /* ProfileVC.swift */,
+			);
+			path = Profile;
 			sourceTree = "<group>";
 		};
 		57D4896021E797B000D6D1C1 /* Personalized Views */ = {
@@ -504,6 +515,7 @@
 				576C5E1121FF12AE0069CFBB /* Polygon.swift in Sources */,
 				573022B521C998B10000A495 /* HomeVC.swift in Sources */,
 				572294FC21C4449200C106BC /* Project.swift in Sources */,
+				57C34410223AA6E8007A0B03 /* ProfileVC.swift in Sources */,
 				57D4896421E797EE00D6D1C1 /* Triangle.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -667,16 +679,18 @@
 			baseConfigurationReference = BBD221E7AC7B39964B46AD53 /* Pods-Euko.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = Y6P264XEGQ;
 				INFOPLIST_FILE = Euko/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = EUKO.Euko;
+				PRODUCT_BUNDLE_IDENTIFIER = test.euko;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
@@ -687,16 +701,18 @@
 			baseConfigurationReference = E964081CFB7F6CA766F74518 /* Pods-Euko.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = Y6P264XEGQ;
 				INFOPLIST_FILE = Euko/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = EUKO.Euko;
+				PRODUCT_BUNDLE_IDENTIFIER = test.euko;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = 1;
 			};

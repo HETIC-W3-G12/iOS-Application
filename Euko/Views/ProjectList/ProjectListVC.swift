@@ -18,7 +18,6 @@ class ProjectListVC: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     @IBOutlet weak var askForMoneyButton: UIButton!
-    @IBOutlet weak var dashboardButton: UIButton!
     
     @IBOutlet weak var nothingLabel: UILabel!
     
@@ -67,7 +66,6 @@ extension ProjectListVC {
         self.tableView.delegate = self
         
         self.askForMoneyButton.roundBorder()
-        self.dashboardButton.roundBorder()
         
         self.shadowView.setSpecificShadow()
         self.shadowView.roundBorder()
