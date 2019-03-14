@@ -18,13 +18,10 @@ class InscriptionVC: UIViewController {
     @IBOutlet weak var shadowButtonView: UIView!
     @IBOutlet weak var backButton: UIButton!
     
-    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
-    @IBOutlet weak var activityView: UIView!
-    
     let dev:String = "https://euko-api-staging-pr-34.herokuapp.com"
     let prod:String = "https://euko-api-staging.herokuapp.com"
     
-    var user: User = User(email: nil)
+    var user: User = User()
     var isKeyBoardShown:Bool = false
 }
 
@@ -33,7 +30,6 @@ extension InscriptionVC {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.stopActivity()
         
         self.confirmationTF.delegate = self
         self.emailTF.delegate = self
@@ -61,6 +57,7 @@ extension InscriptionVC {
 
 //MARK: IBAction
 extension InscriptionVC {
+    
     @IBAction func signInAction(_ sender: Any) {
         guard let mail = self.emailTF.text else {return}
         guard let password = self.passwordTF.text else {return}
@@ -69,7 +66,10 @@ extension InscriptionVC {
         if (mail.count == 0 || password.count == 0 || confirmation.count == 0){
             self.showSingleAlert(title: "Erreur", message: "Veuillez indiquer tous les champs")
         } else if (password == confirmation) {
-            self.signUp(username: mail, password: password)
+            //TODO: Checker si le mec n'a pas deja cree son compte (Appel API)
+            self.user.email = mail
+            self.user.password = password
+            self.nextVC()
         }
         else {
             self.showSingleAlert(title: "Erreur", message: "Le mot de passe et la confirmation ne sont pas identiques")
@@ -87,18 +87,12 @@ extension InscriptionVC {
         self.signInButton.layer.cornerRadius = self.signInButton.frame.height / 2
         self.confirmationTF.keyboardType = .default
         self.passwordTF.keyboardType = .default
-        
-        self.activityView.layer.cornerRadius = 5
     }
     
-    func startAcitiviy(){
-        self.activityIndicator.startAnimating()
-        self.activityView.isHidden = false
-    }
-    
-    func stopActivity(){
-        self.activityView.isHidden = true
-        self.activityIndicator.stopAnimating()
+    func nextVC() {
+        let vc = self.storyboard?.instantiateViewController(withIdentifier: "InscriptionNextVC") as! InscriptionNextVC
+        vc.user = self.user
+        self.navigationController?.pushViewController(vc, animated: true)
     }
 }
 
@@ -129,7 +123,6 @@ extension InscriptionVC: UITextFieldDelegate {
 extension InscriptionVC {
     func signUp(username:String, password:String){
         
-        self.startAcitiviy()
 
         let parameters:Parameters = ["email": username,
                                      "password": password]
@@ -140,13 +133,11 @@ extension InscriptionVC {
             response in
             switch response.result {
             case .success(let value):
-                self.stopActivity()
                 print(value)
                 self.showSingleAlertWithCompletion(title: "Inscription reussie", message: "Connectez-vous pour continuer", handler: { _ in 
                     self.navigationController?.popViewController(animated: true)
                 })
             case .failure(let error):
-                self.stopActivity()
                 self.showSingleAlert(title: "Un probleme est survenu...", message: "Veuillez verifiez votre connexion internet")
                 print(error)
             }

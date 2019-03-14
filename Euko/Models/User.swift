@@ -14,9 +14,32 @@ enum Type {
 }
 
 class User {
-    var email:String?
-    
-    init(email:String?) {
+    var email:String
+    var password:String
+    var firstName:String
+    var lastName:String
+    var birthDate:Date
+    var address:String
+    var postCode:String
+    var city:String
+
+    init(email:String = "", password:String = "", firstName:String = "", lastName:String = "",
+         address:String = "", postCode:String = "", city:String = "") {
         self.email = email
+        self.password = password
+        self.firstName = firstName
+        self.lastName = lastName
+        self.address = address
+        self.postCode = postCode
+        self.city = city
+        self.birthDate = Date()
+    }
+    
+    func setBirthDateFromString(dateString:String){
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd"
+        
+        let date = dateFormatter.date(from: dateString)
+        self.birthDate = date ?? Date()
     }
 }

@@ -76,7 +76,7 @@ extension ProjectVC{
             self.secondInformationLabel.text = String(format: "%.2f€",  totalAmount)
             self.changingLabel.text = "à rembourser"
         } else {
-            self.payButton.isHidden = true
+            self.payButton.isHidden = false
             let margin:Float = self.project.finalPrice - Float(self.project.price)
             self.secondInformationLabel.text = String(format: "%.2f€",  margin)
             self.changingLabel.text = "de bénéfices"

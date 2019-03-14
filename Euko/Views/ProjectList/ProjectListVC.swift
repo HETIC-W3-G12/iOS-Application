@@ -205,6 +205,7 @@ extension ProjectListVC: UITableViewDelegate, UITableViewDataSource{
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let vc = self.storyboard?.instantiateViewController(withIdentifier: "ProjectVC") as! ProjectVC
         vc.project = self.projects[indexPath.row]
+        vc.isLoan = false
         self.navigationController?.pushViewController(vc, animated: true)
     }
 
