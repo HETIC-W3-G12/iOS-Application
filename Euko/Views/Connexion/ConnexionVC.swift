@@ -71,7 +71,7 @@ extension ConnexionVC {
     }
     
     func nextVC(){
-        let vc = self.storyboard?.instantiateViewController(withIdentifier: "projectNavigationController") as! UINavigationController
+        let vc = self.storyboard?.instantiateViewController(withIdentifier: "mainTabBar") as! UITabBarController
         let appdelegate = UIApplication.shared.delegate as! AppDelegate
         appdelegate.window!.rootViewController = vc
     }
