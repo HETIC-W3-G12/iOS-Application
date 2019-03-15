@@ -28,10 +28,8 @@ class ProjectVC: UIViewController {
     @IBAction func backAction(_ sender: Any) {
         self.navigationController?.popViewController(animated: true)
     }
-}
 
-// MARK:- override
-extension ProjectVC {
+    // MARK:- override
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -40,23 +38,19 @@ extension ProjectVC {
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
         self.navigationController?.navigationBar.isHidden = true
+
         self.setupField()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        
         self.navigationController?.navigationBar.isHidden = false
     }
-}
 
-// MARK:- other functions
-extension ProjectVC{
+    // MARK:- other functions
     func setupView(){
         self.buttonShadowView.setSpecificShadow()
-        
         self.descriptionTextView.roundBorder(radius: 5)
         self.buttonShadowView.roundBorder()
         self.payButton.roundBorder()
@@ -65,8 +59,8 @@ extension ProjectVC{
     func setupField(){
         self.secondTitleLabel.text = self.project.title
         self.descriptionTextView.text = self.project.description
-        
         self.titleLabel.text = String(format: "%d€ pendant %d mois", self.project.price, self.project.timeLaps)
+        
         let interests:Float = self.project.interests * 100
         self.firstInformationLabel.text = String(format: "%.2f%%", interests)
 

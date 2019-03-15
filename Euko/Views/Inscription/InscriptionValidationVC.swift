@@ -9,7 +9,6 @@
 import UIKit
 
 class InscriptionValidationVC: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
-
     
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var introductionLabel: UILabel!

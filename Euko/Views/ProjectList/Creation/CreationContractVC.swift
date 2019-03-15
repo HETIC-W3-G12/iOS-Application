@@ -27,10 +27,7 @@ class CreationContractVC: UIViewController, SHFSignatureProtocol {
         self.clearButton.layer.borderWidth = 2
         self.clearButton.layer.borderColor = UIColor(red: 59/255, green: 84/255, blue: 213/255, alpha: 1).cgColor
         self.clearButton.roundBorder()
-        
         self.validateButton.roundBorder()
-        //self.contractContent.text = "Je soussignée Julien Pernot,\nné à Paris le 25 Novembre 1991,\m'engage à régler la somme de\n275 euros, soit deux cent soixante\nquinze euros à Monsieur Yvan\nDupont.\n\nCette somme comprend ma\ndemande de prêt initiale de 250\neuros ainsi que les intérêts de 10%,\nsoient 25 euros.\n\nJe m'engage à régler la somme à \ntravers des mensualités de 33 euros\ndurant les 3 mois consécutifs, à\ncompter du 01 Février 2019."
-        
     }
     
     override func viewWillDisappear(_ animated: Bool) {

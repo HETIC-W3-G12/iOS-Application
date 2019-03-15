@@ -48,18 +48,16 @@ class WalletVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
         self.bottomTableView.delegate = self
         self.bottomTableView.dataSource = self
-        
         self.bottomTableView.reloadData()
+        
         self.topViewContainer.setSpecificShadow()
         self.topViewContainer.roundBorder(radius: 5)
-        
         self.setupTopCell()
     }
     
     func setupTopCell () {
         //TODO: replace the rand with the current amount refounded
         let rand = Float.random(in: 1 ..< 12)
-        
         
         self.topTitleLabel.text = self.myLoan.title
         self.topTotalAmount.text = String(format: "sur %.f€", self.myLoan.finalPrice)

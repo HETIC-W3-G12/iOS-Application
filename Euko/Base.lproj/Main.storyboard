@@ -30,7 +30,7 @@
                                         </constraints>
                                     </view>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Connexion" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="48A-gp-P95">
-                                        <rect key="frame" x="24" y="60" width="110.5" height="29"/>
+                                        <rect key="frame" x="24" y="60" width="339" height="29"/>
                                         <fontDescription key="fontDescription" name="AvenirNext-Bold" family="Avenir Next" pointSize="21"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
@@ -44,6 +44,7 @@
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="48A-gp-P95" secondAttribute="trailing" constant="12" id="4gd-eB-nhm"/>
                                     <constraint firstItem="rNx-Ok-qNq" firstAttribute="leading" secondItem="48A-gp-P95" secondAttribute="leading" id="K8S-sw-3YM"/>
                                     <constraint firstItem="48A-gp-P95" firstAttribute="centerY" secondItem="3j2-4F-jKH" secondAttribute="centerY" constant="-20" id="Koy-vN-g1z"/>
                                     <constraint firstItem="rNx-Ok-qNq" firstAttribute="top" secondItem="FRV-lv-yYv" secondAttribute="bottom" constant="16" id="Qpt-CA-NTu"/>
@@ -1250,7 +1251,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="160"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Votre emprunts" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="66K-Ej-gRF">
-                                        <rect key="frame" x="24" y="88" width="158" height="29"/>
+                                        <rect key="frame" x="24" y="88" width="343" height="29"/>
                                         <fontDescription key="fontDescription" name="AvenirNext-Bold" family="Avenir Next" pointSize="21"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
@@ -1287,6 +1288,7 @@
                                     <constraint firstItem="FCd-S1-G90" firstAttribute="leading" secondItem="iWH-AD-StH" secondAttribute="leading" id="U0O-cd-L8G"/>
                                     <constraint firstItem="Zr3-pY-OGu" firstAttribute="leading" secondItem="iWH-AD-StH" secondAttribute="leading" constant="12" id="UXd-o6-k1j"/>
                                     <constraint firstAttribute="bottom" secondItem="FCd-S1-G90" secondAttribute="bottom" constant="36" id="arX-Vz-uVw"/>
+                                    <constraint firstAttribute="trailing" secondItem="66K-Ej-gRF" secondAttribute="trailing" constant="8" id="vId-hr-zFj"/>
                                 </constraints>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="color" keyPath="topColor">
@@ -1906,7 +1908,7 @@
         <!--View Controller-->
         <scene sceneID="2qr-fB-lyJ">
             <objects>
-                <viewController id="lcn-CD-Ofv" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="recap" useStoryboardIdentifierAsRestorationIdentifier="YES" id="lcn-CD-Ofv" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="gfJ-Ml-K3B">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

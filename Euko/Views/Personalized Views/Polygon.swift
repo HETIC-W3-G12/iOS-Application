@@ -62,38 +62,23 @@ import UIKit
     }
     
     override func draw(_ rect: CGRect) {
-        
         let aPath = UIBezierPath()
         
         aPath.move(to: CGPoint(x: self.secondPointX * rect.width, y: self.secondPointY * rect.height))
-        
         aPath.addLine(to: CGPoint(x: self.firstPointX * rect.width, y: self.firstPointY * rect.height))
         aPath.addLine(to: CGPoint(x: self.thirdPointX * rect.width, y: self.thirdPointY * rect.height))
         aPath.addLine(to: CGPoint(x: self.fourthPointX * rect.width, y: self.fourthPointY * rect.height))
-        
         aPath.close()
         aPath.addClip()
         
         self.backgroundColor = .clear
-        //aPath.fill()
-        
-        /////////
-        
         let context = UIGraphicsGetCurrentContext()!
         let colors = [topColor.cgColor, bottomColor.cgColor]
-        
-        // 3
         let colorSpace = CGColorSpaceCreateDeviceRGB()
-        
-        // 4
         let colorLocations: [CGFloat] = [0.0, 1.0]
-        
-        // 5
         let gradient = CGGradient(colorsSpace: colorSpace,
                                   colors: colors as CFArray,
                                   locations: colorLocations)!
-        
-        // 6
         let startPoint = CGPoint(x: self.gradientStartPointX * rect.width, y: self.gradientStartPointY * rect.height)
         let endPoint = CGPoint(x: self.gradientEndPointX * rect.width, y: self.gradientEndPointY * rect.height)
         context.drawLinearGradient(gradient,

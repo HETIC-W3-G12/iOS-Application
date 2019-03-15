@@ -23,9 +23,7 @@ class ProjectCell: UITableViewCell {
         super.awakeFromNib()
         
         self.triangleLabel.transform = CGAffineTransform(rotationAngle: .pi/4)
-        
         self.insideView.layer.cornerRadius = 0
-        
         self.shadowView.layer.cornerRadius = 0
         self.shadowView.layer.shadowColor = UIColor.black.cgColor
         self.shadowView.layer.shadowOpacity = 0.2
@@ -36,7 +34,6 @@ class ProjectCell: UITableViewCell {
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
 
-        // Configure the view for the selected state
+        //TODO: Configure the view for the selected state
     }
-
 }

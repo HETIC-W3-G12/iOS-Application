@@ -28,8 +28,8 @@ class ProfileVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     @IBOutlet weak var bottomTableView: UITableView!
     @IBOutlet weak var bottomTableViewHeightConstraint: NSLayoutConstraint!
     @IBOutlet weak var topOnGoingTrailingConstraint: NSLayoutConstraint!
+
     // Variables
-    
     let myLoan:Project = Project(id: 0, title: "Vélo", description: "J'ai besoin d'un vélo pour aller au travail tous les jours sans avoir a prendre les transports en commun ni m'acheter une voiture.", state: 1, price: 350, timeLaps: 12, interests: 0.1, finalPrice: 385, date: Date(timeIntervalSince1970: 16))
     
     let myFinancements:[Project] = [Project(id: 0, title: "Balenciaga", description: "J'en ai vraiment trop besoin !", state: 1, price: 300, timeLaps: 12, interests: 0.1, finalPrice: 330, date: Date(timeIntervalSince1970: 13)),
@@ -39,7 +39,7 @@ class ProfileVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
                               Project(id: 0, title: "Projet de test 5", description: "Description de test 2", state: 1, price: 100, timeLaps: 12, interests: 0.1, finalPrice: 200, date: Date(timeIntervalSince1970: 15)),
                               Project(id: 0, title: "Projet de test 6", description: "Description de test 3", state: 1, price: 100, timeLaps: 12, interests: 0.1, finalPrice: 510, date: Date(timeIntervalSince1970: 15))]
     
-// Mark:- Default
+    // Mark:- Default
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.navigationController?.navigationBar.isHidden = true
@@ -60,7 +60,6 @@ class ProfileVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
             self.setupHistory()
             self.profileScrollView.isHidden = false
         }
-        
         self.bottomTableView.delegate = self
         self.bottomTableView.dataSource = self
     }
@@ -74,14 +73,12 @@ class ProfileVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
         self.bottomTableView.reloadData()
         self.topViewContainer.setSpecificShadow()
         self.topViewContainer.roundBorder(radius: 5)
-        
         self.setupTopCell()
     }
     
-// Mark:- History
-    
+    // Mark:- History
     func setupTopCell () {
-        // replace the rand with the current amount refounded
+        //TODO: replace the rand with the current amount refounded
         let rand = Float.random(in: 1 ..< 12)
 
         
@@ -160,7 +157,5 @@ class ProfileVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
         vc.isLoan = false
         self.navigationController?.pushViewController(vc, animated: true)
     }
-
-    
 // Mark:- Profile
 }
