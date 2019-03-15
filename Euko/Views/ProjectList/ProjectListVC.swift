@@ -18,7 +18,6 @@ class ProjectListVC: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     @IBOutlet weak var askForMoneyButton: UIButton!
-    @IBOutlet weak var dashboardButton: UIButton!
     
     @IBOutlet weak var nothingLabel: UILabel!
     
@@ -26,19 +25,7 @@ class ProjectListVC: UIViewController {
     let prod:String = "https://euko-api-staging.herokuapp.com"
     
     var projects:[Project] = []
-    
-    /*
-    var projects:[Project] = [Project(id: 0, title: "Velo", description: "Je n'ai pas les moyens pour une voiture c'est pourquoi j'ai besoin d'un velo pour aller au travail et eviter les retards des transports en commun.",
-                                      state: 1, price: 200, timeLaps: 3,
-                                      interests: 0.17, finalPrice: (200 + (200 * (0.17/12) * 3)), date: Date(timeIntervalSince1970: 13)),
-                              Project(id: 0, title: "Four combiné", description: "J'aimerai faire des plats dignes de ce noms pour mes enfants.",
-                                      state: 1, price: 350, timeLaps: 7,
-                                      interests: 0.17, finalPrice: (350 + (350 * (0.17/12) * 7)), date: Date(timeIntervalSince1970: 14)),
-                              Project(id: 0, title: "Nouvelles Balenciaga", description: "Elles coutent chères et je veux garder mes amies, donc en achetant ces chaussures j'espere qu'elles me continuerons de me consieder. :)",
-                                      state: 1, price: 630, timeLaps: 9,
-                                      interests: 0.17, finalPrice: (630 + (630 * (0.17/12) * 9)), date: Date(timeIntervalSince1970: 15))]
- */
-    
+        
     func turnAvctivityOn() {
         self.activityIndicator.isHidden = false
         self.activityIndicator.startAnimating()
@@ -61,11 +48,6 @@ class ProjectListVC: UIViewController {
             self.nothingLabel.isHidden = false
         }
     }
-    
-    @IBAction func goToHomeAction(_ sender: Any) {
-        let vc = self.storyboard?.instantiateViewController(withIdentifier: "HomeVC") as! HomeVC
-        self.navigationController?.pushViewController(vc, animated: true)
-    }
 }
 
 //MARK override
@@ -79,13 +61,10 @@ extension ProjectListVC {
         self.tableView.delegate = self
         
         self.askForMoneyButton.roundBorder()
-        self.dashboardButton.roundBorder()
         
         self.shadowView.setSpecificShadow()
         self.shadowView.roundBorder()
         
-        let HomeButton = UIBarButtonItem(title: "Menu", style: UIBarButtonItem.Style.done, target: self, action: #selector(self.homeAction(_:)))
-        self.navigationItem.leftBarButtonItem = HomeButton
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -103,11 +82,6 @@ extension ProjectListVC {
         self.navigationController?.navigationBar.isHidden = false
     }
     
-    @objc func homeAction(_ sender:UIBarButtonItem!)
-    {
-        let vc = self.storyboard?.instantiateViewController(withIdentifier: "HomeVC") as! HomeVC
-        self.navigationController?.pushViewController(vc, animated: true)
-    }
 }
 
 
