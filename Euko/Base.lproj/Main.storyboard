@@ -1269,7 +1269,7 @@
                                         </constraints>
                                         <segments>
                                             <segment title="Profil"/>
-                                            <segment title="History"/>
+                                            <segment title="Historique"/>
                                         </segments>
                                         <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <connections>
