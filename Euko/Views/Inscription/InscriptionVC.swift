@@ -9,7 +9,7 @@
 import UIKit
 import Alamofire
 
-class InscriptionVC: UIViewController {
+class InscriptionVC: UIViewController, UITextFieldDelegate {
 
     @IBOutlet weak var passwordTF: UITextField!
     @IBOutlet weak var emailTF: UITextField!
@@ -18,15 +18,13 @@ class InscriptionVC: UIViewController {
     @IBOutlet weak var shadowButtonView: UIView!
     @IBOutlet weak var backButton: UIButton!
     
-    let dev:String = "https://euko-api-staging-pr-34.herokuapp.com"
-    let prod:String = "https://euko-api-staging.herokuapp.com"
+    static let dev:String = "https://euko-api-staging-pr-34.herokuapp.com"
+    static let prod:String = "https://euko-api-staging.herokuapp.com"
     
     var user: User = User()
     var isKeyBoardShown:Bool = false
-}
-
-//MARK: Override
-extension InscriptionVC {
+    
+    //MARK:- Override
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -36,9 +34,8 @@ extension InscriptionVC {
         self.passwordTF.delegate = self
         
         self.title = "Inscription"
-        self.setupView()
         self.view.addDismisKeyBoardOnTouch()
-        
+        self.setupView()
         
         self.shadowButtonView.setSpecificShadow()
         self.shadowButtonView.roundBorder()
@@ -53,11 +50,8 @@ extension InscriptionVC {
         super.viewWillDisappear(animated)
         self.navigationController?.navigationBar.isHidden = false
     }
-}
-
-//MARK: IBAction
-extension InscriptionVC {
     
+    //MARK:- IBAction
     @IBAction func signInAction(_ sender: Any) {
         guard let mail = self.emailTF.text else {return}
         guard let password = self.passwordTF.text else {return}
@@ -79,10 +73,8 @@ extension InscriptionVC {
     @IBAction func backAction(_ sender: Any) {
         self.navigationController?.popViewController(animated: true)
     }
-}
 
-//MARK: Other functions
-extension InscriptionVC {
+    //MARK:- Other functions
     func setupView() {
         self.signInButton.layer.cornerRadius = self.signInButton.frame.height / 2
         self.confirmationTF.keyboardType = .default
@@ -94,10 +86,8 @@ extension InscriptionVC {
         vc.user = self.user
         self.navigationController?.pushViewController(vc, animated: true)
     }
-}
 
-//MARK: Managing keyboard Event
-extension InscriptionVC: UITextFieldDelegate {
+    //MARK:- Managing keyboard Event
     @IBAction func confirmationStartEditing(_ sender: Any) {
         self.adjustingHeight(show: true)
     }
@@ -117,15 +107,10 @@ extension InscriptionVC: UITextFieldDelegate {
     func hidekeyboard(){
         self.view.endEditing(true)
     }
-}
 
-//MARK: Server Bridge
-extension InscriptionVC {
+    //MARK:- Server Bridge
     func signUp(username:String, password:String){
-        
-
-        let parameters:Parameters = ["email": username,
-                                     "password": password]
+        let parameters:Parameters = ["email": username, "password": password]
         
         Alamofire.request(self.dev + "/users/sign_up",
                           method: .post,

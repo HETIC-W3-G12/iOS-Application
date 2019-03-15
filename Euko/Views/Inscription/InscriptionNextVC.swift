@@ -55,6 +55,7 @@ class InscriptionNextVC: UIViewController {
             
             return true
         } else {
+            //TODO: Handle Errors
             return false
         }
     }
@@ -72,5 +73,4 @@ class InscriptionNextVC: UIViewController {
             //TODO: Ici un ou plusieurs champs sont mauvais
         }
     }
-    
 }
