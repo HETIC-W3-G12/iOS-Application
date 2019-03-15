@@ -124,7 +124,7 @@ extension UserDefaults {
     }
     
     static func getLoan() -> Bool! {
-        return UserDefaults.standard.value(forKey: LOAN_FLAG) as! Bool
+        return (UserDefaults.standard.value(forKey: LOAN_FLAG) as! Bool)
     }
 }
 
