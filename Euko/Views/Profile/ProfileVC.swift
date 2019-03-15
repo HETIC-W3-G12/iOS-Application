@@ -14,9 +14,20 @@ class ProfileVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     @IBOutlet weak var viewSelector: UISegmentedControl!
     @IBOutlet weak var polygonTitleLabel: UILabel!
     // Profile
+    @IBOutlet weak var saveButton: UIButton!
+    @IBOutlet weak var deleteButton: UIButton!
+    @IBOutlet weak var downloadDataButton: UIButton!
+    @IBOutlet weak var emailTF: UITextField!
+    @IBOutlet weak var passwordTF: UITextField!
+    @IBOutlet weak var birthDateTF: UITextField!
+    @IBOutlet weak var addressTF: UITextField!
+    @IBOutlet weak var cityTF: UITextField!
+    @IBOutlet weak var nameLabel: UILabel!
+    @IBOutlet weak var profileView: UIView!
+    @IBOutlet weak var shadowView: UIView!
     
     // View History
-    @IBOutlet weak var profileScrollView: UIScrollView!
+    @IBOutlet weak var historyScrollView: UIScrollView!
     @IBOutlet weak var topViewContainer: UIView!
     @IBOutlet weak var topTitleLabel: UILabel!
     @IBOutlet weak var topSeeMoreButton: UIButton!
@@ -55,13 +66,20 @@ class ProfileVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
         
         if (self.viewSelector.selectedSegmentIndex == 0){
             self.setupProfile()
-            self.profileScrollView.isHidden = true
+            self.historyScrollView.isHidden = true
+            self.profileView.isHidden = false
         } else {
             self.setupHistory()
-            self.profileScrollView.isHidden = false
+            self.historyScrollView.isHidden = false
+            self.profileView.isHidden = true
         }
         self.bottomTableView.delegate = self
         self.bottomTableView.dataSource = self
+        
+        self.profileView.addDismisKeyBoardOnTouch()
+        self.saveButton.roundBorder()
+        self.shadowView.roundBorder()
+        self.shadowView.setSpecificShadow()
     }
     
     func setupProfile() {
@@ -76,7 +94,7 @@ class ProfileVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
         self.setupTopCell()
     }
     
-    // Mark:- History
+    //Mark:- History
     func setupTopCell () {
         //TODO: replace the rand with the current amount refounded
         let rand = Float.random(in: 1 ..< 12)
@@ -107,10 +125,12 @@ class ProfileVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     @IBAction func switchView(_ sender: Any) {
         if (self.viewSelector.selectedSegmentIndex == 0){
             self.setupProfile()
-            self.profileScrollView.isHidden = true
+            self.historyScrollView.isHidden = true
+            self.profileView.isHidden = false
         } else if (self.viewSelector.selectedSegmentIndex == 1){
             self.setupHistory()
-            self.profileScrollView.isHidden = false
+            self.historyScrollView.isHidden = false
+            self.profileView.isHidden = true
         }
     }
     
@@ -157,5 +177,17 @@ class ProfileVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
         vc.isLoan = false
         self.navigationController?.pushViewController(vc, animated: true)
     }
-// Mark:- Profile
+    
+    //Mark:- Profile
+    @IBAction func saveAction(_ sender: Any) {
+        
+    }
+    
+    @IBAction func deleteAction(_ sender: Any) {
+        
+    }
+    
+    @IBAction func downloadDataAction(_ sender: Any) {
+        
+    }
 }
