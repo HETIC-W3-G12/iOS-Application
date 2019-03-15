@@ -1,21 +1,15 @@
 //
-//  ProfileVC.swift
+//  WalletVC.swift
 //  Euko
 //
-//  Created by Victor Lucas on 14/03/2019.
+//  Created by Victor Lucas on 15/03/2019.
 //  Copyright © 2019 Victor Lucas. All rights reserved.
 //
 
 import UIKit
 
-class ProfileVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
-    
-    // Default
-    @IBOutlet weak var viewSelector: UISegmentedControl!
-    @IBOutlet weak var polygonTitleLabel: UILabel!
-    // Profile
-    
-    // View History
+class WalletVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
+
     @IBOutlet weak var profileScrollView: UIScrollView!
     @IBOutlet weak var topViewContainer: UIView!
     @IBOutlet weak var topTitleLabel: UILabel!
@@ -28,18 +22,16 @@ class ProfileVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     @IBOutlet weak var bottomTableView: UITableView!
     @IBOutlet weak var bottomTableViewHeightConstraint: NSLayoutConstraint!
     @IBOutlet weak var topOnGoingTrailingConstraint: NSLayoutConstraint!
-    // Variables
-    
+
     let myLoan:Project = Project(id: 0, title: "Vélo", description: "J'ai besoin d'un vélo pour aller au travail tous les jours sans avoir a prendre les transports en commun ni m'acheter une voiture.", state: 1, price: 350, timeLaps: 12, interests: 0.1, finalPrice: 385, date: Date(timeIntervalSince1970: 16))
     
     let myFinancements:[Project] = [Project(id: 0, title: "Balenciaga", description: "J'en ai vraiment trop besoin !", state: 1, price: 300, timeLaps: 12, interests: 0.1, finalPrice: 330, date: Date(timeIntervalSince1970: 13)),
-                              Project(id: 0, title: "Projet de test 2", description: "Description de test 2", state: 1, price: 100, timeLaps: 12, interests: 0.1, finalPrice: 110, date: Date(timeIntervalSince1970: 15)),
-                              Project(id: 0, title: "Projet de test 3", description: "Description de test 2", state: 1, price: 100, timeLaps: 12, interests: 0.1, finalPrice: 760, date: Date(timeIntervalSince1970: 15)),
-                              Project(id: 0, title: "Projet de test 4", description: "Description de test 2", state: 1, price: 100, timeLaps: 12, interests: 0.1, finalPrice: 480, date: Date(timeIntervalSince1970: 15)),
-                              Project(id: 0, title: "Projet de test 5", description: "Description de test 2", state: 1, price: 100, timeLaps: 12, interests: 0.1, finalPrice: 200, date: Date(timeIntervalSince1970: 15)),
-                              Project(id: 0, title: "Projet de test 6", description: "Description de test 3", state: 1, price: 100, timeLaps: 12, interests: 0.1, finalPrice: 510, date: Date(timeIntervalSince1970: 15))]
-    
-// Mark:- Default
+                                    Project(id: 0, title: "Projet de test 2", description: "Description de test 2", state: 1, price: 100, timeLaps: 12, interests: 0.1, finalPrice: 110, date: Date(timeIntervalSince1970: 15)),
+                                    Project(id: 0, title: "Projet de test 3", description: "Description de test 2", state: 1, price: 100, timeLaps: 12, interests: 0.1, finalPrice: 760, date: Date(timeIntervalSince1970: 15)),
+                                    Project(id: 0, title: "Projet de test 4", description: "Description de test 2", state: 1, price: 100, timeLaps: 12, interests: 0.1, finalPrice: 480, date: Date(timeIntervalSince1970: 15)),
+                                    Project(id: 0, title: "Projet de test 5", description: "Description de test 2", state: 1, price: 100, timeLaps: 12, interests: 0.1, finalPrice: 200, date: Date(timeIntervalSince1970: 15)),
+                                    Project(id: 0, title: "Projet de test 6", description: "Description de test 3", state: 1, price: 100, timeLaps: 12, interests: 0.1, finalPrice: 510, date: Date(timeIntervalSince1970: 15))]
+
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.navigationController?.navigationBar.isHidden = true
@@ -49,28 +41,14 @@ class ProfileVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
         super.viewWillDisappear(animated)
         self.navigationController?.navigationBar.isHidden = false
     }
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        if (self.viewSelector.selectedSegmentIndex == 0){
-            self.setupProfile()
-            self.profileScrollView.isHidden = true
-        } else {
-            self.setupHistory()
-            self.profileScrollView.isHidden = false
-        }
-        
+
         self.bottomTableView.delegate = self
         self.bottomTableView.dataSource = self
-    }
-    
-    func setupProfile() {
-        self.polygonTitleLabel.text = "Profil"
-    }
-    
-    func setupHistory() {
-        self.polygonTitleLabel.text = "Votre emprunt en cours"
+        
         self.bottomTableView.reloadData()
         self.topViewContainer.setSpecificShadow()
         self.topViewContainer.roundBorder(radius: 5)
@@ -78,12 +56,10 @@ class ProfileVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
         self.setupTopCell()
     }
     
-// Mark:- History
-    
     func setupTopCell () {
-        // replace the rand with the current amount refounded
+        //TODO: replace the rand with the current amount refounded
         let rand = Float.random(in: 1 ..< 12)
-
+        
         
         self.topTitleLabel.text = self.myLoan.title
         self.topTotalAmount.text = String(format: "sur %.f€", self.myLoan.finalPrice)
@@ -101,20 +77,11 @@ class ProfileVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     }
     
     @IBAction func seeMore(_ sender: Any) {
+        //TODO: Will load the contract
         let vc = self.storyboard?.instantiateViewController(withIdentifier: "ProjectVC") as! ProjectVC
         vc.project = self.myLoan
         vc.isLoan = true
         self.navigationController?.pushViewController(vc, animated: true)
-    }
-    
-    @IBAction func switchView(_ sender: Any) {
-        if (self.viewSelector.selectedSegmentIndex == 0){
-            self.setupProfile()
-            self.profileScrollView.isHidden = true
-        } else if (self.viewSelector.selectedSegmentIndex == 1){
-            self.setupHistory()
-            self.profileScrollView.isHidden = false
-        }
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -160,7 +127,4 @@ class ProfileVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
         vc.isLoan = false
         self.navigationController?.pushViewController(vc, animated: true)
     }
-
-    
-// Mark:- Profile
 }

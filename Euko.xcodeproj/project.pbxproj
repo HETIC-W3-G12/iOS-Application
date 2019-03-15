@@ -28,6 +28,7 @@
 		57A879AD223A6DE400BC2A79 /* SHFSignatureView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57A879AC223A6DE400BC2A79 /* SHFSignatureView.swift */; };
 		57B8D8AF22386214009B8223 /* InscriptionNextVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57B8D8AE22386214009B8223 /* InscriptionNextVC.swift */; };
 		57C34410223AA6E8007A0B03 /* ProfileVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57C3440F223AA6E8007A0B03 /* ProfileVC.swift */; };
+		57CC251B223BBB6900124166 /* WalletVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57CC251A223BBB6900124166 /* WalletVC.swift */; };
 		57D4896221E797CF00D6D1C1 /* GradientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57D4896121E797CF00D6D1C1 /* GradientView.swift */; };
 		57D4896421E797EE00D6D1C1 /* Triangle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57D4896321E797EE00D6D1C1 /* Triangle.swift */; };
 		57E46A3521C4785800FB7236 /* ProjectVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57E46A3421C4785800FB7236 /* ProjectVC.swift */; };
@@ -73,6 +74,7 @@
 		57A879AC223A6DE400BC2A79 /* SHFSignatureView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SHFSignatureView.swift; sourceTree = "<group>"; };
 		57B8D8AE22386214009B8223 /* InscriptionNextVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InscriptionNextVC.swift; sourceTree = "<group>"; };
 		57C3440F223AA6E8007A0B03 /* ProfileVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileVC.swift; sourceTree = "<group>"; };
+		57CC251A223BBB6900124166 /* WalletVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletVC.swift; sourceTree = "<group>"; };
 		57D4896121E797CF00D6D1C1 /* GradientView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradientView.swift; sourceTree = "<group>"; };
 		57D4896321E797EE00D6D1C1 /* Triangle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Triangle.swift; sourceTree = "<group>"; };
 		57E46A3421C4785800FB7236 /* ProjectVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectVC.swift; sourceTree = "<group>"; };
@@ -150,12 +152,13 @@
 		571EB6DA21B91F47008D4227 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				57C3440E223AA6D4007A0B03 /* Profile */,
-				57B8D8AD223805D4009B8223 /* Inscription */,
 				57D4896021E797B000D6D1C1 /* Personalized Views */,
-				57E46A3321C4783400FB7236 /* Project */,
-				572294F621C3DF6900C106BC /* ProjectList */,
 				5776C18C21BA6C7C00E51C59 /* Connexion */,
+				57B8D8AD223805D4009B8223 /* Inscription */,
+				572294F621C3DF6900C106BC /* ProjectList */,
+				57E46A3321C4783400FB7236 /* Project */,
+				57C3440E223AA6D4007A0B03 /* Profile */,
+				57CC2519223BBB2700124166 /* Wallet */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -173,6 +176,7 @@
 		572294F621C3DF6900C106BC /* ProjectList */ = {
 			isa = PBXGroup;
 			children = (
+				57A879A8223A6D3400BC2A79 /* Creation */,
 				572294F721C3DFA000C106BC /* ProjectListVC.swift */,
 				572294F921C3E04700C106BC /* ProjectCell.swift */,
 			);
@@ -223,6 +227,14 @@
 			path = Profile;
 			sourceTree = "<group>";
 		};
+		57CC2519223BBB2700124166 /* Wallet */ = {
+			isa = PBXGroup;
+			children = (
+				57CC251A223BBB6900124166 /* WalletVC.swift */,
+			);
+			path = Wallet;
+			sourceTree = "<group>";
+		};
 		57D4896021E797B000D6D1C1 /* Personalized Views */ = {
 			isa = PBXGroup;
 			children = (
@@ -236,7 +248,6 @@
 		57E46A3321C4783400FB7236 /* Project */ = {
 			isa = PBXGroup;
 			children = (
-				57A879A8223A6D3400BC2A79 /* Creation */,
 				57E46A3421C4785800FB7236 /* ProjectVC.swift */,
 			);
 			path = Project;
@@ -483,6 +494,7 @@
 				571EB6DD21B91F70008D4227 /* User.swift in Sources */,
 				572294FA21C3E04700C106BC /* ProjectCell.swift in Sources */,
 				5713B01D219ACAB0001D9324 /* AppDelegate.swift in Sources */,
+				57CC251B223BBB6900124166 /* WalletVC.swift in Sources */,
 				572294F821C3DFA000C106BC /* ProjectListVC.swift in Sources */,
 				5776C18E21BA6C9A00E51C59 /* ConnexionVC.swift in Sources */,
 				57B8D8AF22386214009B8223 /* InscriptionNextVC.swift in Sources */,
