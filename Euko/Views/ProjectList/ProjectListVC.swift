@@ -18,8 +18,8 @@ class ProjectListVC: UIViewController {
     @IBOutlet weak var askForMoneyButton: UIButton!
     @IBOutlet weak var nothingLabel: UILabel!
     
-    static let dev:String = "https://euko-api-staging-pr-34.herokuapp.com"
-    static let prod:String = "https://euko-api-staging.herokuapp.com"
+    let dev:String = "https://euko-api-staging-pr-34.herokuapp.com"
+    let prod:String = "https://euko-api-staging.herokuapp.com"
     
     var projects:[Project] = []
         

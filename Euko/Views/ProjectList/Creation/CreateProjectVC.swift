@@ -27,8 +27,8 @@ class CreateProjectVC: UIViewController {
     
     @IBOutlet weak var keyboardConstraint: NSLayoutConstraint!
     
-    static let dev:String = "https://euko-api-staging-pr-34.herokuapp.com"
-    static let prod:String = "https://euko-api-staging.herokuapp.com"
+    let dev:String = "https://euko-api-staging-pr-34.herokuapp.com"
+    let prod:String = "https://euko-api-staging.herokuapp.com"
     
     var keyboardHeight:CGFloat = 200
     var keyboardAnimation:Float = 0

@@ -18,8 +18,8 @@ class InscriptionVC: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var shadowButtonView: UIView!
     @IBOutlet weak var backButton: UIButton!
     
-    static let dev:String = "https://euko-api-staging-pr-34.herokuapp.com"
-    static let prod:String = "https://euko-api-staging.herokuapp.com"
+    let dev:String = "https://euko-api-staging-pr-34.herokuapp.com"
+    let prod:String = "https://euko-api-staging.herokuapp.com"
     
     var user: User = User()
     var isKeyBoardShown:Bool = false

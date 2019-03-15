@@ -22,8 +22,8 @@ class ConnexionVC: UIViewController {
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     
     
-    static let dev:String = "https://euko-api-staging-pr-34.herokuapp.com"
-    static let prod:String = "https://euko-api-staging.herokuapp.com"
+    let dev:String = "https://euko-api-staging-pr-34.herokuapp.com"
+    let prod:String = "https://euko-api-staging.herokuapp.com"
 
     //MARK:- override
     override func viewDidLoad() {
