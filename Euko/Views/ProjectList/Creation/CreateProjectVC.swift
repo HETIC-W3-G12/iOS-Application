@@ -27,28 +27,23 @@ class CreateProjectVC: UIViewController {
     
     @IBOutlet weak var keyboardConstraint: NSLayoutConstraint!
     
-    let dev:String = "https://euko-api-staging-pr-34.herokuapp.com"
-    let prod:String = "https://euko-api-staging.herokuapp.com"
+    static let dev:String = "https://euko-api-staging-pr-34.herokuapp.com"
+    static let prod:String = "https://euko-api-staging.herokuapp.com"
     
     var keyboardHeight:CGFloat = 200
     var keyboardAnimation:Float = 0
-}
 
-// MARK:- overrides
-extension CreateProjectVC {
+    //MARK:- overrides
     override func viewDidLoad() {
         super.viewDidLoad()
         
         self.view.addDismisKeyBoardOnTouch()
         
         self.descriptionTextView.delegate = self
-
         self.shadowButton.setSpecificShadow()
-
         self.descriptionTextView.roundBorder(radius: 3)
         self.shadowButton.roundBorder()
         self.validateButton.roundBorder()
-        
         self.setInterests()
         
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
@@ -70,10 +65,8 @@ extension CreateProjectVC {
         super.viewWillAppear(animated)
         self.navigationController?.navigationBar.isHidden = true
     }
-}
 
-// MARK:- Actions
-extension CreateProjectVC {
+    // MARK:- Actions
     @IBAction func priceChanged(_ sender: Any) {
         self.priceLabel.text = String(format: "%.f euros", ceil(self.priceSlider.value) * 10)
         self.setInterests()
@@ -92,6 +85,8 @@ extension CreateProjectVC {
         let vc = self.storyboard?.instantiateViewController(withIdentifier: "CreationContractVC") as! CreationContractVC
         
         self.navigationController?.pushViewController(vc, animated: true)
+        
+        //TODO: Activate API Call
 /*
         let title = self.titletextField.text ?? ""
         let desc = self.descriptionTextView.text ?? ""
@@ -119,10 +114,8 @@ extension CreateProjectVC {
     @IBAction func startEditTitle(_ sender: Any) {
         self.titletextField.backgroundColor = UIColor.white
     }
-}
-
-// MARK:- Functions
-extension CreateProjectVC {
+    
+    // MARK:- Functions
     func showBadParametersAlert(){
         self.showSingleAlert(title: "Certains champs sont incorrects",
                              message: "Le prix doit être compris entre 100 et 760€.\n\nLa durée de l'emprunt entre 1 et 12 mois.")
