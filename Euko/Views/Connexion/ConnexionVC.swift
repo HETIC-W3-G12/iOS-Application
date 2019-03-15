@@ -22,12 +22,10 @@ class ConnexionVC: UIViewController {
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     
     
-    let dev:String = "https://euko-api-staging-pr-34.herokuapp.com"
-    let prod:String = "https://euko-api-staging.herokuapp.com"
-}
+    static let dev:String = "https://euko-api-staging-pr-34.herokuapp.com"
+    static let prod:String = "https://euko-api-staging.herokuapp.com"
 
-//MARK: override
-extension ConnexionVC {
+    //MARK:- override
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -40,26 +38,23 @@ extension ConnexionVC {
         
         self.navigationController?.navigationBar.isHidden = true
     }
-}
 
-//MARK: IBAction
-extension ConnexionVC {
+    //MARK:- IBAction
     @IBAction func connectAction(_ sender: Any) {
         
         let username = self.emailTF.text ?? ""
         let password = self.passwordTF.text ?? ""
 
         if (username == "" || password == ""){
-            // TODO: Error on textfields
+            //TODO: Error on textfields
         } else {
+            //TODO: Handle connection
             //self.connect(username: username, password: password)
             self.nextVC()
         }
     }
-}
 
-//MARK: Other functions
-extension ConnexionVC {
+    //MARK:- Other functions
     func setupView(){
         self.connexionButton.roundBorder()
         
@@ -75,10 +70,8 @@ extension ConnexionVC {
         let appdelegate = UIApplication.shared.delegate as! AppDelegate
         appdelegate.window!.rootViewController = vc
     }
-}
-
-//MARK: Server Bridge
-extension ConnexionVC {
+    
+    //MARK:- Server Bridge
     func connect(username:String, password:String){
         
         self.activityView.isHidden = false
