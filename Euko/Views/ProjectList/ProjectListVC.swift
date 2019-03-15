@@ -10,19 +10,16 @@ import UIKit
 import Alamofire
 import SwiftyJSON
 
-
-
 class ProjectListVC: UIViewController {
 
     @IBOutlet weak var shadowView: UIView!
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     @IBOutlet weak var askForMoneyButton: UIButton!
-    
     @IBOutlet weak var nothingLabel: UILabel!
     
-    let dev:String = "https://euko-api-staging-pr-34.herokuapp.com"
-    let prod:String = "https://euko-api-staging.herokuapp.com"
+    static let dev:String = "https://euko-api-staging-pr-34.herokuapp.com"
+    static let prod:String = "https://euko-api-staging.herokuapp.com"
     
     var projects:[Project] = []
         
@@ -48,20 +45,16 @@ class ProjectListVC: UIViewController {
             self.nothingLabel.isHidden = false
         }
     }
-}
 
-//MARK override
-extension ProjectListVC {
+    //MARK override
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         self.navigationController?.navigationBar.isHidden = true
 
         self.tableView.dataSource = self
         self.tableView.delegate = self
         
         self.askForMoneyButton.roundBorder()
-        
         self.shadowView.setSpecificShadow()
         self.shadowView.roundBorder()
         
@@ -69,7 +62,6 @@ extension ProjectListVC {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-
         self.navigationController?.navigationBar.isHidden = true
 
         self.setProjects()
@@ -78,10 +70,8 @@ extension ProjectListVC {
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        
         self.navigationController?.navigationBar.isHidden = false
     }
-    
 }
 
 
