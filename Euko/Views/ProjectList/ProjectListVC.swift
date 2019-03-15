@@ -48,11 +48,6 @@ class ProjectListVC: UIViewController {
             self.nothingLabel.isHidden = false
         }
     }
-    
-    @IBAction func goToHomeAction(_ sender: Any) {
-        let vc = self.storyboard?.instantiateViewController(withIdentifier: "HomeVC") as! HomeVC
-        self.navigationController?.pushViewController(vc, animated: true)
-    }
 }
 
 //MARK override
@@ -70,8 +65,6 @@ extension ProjectListVC {
         self.shadowView.setSpecificShadow()
         self.shadowView.roundBorder()
         
-        let HomeButton = UIBarButtonItem(title: "Menu", style: UIBarButtonItem.Style.done, target: self, action: #selector(self.homeAction(_:)))
-        self.navigationItem.leftBarButtonItem = HomeButton
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -89,11 +82,6 @@ extension ProjectListVC {
         self.navigationController?.navigationBar.isHidden = false
     }
     
-    @objc func homeAction(_ sender:UIBarButtonItem!)
-    {
-        let vc = self.storyboard?.instantiateViewController(withIdentifier: "HomeVC") as! HomeVC
-        self.navigationController?.pushViewController(vc, animated: true)
-    }
 }
 
 

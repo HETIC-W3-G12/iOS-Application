@@ -10,12 +10,16 @@ import UIKit
 
 class MoneyBackCell: UITableViewCell {
 
+    @IBOutlet weak var seeMoreButton: UIButton!
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var moneyBackLabel: UILabel!
     @IBOutlet weak var totalAmountLabel: UILabel!
     @IBOutlet weak var progressView: UIView!
     @IBOutlet weak var totalView: UIView!
+    @IBOutlet weak var containerView: UIView!
+    @IBOutlet weak var progressViewTrailing: NSLayoutConstraint!
     
+    var project:Project?
     
     override func awakeFromNib() {
         super.awakeFromNib()

@@ -20,7 +20,7 @@ class ProjectVC: UIViewController {
     @IBOutlet weak var changingLabel: UILabel!
     
     var project:Project!
-    var isLoan:Bool!
+    var isLoan:Bool! = false
     
     @IBAction func payAction(_ sender: Any) {
     }

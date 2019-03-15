@@ -18,7 +18,6 @@
 		572294F821C3DFA000C106BC /* ProjectListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 572294F721C3DFA000C106BC /* ProjectListVC.swift */; };
 		572294FA21C3E04700C106BC /* ProjectCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 572294F921C3E04700C106BC /* ProjectCell.swift */; };
 		572294FC21C4449200C106BC /* Project.swift in Sources */ = {isa = PBXBuildFile; fileRef = 572294FB21C4449200C106BC /* Project.swift */; };
-		573022B521C998B10000A495 /* HomeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 573022B421C998B10000A495 /* HomeVC.swift */; };
 		573022B821C998F90000A495 /* CreateProjectVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 573022B721C998F90000A495 /* CreateProjectVC.swift */; };
 		575B446E2239109E00FD5C97 /* InscriptionValidationVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 575B446D2239109E00FD5C97 /* InscriptionValidationVC.swift */; };
 		576C5E1121FF12AE0069CFBB /* Polygon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 576C5E1021FF12AE0069CFBB /* Polygon.swift */; };
@@ -32,7 +31,6 @@
 		57D4896221E797CF00D6D1C1 /* GradientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57D4896121E797CF00D6D1C1 /* GradientView.swift */; };
 		57D4896421E797EE00D6D1C1 /* Triangle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57D4896321E797EE00D6D1C1 /* Triangle.swift */; };
 		57E46A3521C4785800FB7236 /* ProjectVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57E46A3421C4785800FB7236 /* ProjectVC.swift */; };
-		57FE665521CD4DBF00D40854 /* MoneyBackVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57FE665421CD4DBF00D40854 /* MoneyBackVC.swift */; };
 		57FE665721CD523000D40854 /* MoneyBackCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57FE665621CD523000D40854 /* MoneyBackCell.swift */; };
 		D9081AF5C24CD981B57E88FA /* Pods_EukoTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2E97DDA1E1FCA067628EB106 /* Pods_EukoTests.framework */; };
 /* End PBXBuildFile section */
@@ -65,7 +63,6 @@
 		572294F721C3DFA000C106BC /* ProjectListVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectListVC.swift; sourceTree = "<group>"; };
 		572294F921C3E04700C106BC /* ProjectCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectCell.swift; sourceTree = "<group>"; };
 		572294FB21C4449200C106BC /* Project.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Project.swift; sourceTree = "<group>"; };
-		573022B421C998B10000A495 /* HomeVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeVC.swift; sourceTree = "<group>"; };
 		573022B721C998F90000A495 /* CreateProjectVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateProjectVC.swift; sourceTree = "<group>"; };
 		575B446D2239109E00FD5C97 /* InscriptionValidationVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InscriptionValidationVC.swift; sourceTree = "<group>"; };
 		576C5E1021FF12AE0069CFBB /* Polygon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Polygon.swift; sourceTree = "<group>"; };
@@ -79,7 +76,6 @@
 		57D4896121E797CF00D6D1C1 /* GradientView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradientView.swift; sourceTree = "<group>"; };
 		57D4896321E797EE00D6D1C1 /* Triangle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Triangle.swift; sourceTree = "<group>"; };
 		57E46A3421C4785800FB7236 /* ProjectVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectVC.swift; sourceTree = "<group>"; };
-		57FE665421CD4DBF00D40854 /* MoneyBackVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoneyBackVC.swift; sourceTree = "<group>"; };
 		57FE665621CD523000D40854 /* MoneyBackCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoneyBackCell.swift; sourceTree = "<group>"; };
 		5E2071583A9DCDD53C28CDF1 /* Pods_Euko.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Euko.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		BBD221E7AC7B39964B46AD53 /* Pods-Euko.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Euko.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Euko/Pods-Euko.debug.xcconfig"; sourceTree = "<group>"; };
@@ -157,8 +153,6 @@
 				57C3440E223AA6D4007A0B03 /* Profile */,
 				57B8D8AD223805D4009B8223 /* Inscription */,
 				57D4896021E797B000D6D1C1 /* Personalized Views */,
-				57FE665321CD4D7D00D40854 /* Remboursements */,
-				573022B321C994560000A495 /* Home */,
 				57E46A3321C4783400FB7236 /* Project */,
 				572294F621C3DF6900C106BC /* ProjectList */,
 				5776C18C21BA6C7C00E51C59 /* Connexion */,
@@ -183,14 +177,6 @@
 				572294F921C3E04700C106BC /* ProjectCell.swift */,
 			);
 			path = ProjectList;
-			sourceTree = "<group>";
-		};
-		573022B321C994560000A495 /* Home */ = {
-			isa = PBXGroup;
-			children = (
-				573022B421C998B10000A495 /* HomeVC.swift */,
-			);
-			path = Home;
 			sourceTree = "<group>";
 		};
 		5776C18C21BA6C7C00E51C59 /* Connexion */ = {
@@ -232,6 +218,7 @@
 			isa = PBXGroup;
 			children = (
 				57C3440F223AA6E8007A0B03 /* ProfileVC.swift */,
+				57FE665621CD523000D40854 /* MoneyBackCell.swift */,
 			);
 			path = Profile;
 			sourceTree = "<group>";
@@ -253,15 +240,6 @@
 				57E46A3421C4785800FB7236 /* ProjectVC.swift */,
 			);
 			path = Project;
-			sourceTree = "<group>";
-		};
-		57FE665321CD4D7D00D40854 /* Remboursements */ = {
-			isa = PBXGroup;
-			children = (
-				57FE665421CD4DBF00D40854 /* MoneyBackVC.swift */,
-				57FE665621CD523000D40854 /* MoneyBackCell.swift */,
-			);
-			path = Remboursements;
 			sourceTree = "<group>";
 		};
 		D2070AF8CFA99F6C92733B3E /* Pods */ = {
@@ -507,13 +485,11 @@
 				5713B01D219ACAB0001D9324 /* AppDelegate.swift in Sources */,
 				572294F821C3DFA000C106BC /* ProjectListVC.swift in Sources */,
 				5776C18E21BA6C9A00E51C59 /* ConnexionVC.swift in Sources */,
-				57FE665521CD4DBF00D40854 /* MoneyBackVC.swift in Sources */,
 				57B8D8AF22386214009B8223 /* InscriptionNextVC.swift in Sources */,
 				5713B025219ACAB0001D9324 /* Euko.xcdatamodeld in Sources */,
 				573022B821C998F90000A495 /* CreateProjectVC.swift in Sources */,
 				57E46A3521C4785800FB7236 /* ProjectVC.swift in Sources */,
 				576C5E1121FF12AE0069CFBB /* Polygon.swift in Sources */,
-				573022B521C998B10000A495 /* HomeVC.swift in Sources */,
 				572294FC21C4449200C106BC /* Project.swift in Sources */,
 				57C34410223AA6E8007A0B03 /* ProfileVC.swift in Sources */,
 				57D4896421E797EE00D6D1C1 /* Triangle.swift in Sources */,
