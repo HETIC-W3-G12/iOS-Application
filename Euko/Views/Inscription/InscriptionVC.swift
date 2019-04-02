@@ -8,6 +8,7 @@
 
 import UIKit
 import Alamofire
+import SwiftyJSON
 
 class InscriptionVC: UIViewController, UITextFieldDelegate {
 
@@ -23,11 +24,13 @@ class InscriptionVC: UIViewController, UITextFieldDelegate {
     
     var user: User = User()
     var isKeyBoardShown:Bool = false
+    var delegate:ServerBridgeDelegate?
     
     //MARK:- Override
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.delegate = self
         
         self.confirmationTF.delegate = self
         self.emailTF.delegate = self
@@ -111,21 +114,21 @@ class InscriptionVC: UIViewController, UITextFieldDelegate {
     //MARK:- Server Bridge
     func signUp(username:String, password:String){
         let parameters:Parameters = ["email": username, "password": password]
-        
-        Alamofire.request(self.dev + "/users/sign_up",
-                          method: .post,
-                          parameters: parameters).validate().responseJSON {
-            response in
-            switch response.result {
-            case .success(let value):
-                print(value)
-                self.showSingleAlertWithCompletion(title: "Inscription reussie", message: "Connectez-vous pour continuer", handler: { _ in 
-                    self.navigationController?.popViewController(animated: true)
-                })
-            case .failure(let error):
-                self.showSingleAlert(title: "Un probleme est survenu...", message: "Veuillez verifiez votre connexion internet")
-                print(error)
-            }
+        ServerBridge().signUpUser(params: parameters, method: HTTPMethod.post)
+    }
+}
+
+extension InscriptionVC: ServerBridgeDelegate {
+    func defaultResponse(succed: Bool, json: JSON?) {
+        if (succed){
+            self.showSingleAlertWithCompletion(title: "Inscription reussie",
+                                               message: "Connectez-vous pour continuer",
+                                               handler: { _ in
+                self.navigationController?.popViewController(animated: true)
+            })
+        } else {
+            self.showSingleAlert(title: "Un probleme est survenu...",
+                                 message: "Veuillez verifiez votre connexion internet")
         }
     }
 }

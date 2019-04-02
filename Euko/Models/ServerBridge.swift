@@ -10,12 +10,17 @@ import UIKit
 import Alamofire
 import SwiftyJSON
 
-public enum endpoints:String {
-    case connexion = "/users/sign_in"
+protocol ServerBridgeDelegate {
+    func defaultResponse(succed:Bool, json:JSON?)
 }
 
-protocol ServerBridgeDelegate {
-    func connectionResponse(succed:Bool, json:JSON?)
+extension ServerBridgeDelegate {
+    func defaultResponse(succed:Bool, json:JSON?){ return }
+}
+
+public enum endpoints:String {
+    case connexion = "/users/sign_in"
+    case signup = "/users/sign_up"
 }
 
 class ServerBridge {
@@ -31,6 +36,7 @@ class ServerBridge {
                 // call delegate here
         }
     }
+    
     public func connectUser(params:Parameters, method:HTTPMethod){
         Alamofire.request(self.baseUrl + endpoints.connexion.rawValue,
                           method: method,
@@ -39,10 +45,26 @@ class ServerBridge {
                 switch response.result {
                 case .success(let value):
                     let json = JSON(value)
-                    self.delegate?.connectionResponse(succed: true, json: json)
+                    self.delegate?.defaultResponse(succed: true, json: json)
                 case .failure(let error):
                     print(error)
-                    self.delegate?.connectionResponse(succed: false, json: nil)
+                    self.delegate?.defaultResponse(succed: false, json: nil)
+                }
+        }
+    }
+    
+    public func signUpUser(params:Parameters, method:HTTPMethod){
+        Alamofire.request(self.baseUrl + endpoints.signup.rawValue,
+                          method: method,
+                          parameters:params).validate().responseJSON
+            { response in
+                switch response.result {
+                case .success(let value):
+                    let json = JSON(value)
+                    self.delegate?.defaultResponse(succed: true, json: json)
+                case .failure(let error):
+                    print(error)
+                    self.delegate?.defaultResponse(succed: false, json: nil)
                 }
         }
     }

@@ -86,7 +86,7 @@ extension ConnexionVC: ServerBridgeDelegate {
         ServerBridge().connectUser(params:parameters, method:HTTPMethod.post)
     }
     
-    func connectionResponse(succed:Bool, json:JSON?){
+    func defaultResponse(succed:Bool, json:JSON?){
         self.stopActivity()
         if (succed){
             UserDefaults.setToken(token: json?["token"].string ?? "")
