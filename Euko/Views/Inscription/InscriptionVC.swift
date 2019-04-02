@@ -19,9 +19,6 @@ class InscriptionVC: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var shadowButtonView: UIView!
     @IBOutlet weak var backButton: UIButton!
     
-    let dev:String = "https://euko-api-staging-pr-34.herokuapp.com"
-    let prod:String = "https://euko-api-staging.herokuapp.com"
-    
     var user: User = User()
     var isKeyBoardShown:Bool = false
     var delegate:ServerBridgeDelegate?
@@ -29,17 +26,13 @@ class InscriptionVC: UIViewController, UITextFieldDelegate {
     //MARK:- Override
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        self.title = "Inscription"
         self.delegate = self
-        
         self.confirmationTF.delegate = self
         self.emailTF.delegate = self
         self.passwordTF.delegate = self
-        
-        self.title = "Inscription"
-        self.view.addDismisKeyBoardOnTouch()
         self.setupView()
-        
+        self.view.addDismisKeyBoardOnTouch()
         self.shadowButtonView.setSpecificShadow()
         self.shadowButtonView.roundBorder()
     }
@@ -63,7 +56,6 @@ class InscriptionVC: UIViewController, UITextFieldDelegate {
         if (mail.count == 0 || password.count == 0 || confirmation.count == 0){
             self.showSingleAlert(title: "Erreur", message: "Veuillez indiquer tous les champs")
         } else if (password == confirmation) {
-            //TODO: Checker si le mec n'a pas deja cree son compte (Appel API)
             self.user.email = mail
             self.user.password = password
             self.nextVC()
@@ -110,15 +102,15 @@ class InscriptionVC: UIViewController, UITextFieldDelegate {
     func hidekeyboard(){
         self.view.endEditing(true)
     }
+}
 
-    //MARK:- Server Bridge
+//MARK:- Server Bridge
+extension InscriptionVC: ServerBridgeDelegate {
     func signUp(username:String, password:String){
         let parameters:Parameters = ["email": username, "password": password]
         ServerBridge().signUpUser(params: parameters, method: HTTPMethod.post)
     }
-}
 
-extension InscriptionVC: ServerBridgeDelegate {
     func defaultResponse(succed: Bool, json: JSON?) {
         if (succed){
             self.showSingleAlertWithCompletion(title: "Inscription reussie",
