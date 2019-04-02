@@ -39,6 +39,7 @@ class ProjectVC: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.navigationController?.navigationBar.isHidden = true
+        self.tabBarController?.tabBar.isHidden = true
 
         self.setupField()
     }
@@ -46,6 +47,7 @@ class ProjectVC: UIViewController {
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         self.navigationController?.navigationBar.isHidden = false
+        self.tabBarController?.tabBar.isHidden = false
     }
 
     // MARK:- other functions
