@@ -24,6 +24,8 @@
 		5776C18E21BA6C9A00E51C59 /* ConnexionVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5776C18D21BA6C9A00E51C59 /* ConnexionVC.swift */; };
 		5776C19021BA75A600E51C59 /* InscriptionVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5776C18F21BA75A600E51C59 /* InscriptionVC.swift */; };
 		5776C19221BA8EE100E51C59 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5776C19121BA8EE100E51C59 /* Extensions.swift */; };
+		578E62412253579E0029ED27 /* ServerBridge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 578E62402253579E0029ED27 /* ServerBridge.swift */; };
+		579AF517223BFF2300C8D85B /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 579AF516223BFF2300C8D85B /* TabBarController.swift */; };
 		57A879AA223A6D8300BC2A79 /* CreationContractVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57A879A9223A6D8300BC2A79 /* CreationContractVC.swift */; };
 		57A879AD223A6DE400BC2A79 /* SHFSignatureView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57A879AC223A6DE400BC2A79 /* SHFSignatureView.swift */; };
 		57B8D8AF22386214009B8223 /* InscriptionNextVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57B8D8AE22386214009B8223 /* InscriptionNextVC.swift */; };
@@ -70,6 +72,8 @@
 		5776C18D21BA6C9A00E51C59 /* ConnexionVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnexionVC.swift; sourceTree = "<group>"; };
 		5776C18F21BA75A600E51C59 /* InscriptionVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InscriptionVC.swift; sourceTree = "<group>"; };
 		5776C19121BA8EE100E51C59 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		578E62402253579E0029ED27 /* ServerBridge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServerBridge.swift; sourceTree = "<group>"; };
+		579AF516223BFF2300C8D85B /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 		57A879A9223A6D8300BC2A79 /* CreationContractVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreationContractVC.swift; sourceTree = "<group>"; };
 		57A879AC223A6DE400BC2A79 /* SHFSignatureView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SHFSignatureView.swift; sourceTree = "<group>"; };
 		57B8D8AE22386214009B8223 /* InscriptionNextVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InscriptionNextVC.swift; sourceTree = "<group>"; };
@@ -169,6 +173,7 @@
 				571EB6DC21B91F70008D4227 /* User.swift */,
 				5776C19121BA8EE100E51C59 /* Extensions.swift */,
 				572294FB21C4449200C106BC /* Project.swift */,
+				578E62402253579E0029ED27 /* ServerBridge.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -241,6 +246,7 @@
 				57D4896121E797CF00D6D1C1 /* GradientView.swift */,
 				57D4896321E797EE00D6D1C1 /* Triangle.swift */,
 				576C5E1021FF12AE0069CFBB /* Polygon.swift */,
+				579AF516223BFF2300C8D85B /* TabBarController.swift */,
 			);
 			path = "Personalized Views";
 			sourceTree = "<group>";
@@ -495,8 +501,10 @@
 				572294FA21C3E04700C106BC /* ProjectCell.swift in Sources */,
 				5713B01D219ACAB0001D9324 /* AppDelegate.swift in Sources */,
 				57CC251B223BBB6900124166 /* WalletVC.swift in Sources */,
+				578E62412253579E0029ED27 /* ServerBridge.swift in Sources */,
 				572294F821C3DFA000C106BC /* ProjectListVC.swift in Sources */,
 				5776C18E21BA6C9A00E51C59 /* ConnexionVC.swift in Sources */,
+				579AF517223BFF2300C8D85B /* TabBarController.swift in Sources */,
 				57B8D8AF22386214009B8223 /* InscriptionNextVC.swift in Sources */,
 				5713B025219ACAB0001D9324 /* Euko.xcdatamodeld in Sources */,
 				573022B821C998F90000A495 /* CreateProjectVC.swift in Sources */,

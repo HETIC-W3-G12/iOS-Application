@@ -45,7 +45,6 @@ extension UIView {
     }
     
     func setSpecificShadow(){
-        self.layer.cornerRadius = 8
         self.layer.shadowColor = UIColor.lightGray.cgColor
         self.layer.shadowOpacity = 0.3
         self.layer.shadowOffset = CGSize(width: 0, height: 4)
