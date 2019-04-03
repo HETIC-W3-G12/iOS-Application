@@ -20,14 +20,11 @@ class ConnexionVC: UIViewController {
     
     @IBOutlet weak var activityView: UIView!
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
-        
-    var delegate:ServerBridgeDelegate?
-
+    
     //MARK:- override
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.delegate = self
         self.setupView()
         self.view.addDismisKeyBoardOnTouch()
     }
@@ -46,8 +43,7 @@ class ConnexionVC: UIViewController {
         if (username == "" || password == ""){
             //TODO: Error on textfields
         } else {
-            //self.connect(username: username, password: password)
-            self.nextVC()
+            self.connect(username: username, password: password)
         }
     }
 
@@ -78,12 +74,19 @@ class ConnexionVC: UIViewController {
 }
 
 //MARK:- Server Bridge
-extension ConnexionVC: ServerBridgeDelegate {
+extension ConnexionVC {
     func connect(username:String, password:String){
         self.startActivity()
         let parameters:Parameters = ["email":username, "password":password]
         
-        ServerBridge().connectUser(params:parameters, method:HTTPMethod.post)
+        defaultRequest(params: parameters, endpoint: endpoints.connexion, method: .post, handler: { (success, json) in
+            print(json ?? "Aucun JSON disponible")
+            self.stopActivity()
+            if (success){
+                self.nextVC()
+            }
+            //TODO: parse json
+        })
     }
     
     func defaultResponse(succed:Bool, json:JSON?){

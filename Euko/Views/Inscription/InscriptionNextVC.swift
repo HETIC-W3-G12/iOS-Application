@@ -15,6 +15,8 @@ class InscriptionNextVC: UIViewController {
     @IBOutlet weak var lastNameTextField: UITextField!
     @IBOutlet weak var firstNameTextField: UITextField!
     @IBOutlet weak var birthdayDateTextField: UITextField!
+    @IBOutlet weak var birthPlaceTextFied: UITextField!
+    @IBOutlet weak var addressTextField: UITextField!
     @IBOutlet weak var postCodeTextField: UITextField!
     @IBOutlet weak var cityTextField: UITextField!
     @IBOutlet weak var saveButton: UIButton!
@@ -41,23 +43,16 @@ class InscriptionNextVC: UIViewController {
 
     
     func checkAllFields() -> Bool {
-        if (self.lastNameTextField.text?.count ?? 0 >= 2
-            || self.firstNameTextField.text?.count ?? 0 >= 2
-            || self.birthdayDateTextField.text?.count ?? 0 != 10
-            || self.postCodeTextField.text?.count ?? 0 >= 2
-            || self.cityTextField.text?.count ?? 0 >= 2){
-            
-            self.user.lastName = self.lastNameTextField.text!
-            self.user.firstName = self.firstNameTextField.text!
-            self.user.setBirthDateFromString(dateString: self.birthdayDateTextField.text!)
-            self.user.postCode = self.postCodeTextField.text!
-            self.user.city = self.cityTextField.text!
-            
-            return true
-        } else {
-            //TODO: Handle Errors
-            return false
-        }
+        self.user.lastName = self.lastNameTextField.text!
+        self.user.firstName = self.firstNameTextField.text!
+        self.user.setBirthDateFromString(dateString: self.birthdayDateTextField.text!)
+        self.user.postCode = Int(self.postCodeTextField.text!) ?? 0
+        self.user.city = self.cityTextField.text!
+        self.user.address = self.addressTextField.text!
+        self.user.birthPlace = self.birthPlaceTextFied.text!
+        
+        return true
+        //TODO: Check if all textfield are okey
     }
     
     @IBAction func backAction(_ sender: Any) {

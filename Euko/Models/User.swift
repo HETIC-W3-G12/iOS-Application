@@ -19,12 +19,13 @@ class User {
     var firstName:String
     var lastName:String
     var birthDate:Date
+    var birthPlace:String
     var address:String
-    var postCode:String
+    var postCode:Int
     var city:String
 
     init(email:String = "", password:String = "", firstName:String = "", lastName:String = "",
-         address:String = "", postCode:String = "", city:String = "") {
+         address:String = "", postCode:Int = 0, city:String = "", birthPlace:String = "") {
         self.email = email
         self.password = password
         self.firstName = firstName
@@ -33,6 +34,7 @@ class User {
         self.postCode = postCode
         self.city = city
         self.birthDate = Date()
+        self.birthPlace = birthPlace
     }
     
     func setBirthDateFromString(dateString:String){

@@ -7,8 +7,6 @@
 //
 
 import UIKit
-import Alamofire
-import SwiftyJSON
 
 class InscriptionVC: UIViewController, UITextFieldDelegate {
 
@@ -21,13 +19,11 @@ class InscriptionVC: UIViewController, UITextFieldDelegate {
     
     var user: User = User()
     var isKeyBoardShown:Bool = false
-    var delegate:ServerBridgeDelegate?
     
     //MARK:- Override
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = "Inscription"
-        self.delegate = self
         self.confirmationTF.delegate = self
         self.emailTF.delegate = self
         self.passwordTF.delegate = self
@@ -101,26 +97,5 @@ class InscriptionVC: UIViewController, UITextFieldDelegate {
     
     func hidekeyboard(){
         self.view.endEditing(true)
-    }
-}
-
-//MARK:- Server Bridge
-extension InscriptionVC: ServerBridgeDelegate {
-    func signUp(username:String, password:String){
-        let parameters:Parameters = ["email": username, "password": password]
-        ServerBridge().signUpUser(params: parameters, method: HTTPMethod.post)
-    }
-
-    func defaultResponse(succed: Bool, json: JSON?) {
-        if (succed){
-            self.showSingleAlertWithCompletion(title: "Inscription reussie",
-                                               message: "Connectez-vous pour continuer",
-                                               handler: { _ in
-                self.navigationController?.popViewController(animated: true)
-            })
-        } else {
-            self.showSingleAlert(title: "Un probleme est survenu...",
-                                 message: "Veuillez verifiez votre connexion internet")
-        }
     }
 }
