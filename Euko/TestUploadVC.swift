@@ -51,6 +51,7 @@ class TestUploadVC: UIViewController {
     }
     
     func test2() {
+        // maillot.jpg no more in repo
         if let fileURL = Bundle.main.url(forResource: "maillot", withExtension: "jpg") {
             do {
                 let data = try Data(contentsOf: fileURL)
