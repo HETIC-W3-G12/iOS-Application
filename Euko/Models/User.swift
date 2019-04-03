@@ -14,6 +14,8 @@ enum Type {
 }
 
 class User {
+    var id:String
+    var token:String
     var email:String
     var password:String
     var firstName:String
@@ -24,8 +26,10 @@ class User {
     var postCode:Int
     var city:String
 
-    init(email:String = "", password:String = "", firstName:String = "", lastName:String = "",
+    init(id:String = "", token:String = "", email:String = "", password:String = "", firstName:String = "", lastName:String = "",
          address:String = "", postCode:Int = 0, city:String = "", birthPlace:String = "") {
+        self.id = id
+        self.token = token
         self.email = email
         self.password = password
         self.firstName = firstName

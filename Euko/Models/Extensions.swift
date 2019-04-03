@@ -109,6 +109,15 @@ extension String
 extension UserDefaults {
     static let TOKEN_FLAG = "tokenFlag"
     static let LOAN_FLAG = "loanFlag"
+    static let USER_FLAG = "userflag"
+    
+    static func setUser(user:User) {
+        UserDefaults.standard.set(user, forKey:USER_FLAG)
+    }
+    
+    static func getUser() -> User {
+        return UserDefaults.standard.value(forKey: USER_FLAG) as! User
+    }
     
     static func setToken(token:String){
         UserDefaults.standard.set(token, forKey:TOKEN_FLAG)

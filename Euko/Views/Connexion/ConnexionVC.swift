@@ -83,9 +83,18 @@ extension ConnexionVC {
             print(json ?? "Aucun JSON disponible")
             self.stopActivity()
             if (success){
+                //TODO: parse json
+                let email:String = json?["user"]["email"].string ?? ""
+                let id:String = json?["user"]["id"].string ?? ""
+                let token:String = json?["token"].string ?? ""
+                
+                let user = User(id: id, token: token, email: email)
+                UserDefaults.setUser(user: user)
                 self.nextVC()
             }
-            //TODO: parse json
+            else {
+                self.showSingleAlert(title: "Identifiants inccorects", message: "L'email ou le mot de passe sont incorrects")
+            }
         })
     }
     
