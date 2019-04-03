@@ -84,31 +84,18 @@ class CreateProjectVC: UIViewController {
     @IBAction func validateAction(_ sender: Any) {
         let vc = self.storyboard?.instantiateViewController(withIdentifier: "CreationContractVC") as! CreationContractVC
         
-        self.navigationController?.pushViewController(vc, animated: true)
-        
-        //TODO: Activate API Call
-/*
         let title = self.titletextField.text ?? ""
         let desc = self.descriptionTextView.text ?? ""
         let price = Int(ceil(self.priceSlider.value) * 10)
         let time = Int(self.timeLapsSlider.value)
-        let state = 1 //Enum in backend : 1 = valid
-        let interests = 0.1
-        
         if (self.areTextFieldsCorrects(title: title, description: desc)) {
             let parameters: Parameters = ["title": title,
                                           "description": desc,
                                           "price": price,
-                                          "interests": interests,
-                                          "state": state,
                                           "timeLaps": time]
-            
-            self.createProjectWithParameters(parameters: parameters)
+            vc.params = parameters
         }
-        else {
-            self.showBadParametersAlert()
-        }
- */
+        self.navigationController?.pushViewController(vc, animated: true)
     }
 
     @IBAction func startEditTitle(_ sender: Any) {
@@ -152,37 +139,5 @@ extension CreateProjectVC: UITextViewDelegate{
     
     func textViewDidEndEditing(_ textView: UITextView){
         self.scrollView.setContentOffset(CGPoint(x: 0, y: 0), animated: true)
-    }
-}
-
-// MARK:- Server Bridge
-extension CreateProjectVC {
-    func createProjectWithParameters(parameters: Parameters){
-        
-        let token:String = UserDefaults.getToken() ?? ""
-        
-        if (token != ""){
-            let bearer:String = "Bearer \(token)"
-            
-            let headers: HTTPHeaders = [
-                "Authorization": bearer,
-                "Accept": "application/json"]
-            
-            print(parameters)
-            
-            Alamofire.request(String(self.dev + "/projects"), method: .post, parameters: parameters, headers:headers).validate().responseJSON{ response in
-                switch response.result {
-                case .success(let value):
-                    print(value)
-                    self.navigationController?.popToRootViewController(animated: true)
-                    
-                case.failure(let error):
-                    print(error)
-                    self.showSingleAlert(title: "Une erreure s'est produite", message: "Veuillez vérifier votre connexion internet.")
-                }
-            }
-        } else {
-            // No Token ID... User should reconnect ? Should never appear
-        }
     }
 }

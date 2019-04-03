@@ -72,7 +72,7 @@ class User: NSObject, NSCoding {
         self.firstName = aDecoder.decodeObject(forKey: "firstName") as! String
         self.lastName = aDecoder.decodeObject(forKey: "lastName") as! String
         self.address = aDecoder.decodeObject(forKey: "address") as! String
-        self.postCode = aDecoder.decodeObject(forKey: "postCode") as! Int
+        self.postCode = Int(aDecoder.decodeInteger(forKey: "postCode"))
         self.city = aDecoder.decodeObject(forKey: "city") as! String
         self.birthDate = aDecoder.decodeObject(forKey: "birthDate") as! Date
         self.birthPlace = aDecoder.decodeObject(forKey: "birthPlace") as! String

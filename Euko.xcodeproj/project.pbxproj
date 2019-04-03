@@ -165,6 +165,7 @@
 				57D4896021E797B000D6D1C1 /* Personalized Views */,
 				5776C18C21BA6C7C00E51C59 /* Connexion */,
 				57B8D8AD223805D4009B8223 /* Inscription */,
+				57A879A8223A6D3400BC2A79 /* ProjectCreation */,
 				572294F621C3DF6900C106BC /* ProjectList */,
 				57E46A3321C4783400FB7236 /* Project */,
 				57C3440E223AA6D4007A0B03 /* Profile */,
@@ -187,7 +188,6 @@
 		572294F621C3DF6900C106BC /* ProjectList */ = {
 			isa = PBXGroup;
 			children = (
-				57A879A8223A6D3400BC2A79 /* Creation */,
 				572294F721C3DFA000C106BC /* ProjectListVC.swift */,
 				572294F921C3E04700C106BC /* ProjectCell.swift */,
 			);
@@ -202,13 +202,13 @@
 			path = Connexion;
 			sourceTree = "<group>";
 		};
-		57A879A8223A6D3400BC2A79 /* Creation */ = {
+		57A879A8223A6D3400BC2A79 /* ProjectCreation */ = {
 			isa = PBXGroup;
 			children = (
 				573022B721C998F90000A495 /* CreateProjectVC.swift */,
 				57A879A9223A6D8300BC2A79 /* CreationContractVC.swift */,
 			);
-			path = Creation;
+			path = ProjectCreation;
 			sourceTree = "<group>";
 		};
 		57A879AB223A6DB900BC2A79 /* SHFSignature */ = {

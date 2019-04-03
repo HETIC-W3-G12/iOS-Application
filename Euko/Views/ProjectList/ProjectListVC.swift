@@ -82,12 +82,12 @@ extension ProjectListVC {
         if (self.projects.count > 0){
             self.turnAvctivityOn()
         }
-        
         let params:Parameters = [:]
         
         defaultRequest(params: params, endpoint: endpoints.projects, method: .get, handler: {
             (success, jsonTab) in
             if (success){
+                self.projects = []
                 var i:Int = 0
                 var json:JSON = jsonTab![i]
                 while (json != JSON.null){
