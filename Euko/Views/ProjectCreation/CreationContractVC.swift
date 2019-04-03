@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import SwiftyJSON
+import Alamofire
 
 class CreationContractVC: UIViewController, SHFSignatureProtocol {
 
@@ -19,6 +21,7 @@ class CreationContractVC: UIViewController, SHFSignatureProtocol {
     @IBOutlet weak var validateButton: UIButton!
     
     var signatureImage:UIImage = UIImage()
+    var params:Parameters = [:]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -46,7 +49,7 @@ class CreationContractVC: UIViewController, SHFSignatureProtocol {
     
     
     @IBAction func validateAction(_ sender: Any) {
-        //TODO: Appel API pour valider le contrat
+        self.createProjectWithParameters(parameters: self.params)
     }
     
     func drawingSignature() {
@@ -59,5 +62,25 @@ class CreationContractVC: UIViewController, SHFSignatureProtocol {
     @IBAction func clearAction(_ sender: Any) {
         self.drawSpaceView.clear()
         self.signatureImage = UIImage()
+    }
+    
+    func createProjectWithParameters(parameters: Parameters){
+        let user:User = UserDefaults.getUser()
+        let token:String = user.token
+        if (token != ""){
+            let bearer:String = "Bearer \(token)"
+            let headers: HTTPHeaders = [
+                "Authorization": bearer,
+                "Accept": "application/json"]
+            
+            headersRequest(params: parameters, endpoint: endpoints.projects, method: .post, header: headers, handler: {
+                (success, json) in
+                if (success){
+                    self.navigationController?.popToRootViewController(animated: true)
+                } else {
+                    self.showSingleAlert(title: "Une erreure s'est produite", message: "Veuillez vérifier votre connexion internet.")
+                }
+            })
+        }
     }
 }

@@ -23,14 +23,14 @@ class WalletVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     @IBOutlet weak var bottomTableViewHeightConstraint: NSLayoutConstraint!
     @IBOutlet weak var topOnGoingTrailingConstraint: NSLayoutConstraint!
 
-    let myLoan:Project = Project(id: 0, title: "Vélo", description: "J'ai besoin d'un vélo pour aller au travail tous les jours sans avoir a prendre les transports en commun ni m'acheter une voiture.", state: 1, price: 350, timeLaps: 12, interests: 0.1, finalPrice: 385, date: Date(timeIntervalSince1970: 16))
+    let myLoan:Project = Project(id: "ok", title: "Vélo", description: "J'ai besoin d'un vélo pour aller au travail tous les jours sans avoir a prendre les transports en commun ni m'acheter une voiture.", state: "ok", price: 350, timeLaps: 12, interests: 0.1, finalPrice: 385, date: Date(timeIntervalSince1970: 16))
     
-    let myFinancements:[Project] = [Project(id: 0, title: "Balenciaga", description: "J'en ai vraiment trop besoin !", state: 1, price: 300, timeLaps: 12, interests: 0.1, finalPrice: 330, date: Date(timeIntervalSince1970: 13)),
-                                    Project(id: 0, title: "Projet de test 2", description: "Description de test 2", state: 1, price: 100, timeLaps: 12, interests: 0.1, finalPrice: 110, date: Date(timeIntervalSince1970: 15)),
-                                    Project(id: 0, title: "Projet de test 3", description: "Description de test 2", state: 1, price: 100, timeLaps: 12, interests: 0.1, finalPrice: 760, date: Date(timeIntervalSince1970: 15)),
-                                    Project(id: 0, title: "Projet de test 4", description: "Description de test 2", state: 1, price: 100, timeLaps: 12, interests: 0.1, finalPrice: 480, date: Date(timeIntervalSince1970: 15)),
-                                    Project(id: 0, title: "Projet de test 5", description: "Description de test 2", state: 1, price: 100, timeLaps: 12, interests: 0.1, finalPrice: 200, date: Date(timeIntervalSince1970: 15)),
-                                    Project(id: 0, title: "Projet de test 6", description: "Description de test 3", state: 1, price: 100, timeLaps: 12, interests: 0.1, finalPrice: 510, date: Date(timeIntervalSince1970: 15))]
+    let myFinancements:[Project] = [Project(id: "ok", title: "Balenciaga", description: "J'en ai vraiment trop besoin !", state: "ok", price: 300, timeLaps: 12, interests: 0.1, finalPrice: 330, date: Date(timeIntervalSince1970: 13)),
+                                    Project(id: "ok", title: "Projet de test 2", description: "Description de test 2", state: "ok", price: 100, timeLaps: 12, interests: 0.1, finalPrice: 110, date: Date(timeIntervalSince1970: 15)),
+                                    Project(id: "ok", title: "Projet de test 3", description: "Description de test 2", state: "ok", price: 100, timeLaps: 12, interests: 0.1, finalPrice: 760, date: Date(timeIntervalSince1970: 15)),
+                                    Project(id: "ok", title: "Projet de test 4", description: "Description de test 2", state: "ok", price: 100, timeLaps: 12, interests: 0.1, finalPrice: 480, date: Date(timeIntervalSince1970: 15)),
+                                    Project(id: "ok", title: "Projet de test 5", description: "Description de test 2", state: "ok", price: 100, timeLaps: 12, interests: 0.1, finalPrice: 200, date: Date(timeIntervalSince1970: 15)),
+                                    Project(id: "ok", title: "Projet de test 6", description: "Description de test 3", state: "ok", price: 100, timeLaps: 12, interests: 0.1, finalPrice: 510, date: Date(timeIntervalSince1970: 15))]
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)

@@ -109,6 +109,18 @@ extension String
 extension UserDefaults {
     static let TOKEN_FLAG = "tokenFlag"
     static let LOAN_FLAG = "loanFlag"
+    static let USER_FLAG = "userflag"
+    
+    static func setUser(user:User) {
+        let userData:Data = NSKeyedArchiver.archivedData(withRootObject: user)
+        UserDefaults.standard.set(userData, forKey:USER_FLAG)
+    }
+    
+    static func getUser() -> User {
+        let userData = UserDefaults.standard.data(forKey: USER_FLAG)
+        let decodeData = NSKeyedUnarchiver.unarchiveObject(with: userData!) as! User
+        return decodeData
+    }
     
     static func setToken(token:String){
         UserDefaults.standard.set(token, forKey:TOKEN_FLAG)

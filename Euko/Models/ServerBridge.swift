@@ -10,40 +10,50 @@ import UIKit
 import Alamofire
 import SwiftyJSON
 
+
 public enum endpoints:String {
     case connexion = "/users/sign_in"
-}
-
-protocol ServerBridgeDelegate {
-    func connectionResponse(succed:Bool, json:JSON?)
+    case signup = "/users/sign_up"
+    case projects = "/projects"
 }
 
 class ServerBridge {
     
-    let baseUrl:String = ""
-    var delegate:ServerBridgeDelegate?
-    
-    public func defaultRequest(totalURL:String, params:Parameters, method:HTTPMethod){
-        Alamofire.request(totalURL,
-                          method: method,
-                          parameters:params).validate().responseJSON
-            { response in
-                // call delegate here
-        }
+    static let baseUrl:String = "https://euko-api-staging.herokuapp.com"
+}
+
+func defaultRequest(params:Parameters, endpoint:endpoints, method:HTTPMethod, handler: @escaping ((_ success: Bool, _ json:JSON?) -> Void)){
+    print("URL : " + ServerBridge.baseUrl + endpoint.rawValue)
+    Alamofire.request(ServerBridge.baseUrl + endpoint.rawValue,
+                      method: method,
+                      parameters:params).validate().responseJSON
+        { response in
+            switch response.result {
+            case .success(let value):
+                let json = JSON(value)
+                handler(true, json)
+            case .failure(let error):
+                print(error)
+                handler(false, nil)
+            }
     }
-    public func connectUser(params:Parameters, method:HTTPMethod){
-        Alamofire.request(self.baseUrl + endpoints.connexion.rawValue,
-                          method: method,
-                          parameters:params).validate().responseJSON
-            { response in
-                switch response.result {
-                case .success(let value):
-                    let json = JSON(value)
-                    self.delegate?.connectionResponse(succed: true, json: json)
-                case .failure(let error):
-                    print(error)
-                    self.delegate?.connectionResponse(succed: false, json: nil)
-                }
-        }
+}
+
+func headersRequest(params:Parameters, endpoint:endpoints, method:HTTPMethod,
+                   header:HTTPHeaders, handler: @escaping ((_ success: Bool, _ json:JSON?) -> Void)){
+    print("URL : " + ServerBridge.baseUrl + endpoint.rawValue)
+    Alamofire.request(ServerBridge.baseUrl + endpoint.rawValue,
+                      method: method,
+                      parameters:params,
+                      headers:header).validate().responseJSON
+        { response in
+            switch response.result {
+            case .success(let value):
+                let json = JSON(value)
+                handler(true, json)
+            case .failure(let error):
+                print(error)
+                handler(false, nil)
+            }
     }
 }

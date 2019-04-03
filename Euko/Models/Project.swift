@@ -9,18 +9,18 @@
 import Foundation
 
 class Project {
-    var id:Int!
-    var title:String!
-    var description:String!
-    var state:Int!
-    var price:Int!
+    var id:String?
+    var title:String
+    var description:String
+    var state:String
+    var price:Int
     var timeLaps:Int!
     var interests:Float!
     var finalPrice:Float!
     var date:Date
     
-    init(id:Int!, title:String!, description:String!, state:Int!,
-         price:Int!, timeLaps:Int!, interests:Float!, finalPrice:Float!, date:Date) {
+    init(id:String = "", title:String = "", description:String = "", state:String = "",
+         price:Int = 0, timeLaps:Int = 0, interests:Float = 0.0, finalPrice:Float = 0.0, date:Date = Date()) {
         self.id = id
         self.title = title
         self.description = description

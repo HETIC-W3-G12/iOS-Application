@@ -82,53 +82,47 @@ extension ProjectListVC {
         if (self.projects.count > 0){
             self.turnAvctivityOn()
         }
+        let params:Parameters = [:]
         
-        Alamofire.request(String(self.dev + "/projects"), method: .get).validate().responseJSON { response in
-            switch response.result {
-            case .success(let value):
+        defaultRequest(params: params, endpoint: endpoints.projects, method: .get, handler: {
+            (success, jsonTab) in
+            if (success){
                 self.projects = []
-                let jsonTab = JSON(value)
                 var i:Int = 0
-                var json:JSON = jsonTab[i]
-                
+                var json:JSON = jsonTab![i]
                 while (json != JSON.null){
                     print(json)
-                    let id = json["id"].int ?? 0
-                    let title = json["title"].string ?? "Aucun titre..."
-                    let description = json["description"].string ?? "Aucune description..."
                     let price = json["price"].int ?? 0
                     let interest = json["interests"].float ?? 0
-                    let state = json["state"].int ?? 1
-                    let timeLaps = json["timeLaps"].int ?? 0
+                    let finalPrice = (interest * Float(price)) + Float(price)
                     let dateStr = json["createdDate"].string!.substring(to: 9)
-                    
                     let dateFormatter = DateFormatter()
                     dateFormatter.dateFormat = "yyyy-MM-dd"
                     let date:Date = dateFormatter.date(from: dateStr)!
                     
-                    let finalPrice = (interest * Float(price)) + Float(price)
-                    
-                    let tmpProject = Project(id: id,
-                                             title: title,
-                                             description: description,
-                                             state: state,
+                    let tmpProject = Project(id: json["id"].string ?? "",
+                                             title: json["title"].string ?? "(Sans titre)",
+                                             description: json["description"].string ?? "(Sans description)",
+                                             state: json["state"].string ?? "",
                                              price: price,
-                                             timeLaps: timeLaps,
+                                             timeLaps: json["timeLaps"].int ?? 0,
                                              interests: interest,
                                              finalPrice: finalPrice,
                                              date: date)
+                    
                     self.projects.append(tmpProject)
                     
                     i += 1
-                    json = jsonTab[(i)]
+                    json = jsonTab![(i)]
                 }
                 self.turnAvctivityOff()
                 self.orderProjectsByDate()
                 self.tableView.reloadData()
-            case .failure(let error):
-                print(error)
+            } else {
+                
             }
-        }
+            
+        })
     }
 }
 

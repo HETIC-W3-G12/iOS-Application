@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import Alamofire
+import SwiftyJSON
 
 class InscriptionValidationVC: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
@@ -14,12 +16,10 @@ class InscriptionValidationVC: UIViewController, UIImagePickerControllerDelegate
     @IBOutlet weak var introductionLabel: UILabel!
     @IBOutlet weak var descriptionLabel: UILabel!
     @IBOutlet weak var nonPublicationLabel: UILabel!
-    
     @IBOutlet weak var backButton: UIButton!
     @IBOutlet weak var takeSelfieButton: UIButton!
     @IBOutlet weak var addIdentityCardButton: UIButton!
     @IBOutlet weak var validateButton: UIButton!
-    
     @IBOutlet weak var identityImageView: UIImageView!
     @IBOutlet weak var selfieImageView: UIImageView!
     
@@ -30,23 +30,19 @@ class InscriptionValidationVC: UIViewController, UIImagePickerControllerDelegate
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         self.takeSelfieButton.roundBorder()
         self.addIdentityCardButton.roundBorder()
         self.validateButton.roundBorder()
-        
         self.imagePicker.delegate = self
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
         self.navigationController?.isNavigationBarHidden = true
     }
     
     override func viewDidDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        
         self.navigationController?.isNavigationBarHidden = true
     }
     
@@ -63,19 +59,31 @@ class InscriptionValidationVC: UIViewController, UIImagePickerControllerDelegate
         self.isTakingSelfie = false
         self.presentImagePickerFromCamera(source: .savedPhotosAlbum)
     }
-    
+
     @IBAction func validateInscription(_ sender: Any) {
-        self.showSingleAlertWithCompletion(title: "Inscription validée",
-                                           message: "Vous pouvez maintenant vous connecter",
-                                           handler: { _ in
-                                            self.navigationController?.popToRootViewController(animated: true)})
-        
+        let parameters:Parameters = ["email": self.user.email,
+                                     "password": self.user.password,
+                                     "firstname":self.user.firstName,
+                                     "lastname":self.user.lastName,
+                                     "birthdate":self.user.birthDate,
+                                     "birthplace":self.user.birthPlace,
+                                     "adress":self.user.address,
+                                     "city":self.user.city,
+                                     "postCode":self.user.postCode]
+        defaultRequest(params: parameters, endpoint: endpoints.signup, method: .post) { (success, json) in
+            print(json ?? "Aucun JSON disponible")
+            self.showSingleAlertWithCompletion(title: "Inscription terminée",
+                                               message: "Vous pouvez-maintenant vous connecter",
+                                               handler: { _ in
+              self.navigationController?.popToRootViewController(animated: true)
+            })
+        }
     }
+
     
     func presentImagePickerFromCamera(source:UIImagePickerController.SourceType = .savedPhotosAlbum){
         imagePicker.allowsEditing = false
         imagePicker.sourceType = source
-        
         self.present(self.imagePicker, animated: true, completion: nil)
     }
     
@@ -93,5 +101,21 @@ class InscriptionValidationVC: UIViewController, UIImagePickerControllerDelegate
         
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
         dismiss(animated: true, completion: nil)
+    }
+}
+
+//MARK:- Server Bridge
+extension InscriptionValidationVC {
+    func defaultResponse(succed: Bool, json: JSON?) {
+        if (succed){
+            self.showSingleAlertWithCompletion(title: "Inscription validée",
+                                               message: "Vous pouvez maintenant vous connecter",
+                                               handler: { _ in
+                                                self.navigationController?.popToRootViewController(animated: true)})
+            
+            } else {
+            self.showSingleAlert(title: "Un probleme est survenu...",
+                                 message: "Veuillez verifiez votre connexion internet")
+        }
     }
 }

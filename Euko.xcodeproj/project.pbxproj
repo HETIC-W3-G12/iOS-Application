@@ -25,6 +25,7 @@
 		5776C19021BA75A600E51C59 /* InscriptionVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5776C18F21BA75A600E51C59 /* InscriptionVC.swift */; };
 		5776C19221BA8EE100E51C59 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5776C19121BA8EE100E51C59 /* Extensions.swift */; };
 		578E62412253579E0029ED27 /* ServerBridge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 578E62402253579E0029ED27 /* ServerBridge.swift */; };
+		578E6243225399290029ED27 /* TestUploadVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 578E6242225399290029ED27 /* TestUploadVC.swift */; };
 		579AF517223BFF2300C8D85B /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 579AF516223BFF2300C8D85B /* TabBarController.swift */; };
 		57A879AA223A6D8300BC2A79 /* CreationContractVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57A879A9223A6D8300BC2A79 /* CreationContractVC.swift */; };
 		57A879AD223A6DE400BC2A79 /* SHFSignatureView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57A879AC223A6DE400BC2A79 /* SHFSignatureView.swift */; };
@@ -73,6 +74,7 @@
 		5776C18F21BA75A600E51C59 /* InscriptionVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InscriptionVC.swift; sourceTree = "<group>"; };
 		5776C19121BA8EE100E51C59 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		578E62402253579E0029ED27 /* ServerBridge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServerBridge.swift; sourceTree = "<group>"; };
+		578E6242225399290029ED27 /* TestUploadVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestUploadVC.swift; sourceTree = "<group>"; };
 		579AF516223BFF2300C8D85B /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 		57A879A9223A6D8300BC2A79 /* CreationContractVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreationContractVC.swift; sourceTree = "<group>"; };
 		57A879AC223A6DE400BC2A79 /* SHFSignatureView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SHFSignatureView.swift; sourceTree = "<group>"; };
@@ -140,6 +142,7 @@
 				5713B028219ACAB1001D9324 /* LaunchScreen.storyboard */,
 				5713B02B219ACAB1001D9324 /* Info.plist */,
 				5713B023219ACAB0001D9324 /* Euko.xcdatamodeld */,
+				578E6242225399290029ED27 /* TestUploadVC.swift */,
 			);
 			path = Euko;
 			sourceTree = "<group>";
@@ -159,6 +162,7 @@
 				57D4896021E797B000D6D1C1 /* Personalized Views */,
 				5776C18C21BA6C7C00E51C59 /* Connexion */,
 				57B8D8AD223805D4009B8223 /* Inscription */,
+				57A879A8223A6D3400BC2A79 /* ProjectCreation */,
 				572294F621C3DF6900C106BC /* ProjectList */,
 				57E46A3321C4783400FB7236 /* Project */,
 				57C3440E223AA6D4007A0B03 /* Profile */,
@@ -181,7 +185,6 @@
 		572294F621C3DF6900C106BC /* ProjectList */ = {
 			isa = PBXGroup;
 			children = (
-				57A879A8223A6D3400BC2A79 /* Creation */,
 				572294F721C3DFA000C106BC /* ProjectListVC.swift */,
 				572294F921C3E04700C106BC /* ProjectCell.swift */,
 			);
@@ -196,13 +199,13 @@
 			path = Connexion;
 			sourceTree = "<group>";
 		};
-		57A879A8223A6D3400BC2A79 /* Creation */ = {
+		57A879A8223A6D3400BC2A79 /* ProjectCreation */ = {
 			isa = PBXGroup;
 			children = (
 				573022B721C998F90000A495 /* CreateProjectVC.swift */,
 				57A879A9223A6D8300BC2A79 /* CreationContractVC.swift */,
 			);
-			path = Creation;
+			path = ProjectCreation;
 			sourceTree = "<group>";
 		};
 		57A879AB223A6DB900BC2A79 /* SHFSignature */ = {
@@ -509,6 +512,7 @@
 				5713B025219ACAB0001D9324 /* Euko.xcdatamodeld in Sources */,
 				573022B821C998F90000A495 /* CreateProjectVC.swift in Sources */,
 				57E46A3521C4785800FB7236 /* ProjectVC.swift in Sources */,
+				578E6243225399290029ED27 /* TestUploadVC.swift in Sources */,
 				576C5E1121FF12AE0069CFBB /* Polygon.swift in Sources */,
 				572294FC21C4449200C106BC /* Project.swift in Sources */,
 				57C34410223AA6E8007A0B03 /* ProfileVC.swift in Sources */,

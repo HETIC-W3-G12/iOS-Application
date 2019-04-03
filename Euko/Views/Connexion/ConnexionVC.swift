@@ -20,14 +20,11 @@ class ConnexionVC: UIViewController {
     
     @IBOutlet weak var activityView: UIView!
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
-        
-    var delegate:ServerBridgeDelegate?
-
+    
     //MARK:- override
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.delegate = self
         self.setupView()
         self.view.addDismisKeyBoardOnTouch()
     }
@@ -46,8 +43,7 @@ class ConnexionVC: UIViewController {
         if (username == "" || password == ""){
             //TODO: Error on textfields
         } else {
-            //self.connect(username: username, password: password)
-            self.nextVC()
+            self.connect(username: username, password: password)
         }
     }
 
@@ -78,15 +74,31 @@ class ConnexionVC: UIViewController {
 }
 
 //MARK:- Server Bridge
-extension ConnexionVC: ServerBridgeDelegate {
+extension ConnexionVC {
     func connect(username:String, password:String){
         self.startActivity()
         let parameters:Parameters = ["email":username, "password":password]
         
-        ServerBridge().connectUser(params:parameters, method:HTTPMethod.post)
+        defaultRequest(params: parameters, endpoint: endpoints.connexion, method: .post, handler: { (success, json) in
+            print(json ?? "Aucun JSON disponible")
+            self.stopActivity()
+            if (success){
+                //TODO: parse json
+                let email:String = json?["user"]["email"].string ?? ""
+                let id:String = json?["user"]["id"].string ?? ""
+                let token:String = json?["token"].string ?? ""
+                
+                let user = User(id: id, token: token, email: email)
+                UserDefaults.setUser(user: user)
+                self.nextVC()
+            }
+            else {
+                self.showSingleAlert(title: "Identifiants inccorects", message: "L'email ou le mot de passe sont incorrects")
+            }
+        })
     }
     
-    func connectionResponse(succed:Bool, json:JSON?){
+    func defaultResponse(succed:Bool, json:JSON?){
         self.stopActivity()
         if (succed){
             UserDefaults.setToken(token: json?["token"].string ?? "")
