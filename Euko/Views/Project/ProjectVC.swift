@@ -22,9 +22,6 @@ class ProjectVC: UIViewController {
     var project:Project!
     var isLoan:Bool! = false
     
-    @IBAction func payAction(_ sender: Any) {
-    }
-    
     @IBAction func backAction(_ sender: Any) {
         self.navigationController?.popViewController(animated: true)
     }
@@ -77,5 +74,9 @@ class ProjectVC: UIViewController {
             self.secondInformationLabel.text = String(format: "%.2f€",  margin)
             self.changingLabel.text = "de bénéfices"
         }
+    }
+    
+    @IBAction func payAction(_ sender: Any) {
+        
     }
 }
