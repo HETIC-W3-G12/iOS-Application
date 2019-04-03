@@ -112,11 +112,14 @@ extension UserDefaults {
     static let USER_FLAG = "userflag"
     
     static func setUser(user:User) {
-        UserDefaults.standard.set(user, forKey:USER_FLAG)
+        let userData:Data = NSKeyedArchiver.archivedData(withRootObject: user)
+        UserDefaults.standard.set(userData, forKey:USER_FLAG)
     }
     
     static func getUser() -> User {
-        return UserDefaults.standard.value(forKey: USER_FLAG) as! User
+        let userData = UserDefaults.standard.data(forKey: USER_FLAG)
+        let decodeData = NSKeyedUnarchiver.unarchiveObject(with: userData!) as! User
+        return decodeData
     }
     
     static func setToken(token:String){

@@ -14,6 +14,7 @@ import SwiftyJSON
 public enum endpoints:String {
     case connexion = "/users/sign_in"
     case signup = "/users/sign_up"
+    case projects = "/projects"
 }
 
 class ServerBridge {
