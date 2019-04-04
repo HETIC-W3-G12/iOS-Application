@@ -10,21 +10,70 @@ import UIKit
 
 class ProjectFinancementVC: UIViewController {
 
+    @IBOutlet weak var backView: UIView!
+    @IBOutlet weak var titlePriceLabel: UILabel!
+    @IBOutlet weak var backButton: UIButton!
+    @IBOutlet weak var nameTF: UITextField!
+    @IBOutlet weak var postCodeTF: UITextField!
+    @IBOutlet weak var ibanTF: UITextField!
+    @IBOutlet weak var addressTF: UITextField!
+    @IBOutlet weak var birthdateTF: UITextField!
+    @IBOutlet weak var firstTF: UITextField!
+    @IBOutlet weak var cityTF: UITextField!
+    @IBOutlet weak var cguButton: UIButton!
+    @IBOutlet weak var validateButton: UIButton!
+    @IBOutlet weak var bottomConstraint: NSLayoutConstraint!
+    @IBOutlet weak var checkButton: UIButton!
+    
+    var projectId:String = ""
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        self.filltextField()
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.navigationController?.navigationBar.isHidden = true
+        self.tabBarController?.tabBar.isHidden = true
     }
-    */
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        self.navigationController?.navigationBar.isHidden = false
+        self.tabBarController?.tabBar.isHidden = false
+    }
 
+    func filltextField(){
+        let user:User = UserDefaults.getUser()
+        
+        self.nameTF.text = user.lastName
+        self.firstTF.text = user.firstName
+        self.postCodeTF.text = String(format: "%s", user.postCode)
+        self.cityTF.text = user.city
+        self.addressTF.text = user.address
+        
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd"
+        let dateString = dateFormatter.string(from: user.birthDate)
+        self.birthdateTF.text = dateString
+    }
+    
+    @IBAction func validateAction(_ sender: Any) {
+        let vc = self.storyboard?.instantiateViewController(withIdentifier: "CreationContractVC") as! CreationContractVC
+        vc.isNewProject = false
+        vc.projectId = self.projectId
+        self.navigationController?.pushViewController(vc, animated: true)
+    }
+    @IBAction func backAction(_ sender: Any) {
+        self.navigationController?.popViewController(animated: true)
+    }
+    
+    @IBAction func checkAction(_ sender: Any) {
+        
+    }
+    
+    @IBAction func cguAction(_ sender: Any) {
+        
+    }
 }

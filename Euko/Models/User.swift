@@ -44,7 +44,7 @@ class User: NSObject, NSCoding {
     
     func setBirthDateFromString(dateString:String){
         let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "yyyy-MM-dd"
+        dateFormatter.dateFormat = "dd-MM-yyyy"
         
         let date = dateFormatter.date(from: dateString)
         self.birthDate = date ?? Date()

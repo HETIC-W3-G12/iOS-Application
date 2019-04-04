@@ -15,6 +15,7 @@ public enum endpoints:String {
     case connexion = "/users/sign_in"
     case signup = "/users/sign_up"
     case projects = "/projects"
+    case offers = "/offers"
 }
 
 class ServerBridge {
