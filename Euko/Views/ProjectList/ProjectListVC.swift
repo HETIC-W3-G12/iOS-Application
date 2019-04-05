@@ -36,6 +36,7 @@ class ProjectListVC: UIViewController {
     func orderProjectsByDate() {
         self.projects.sort(by: {$0.date.compare($1.date) == .orderedDescending})
         self.checkNumberOfProjects()
+        self.tableView.reloadData()
     }
     
     func checkNumberOfProjects(){
@@ -117,7 +118,6 @@ extension ProjectListVC {
                 }
                 self.turnAvctivityOff()
                 self.orderProjectsByDate()
-                self.tableView.reloadData()
             } else {
                 
             }

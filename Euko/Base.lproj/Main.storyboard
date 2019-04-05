@@ -559,7 +559,7 @@
                                             <constraint firstAttribute="height" constant="48" id="i6v-mn-1gF"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="21"/>
-                                        <state key="normal" title="Financer le projet">
+                                        <state key="normal" title="Je souhaite investir">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
                                         <connections>
@@ -1617,11 +1617,11 @@
             </objects>
             <point key="canvasLocation" x="-1194" y="24"/>
         </scene>
-        <!--Navigation Controller-->
+        <!--Profil-->
         <scene sceneID="HO6-Jf-Qy6">
             <objects>
                 <navigationController id="ZG2-gt-jpO" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="" image="profile" landscapeImage="profile" largeContentSizeImage="profile" selectedImage="profile" id="iv6-7B-ITj"/>
+                    <tabBarItem key="tabBarItem" title="Profil" image="profile" landscapeImage="profile" largeContentSizeImage="profile" selectedImage="profile" id="iv6-7B-ITj"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="2M9-oX-u6S">
                         <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -2798,11 +2798,11 @@ compter du 01 Février 2019.</string>
             </objects>
             <point key="canvasLocation" x="7634" y="-660"/>
         </scene>
-        <!--Navigation Controller-->
+        <!--Projet-->
         <scene sceneID="3dC-5J-Xla">
             <objects>
                 <navigationController storyboardIdentifier="projectNavigationController" automaticallyAdjustsScrollViewInsets="NO" useStoryboardIdentifierAsRestorationIdentifier="YES" id="8Oa-PN-NYc" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" tag="1" title="" image="projects" landscapeImage="projects" largeContentSizeImage="projects" selectedImage="projects" id="LMr-is-mfe"/>
+                    <tabBarItem key="tabBarItem" tag="1" title="Projet" image="projects" landscapeImage="projects" largeContentSizeImage="projects" selectedImage="projects" id="LMr-is-mfe"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" barStyle="black" translucent="NO" id="Bfx-2W-gSQ">
                         <rect key="frame" x="0.0" y="20" width="375" height="44"/>
@@ -3057,11 +3057,11 @@ compter du 01 Février 2019.</string>
             </objects>
             <point key="canvasLocation" x="2575" y="24"/>
         </scene>
-        <!--Navigation Controller-->
+        <!--En cours-->
         <scene sceneID="GPK-oy-5GW">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="p8q-AA-c2u" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" tag="2" title="" image="wallet" landscapeImage="wallet" largeContentSizeImage="wallet" selectedImage="wallet" id="ebC-O1-oIb"/>
+                    <tabBarItem key="tabBarItem" tag="2" title="En cours" image="wallet" landscapeImage="wallet" largeContentSizeImage="wallet" selectedImage="wallet" id="ebC-O1-oIb"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="YP5-h4-MDW">
                         <rect key="frame" x="0.0" y="20" width="375" height="44"/>

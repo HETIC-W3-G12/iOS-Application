@@ -27,9 +27,6 @@ class CreateProjectVC: UIViewController {
     
     @IBOutlet weak var keyboardConstraint: NSLayoutConstraint!
     
-    let dev:String = "https://euko-api-staging-pr-34.herokuapp.com"
-    let prod:String = "https://euko-api-staging.herokuapp.com"
-    
     var keyboardHeight:CGFloat = 200
     var keyboardAnimation:Float = 0
 
@@ -82,8 +79,6 @@ class CreateProjectVC: UIViewController {
     }
     
     @IBAction func validateAction(_ sender: Any) {
-        let vc = self.storyboard?.instantiateViewController(withIdentifier: "CreationContractVC") as! CreationContractVC
-        
         let title = self.titletextField.text ?? ""
         let desc = self.descriptionTextView.text ?? ""
         let price = Int(ceil(self.priceSlider.value) * 10)
@@ -93,9 +88,11 @@ class CreateProjectVC: UIViewController {
                                           "description": desc,
                                           "price": price,
                                           "timeLaps": time]
-            vc.params = parameters
+            self.createProjectWithParameters(parameters: parameters)
         }
-        self.navigationController?.pushViewController(vc, animated: true)
+        else {
+            self.showSingleAlert(title: "Erreur", message: "Un ou plusieurs champs sont incorrects")
+        }
     }
 
     @IBAction func startEditTitle(_ sender: Any) {
@@ -127,6 +124,26 @@ class CreateProjectVC: UIViewController {
             return false
         }
         return true
+    }
+
+    func createProjectWithParameters(parameters: Parameters){
+        let user:User = UserDefaults.getUser()!
+        let token:String = user.token
+        if (token != ""){
+            let bearer:String = "Bearer \(token)"
+            let headers: HTTPHeaders = [
+                "Authorization": bearer,
+                "Accept": "application/json"]
+            
+            headersRequest(params: parameters, endpoint: endpoints.projects, method: .post, header: headers, handler: {
+                (success, json) in
+                if (success){
+                    self.navigationController?.popToRootViewController(animated: true)
+                } else {
+                    self.showSingleAlert(title: "Une erreure s'est produite", message: "Veuillez vérifier votre connexion internet.")
+                }
+            })
+        }
     }
 
 }
