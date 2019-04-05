@@ -26,6 +26,7 @@
 		5776C19221BA8EE100E51C59 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5776C19121BA8EE100E51C59 /* Extensions.swift */; };
 		578E62412253579E0029ED27 /* ServerBridge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 578E62402253579E0029ED27 /* ServerBridge.swift */; };
 		578E6243225399290029ED27 /* TestUploadVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 578E6242225399290029ED27 /* TestUploadVC.swift */; };
+		578E62472254F88D0029ED27 /* ProjectFinancementVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 578E62462254F88D0029ED27 /* ProjectFinancementVC.swift */; };
 		579AF517223BFF2300C8D85B /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 579AF516223BFF2300C8D85B /* TabBarController.swift */; };
 		57A879AA223A6D8300BC2A79 /* CreationContractVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57A879A9223A6D8300BC2A79 /* CreationContractVC.swift */; };
 		57A879AD223A6DE400BC2A79 /* SHFSignatureView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57A879AC223A6DE400BC2A79 /* SHFSignatureView.swift */; };
@@ -75,6 +76,7 @@
 		5776C19121BA8EE100E51C59 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		578E62402253579E0029ED27 /* ServerBridge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServerBridge.swift; sourceTree = "<group>"; };
 		578E6242225399290029ED27 /* TestUploadVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestUploadVC.swift; sourceTree = "<group>"; };
+		578E62462254F88D0029ED27 /* ProjectFinancementVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectFinancementVC.swift; sourceTree = "<group>"; };
 		579AF516223BFF2300C8D85B /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 		57A879A9223A6D8300BC2A79 /* CreationContractVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreationContractVC.swift; sourceTree = "<group>"; };
 		57A879AC223A6DE400BC2A79 /* SHFSignatureView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SHFSignatureView.swift; sourceTree = "<group>"; };
@@ -258,6 +260,7 @@
 			isa = PBXGroup;
 			children = (
 				57E46A3421C4785800FB7236 /* ProjectVC.swift */,
+				578E62462254F88D0029ED27 /* ProjectFinancementVC.swift */,
 			);
 			path = Project;
 			sourceTree = "<group>";
@@ -499,6 +502,7 @@
 				57D4896221E797CF00D6D1C1 /* GradientView.swift in Sources */,
 				57A879AA223A6D8300BC2A79 /* CreationContractVC.swift in Sources */,
 				575B446E2239109E00FD5C97 /* InscriptionValidationVC.swift in Sources */,
+				578E62472254F88D0029ED27 /* ProjectFinancementVC.swift in Sources */,
 				5776C19221BA8EE100E51C59 /* Extensions.swift in Sources */,
 				571EB6DD21B91F70008D4227 /* User.swift in Sources */,
 				572294FA21C3E04700C106BC /* ProjectCell.swift in Sources */,

@@ -20,6 +20,8 @@ class CreationContractVC: UIViewController, SHFSignatureProtocol {
     @IBOutlet weak var contractContent: UITextView!
     @IBOutlet weak var validateButton: UIButton!
     
+    var isNewProject:Bool = true
+    var projectId:String = ""
     var signatureImage:UIImage = UIImage()
     var params:Parameters = [:]
     
@@ -36,11 +38,17 @@ class CreationContractVC: UIViewController, SHFSignatureProtocol {
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         self.navigationController?.navigationBar.isHidden = false
+        if (!self.isNewProject){
+            self.tabBarController?.tabBar.isHidden = false
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.navigationController?.navigationBar.isHidden = true
+        if (!self.isNewProject){
+            self.tabBarController?.tabBar.isHidden = true
+        }
     }
     
     @IBAction func backButton(_ sender: Any) {
@@ -49,7 +57,11 @@ class CreationContractVC: UIViewController, SHFSignatureProtocol {
     
     
     @IBAction func validateAction(_ sender: Any) {
-        self.createProjectWithParameters(parameters: self.params)
+        if (self.isNewProject){
+            self.createProjectWithParameters(parameters: self.params)
+        } else {
+            self.financeProject()
+        }
     }
     
     func drawingSignature() {
@@ -64,8 +76,28 @@ class CreationContractVC: UIViewController, SHFSignatureProtocol {
         self.signatureImage = UIImage()
     }
     
+    func financeProject() {
+        let user:User = UserDefaults.getUser()!
+        let bearer:String = "Bearer \(user.token)"
+        let headers: HTTPHeaders = [ "Authorization": bearer, "Accept": "application/json"]
+        self.params = ["project_id": self.projectId]
+            
+        headersRequest(params: self.params, endpoint: .offers, method: .post, header: headers, handler: {
+            (success, json) in
+            if (success){
+                print(json ?? "Aucune valeur dans le JSON")
+                self.showSingleAlertWithCompletion(title: "En attente de validation", message: "Votre demande de financement à bien été envoyé et est en attente de validation par l'emprunteur", handler: {
+                    _ in
+                    self.navigationController?.popToRootViewController(animated: true)
+                })
+            } else {
+                self.showSingleAlert(title: "Une erreur est survenue", message: "Veuillez réessayer")
+            }
+        })
+    }
+    
     func createProjectWithParameters(parameters: Parameters){
-        let user:User = UserDefaults.getUser()
+        let user:User = UserDefaults.getUser()!
         let token:String = user.token
         if (token != ""){
             let bearer:String = "Bearer \(token)"
