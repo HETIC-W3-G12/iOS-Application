@@ -184,7 +184,12 @@ class ProfileVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     }
     
     @IBAction func deleteAction(_ sender: Any) {
+        //TODO: Temporary deconnexion
         
+        let vc = self.storyboard?.instantiateViewController(withIdentifier: "ConnexionVC") as! ConnexionVC
+        UserDefaults.deleteUser()
+        let appdelegate = UIApplication.shared.delegate as! AppDelegate
+        appdelegate.window!.rootViewController = vc
     }
     
     @IBAction func downloadDataAction(_ sender: Any) {

@@ -116,6 +116,10 @@ extension UserDefaults {
         UserDefaults.standard.set(userData, forKey:USER_FLAG)
     }
     
+    static func deleteUser(){
+        UserDefaults.standard.set(nil, forKey:USER_FLAG)
+    }
+    
     static func getUser() -> User? {
         let userData = UserDefaults.standard.data(forKey: USER_FLAG)
         if (userData != nil){
