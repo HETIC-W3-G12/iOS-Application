@@ -45,7 +45,7 @@ class ProjectFinancementVC: UIViewController {
     }
 
     func filltextField(){
-        let user:User = UserDefaults.getUser()
+        let user:User = UserDefaults.getUser()!
         
         self.nameTF.text = user.lastName
         self.firstTF.text = user.firstName

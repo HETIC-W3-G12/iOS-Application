@@ -13,12 +13,29 @@ import CoreData
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
-
+    var userLoggedIn:Bool = false
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
+        
+        self.isUserLoggedIn()
+        window?.rootViewController = initialViewController()
+        
         return true
     }
+    
+    func initialViewController() -> UIViewController {
+        if (self.userLoggedIn){
+            return UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "TabBarController") as! TabBarController
+        } else {
+            return UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "ConnexionVC") as! ConnexionVC
+        }
+    }
+    
+    func isUserLoggedIn(){
+        let user:User? = UserDefaults.getUser()
+        self.userLoggedIn = (user == nil) ? false : true
+    }
+    
 
     func applicationWillResignActive(_ application: UIApplication) {
         // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.

@@ -116,10 +116,15 @@ extension UserDefaults {
         UserDefaults.standard.set(userData, forKey:USER_FLAG)
     }
     
-    static func getUser() -> User {
+    static func getUser() -> User? {
         let userData = UserDefaults.standard.data(forKey: USER_FLAG)
-        let decodeData = NSKeyedUnarchiver.unarchiveObject(with: userData!) as! User
-        return decodeData
+        if (userData != nil){
+            let decodeData:User? = NSKeyedUnarchiver.unarchiveObject(with: userData!) as? User
+            return decodeData
+        }
+        else {
+            return nil
+        }
     }
     
     static func setToken(token:String){

@@ -77,7 +77,7 @@ class CreationContractVC: UIViewController, SHFSignatureProtocol {
     }
     
     func financeProject() {
-        let user:User = UserDefaults.getUser()
+        let user:User = UserDefaults.getUser()!
         let bearer:String = "Bearer \(user.token)"
         let headers: HTTPHeaders = [ "Authorization": bearer, "Accept": "application/json"]
         self.params = ["project_id": self.projectId]
@@ -97,7 +97,7 @@ class CreationContractVC: UIViewController, SHFSignatureProtocol {
     }
     
     func createProjectWithParameters(parameters: Parameters){
-        let user:User = UserDefaults.getUser()
+        let user:User = UserDefaults.getUser()!
         let token:String = user.token
         if (token != ""){
             let bearer:String = "Bearer \(token)"
