@@ -28,6 +28,8 @@
 		578E6243225399290029ED27 /* TestUploadVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 578E6242225399290029ED27 /* TestUploadVC.swift */; };
 		578E62472254F88D0029ED27 /* ProjectFinancementVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 578E62462254F88D0029ED27 /* ProjectFinancementVC.swift */; };
 		578E624922579AA40029ED27 /* ProjectRecapVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 578E624822579AA40029ED27 /* ProjectRecapVC.swift */; };
+		578E624B225A47930029ED27 /* OnGoingTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 578E624A225A47930029ED27 /* OnGoingTVC.swift */; };
+		578E624D225A496F0029ED27 /* OnGoingTVController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 578E624C225A496F0029ED27 /* OnGoingTVController.swift */; };
 		579AF517223BFF2300C8D85B /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 579AF516223BFF2300C8D85B /* TabBarController.swift */; };
 		57A879AA223A6D8300BC2A79 /* CreationContractVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57A879A9223A6D8300BC2A79 /* CreationContractVC.swift */; };
 		57A879AD223A6DE400BC2A79 /* SHFSignatureView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57A879AC223A6DE400BC2A79 /* SHFSignatureView.swift */; };
@@ -79,6 +81,8 @@
 		578E6242225399290029ED27 /* TestUploadVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestUploadVC.swift; sourceTree = "<group>"; };
 		578E62462254F88D0029ED27 /* ProjectFinancementVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectFinancementVC.swift; sourceTree = "<group>"; };
 		578E624822579AA40029ED27 /* ProjectRecapVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectRecapVC.swift; sourceTree = "<group>"; };
+		578E624A225A47930029ED27 /* OnGoingTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnGoingTVC.swift; sourceTree = "<group>"; };
+		578E624C225A496F0029ED27 /* OnGoingTVController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnGoingTVController.swift; sourceTree = "<group>"; };
 		579AF516223BFF2300C8D85B /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 		57A879A9223A6D8300BC2A79 /* CreationContractVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreationContractVC.swift; sourceTree = "<group>"; };
 		57A879AC223A6DE400BC2A79 /* SHFSignatureView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SHFSignatureView.swift; sourceTree = "<group>"; };
@@ -264,6 +268,8 @@
 			children = (
 				57E46A3421C4785800FB7236 /* ProjectVC.swift */,
 				578E62462254F88D0029ED27 /* ProjectFinancementVC.swift */,
+				578E624A225A47930029ED27 /* OnGoingTVC.swift */,
+				578E624C225A496F0029ED27 /* OnGoingTVController.swift */,
 			);
 			path = Project;
 			sourceTree = "<group>";
@@ -518,6 +524,7 @@
 				579AF517223BFF2300C8D85B /* TabBarController.swift in Sources */,
 				57B8D8AF22386214009B8223 /* InscriptionNextVC.swift in Sources */,
 				5713B025219ACAB0001D9324 /* Euko.xcdatamodeld in Sources */,
+				578E624B225A47930029ED27 /* OnGoingTVC.swift in Sources */,
 				573022B821C998F90000A495 /* CreateProjectVC.swift in Sources */,
 				57E46A3521C4785800FB7236 /* ProjectVC.swift in Sources */,
 				578E6243225399290029ED27 /* TestUploadVC.swift in Sources */,
@@ -525,6 +532,7 @@
 				572294FC21C4449200C106BC /* Project.swift in Sources */,
 				57C34410223AA6E8007A0B03 /* ProfileVC.swift in Sources */,
 				57D4896421E797EE00D6D1C1 /* Triangle.swift in Sources */,
+				578E624D225A496F0029ED27 /* OnGoingTVController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
