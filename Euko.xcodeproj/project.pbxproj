@@ -38,6 +38,7 @@
 		57CC251B223BBB6900124166 /* WalletVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57CC251A223BBB6900124166 /* WalletVC.swift */; };
 		57D4896221E797CF00D6D1C1 /* GradientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57D4896121E797CF00D6D1C1 /* GradientView.swift */; };
 		57D4896421E797EE00D6D1C1 /* Triangle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57D4896321E797EE00D6D1C1 /* Triangle.swift */; };
+		57E2D280226F36B800E55703 /* OnBoardingVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57E2D27F226F36B800E55703 /* OnBoardingVC.swift */; };
 		57E46A3521C4785800FB7236 /* ProjectVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57E46A3421C4785800FB7236 /* ProjectVC.swift */; };
 		57FE665721CD523000D40854 /* MoneyBackCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57FE665621CD523000D40854 /* MoneyBackCell.swift */; };
 		D9081AF5C24CD981B57E88FA /* Pods_EukoTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2E97DDA1E1FCA067628EB106 /* Pods_EukoTests.framework */; };
@@ -91,6 +92,7 @@
 		57CC251A223BBB6900124166 /* WalletVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletVC.swift; sourceTree = "<group>"; };
 		57D4896121E797CF00D6D1C1 /* GradientView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradientView.swift; sourceTree = "<group>"; };
 		57D4896321E797EE00D6D1C1 /* Triangle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Triangle.swift; sourceTree = "<group>"; };
+		57E2D27F226F36B800E55703 /* OnBoardingVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnBoardingVC.swift; sourceTree = "<group>"; };
 		57E46A3421C4785800FB7236 /* ProjectVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectVC.swift; sourceTree = "<group>"; };
 		57FE665621CD523000D40854 /* MoneyBackCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoneyBackCell.swift; sourceTree = "<group>"; };
 		5E2071583A9DCDD53C28CDF1 /* Pods_Euko.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Euko.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -167,6 +169,7 @@
 		571EB6DA21B91F47008D4227 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				57E2D27E226F369000E55703 /* OnBoarding */,
 				57D4896021E797B000D6D1C1 /* Personalized Views */,
 				5776C18C21BA6C7C00E51C59 /* Connexion */,
 				57B8D8AD223805D4009B8223 /* Inscription */,
@@ -261,6 +264,14 @@
 				579AF516223BFF2300C8D85B /* TabBarController.swift */,
 			);
 			path = "Personalized Views";
+			sourceTree = "<group>";
+		};
+		57E2D27E226F369000E55703 /* OnBoarding */ = {
+			isa = PBXGroup;
+			children = (
+				57E2D27F226F36B800E55703 /* OnBoardingVC.swift */,
+			);
+			path = OnBoarding;
 			sourceTree = "<group>";
 		};
 		57E46A3321C4783400FB7236 /* Project */ = {
@@ -519,6 +530,7 @@
 				5713B01D219ACAB0001D9324 /* AppDelegate.swift in Sources */,
 				57CC251B223BBB6900124166 /* WalletVC.swift in Sources */,
 				578E62412253579E0029ED27 /* ServerBridge.swift in Sources */,
+				57E2D280226F36B800E55703 /* OnBoardingVC.swift in Sources */,
 				572294F821C3DFA000C106BC /* ProjectListVC.swift in Sources */,
 				5776C18E21BA6C9A00E51C59 /* ConnexionVC.swift in Sources */,
 				579AF517223BFF2300C8D85B /* TabBarController.swift in Sources */,
