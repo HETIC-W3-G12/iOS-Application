@@ -63,6 +63,7 @@ class ProfileVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.view.addDismisKeyBoardOnTouch()
         
         if (self.viewSelector.selectedSegmentIndex == 0){
             self.setupProfile()

@@ -36,6 +36,7 @@ class ProjectListVC: UIViewController {
     func orderProjectsByDate() {
         self.projects.sort(by: {$0.date.compare($1.date) == .orderedDescending})
         self.checkNumberOfProjects()
+        self.tableView.reloadData()
     }
     
     func checkNumberOfProjects(){
@@ -50,6 +51,9 @@ class ProjectListVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationController?.navigationBar.isHidden = true
+        
+        let insets = UIEdgeInsets(top: 4, left: 0, bottom: 72, right: 0)
+        self.tableView.contentInset = insets
 
         self.tableView.dataSource = self
         self.tableView.delegate = self
@@ -63,6 +67,7 @@ class ProjectListVC: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.navigationController?.navigationBar.isHidden = true
+        self.tabBarController?.tabBar.isHidden = false
 
         self.setProjects()
         self.turnAvctivityOff()
@@ -117,7 +122,6 @@ extension ProjectListVC {
                 }
                 self.turnAvctivityOff()
                 self.orderProjectsByDate()
-                self.tableView.reloadData()
             } else {
                 
             }

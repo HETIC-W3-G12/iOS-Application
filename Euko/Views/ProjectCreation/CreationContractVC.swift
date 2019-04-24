@@ -58,7 +58,7 @@ class CreationContractVC: UIViewController, SHFSignatureProtocol {
     
     @IBAction func validateAction(_ sender: Any) {
         if (self.isNewProject){
-            self.createProjectWithParameters(parameters: self.params)
+            //TODO: clean this
         } else {
             self.financeProject()
         }
@@ -96,23 +96,4 @@ class CreationContractVC: UIViewController, SHFSignatureProtocol {
         })
     }
     
-    func createProjectWithParameters(parameters: Parameters){
-        let user:User = UserDefaults.getUser()!
-        let token:String = user.token
-        if (token != ""){
-            let bearer:String = "Bearer \(token)"
-            let headers: HTTPHeaders = [
-                "Authorization": bearer,
-                "Accept": "application/json"]
-            
-            headersRequest(params: parameters, endpoint: endpoints.projects, method: .post, header: headers, handler: {
-                (success, json) in
-                if (success){
-                    self.navigationController?.popToRootViewController(animated: true)
-                } else {
-                    self.showSingleAlert(title: "Une erreure s'est produite", message: "Veuillez vérifier votre connexion internet.")
-                }
-            })
-        }
-    }
 }

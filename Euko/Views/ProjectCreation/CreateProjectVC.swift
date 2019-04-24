@@ -27,9 +27,6 @@ class CreateProjectVC: UIViewController {
     
     @IBOutlet weak var keyboardConstraint: NSLayoutConstraint!
     
-    let dev:String = "https://euko-api-staging-pr-34.herokuapp.com"
-    let prod:String = "https://euko-api-staging.herokuapp.com"
-    
     var keyboardHeight:CGFloat = 200
     var keyboardAnimation:Float = 0
 
@@ -59,11 +56,13 @@ class CreateProjectVC: UIViewController {
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         self.navigationController?.navigationBar.isHidden = false
+        self.tabBarController?.tabBar.isHidden = false
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.navigationController?.navigationBar.isHidden = true
+        self.tabBarController?.tabBar.isHidden = true
     }
 
     // MARK:- Actions
@@ -82,8 +81,6 @@ class CreateProjectVC: UIViewController {
     }
     
     @IBAction func validateAction(_ sender: Any) {
-        let vc = self.storyboard?.instantiateViewController(withIdentifier: "CreationContractVC") as! CreationContractVC
-        
         let title = self.titletextField.text ?? ""
         let desc = self.descriptionTextView.text ?? ""
         let price = Int(ceil(self.priceSlider.value) * 10)
@@ -93,9 +90,14 @@ class CreateProjectVC: UIViewController {
                                           "description": desc,
                                           "price": price,
                                           "timeLaps": time]
+            
+            let vc = self.storyboard?.instantiateViewController(withIdentifier: "ProjectRecapVC") as! ProjectRecapVC
             vc.params = parameters
+            self.navigationController?.pushViewController(vc, animated: true)
         }
-        self.navigationController?.pushViewController(vc, animated: true)
+        else {
+            self.showSingleAlert(title: "Erreur", message: "Un ou plusieurs champs sont incorrects")
+        }
     }
 
     @IBAction func startEditTitle(_ sender: Any) {
@@ -128,7 +130,6 @@ class CreateProjectVC: UIViewController {
         }
         return true
     }
-
 }
 
 // MARK:- UITextViewDelegate
