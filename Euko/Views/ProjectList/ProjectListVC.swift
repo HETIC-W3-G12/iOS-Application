@@ -148,10 +148,13 @@ extension ProjectListVC: UITableViewDelegate, UITableViewDataSource{
             cell.topConstraint.constant = 25
         }
         
+        cell.priceLabel.text = String(format: "%d€", self.projects[indexPath.row].price)
+        cell.infoLabel.text = String(format: "Remboursé en %d mois", self.projects[indexPath.row].timeLaps)
         cell.titleLabel.text = self.projects[indexPath.row].title
         cell.descriptionLabel.text = self.projects[indexPath.row].description
-        cell.triangleLabel.text = String(format: "+ %.f €",
-                                         self.projects[indexPath.row].finalPrice - Float(self.projects[indexPath.row].price))
+        
+        cell.interestPriceLabel.text = String(format: "+%.f%%", self.projects[indexPath.row].interests * 1000)
+        cell.interestPriceSecondLabel.text = String(format: "(%.2f€)", self.projects[indexPath.row].finalPrice - Float(self.projects[indexPath.row].price))
         
         let price:Int = self.projects[indexPath.row].price
         let timeLaps:Int = self.projects[indexPath.row].timeLaps
@@ -161,7 +164,7 @@ extension ProjectListVC: UITableViewDelegate, UITableViewDataSource{
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 200.0
+        return 250.0
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {

@@ -51,6 +51,21 @@ extension UIView {
         self.layer.shadowRadius = 3
     }
     
+    func setBasicShadow(){
+        self.layer.shadowColor = UIColor.lightGray.cgColor
+        self.layer.shadowOpacity = 0.5
+        self.layer.shadowOffset = CGSize.zero
+        self.layer.shadowRadius = 7
+    }
+    
+    func setBasicBlueShadow(){
+        //self.layer.shadowColor = UIColor.blue.cgColor
+        self.layer.shadowColor = UIColor(red: 59/255, green: 84/255, blue: 213/255, alpha: 1).cgColor
+        self.layer.shadowOpacity = 0.3
+        self.layer.shadowOffset = CGSize.zero
+        self.layer.shadowRadius = 7
+    }
+    
     func roundBorder(){
         self.layer.cornerRadius = self.frame.height / 2
     }
