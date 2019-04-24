@@ -27,7 +27,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         if (self.userLoggedIn){
             return UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "TabBarController") as! TabBarController
         } else {
-            return UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "ConnexionVC") as! ConnexionVC
+            return UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "connexionNavigationController") as! UINavigationController
         }
     }
     

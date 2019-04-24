@@ -46,6 +46,12 @@ class ConnexionVC: UIViewController {
             self.connect(username: username, password: password)
         }
     }
+    
+    @IBAction func noAccountAction(_ sender: Any) {
+        let vc = self.storyboard?.instantiateViewController(withIdentifier: "InscriptionVC") as! InscriptionVC
+        self.navigationController?.pushViewController(vc, animated: true)
+    }
+    
 
     //MARK:- Other functions
     func setupView(){

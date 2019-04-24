@@ -61,25 +61,44 @@ class InscriptionValidationVC: UIViewController, UIImagePickerControllerDelegate
     }
 
     @IBAction func validateInscription(_ sender: Any) {
-        let parameters:Parameters = ["email": self.user.email,
-                                     "password": self.user.password,
-                                     "firstname":self.user.firstName,
-                                     "lastname":self.user.lastName,
-                                     "birthdate":self.user.birthDate,
-                                     "birthplace":self.user.birthPlace,
-                                     "adress":self.user.address,
-                                     "city":self.user.city,
-                                     "postCode":self.user.postCode]
-        defaultRequest(params: parameters, endpoint: endpoints.signup, method: .post) { (success, json) in
-            print(json ?? "Aucun JSON disponible")
-            self.showSingleAlertWithCompletion(title: "Inscription terminée",
-                                               message: "Vous pouvez-maintenant vous connecter",
-                                               handler: { _ in
-              self.navigationController?.popToRootViewController(animated: true)
-            })
-        }
+        self.uploadFace()
+    }
+    
+    func uploadFace(){
+        let user:User = UserDefaults.getUser()!
+        let bearer:String = "Bearer \(user.token)"
+        let headers: HTTPHeaders = [ "Authorization": bearer, "Accept": "application/json"]
+        
+        let data = self.resizeImage(image: self.selfieImageView.image!)
+        let base64EncodedString = data.base64EncodedString()
+        let parameters:Parameters = ["file": base64EncodedString]
+        headersRequest(params: parameters, endpoint: .uploadFace, method: .post, header: headers, handler: { (success, json) in
+            if (success){
+                self.uploadIdentity()
+            }
+        })
     }
 
+    func uploadIdentity(){
+        let user:User = UserDefaults.getUser()!
+        let bearer:String = "Bearer \(user.token)"
+        let headers: HTTPHeaders = [ "Authorization": bearer, "Accept": "application/json"]
+        
+        let data = self.resizeImage(image: self.identityImageView.image!)
+        let base64EncodedString = data.base64EncodedString()
+        let parameters:Parameters = ["file": base64EncodedString]
+        headersRequest(params: parameters, endpoint: .uploadIdentity, method: .post, header: headers, handler: { (success, json) in
+            if (success){
+                self.showSingleAlertWithCompletion(title: "Inscription terminée",
+                                                   message: "",
+                                                   handler: { _ in
+                                                    let vc = self.storyboard?.instantiateViewController(withIdentifier: "ProjectListVC") as! ProjectListVC
+                                                    let navigationController = UINavigationController(rootViewController: vc)
+                                                    let appDelegate = UIApplication.shared.delegate as! AppDelegate
+                                                    appDelegate.window?.rootViewController = navigationController })
+            }
+        })
+    }
     
     func presentImagePickerFromCamera(source:UIImagePickerController.SourceType = .savedPhotosAlbum){
         imagePicker.allowsEditing = false
@@ -117,5 +136,43 @@ extension InscriptionValidationVC {
             self.showSingleAlert(title: "Un probleme est survenu...",
                                  message: "Veuillez verifiez votre connexion internet")
         }
+    }
+    
+    func resizeImage(image: UIImage) -> Data {
+        var actualHeight: Float = Float(image.size.height)
+        var actualWidth: Float = Float(image.size.width)
+        let maxHeight: Float = 100.0
+        let maxWidth: Float = 100.0
+        var imgRatio: Float = actualWidth / actualHeight
+        let maxRatio: Float = maxWidth / maxHeight
+        let compressionQuality: Float = 0.1
+        //50 percent compression
+        
+        if actualHeight > maxHeight || actualWidth > maxWidth {
+            if imgRatio < maxRatio {
+                //adjust width according to maxHeight
+                imgRatio = maxHeight / actualHeight
+                actualWidth = imgRatio * actualWidth
+                actualHeight = maxHeight
+            }
+            else if imgRatio > maxRatio {
+                //adjust height according to maxWidth
+                imgRatio = maxWidth / actualWidth
+                actualHeight = imgRatio * actualHeight
+                actualWidth = maxWidth
+            }
+            else {
+                actualHeight = maxHeight
+                actualWidth = maxWidth
+            }
+        }
+        
+        let rect = CGRect(x: 0, y: 0, width: CGFloat(actualWidth), height: CGFloat(actualHeight))
+        UIGraphicsBeginImageContext(rect.size)
+        image.draw(in: rect)
+        let img = UIGraphicsGetImageFromCurrentImageContext()
+        let imageData = img?.jpegData(compressionQuality:CGFloat(compressionQuality))
+        UIGraphicsEndImageContext()
+        return imageData!
     }
 }

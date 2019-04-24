@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import Alamofire
+import SwiftyJSON
 
 class InscriptionNextVC: UIViewController {
 
@@ -61,11 +63,38 @@ class InscriptionNextVC: UIViewController {
     
     @IBAction func saveAction(_ sender: Any) {
         if (self.checkAllFields()){
-            let vc = self.storyboard?.instantiateViewController(withIdentifier: "InscriptionValidationVC") as! InscriptionValidationVC
-            vc.user = self.user
-            self.navigationController?.pushViewController(vc, animated: true)
+           self.signUp()
         } else {
             //TODO: Ici un ou plusieurs champs sont mauvais
+        }
+    }
+    
+    func signUp(){
+        let parameters:Parameters = ["email": self.user.email,
+                                     "password": self.user.password,
+                                     "firstname":self.user.firstName,
+                                     "lastname":self.user.lastName,
+                                     "birthdate":self.user.birthDate,
+                                     "birthplace":self.user.birthPlace,
+                                     "adress":self.user.address,
+                                     "city":self.user.city,
+                                     "postCode":self.user.postCode]
+        defaultRequest(params: parameters, endpoint: endpoints.signup, method: .post) { (success, json) in
+            print(json ?? "Aucun JSON disponible")
+            if (success){
+                let email:String = json?["user"]["email"].string ?? ""
+                let id:String = json?["user"]["id"].string ?? ""
+                let token:String = json?["token"].string ?? ""
+                
+                let user = User(id: id, token: token, email: email)
+                UserDefaults.setUser(user: user)
+                
+                let vc = self.storyboard?.instantiateViewController(withIdentifier: "InscriptionValidationVC") as! InscriptionValidationVC
+                self.navigationController?.pushViewController(vc, animated: true)
+            }
+            else {
+                print("json")
+            }
         }
     }
 }
