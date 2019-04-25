@@ -10,16 +10,20 @@ import UIKit
 
 class LastOnBoarding: UIViewController {
 
-    @IBOutlet weak var nextButton: UIButton!
+    @IBOutlet weak var connectionButton: UIButton!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        self.connectionButton.roundBorder()
     }
     
-    @IBAction func nextAction(_ sender: Any) {
-        //let vc = self.storyboard?.instantiateViewController(withIdentifier: "connexionNavigationController") as! UINavigationController
-        //self.navigationController?.pushViewController(vc, animated: true)
+    
+    @IBAction func connectAction(_ sender: Any) {
+        let appdelegate = UIApplication.shared.delegate as! AppDelegate
         
-        self.navigationController?.popViewController(animated: true)
+        let vc = self.storyboard?.instantiateViewController(withIdentifier: "connexionNavigationController") as! UINavigationController
+        
+        appdelegate.window!.rootViewController = vc
     }
 }

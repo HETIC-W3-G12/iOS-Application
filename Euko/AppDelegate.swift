@@ -17,10 +17,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         
-        self.isUserLoggedIn()
-        window?.rootViewController = initialViewController()
+        if (!self.firstOpening()){
+            let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "OnBoardingVC") as! OnBoardingVC
+            window?.rootViewController = vc
+        } else {
+            self.isUserLoggedIn()
+            window?.rootViewController = initialViewController()
+        }
         
         return true
+    }
+    
+    func firstOpening() -> Bool {
+        return UserDefaults.isFirstOppening()
     }
     
     func initialViewController() -> UIViewController {

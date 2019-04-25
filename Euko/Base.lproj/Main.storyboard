@@ -43,7 +43,7 @@
                 <pageViewController storyboardIdentifier="OnBoardingVC" autoresizesArchivedViewToFullSize="NO" modalTransitionStyle="flipHorizontal" useStoryboardIdentifierAsRestorationIdentifier="YES" transitionStyle="scroll" navigationOrientation="horizontal" spineLocation="none" id="wep-T1-9IL" customClass="OnBoardingVC" customModule="Euko" customModuleProvider="target" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="e7e-ox-1Ee" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1325" y="-2412"/>
+            <point key="canvasLocation" x="-1300" y="-2385"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="6ft-ev-GaR">
@@ -70,7 +70,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rVO-Kk-GJq" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1279.2" y="-1647.5262368815593"/>
+            <point key="canvasLocation" x="-1300" y="-1659"/>
         </scene>
         <!--Last On Boarding-->
         <scene sceneID="jJs-pj-vWG">
@@ -85,34 +85,36 @@
                                 <color key="backgroundColor" red="0.23137254900000001" green="0.3294117647" blue="0.83529411760000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MH7-gG-3Tt">
-                                <rect key="frame" x="134" y="581" width="107" height="36"/>
+                                <rect key="frame" x="24" y="601" width="327" height="36"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="17"/>
-                                <state key="normal" title="Commencer !">
-                                    <color key="titleColor" red="0.94117647059999998" green="0.95294117649999999" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <state key="normal" title="Commencer">
+                                    <color key="titleColor" red="0.23137254900000001" green="0.3294117647" blue="0.83529411760000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <connections>
-                                    <action selector="nextAction:" destination="pQG-wM-Pgw" eventType="touchUpInside" id="z0q-ey-tiy"/>
+                                    <action selector="connectAction:" destination="pQG-wM-Pgw" eventType="touchUpInside" id="8Lf-Da-LXj"/>
                                 </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="7ry-x0-XRi" secondAttribute="trailing" id="JVI-Yq-QAL"/>
+                            <constraint firstItem="MH7-gG-3Tt" firstAttribute="centerX" secondItem="VFi-OW-lbn" secondAttribute="centerX" id="UeK-9a-X17"/>
                             <constraint firstItem="7ry-x0-XRi" firstAttribute="leading" secondItem="KuR-cG-ojA" secondAttribute="leading" id="aQ2-ph-Cez"/>
                             <constraint firstItem="7ry-x0-XRi" firstAttribute="top" secondItem="VFi-OW-lbn" secondAttribute="top" id="bnG-3C-8hd"/>
-                            <constraint firstItem="KuR-cG-ojA" firstAttribute="bottom" secondItem="MH7-gG-3Tt" secondAttribute="bottom" constant="50" id="dTR-gA-OQO"/>
-                            <constraint firstItem="MH7-gG-3Tt" firstAttribute="centerX" secondItem="VFi-OW-lbn" secondAttribute="centerX" id="oKu-eE-NbN"/>
+                            <constraint firstItem="KuR-cG-ojA" firstAttribute="bottom" secondItem="MH7-gG-3Tt" secondAttribute="bottom" constant="30" id="dTR-gA-OQO"/>
+                            <constraint firstItem="MH7-gG-3Tt" firstAttribute="leading" secondItem="KuR-cG-ojA" secondAttribute="leading" constant="24" id="fcC-X6-6Bk"/>
                             <constraint firstAttribute="bottom" secondItem="7ry-x0-XRi" secondAttribute="bottom" id="pCt-Xj-DEG"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="KuR-cG-ojA"/>
                     </view>
                     <connections>
-                        <outlet property="nextButton" destination="MH7-gG-3Tt" id="MhO-hf-kO3"/>
+                        <outlet property="connectionButton" destination="MH7-gG-3Tt" id="Dup-cz-AoH"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eY8-0E-deW" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-397.60000000000002" y="-1670.0149925037483"/>
+            <point key="canvasLocation" x="-454" y="-1659"/>
         </scene>
         <!--ConnexionVC-->
         <scene sceneID="tne-QT-ifu">
@@ -306,9 +308,6 @@
                                 <rect key="frame" x="161" y="521" width="170" height="82"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Button"/>
-                                <connections>
-                                    <segue destination="wep-T1-9IL" kind="show" id="TMH-fT-FcV"/>
-                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
