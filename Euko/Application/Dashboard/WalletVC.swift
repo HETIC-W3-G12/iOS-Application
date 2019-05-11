@@ -40,9 +40,9 @@ class WalletVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.navigationController?.navigationBar.isHidden = true
-        
-        let euko:Euko = Euko()
-        self.dashboard = euko.getDashboard()
+
+        self.dashboard.fillDashboard()
+        self.dashboard.orderOffersByDate()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
