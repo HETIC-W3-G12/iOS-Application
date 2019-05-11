@@ -16,13 +16,14 @@ public enum endpoints:String {
     case uploadIdentity = "/users/identity"
     case connexion = "/users/sign_in"
     case signup = "/users/sign_up"
+    case dashboard = "/users/dashboard"
     case projects = "/projects"
     case offers = "/offers"
 }
 
 class ServerBridge {
-    static let baseUrl:String = "https://euko-api-staging-pr-42.herokuapp.com"
-    //static let baseUrl:String = "https://euko-api-staging.herokuapp.com"
+    //static let baseUrl:String = "https://euko-api-staging-pr-42.herokuapp.com"
+    static let baseUrl:String = "https://euko-api-staging.herokuapp.com"
 }
 
 func defaultRequest(params:Parameters, endpoint:endpoints, method:HTTPMethod, handler: @escaping ((_ success: Bool, _ json:JSON?) -> Void)){

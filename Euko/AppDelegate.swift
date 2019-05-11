@@ -16,7 +16,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var userLoggedIn:Bool = false
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+        /*
+        let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "TabBarController") as! TabBarController
+        window?.rootViewController = vc
+        */
         
+        /*
+        let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "ProfileVC") as! ProfileVC
+        window?.rootViewController = vc
+        */
+        
+        /*
         if (!self.firstOpening()){
             let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "OnBoardingVC") as! OnBoardingVC
             window?.rootViewController = vc
@@ -24,7 +34,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             self.isUserLoggedIn()
             window?.rootViewController = initialViewController()
         }
-        
+        */
         return true
     }
     

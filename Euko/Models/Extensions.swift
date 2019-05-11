@@ -48,22 +48,22 @@ extension UIView {
         self.layer.shadowColor = UIColor.lightGray.cgColor
         self.layer.shadowOpacity = 0.3
         self.layer.shadowOffset = CGSize(width: 0, height: 4)
-        self.layer.shadowRadius = 3
+        self.layer.shadowRadius = 6
     }
     
     func setBasicShadow(){
         self.layer.shadowColor = UIColor.lightGray.cgColor
         self.layer.shadowOpacity = 0.5
         self.layer.shadowOffset = CGSize.zero
-        self.layer.shadowRadius = 7
+        self.layer.shadowRadius = 6
     }
     
     func setBasicBlueShadow(){
         //self.layer.shadowColor = UIColor.blue.cgColor
-        self.layer.shadowColor = UIColor(red: 59/255, green: 84/255, blue: 213/255, alpha: 1).cgColor
+        self.layer.shadowColor = UIColor(red: 59/255, green: 84/255, blue: 213/255, alpha: 0.16).cgColor
         self.layer.shadowOpacity = 0.3
         self.layer.shadowOffset = CGSize.zero
-        self.layer.shadowRadius = 7
+        self.layer.shadowRadius = 6
     }
     
     func roundBorder(){
@@ -118,6 +118,14 @@ extension String
     
     func lastIndexOfCharacter(_ c: Character) -> Int? {
         return range(of: String(c), options: .backwards)?.lowerBound.encodedOffset
+    }
+    
+    func toDate() -> Date {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd"
+        let date:Date = dateFormatter.date(from: self) ?? Date()
+        
+        return date
     }
 }
 

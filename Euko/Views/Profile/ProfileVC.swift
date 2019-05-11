@@ -65,7 +65,7 @@ class ProfileVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
         super.viewDidLoad()
         self.view.addDismisKeyBoardOnTouch()
         
-        if (self.viewSelector.selectedSegmentIndex == 0){
+        if (self.viewSelector.selectedSegmentIndex == 1){
             self.setupProfile()
             self.historyScrollView.isHidden = true
             self.profileView.isHidden = false
@@ -140,28 +140,10 @@ class ProfileVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = self.bottomTableView.dequeueReusableCell(withIdentifier: "MoneyBackCell", for: indexPath) as! MoneyBackCell
+        let cell = self.bottomTableView.dequeueReusableCell(withIdentifier: "MoneyBackCell", for: indexPath) as! MoneyBackCell        
         cell.containerView.setSpecificShadow()
         cell.containerView.roundBorder(radius: 5)
-        
-        //TODO: replace the rand with the current amount refounded
-        let rand = Float.random(in: 1 ..< 12)
-        cell.titleLabel.text = self.myFinancements[indexPath.row].title
-        cell.moneyBackLabel.text = String(format: "%.2f€",
-                                          ceil(self.myFinancements[indexPath.row].finalPrice / rand))
-        cell.totalAmountLabel.text = String(format: "sur %.f€",
-                                            ceil(self.myFinancements[indexPath.row].finalPrice))
-        
-        let maxPrice:CGFloat = CGFloat(self.myFinancements[indexPath.row].finalPrice)
-        let minPrice:CGFloat = CGFloat(self.myFinancements[indexPath.row].finalPrice / rand)
-        let percentagePrice:CGFloat = CGFloat(minPrice * 100) / CGFloat((maxPrice == 0) ? 1 : maxPrice)
-        
-        let width:CGFloat = cell.totalView.frame.width
-        let newWidth:CGFloat = CGFloat(percentagePrice * width) / 100
-        let newTrailing:CGFloat = CGFloat(width - newWidth)
-        
-        cell.progressViewTrailing.constant = newTrailing
-        
+        cell.project = self.myFinancements[indexPath.row]
         return cell
     }
     
