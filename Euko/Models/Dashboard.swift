@@ -10,9 +10,14 @@ import Foundation
 import Alamofire
 import SwiftyJSON
 
+protocol DashboardDelegate {
+    func reloadData()
+}
+
 class Dashboard {
     var project:Project?
     var offers:[Project]
+    var delegate:DashboardDelegate?
     
     init(project:Project? = nil, offers:[Project] = []) {
         self.project = project
@@ -32,9 +37,14 @@ class Dashboard {
     }
     
     func fillDashboard() {
+        let user:User = UserDefaults.getUser()!
+        let bearer:String = "Bearer \(user.token)"
+        let headers: HTTPHeaders = [ "Authorization": bearer, "Accept": "application/json"]
         let params:Parameters = [:]
-        defaultRequest(params: params, endpoint: .dashboard, method: .get, handler: { (success, json) in
+        
+        headersRequest(params: params, endpoint: .dashboard, method: .get, header: headers, handler: { (success, json) in
             if (success){
+                print(json)
                 // Setting loan
                 let tmpProject:Project = Project()
                 
@@ -53,7 +63,7 @@ class Dashboard {
                 var i = 0
                 var tmpOffers:[Project] = []
                 let jsonOffers:[JSON] = json?["offers"].array ?? []
-                while (jsonOffers[i] != JSON.null){
+                while (i < jsonOffers.count){
                     let tmpProject:Project = Project()
                     
                     tmpProject.id = jsonOffers[i]["project"]["id"].string ?? ""
@@ -68,7 +78,9 @@ class Dashboard {
                     tmpOffers.append(tmpProject)
                     i += 1
                 }
+                self.offers = []
                 self.offers = tmpOffers
+                self.delegate?.reloadData()
             }
             else {
                 //TODO: Something

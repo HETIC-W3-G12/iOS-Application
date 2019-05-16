@@ -51,7 +51,7 @@ class ProjectFinancementVC: UIViewController {
         
         self.nameTF.text = user.lastName
         self.firstTF.text = user.firstName
-        self.postCodeTF.text = String(format: "%s", user.postCode)
+        self.postCodeTF.text = user.postCode.toString()
         self.cityTF.text = user.city
         self.addressTF.text = user.address
         

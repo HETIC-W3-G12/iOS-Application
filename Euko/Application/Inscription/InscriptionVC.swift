@@ -28,9 +28,6 @@ class InscriptionVC: UIViewController, UITextFieldDelegate {
         self.emailTF.delegate = self
         self.passwordTF.delegate = self
         self.setupView()
-        self.view.addDismisKeyBoardOnTouch()
-        self.shadowButtonView.setSpecificShadow()
-        self.shadowButtonView.roundBorder()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -68,6 +65,10 @@ class InscriptionVC: UIViewController, UITextFieldDelegate {
 
     //MARK:- Other functions
     func setupView() {
+        self.view.addDismisKeyBoardOnTouch()
+        self.shadowButtonView.setSpecificShadow()
+        self.shadowButtonView.roundBorder()
+
         self.signInButton.layer.cornerRadius = self.signInButton.frame.height / 2
         self.confirmationTF.keyboardType = .default
         self.passwordTF.keyboardType = .default

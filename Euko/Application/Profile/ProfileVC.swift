@@ -25,6 +25,7 @@ class ProfileVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var profileView: UIView!
     @IBOutlet weak var shadowView: UIView!
+    @IBOutlet weak var postCodeTF: UITextField!
     
     // View History
     @IBOutlet weak var historyScrollView: UIScrollView!
@@ -65,7 +66,7 @@ class ProfileVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
         super.viewDidLoad()
         self.view.addDismisKeyBoardOnTouch()
         
-        if (self.viewSelector.selectedSegmentIndex == 1){
+        if (self.viewSelector.selectedSegmentIndex == 0){
             self.setupProfile()
             self.historyScrollView.isHidden = true
             self.profileView.isHidden = false
@@ -85,6 +86,14 @@ class ProfileVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     func setupProfile() {
         self.polygonTitleLabel.text = "Profil"
+        
+        let user = UserDefaults.getUser()
+        self.emailTF.text = user?.email
+        self.nameLabel.text = "\(user?.lastName ?? "") \(user?.firstName ?? "")"
+        self.cityTF.text = user?.city
+        self.addressTF.text = user?.address
+        self.postCodeTF.text = user?.postCode.toString()
+        self.birthDateTF.text = user?.birthDate.toString()
     }
     
     func setupHistory() {

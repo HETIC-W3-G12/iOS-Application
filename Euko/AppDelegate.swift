@@ -25,8 +25,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "ProfileVC") as! ProfileVC
         window?.rootViewController = vc
         */
+        UIApplication.shared.statusBarStyle = .lightContent
         
-        /*
         if (!self.firstOpening()){
             let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "OnBoardingVC") as! OnBoardingVC
             window?.rootViewController = vc
@@ -34,7 +34,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             self.isUserLoggedIn()
             window?.rootViewController = initialViewController()
         }
-        */
+ 
         return true
     }
     

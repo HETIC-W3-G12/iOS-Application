@@ -90,11 +90,20 @@ extension ConnexionVC {
             self.stopActivity()
             if (success){
                 //TODO: parse json
+                let adress:String = json?["user"]["adress"].string ?? ""
+                let lastname:String = json?["user"]["lastname"].string ?? ""
+                let firstname:String = json?["user"]["firstname"].string ?? ""
+                let birthdate:Date = json?["user"]["birthdate"].string?.toDate() ?? "".toDate()
                 let email:String = json?["user"]["email"].string ?? ""
                 let id:String = json?["user"]["id"].string ?? ""
+                let birthplace:String = json?["user"]["birthplace"].string ?? ""
+                let city:String = json?["user"]["city"].string ?? ""
+                let postCode:Int = json?["user"]["postCode"].int ?? 0
                 let token:String = json?["token"].string ?? ""
                 
-                let user = User(id: id, token: token, email: email)
+                let user = User(id: id, token: token, email: email, password: "",
+                                firstName: firstname, lastName: lastname, address: adress,
+                                postCode: postCode, city: city, birthPlace: birthplace)
                 UserDefaults.setUser(user: user)
                 self.nextVC()
             }

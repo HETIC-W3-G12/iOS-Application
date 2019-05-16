@@ -7,10 +7,13 @@
 //
 
 import UIKit
+import Alamofire
+import SwiftyJSON
 
-class WalletVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class WalletVC: UIViewController, UITableViewDelegate, UITableViewDataSource, DashboardDelegate {
 
     @IBOutlet weak var profileScrollView: UIScrollView!
+
     @IBOutlet weak var topViewContainer: UIView!
     @IBOutlet weak var topTitleLabel: UILabel!
     @IBOutlet weak var topSeeMoreButton: UIButton!
@@ -19,9 +22,11 @@ class WalletVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     @IBOutlet weak var topOnGoingProgressView: UIView!
     @IBOutlet weak var topTotalAmount: UILabel!
     @IBOutlet weak var topCurrentAmount: UILabel!
+    @IBOutlet weak var topOnGoingTrailingConstraint: NSLayoutConstraint!
+
     @IBOutlet weak var bottomTableView: UITableView!
     @IBOutlet weak var bottomTableViewHeightConstraint: NSLayoutConstraint!
-    @IBOutlet weak var topOnGoingTrailingConstraint: NSLayoutConstraint!
+    
 
     var dashboard:Dashboard = Dashboard()
     
@@ -35,12 +40,14 @@ class WalletVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
         self.topViewContainer.setSpecificShadow()
         self.topViewContainer.roundBorder(radius: 5)
         self.setupTopCell()
+        
+        self.dashboard.delegate = self
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.navigationController?.navigationBar.isHidden = true
-
+        
         self.dashboard.fillDashboard()
         self.dashboard.orderOffersByDate()
     }
@@ -50,25 +57,33 @@ class WalletVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
         self.navigationController?.navigationBar.isHidden = false
     }
 
+    func reloadData(){
+        self.bottomTableView.reloadData()
+    }
     
     func setupTopCell () {
-        //TODO: replace the rand with the current amount refounded
-        let rand = Float.random(in: 1 ..< 12)
-        let loan = self.dashboard.project ?? Project()
-        
-        self.topTitleLabel.text = loan.title
-        self.topTotalAmount.text = String(format: "sur %.f€", loan.finalPrice)
-        self.topCurrentAmount.text = String(format: "%.2f€", loan.finalPrice / rand)
-        
-        let maxPrice:CGFloat = CGFloat(loan.finalPrice)
-        let minPrice:CGFloat = CGFloat(loan.finalPrice / rand)
-        let percentagePrice:CGFloat = CGFloat(minPrice * 100) / CGFloat((maxPrice == 0) ? 1 : maxPrice)
-        
-        let width:CGFloat = self.topGlobalProgressView.frame.width
-        let newWidth:CGFloat = CGFloat(percentagePrice * width) / 100
-        let newTrailing:CGFloat = CGFloat(width - newWidth)
-        
-        self.topOnGoingTrailingConstraint.constant = newTrailing
+        if self.dashboard.project != nil {
+            let rand = Float.random(in: 1 ..< 12)
+            let loan = self.dashboard.project ?? Project()
+            
+            self.topTitleLabel.text = loan.title
+            self.topTotalAmount.text = String(format: "sur %.f€", loan.finalPrice)
+            self.topCurrentAmount.text = String(format: "%.2f€", loan.finalPrice / rand)
+            
+            let maxPrice:CGFloat = CGFloat(loan.finalPrice)
+            let minPrice:CGFloat = CGFloat(loan.finalPrice / rand)
+            let percentagePrice:CGFloat = CGFloat(minPrice * 100) / CGFloat((maxPrice == 0) ? 1 : maxPrice)
+            
+            let width:CGFloat = self.topGlobalProgressView.frame.width
+            let newWidth:CGFloat = CGFloat(percentagePrice * width) / 100
+            let newTrailing:CGFloat = CGFloat(width - newWidth)
+            
+            self.topOnGoingTrailingConstraint.constant = newTrailing
+            self.topViewContainer.isHidden = false
+        } else {
+            self.topViewContainer.isHidden = true
+        }
+
     }
     
     @IBAction func seeMore(_ sender: Any) {
@@ -98,7 +113,7 @@ class WalletVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         self.bottomTableView.deselectRow(at: indexPath, animated: true)
-        
+                
         let vc = self.storyboard?.instantiateViewController(withIdentifier: "ProjectVC") as! ProjectVC
         vc.project = self.dashboard.offers[indexPath.row]
         vc.isLoan = false

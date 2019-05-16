@@ -77,5 +77,4 @@ class User: NSObject, NSCoding {
         self.birthDate = aDecoder.decodeObject(forKey: "birthDate") as! Date
         self.birthPlace = aDecoder.decodeObject(forKey: "birthPlace") as! String
     }
-    
 }

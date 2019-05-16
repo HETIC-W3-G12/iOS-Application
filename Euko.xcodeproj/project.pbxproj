@@ -8,6 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		3A42F7A5C9ED9482D6A6EAD2 /* Pods_Euko.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5E2071583A9DCDD53C28CDF1 /* Pods_Euko.framework */; };
+		5709733B228D9E9E003797A4 /* ExtDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5709733A228D9E9E003797A4 /* ExtDate.swift */; };
+		5709733D228DA1D4003797A4 /* ExtNumber.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5709733C228DA1D4003797A4 /* ExtNumber.swift */; };
+		5709733F228DAE2C003797A4 /* Inscription.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5709733E228DAE2C003797A4 /* Inscription.swift */; };
+		57097341228DB068003797A4 /* ExtImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57097340228DB068003797A4 /* ExtImage.swift */; };
 		5713B01D219ACAB0001D9324 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5713B01C219ACAB0001D9324 /* AppDelegate.swift */; };
 		5713B022219ACAB0001D9324 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5713B020219ACAB0001D9324 /* Main.storyboard */; };
 		5713B025219ACAB0001D9324 /* Euko.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 5713B023219ACAB0001D9324 /* Euko.xcdatamodeld */; };
@@ -64,6 +68,10 @@
 		11EC2400E0878F817E3CECCA /* Pods-EukoTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EukoTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-EukoTests/Pods-EukoTests.release.xcconfig"; sourceTree = "<group>"; };
 		257280F01BF655A7E6C430D1 /* Pods-EukoTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EukoTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-EukoTests/Pods-EukoTests.debug.xcconfig"; sourceTree = "<group>"; };
 		2E97DDA1E1FCA067628EB106 /* Pods_EukoTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_EukoTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		5709733A228D9E9E003797A4 /* ExtDate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtDate.swift; sourceTree = "<group>"; };
+		5709733C228DA1D4003797A4 /* ExtNumber.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtNumber.swift; sourceTree = "<group>"; };
+		5709733E228DAE2C003797A4 /* Inscription.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Inscription.swift; sourceTree = "<group>"; };
+		57097340228DB068003797A4 /* ExtImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtImage.swift; sourceTree = "<group>"; };
 		5713B019219ACAB0001D9324 /* Euko.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Euko.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5713B01C219ACAB0001D9324 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5713B021219ACAB0001D9324 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -204,6 +212,7 @@
 				572294FB21C4449200C106BC /* Project.swift */,
 				578E62402253579E0029ED27 /* ServerBridge.swift */,
 				573802712286C7D7007933E8 /* Dashboard.swift */,
+				5709733E228DAE2C003797A4 /* Inscription.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -216,6 +225,9 @@
 				573802772286DAF4007933E8 /* ExtView.swift */,
 				573802792286DB01007933E8 /* ExtUserDefaults.swift */,
 				5738027B2286DB11007933E8 /* ExtNavigationBar.swift */,
+				5709733A228D9E9E003797A4 /* ExtDate.swift */,
+				5709733C228DA1D4003797A4 /* ExtNumber.swift */,
+				57097340228DB068003797A4 /* ExtImage.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -551,15 +563,19 @@
 			buildActionMask = 2147483647;
 			files = (
 				5738027A2286DB01007933E8 /* ExtUserDefaults.swift in Sources */,
+				57097341228DB068003797A4 /* ExtImage.swift in Sources */,
 				578E624922579AA40029ED27 /* ProjectRecapVC.swift in Sources */,
 				57A879AD223A6DE400BC2A79 /* SHFSignatureView.swift in Sources */,
+				5709733B228D9E9E003797A4 /* ExtDate.swift in Sources */,
 				5776C19021BA75A600E51C59 /* InscriptionVC.swift in Sources */,
 				57FE665721CD523000D40854 /* MoneyBackCell.swift in Sources */,
+				5709733D228DA1D4003797A4 /* ExtNumber.swift in Sources */,
 				57D4896221E797CF00D6D1C1 /* GradientView.swift in Sources */,
 				57A879AA223A6D8300BC2A79 /* CreationContractVC.swift in Sources */,
 				575B446E2239109E00FD5C97 /* InscriptionValidationVC.swift in Sources */,
 				578E62472254F88D0029ED27 /* ProjectFinancementVC.swift in Sources */,
 				571EB6DD21B91F70008D4227 /* User.swift in Sources */,
+				5709733F228DAE2C003797A4 /* Inscription.swift in Sources */,
 				572294FA21C3E04700C106BC /* ProjectCell.swift in Sources */,
 				5713B01D219ACAB0001D9324 /* AppDelegate.swift in Sources */,
 				573802762286DAE0007933E8 /* ExtString.swift in Sources */,
@@ -746,17 +762,18 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = BBD221E7AC7B39964B46AD53 /* Pods-Euko.debug.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = Y6P264XEGQ;
+				DEVELOPMENT_TEAM = 385A2KW67G;
 				INFOPLIST_FILE = Euko/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = test.euko;
+				PRODUCT_BUNDLE_IDENTIFIER = euko;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 4.2;
@@ -768,17 +785,18 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = E964081CFB7F6CA766F74518 /* Pods-Euko.release.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = Y6P264XEGQ;
+				DEVELOPMENT_TEAM = 385A2KW67G;
 				INFOPLIST_FILE = Euko/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = test.euko;
+				PRODUCT_BUNDLE_IDENTIFIER = euko;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 4.2;
