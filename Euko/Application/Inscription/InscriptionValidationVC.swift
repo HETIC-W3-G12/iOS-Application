@@ -87,7 +87,7 @@ class InscriptionValidationVC: UIViewController, UIImagePickerControllerDelegate
                 self.inscription?.selfieImage = pickedImage
                 self.selfieImageView.image = pickedImage
             } else {
-                self.inscription?.selfieImage = pickedImage
+                self.inscription?.identityImage = pickedImage
                 self.identityImageView.image = pickedImage
             }
             dismiss(animated: true, completion: nil)
