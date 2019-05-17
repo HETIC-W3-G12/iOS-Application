@@ -23,7 +23,7 @@ class InscriptionNextVC: UIViewController {
     @IBOutlet weak var cityTextField: UITextField!
     @IBOutlet weak var saveButton: UIButton!
     
-    var user:User = User()
+    var inscription:Inscription? = nil
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -44,17 +44,16 @@ class InscriptionNextVC: UIViewController {
     }
 
     
-    func checkAllFields() -> Bool {
-        self.user.lastName = self.lastNameTextField.text!
-        self.user.firstName = self.firstNameTextField.text!
-        self.user.setBirthDateFromString(dateString: self.birthdayDateTextField.text!)
-        self.user.postCode = Int(self.postCodeTextField.text!) ?? 0
-        self.user.city = self.cityTextField.text!
-        self.user.address = self.addressTextField.text!
-        self.user.birthPlace = self.birthPlaceTextFied.text!
-        
-        return true
-        //TODO: Check if all textfield are okey
+    func validateAllFields() {
+        let tmpUser = User()
+        tmpUser.lastName = self.lastNameTextField.text!
+        tmpUser.firstName = self.firstNameTextField.text!
+        tmpUser.setBirthDateFromString(dateString: self.birthdayDateTextField.text!)
+        tmpUser.postCode = Int(self.postCodeTextField.text!) ?? 0
+        tmpUser.city = self.cityTextField.text!
+        tmpUser.address = self.addressTextField.text!
+        tmpUser.birthPlace = self.birthPlaceTextFied.text!
+        self.inscription?.user = tmpUser
     }
     
     @IBAction func backAction(_ sender: Any) {
@@ -62,38 +61,54 @@ class InscriptionNextVC: UIViewController {
     }
     
     @IBAction func saveAction(_ sender: Any) {
-        if (self.checkAllFields()){
-           self.signUp()
-        } else {
-            //TODO: Ici un ou plusieurs champs sont mauvais
-        }
+        self.validateAllFields()
+        self.signUp()
     }
     
     func signUp(){
-        let parameters:Parameters = ["email": self.user.email,
-                                     "password": self.user.password,
-                                     "firstname":self.user.firstName,
-                                     "lastname":self.user.lastName,
-                                     "birthdate":self.user.birthDate,
-                                     "birthplace":self.user.birthPlace,
-                                     "adress":self.user.address,
-                                     "city":self.user.city,
-                                     "postCode":self.user.postCode]
+        guard let tmpUser = self.inscription?.user else { return }
+        guard let mail = self.inscription?.inscriptionEmail else { return }
+        guard let password = self.inscription?.inscriptionPassword else { return }
+        
+        tmpUser.password = password
+        tmpUser.email = mail
+        
+        let parameters:Parameters = ["email": tmpUser.email,
+                                     "password": tmpUser.password,
+                                     "firstname":tmpUser.firstName,
+                                     "lastname":tmpUser.lastName,
+                                     "birthdate":tmpUser.birthDate,
+                                     "birthplace":tmpUser.birthPlace,
+                                     "adress":tmpUser.address,
+                                     "city":tmpUser.city,
+                                     "postCode":tmpUser.postCode]
+        
         defaultRequest(params: parameters, endpoint: endpoints.signup, method: .post) { (success, json) in
             print(json ?? "Aucun JSON disponible")
             if (success){
+                let adress:String = json?["user"]["adress"].string ?? ""
+                let lastname:String = json?["user"]["lastname"].string ?? ""
+                let firstname:String = json?["user"]["firstname"].string ?? ""
+                let birthdate:Date = json?["user"]["birthdate"].string?.toDate() ?? "".toDate()
                 let email:String = json?["user"]["email"].string ?? ""
                 let id:String = json?["user"]["id"].string ?? ""
+                let birthplace:String = json?["user"]["birthplace"].string ?? ""
+                let city:String = json?["user"]["city"].string ?? ""
+                let postCode:Int = json?["user"]["postCode"].int ?? 0
                 let token:String = json?["token"].string ?? ""
                 
-                let user = User(id: id, token: token, email: email)
-                UserDefaults.setUser(user: user)
+                self.inscription?.user = User(id: id, token: token, email: email, password: "",
+                                              firstName: firstname, lastName: lastname, address: adress,
+                                              postCode: postCode, city: city, birthPlace: birthplace, birthDate: birthdate)
+                
                 
                 let vc = self.storyboard?.instantiateViewController(withIdentifier: "InscriptionValidationVC") as! InscriptionValidationVC
+                vc.inscription = self.inscription
                 self.navigationController?.pushViewController(vc, animated: true)
             }
             else {
-                print("json")
+                self.showSingleAlert(title: "Erreur lors de la reception des données", message: "Veuillez contacter le support : support@euko.com")
+                print("No success...")
             }
         }
     }

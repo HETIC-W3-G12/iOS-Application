@@ -103,7 +103,7 @@ extension ConnexionVC {
                 
                 let user = User(id: id, token: token, email: email, password: "",
                                 firstName: firstname, lastName: lastname, address: adress,
-                                postCode: postCode, city: city, birthPlace: birthplace)
+                                postCode: postCode, city: city, birthPlace: birthplace, birthDate: birthdate)
                 UserDefaults.setUser(user: user)
                 self.nextVC()
             }

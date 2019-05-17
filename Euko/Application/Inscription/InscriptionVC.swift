@@ -17,18 +17,9 @@ class InscriptionVC: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var shadowButtonView: UIView!
     @IBOutlet weak var backButton: UIButton!
     
-    var user: User = User()
+    var inscription:Inscription = Inscription()
+    var user:User? = nil
     var isKeyBoardShown:Bool = false
-    
-    //MARK:- Override
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        self.title = "Inscription"
-        self.confirmationTF.delegate = self
-        self.emailTF.delegate = self
-        self.passwordTF.delegate = self
-        self.setupView()
-    }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -39,19 +30,41 @@ class InscriptionVC: UIViewController, UITextFieldDelegate {
         super.viewWillDisappear(animated)
         self.navigationController?.navigationBar.isHidden = false
     }
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        self.title = "Inscription"
+        confirmationTF.delegate = self
+        emailTF.delegate = self
+        passwordTF.delegate = self
+        setupView()
+    }
     
-    //MARK:- IBAction
+    func setupView() {
+        self.view.addDismisKeyBoardOnTouch()
+        shadowButtonView.setSpecificShadow()
+        shadowButtonView.roundBorder()
+        
+        signInButton.layer.cornerRadius = signInButton.frame.height / 2
+        confirmationTF.keyboardType = .default
+        passwordTF.keyboardType = .default
+    }
+    
     @IBAction func signInAction(_ sender: Any) {
-        guard let mail = self.emailTF.text else {return}
-        guard let password = self.passwordTF.text else {return}
-        guard let confirmation = self.confirmationTF.text else {return}
+        guard let mail = emailTF.text,
+            let password = passwordTF.text,
+        let confirmation = confirmationTF.text else {
+            showSingleAlert(title: "Erreur sur les champs", message: "")
+            return
+        }
         
         if (mail.count == 0 || password.count == 0 || confirmation.count == 0){
-            self.showSingleAlert(title: "Erreur", message: "Veuillez indiquer tous les champs")
-        } else if (password == confirmation) {
-            self.user.email = mail
-            self.user.password = password
-            self.nextVC()
+            showSingleAlert(title: "Erreur", message: "Veuillez indiquer tous les champs")
+        }
+        else if (password == confirmation) {
+            inscription.inscriptionEmail = mail
+            inscription.inscriptionPassword = password
+            nextVC()
         }
         else {
             self.showSingleAlert(title: "Erreur", message: "Le mot de passe et la confirmation ne sont pas identiques")
@@ -63,34 +76,24 @@ class InscriptionVC: UIViewController, UITextFieldDelegate {
         //self.navigationController?.popViewController(animated: true)
     }
 
-    //MARK:- Other functions
-    func setupView() {
-        self.view.addDismisKeyBoardOnTouch()
-        self.shadowButtonView.setSpecificShadow()
-        self.shadowButtonView.roundBorder()
-
-        self.signInButton.layer.cornerRadius = self.signInButton.frame.height / 2
-        self.confirmationTF.keyboardType = .default
-        self.passwordTF.keyboardType = .default
-    }
     
     func nextVC() {
         let vc = self.storyboard?.instantiateViewController(withIdentifier: "InscriptionNextVC") as! InscriptionNextVC
-        vc.user = self.user
+        vc.inscription = inscription
         self.navigationController?.pushViewController(vc, animated: true)
     }
 
     //MARK:- Managing keyboard Event
     @IBAction func confirmationStartEditing(_ sender: Any) {
-        self.adjustingHeight(show: true)
+        adjustingHeight(show: true)
     }
     
     @IBAction func confirmationEndEditing(_ sender: Any) {
-        self.adjustingHeight(show: false)
+        adjustingHeight(show: false)
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        self.hidekeyboard()
+        hidekeyboard()
         return true
     }
     

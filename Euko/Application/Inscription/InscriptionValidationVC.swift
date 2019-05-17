@@ -25,15 +25,26 @@ class InscriptionValidationVC: UIViewController, UIImagePickerControllerDelegate
     
     let imagePicker = UIImagePickerController()
     var isTakingSelfie:Bool = false
-
-    var user:User = User()
+    var allUploadFinished:Bool = false {
+        didSet (value) {
+            if value == true {
+                //Todo: all has been uploaded, move to next vc
+            }
+        }
+    }
+    var inscription:Inscription? = nil
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.inscription?.delegate = self
+        self.imagePicker.delegate = self
+        self.setupView()
+    }
+    
+    func setupView(){
         self.takeSelfieButton.roundBorder()
         self.addIdentityCardButton.roundBorder()
         self.validateButton.roundBorder()
-        self.imagePicker.delegate = self
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -61,43 +72,7 @@ class InscriptionValidationVC: UIViewController, UIImagePickerControllerDelegate
     }
 
     @IBAction func validateInscription(_ sender: Any) {
-        self.uploadFace()
-    }
-    
-    func uploadFace(){
-        let user:User = UserDefaults.getUser()!
-        let bearer:String = "Bearer \(user.token)"
-        let headers: HTTPHeaders = [ "Authorization": bearer, "Accept": "application/json"]
-        
-        let data = self.resizeImage(image: self.selfieImageView.image!)
-        let base64EncodedString = data.base64EncodedString()
-        let parameters:Parameters = ["file": base64EncodedString]
-        headersRequest(params: parameters, endpoint: .uploadFace, method: .post, header: headers, handler: { (success, json) in
-            if (success){
-                self.uploadIdentity()
-            }
-        })
-    }
-
-    func uploadIdentity(){
-        let user:User = UserDefaults.getUser()!
-        let bearer:String = "Bearer \(user.token)"
-        let headers: HTTPHeaders = [ "Authorization": bearer, "Accept": "application/json"]
-        
-        let data = self.resizeImage(image: self.identityImageView.image!)
-        let base64EncodedString = data.base64EncodedString()
-        let parameters:Parameters = ["file": base64EncodedString]
-        headersRequest(params: parameters, endpoint: .uploadIdentity, method: .post, header: headers, handler: { (success, json) in
-            if (success){
-                self.showSingleAlertWithCompletion(title: "Inscription terminée",
-                                                   message: "",
-                                                   handler: { _ in
-                                                    let vc = self.storyboard?.instantiateViewController(withIdentifier: "ProjectListVC") as! ProjectListVC
-                                                    let navigationController = UINavigationController(rootViewController: vc)
-                                                    let appDelegate = UIApplication.shared.delegate as! AppDelegate
-                                                    appDelegate.window?.rootViewController = navigationController })
-            }
-        })
+        self.inscription?.uploadImages()
     }
     
     func presentImagePickerFromCamera(source:UIImagePickerController.SourceType = .savedPhotosAlbum){
@@ -106,16 +81,16 @@ class InscriptionValidationVC: UIViewController, UIImagePickerControllerDelegate
         self.present(self.imagePicker, animated: true, completion: nil)
     }
     
-    func imagePickerController(_ picker: UIImagePickerController,
-                               didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]){
-        if let pickedImage = info[UIImagePickerController.InfoKey.originalImage] as? UIImage {
+    @objc func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]){
+        guard let pickedImage = info[UIImagePickerController.InfoKey.originalImage] as? UIImage else { return }
             if (self.isTakingSelfie){
+                self.inscription?.selfieImage = pickedImage
                 self.selfieImageView.image = pickedImage
             } else {
+                self.inscription?.selfieImage = pickedImage
                 self.identityImageView.image = pickedImage
             }
             dismiss(animated: true, completion: nil)
-        }
     }
         
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
@@ -123,56 +98,29 @@ class InscriptionValidationVC: UIViewController, UIImagePickerControllerDelegate
     }
 }
 
-//MARK:- Server Bridge
-extension InscriptionValidationVC {
-    func defaultResponse(succed: Bool, json: JSON?) {
-        if (succed){
-            self.showSingleAlertWithCompletion(title: "Inscription validée",
-                                               message: "Vous pouvez maintenant vous connecter",
-                                               handler: { _ in
-                                                self.navigationController?.popToRootViewController(animated: true)})
-            
-            } else {
-            self.showSingleAlert(title: "Un probleme est survenu...",
-                                 message: "Veuillez verifiez votre connexion internet")
-        }
+extension InscriptionValidationVC: InscriptionDelegate {
+    func uploadsFinished() {
+        self.showSingleAlertWithCompletion(title: "Inscription terminée",
+                                           message: "",
+                                           handler: { _ in
+                                            
+                                            let vc = self.storyboard?.instantiateViewController(withIdentifier: "TabBarController") as! TabBarController
+                                            let appdelegate = UIApplication.shared.delegate as! AppDelegate
+                                            appdelegate.window!.rootViewController = vc
+        })
     }
     
-    func resizeImage(image: UIImage) -> Data {
-        var actualHeight: Float = Float(image.size.height)
-        var actualWidth: Float = Float(image.size.width)
-        let maxHeight: Float = 100.0
-        let maxWidth: Float = 100.0
-        var imgRatio: Float = actualWidth / actualHeight
-        let maxRatio: Float = maxWidth / maxHeight
-        let compressionQuality: Float = 0.1
-        //50 percent compression
-        
-        if actualHeight > maxHeight || actualWidth > maxWidth {
-            if imgRatio < maxRatio {
-                //adjust width according to maxHeight
-                imgRatio = maxHeight / actualHeight
-                actualWidth = imgRatio * actualWidth
-                actualHeight = maxHeight
-            }
-            else if imgRatio > maxRatio {
-                //adjust height according to maxWidth
-                imgRatio = maxWidth / actualWidth
-                actualHeight = imgRatio * actualHeight
-                actualWidth = maxWidth
-            }
-            else {
-                actualHeight = maxHeight
-                actualWidth = maxWidth
-            }
-        }
-        
-        let rect = CGRect(x: 0, y: 0, width: CGFloat(actualWidth), height: CGFloat(actualHeight))
-        UIGraphicsBeginImageContext(rect.size)
-        image.draw(in: rect)
-        let img = UIGraphicsGetImageFromCurrentImageContext()
-        let imageData = img?.jpegData(compressionQuality:CGFloat(compressionQuality))
-        UIGraphicsEndImageContext()
-        return imageData!
+    func errorOnUpload() {
+        self.showSingleAlertWithCompletion(title: "Erreur pendant l'envoie des photos",
+                                           message: "Veulliez vérifier votre connexion internet",
+                                           handler: { _ in
+        })
+    }
+    
+    func errorOnImages(){
+        self.showSingleAlertWithCompletion(title: "Erreur sur les photos",
+                                           message: "Veulliez es vérifier avant de recommencer",
+                                           handler: { _ in
+        })
     }
 }

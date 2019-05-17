@@ -28,7 +28,7 @@ class User: NSObject, NSCoding {
     var city:String
 
     init(id:String = "", token:String = "", email:String = "", password:String = "", firstName:String = "", lastName:String = "",
-         address:String = "", postCode:Int = 0, city:String = "", birthPlace:String = "") {
+         address:String = "", postCode:Int = 0, city:String = "", birthPlace:String = "", birthDate:Date? = Date()) {
         self.id = id
         self.token = token
         self.email = email
@@ -38,7 +38,7 @@ class User: NSObject, NSCoding {
         self.address = address
         self.postCode = postCode
         self.city = city
-        self.birthDate = Date()
+        self.birthDate = birthDate ?? Date()
         self.birthPlace = birthPlace
     }
     
