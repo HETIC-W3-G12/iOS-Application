@@ -17,9 +17,26 @@ class TestUploadVC: UIViewController {
     @IBOutlet weak var recuperation: UIButton!
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-    
     }
+    
+    
+    @IBAction func takeScreen(_ sender: Any) {
+        // Begin context
+        UIGraphicsBeginImageContextWithOptions(self.view.bounds.size, false, UIScreen.main.scale)
+        
+        // Draw view in that context
+        self.view.drawHierarchy(in: self.view.bounds, afterScreenUpdates: true)
+        
+        // And finally, get image
+        let image = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        
+        guard let selectedImage = image else {
+            return
+        }
+        UIImageWriteToSavedPhotosAlbum(selectedImage, self, nil, nil)
+    }
+    
     @IBAction func uploadfile(_ sender: Any) {
         self.test2()
     }

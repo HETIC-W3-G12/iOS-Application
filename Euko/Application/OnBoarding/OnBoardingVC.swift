@@ -19,7 +19,7 @@ class OnBoardingVC: UIPageViewController, UIPageViewControllerDataSource {
         self.view.backgroundColor = UIColor(red: 59/255, green: 84/255, blue: 213/255, alpha: 1)
         
         self.setVcArray()
-        self.setViewControllers([self.vcArray[0]!], direction: .forward, animated: false, completion: nil)
+        self.setViewControllers([self.vcArray[0]!], direction: .forward, animated: true, completion: nil)
         self.actualVC = 0
     }
     
