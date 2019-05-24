@@ -40,6 +40,8 @@
 		578E624922579AA40029ED27 /* ProjectRecapVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 578E624822579AA40029ED27 /* ProjectRecapVC.swift */; };
 		578E624B225A47930029ED27 /* OnGoingTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 578E624A225A47930029ED27 /* OnGoingTVC.swift */; };
 		578E624D225A496F0029ED27 /* OnGoingTVController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 578E624C225A496F0029ED27 /* OnGoingTVController.swift */; };
+		57933673229820FF001A6F25 /* Deadline.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57933672229820FF001A6F25 /* Deadline.swift */; };
+		579336752298245C001A6F25 /* Offer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 579336742298245C001A6F25 /* Offer.swift */; };
 		579AF517223BFF2300C8D85B /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 579AF516223BFF2300C8D85B /* TabBarController.swift */; };
 		57A879AA223A6D8300BC2A79 /* CreationContractVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57A879A9223A6D8300BC2A79 /* CreationContractVC.swift */; };
 		57A879AD223A6DE400BC2A79 /* SHFSignatureView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57A879AC223A6DE400BC2A79 /* SHFSignatureView.swift */; };
@@ -105,6 +107,8 @@
 		578E624822579AA40029ED27 /* ProjectRecapVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectRecapVC.swift; sourceTree = "<group>"; };
 		578E624A225A47930029ED27 /* OnGoingTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnGoingTVC.swift; sourceTree = "<group>"; };
 		578E624C225A496F0029ED27 /* OnGoingTVController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnGoingTVController.swift; sourceTree = "<group>"; };
+		57933672229820FF001A6F25 /* Deadline.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Deadline.swift; sourceTree = "<group>"; };
+		579336742298245C001A6F25 /* Offer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Offer.swift; sourceTree = "<group>"; };
 		579AF516223BFF2300C8D85B /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 		57A879A9223A6D8300BC2A79 /* CreationContractVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreationContractVC.swift; sourceTree = "<group>"; };
 		57A879AC223A6DE400BC2A79 /* SHFSignatureView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SHFSignatureView.swift; sourceTree = "<group>"; };
@@ -212,9 +216,11 @@
 			children = (
 				571EB6DC21B91F70008D4227 /* User.swift */,
 				572294FB21C4449200C106BC /* Project.swift */,
+				579336742298245C001A6F25 /* Offer.swift */,
 				578E62402253579E0029ED27 /* ServerBridge.swift */,
 				573802712286C7D7007933E8 /* Dashboard.swift */,
 				5709733E228DAE2C003797A4 /* Inscription.swift */,
+				57933672229820FF001A6F25 /* Deadline.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -565,6 +571,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				579336752298245C001A6F25 /* Offer.swift in Sources */,
 				5738027A2286DB01007933E8 /* ExtUserDefaults.swift in Sources */,
 				57097341228DB068003797A4 /* ExtImage.swift in Sources */,
 				578E624922579AA40029ED27 /* ProjectRecapVC.swift in Sources */,
@@ -602,6 +609,7 @@
 				573802742286DACA007933E8 /* ExtViewController.swift in Sources */,
 				576C5E1121FF12AE0069CFBB /* Polygon.swift in Sources */,
 				572294FC21C4449200C106BC /* Project.swift in Sources */,
+				57933673229820FF001A6F25 /* Deadline.swift in Sources */,
 				57C34410223AA6E8007A0B03 /* ProfileVC.swift in Sources */,
 				57D4896421E797EE00D6D1C1 /* Triangle.swift in Sources */,
 				578E624D225A496F0029ED27 /* OnGoingTVController.swift in Sources */,

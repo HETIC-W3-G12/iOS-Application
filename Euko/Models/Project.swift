@@ -19,6 +19,8 @@ class Project {
     var finalPrice:Float!
     var date:Date
     
+    
+    
     init(id:String = "", title:String = "", description:String = "", state:String = "",
          price:Int = 0, timeLaps:Int = 0, interests:Float = 0.0, finalPrice:Float = 0.0, date:Date = Date()) {
         self.id = id

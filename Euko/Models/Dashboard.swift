@@ -19,6 +19,8 @@ class Dashboard {
     var offers:[Project]
     var delegate:DashboardDelegate?
     
+    var tmp:[Offer] = []
+    
     init(project:Project? = nil, offers:[Project] = []) {
         self.project = project
         self.offers = offers
@@ -61,10 +63,14 @@ class Dashboard {
                 
                 // Settin offers
                 var i = 0
-                var tmpOffers:[Project] = []
                 let jsonOffers:[JSON] = json?["offers"].array ?? []
+                var tmpOffers:[Offer] = []
                 while (i < jsonOffers.count){
                     let tmpProject:Project = Project()
+                    
+                    let tmpOffer:Offer = Offer()
+                    tmpOffer.id = jsonOffers[i]["id"].string ?? ""
+                    tmpOffer.createdDate = jsonOffers[i]["createdDate"].string?.toDate()
                     
                     tmpProject.id = jsonOffers[i]["project"]["id"].string ?? ""
                     tmpProject.title = jsonOffers[i]["project"]["title"].string ?? ""
@@ -74,13 +80,14 @@ class Dashboard {
                     tmpProject.timeLaps = jsonOffers[i]["project"]["timeLaps"].int ?? 0
                     tmpProject.interests = jsonOffers[i]["project"]["interests"].float ?? 0.01
                     tmpProject.date = jsonOffers[i]["project"]["createdDate"].string?.substring(to: 9).toDate() ?? Date()
-                    
-                    tmpOffers.append(tmpProject)
+
+                    tmpOffer.project = tmpProject
+                    tmpOffers.append(tmpOffer)
                     i += 1
                 }
-                self.offers = []
-                self.offers = tmpOffers
+                self.tmp = tmpOffers
                 self.delegate?.reloadData()
+                //TODO: Alors, j'ai remplacé le tableu de projets par un tableau d'offers qui contient des projets, il faut donc maintenant supprimer l'ancien tableau et faire suivre les offers dans le dashboardVC qui lui ne gere que les projects
             }
             else {
                 //TODO: Something
