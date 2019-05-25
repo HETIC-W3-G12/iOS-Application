@@ -39,7 +39,7 @@ class WalletVC: UIViewController, UITableViewDelegate, UITableViewDataSource, Da
         
         self.topViewContainer.setSpecificShadow()
         self.topViewContainer.roundBorder(radius: 5)
-        self.setupTopCell()
+        
         
         self.dashboard.delegate = self
     }
@@ -50,6 +50,8 @@ class WalletVC: UIViewController, UITableViewDelegate, UITableViewDataSource, Da
         
         self.dashboard.fillDashboard()
         self.dashboard.orderOffersByDate()
+        self.reloadData()
+        self.setupTopCell()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -59,6 +61,7 @@ class WalletVC: UIViewController, UITableViewDelegate, UITableViewDataSource, Da
 
     func reloadData(){
         self.bottomTableView.reloadData()
+        self.setupTopCell()
     }
     
     func setupTopCell () {
@@ -102,7 +105,7 @@ class WalletVC: UIViewController, UITableViewDelegate, UITableViewDataSource, Da
         let cell = self.bottomTableView.dequeueReusableCell(withIdentifier: "MoneyBackCell", for: indexPath) as! MoneyBackCell
         cell.containerView.setSpecificShadow()
         cell.containerView.roundBorder(radius: 5)
-        cell.project = self.dashboard.offers[indexPath.row]    
+        cell.offer = self.dashboard.offers[indexPath.row]    
         return cell
     }
     
@@ -114,9 +117,8 @@ class WalletVC: UIViewController, UITableViewDelegate, UITableViewDataSource, Da
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         self.bottomTableView.deselectRow(at: indexPath, animated: true)
                 
-        let vc = self.storyboard?.instantiateViewController(withIdentifier: "ProjectVC") as! ProjectVC
-        vc.project = self.dashboard.offers[indexPath.row]
-        vc.isLoan = false
+        let vc = self.storyboard?.instantiateViewController(withIdentifier: "OnGoingVC") as! OnGoingVC
+        vc.offer = self.dashboard.offers[indexPath.row]
         self.navigationController?.pushViewController(vc, animated: true)
     }
 }

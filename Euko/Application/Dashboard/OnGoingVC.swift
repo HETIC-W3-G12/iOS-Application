@@ -17,6 +17,9 @@ class OnGoingVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     @IBOutlet weak var bigTitle: UILabel!
     @IBOutlet weak var secondLabel: UILabel!
     @IBOutlet weak var firstLabel: UILabel!
+    
+    var offer:Offer?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         

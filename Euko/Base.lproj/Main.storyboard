@@ -271,28 +271,6 @@
                                     <action selector="connectAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="obT-Ae-IxR"/>
                                 </connections>
                             </button>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WfQ-Mr-FBJ">
-                                <rect key="frame" x="152.5" y="298.5" width="70" height="70"/>
-                                <subviews>
-                                    <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="fpa-BZ-Goh">
-                                        <rect key="frame" x="15" y="15" width="40" height="40"/>
-                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <color key="tintColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="40" id="3Cm-BS-BQD"/>
-                                            <constraint firstAttribute="height" constant="40" id="5MD-d2-XSF"/>
-                                        </constraints>
-                                        <color key="color" red="0.23137254900000001" green="0.3294117647" blue="0.83529411760000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                    </activityIndicatorView>
-                                </subviews>
-                                <color key="backgroundColor" white="0.67000000000000004" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="70" id="R80-Uz-gDM"/>
-                                    <constraint firstItem="fpa-BZ-Goh" firstAttribute="centerX" secondItem="WfQ-Mr-FBJ" secondAttribute="centerX" id="YNs-4g-ihK"/>
-                                    <constraint firstItem="fpa-BZ-Goh" firstAttribute="centerY" secondItem="WfQ-Mr-FBJ" secondAttribute="centerY" id="ggL-Rp-SHV"/>
-                                    <constraint firstAttribute="width" constant="70" id="i7z-b7-xmK"/>
-                                </constraints>
-                            </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Dv6-TJ-W3m">
                                 <rect key="frame" x="32" y="271" width="175" height="30"/>
                                 <constraints>
@@ -312,6 +290,15 @@
                                     <segue destination="BDk-WT-Jnt" kind="show" id="04g-Nm-NXT"/>
                                 </connections>
                             </button>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="fpa-BZ-Goh">
+                                <rect key="frame" x="43" y="367" width="48" height="48"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="tintColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="fpa-BZ-Goh" secondAttribute="height" multiplier="1:1" id="Fsj-Dy-ZDK"/>
+                                </constraints>
+                                <color key="color" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
@@ -319,6 +306,7 @@
                             <constraint firstItem="auB-g5-zQs" firstAttribute="top" secondItem="Djb-AS-wmP" secondAttribute="bottom" constant="16" id="4uw-Ry-Y09"/>
                             <constraint firstItem="Dv6-TJ-W3m" firstAttribute="top" secondItem="35Y-KO-836" secondAttribute="bottom" constant="4" id="6mK-sI-zbL"/>
                             <constraint firstItem="2iH-Ju-RMp" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="32" id="CFH-mu-jb8"/>
+                            <constraint firstItem="fpa-BZ-Goh" firstAttribute="bottom" secondItem="I7p-ir-sgc" secondAttribute="bottom" id="FYO-OF-LmI"/>
                             <constraint firstItem="Djb-AS-wmP" firstAttribute="top" secondItem="2iH-Ju-RMp" secondAttribute="bottom" id="HN1-n5-8MI"/>
                             <constraint firstItem="QVc-d8-ExV" firstAttribute="top" secondItem="I7p-ir-sgc" secondAttribute="top" id="Lwh-My-c1D"/>
                             <constraint firstItem="auB-g5-zQs" firstAttribute="leading" secondItem="Djb-AS-wmP" secondAttribute="leading" id="MXp-Nw-R3h"/>
@@ -326,15 +314,15 @@
                             <constraint firstItem="3j2-4F-jKH" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="Paj-wq-jPm"/>
                             <constraint firstItem="auB-g5-zQs" firstAttribute="trailing" secondItem="Djb-AS-wmP" secondAttribute="trailing" id="Spb-m0-ndN"/>
                             <constraint firstItem="35Y-KO-836" firstAttribute="top" secondItem="auB-g5-zQs" secondAttribute="bottom" id="Srn-1d-fjZ"/>
+                            <constraint firstItem="fpa-BZ-Goh" firstAttribute="leading" secondItem="I7p-ir-sgc" secondAttribute="leading" id="UEk-q0-ZBI"/>
                             <constraint firstItem="Dv6-TJ-W3m" firstAttribute="leading" secondItem="auB-g5-zQs" secondAttribute="leading" id="Vhj-UK-xm5"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="cMT-eF-YE3" secondAttribute="trailing" id="WHc-rl-ZfD"/>
                             <constraint firstItem="I7p-ir-sgc" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="WgB-nG-56p"/>
                             <constraint firstItem="3j2-4F-jKH" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="Xso-Jh-pjP"/>
                             <constraint firstItem="QVc-d8-ExV" firstAttribute="leading" secondItem="I7p-ir-sgc" secondAttribute="leading" constant="1" id="Y7c-H1-gae"/>
                             <constraint firstItem="auB-g5-zQs" firstAttribute="leading" secondItem="2iH-Ju-RMp" secondAttribute="leading" id="YAL-s6-63k"/>
-                            <constraint firstItem="WfQ-Mr-FBJ" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="YVS-2e-Pxp"/>
-                            <constraint firstItem="WfQ-Mr-FBJ" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="cvk-VE-b2H"/>
                             <constraint firstItem="QVc-d8-ExV" firstAttribute="bottom" secondItem="I7p-ir-sgc" secondAttribute="bottom" id="epb-HP-OGU"/>
+                            <constraint firstItem="fpa-BZ-Goh" firstAttribute="top" secondItem="I7p-ir-sgc" secondAttribute="top" id="gEX-IV-7dj"/>
                             <constraint firstItem="35Y-KO-836" firstAttribute="trailing" secondItem="Djb-AS-wmP" secondAttribute="trailing" id="jYz-XF-5aU"/>
                             <constraint firstItem="QVc-d8-ExV" firstAttribute="trailing" secondItem="I7p-ir-sgc" secondAttribute="trailing" constant="-1" id="mU4-v2-zkN"/>
                             <constraint firstItem="2iH-Ju-RMp" firstAttribute="centerY" secondItem="3j2-4F-jKH" secondAttribute="bottom" id="rSG-5y-Wav"/>
@@ -351,7 +339,6 @@
                     </navigationItem>
                     <connections>
                         <outlet property="activityIndicator" destination="fpa-BZ-Goh" id="H8y-zA-GfH"/>
-                        <outlet property="activityView" destination="WfQ-Mr-FBJ" id="2e9-8i-53s"/>
                         <outlet property="connexionButton" destination="I7p-ir-sgc" id="wfr-L6-h7L"/>
                         <outlet property="connexionShadow" destination="QVc-d8-ExV" id="87W-bl-PT8"/>
                         <outlet property="emailTF" destination="2iH-Ju-RMp" id="Wcs-3e-kc3"/>

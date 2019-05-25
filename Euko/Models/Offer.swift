@@ -33,6 +33,6 @@ class Offer {
     }
     
     func fillDeadlines() {
-        
+        //Todo : requete API pour recup toutes les echeances
     }
 }

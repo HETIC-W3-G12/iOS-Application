@@ -16,12 +16,10 @@ protocol DashboardDelegate {
 
 class Dashboard {
     var project:Project?
-    var offers:[Project]
     var delegate:DashboardDelegate?
+    var offers:[Offer] = []
     
-    var tmp:[Offer] = []
-    
-    init(project:Project? = nil, offers:[Project] = []) {
+    init(project:Project? = nil, offers:[Offer] = []) {
         self.project = project
         self.offers = offers
     }
@@ -30,12 +28,12 @@ class Dashboard {
         self.project = proj
     }
     
-    func setOffers(off:[Project]){
+    func setOffers(off:[Offer]){
         self.offers = off
     }
 
     func orderOffersByDate() {
-        self.offers.sort(by: {$0.date.compare($1.date) == .orderedDescending})
+        self.offers.sort(by: {$0.project?.date.compare($1.project?.date ?? Date()) == .orderedDescending})
     }
     
     func fillDashboard() {
@@ -50,14 +48,14 @@ class Dashboard {
                 // Setting loan
                 let tmpProject:Project = Project()
                 
-                tmpProject.id = json?["projects"]["id"].string ?? ""
-                tmpProject.title = json?["projects"]["title"].string ?? ""
-                tmpProject.description = json?["projects"]["description"].string ?? ""
-                tmpProject.state = json?["projects"]["state"].string ?? ""
-                tmpProject.price = json?["projects"]["price"].int ?? 0
-                tmpProject.timeLaps = json?["projects"]["timeLaps"].int ?? 0
-                tmpProject.interests = json?["projects"]["interests"].float ?? 0.01
-                tmpProject.date = json?["projects"]["createdDate"].string?.substring(to: 9).toDate() ?? Date()
+                tmpProject.id = json?["project"]["id"].string ?? ""
+                tmpProject.title = json?["project"]["title"].string ?? ""
+                tmpProject.description = json?["project"]["description"].string ?? ""
+                tmpProject.state = json?["project"]["state"].string ?? ""
+                tmpProject.price = json?["project"]["price"].int ?? 0
+                tmpProject.timeLaps = json?["project"]["timeLaps"].int ?? 0
+                tmpProject.interests = json?["project"]["interests"].float ?? 0.01
+                tmpProject.date = json?["project"]["createdDate"].string?.substring(to: 9).toDate() ?? Date()
                 
                 self.project = tmpProject
                 
@@ -85,9 +83,9 @@ class Dashboard {
                     tmpOffers.append(tmpOffer)
                     i += 1
                 }
-                self.tmp = tmpOffers
+                self.offers = tmpOffers
                 self.delegate?.reloadData()
-                //TODO: Alors, j'ai remplacé le tableu de projets par un tableau d'offers qui contient des projets, il faut donc maintenant supprimer l'ancien tableau et faire suivre les offers dans le dashboardVC qui lui ne gere que les projects
+                //TODO: Alors, j'ai remplacé le tableu de projets par un tableau d'offers qui contient des projets, il faut donc maintenant supprimer l'ancien tableau (OK) et faire suivre les offers dans le dashboardVC qui lui ne gere que les projects
             }
             else {
                 //TODO: Something

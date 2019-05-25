@@ -19,24 +19,23 @@ class MoneyBackCell: UITableViewCell {
     @IBOutlet weak var containerView: UIView!
     @IBOutlet weak var progressViewTrailing: NSLayoutConstraint!
     
-    var project:Project? {
+    var offer:Offer? {
         didSet (item) {
+            guard let project = item?.project else { return }
+            self.titleLabel.text = project.title
             
-            if item?.state == "waiting" {
-                self.titleLabel.text = item?.title
+            if item?.state == .waiting {
                 self.seeMoreButton.setTitle("En attente", for: .normal)
                 self.seeMoreButton.isEnabled = false
-            } else if item?.state == "refused" {
-                self.titleLabel.text = item?.title
-                self.seeMoreButton.setTitle("Refusé", for: .normal)
+            } else if item?.state == .refused {
+                self.seeMoreButton.setTitle("Proposition refusée", for: .normal)
                 self.seeMoreButton.isEnabled = false
-            } else if item?.state == "running" {
-                self.titleLabel.text = item?.title
+            } else if item?.state == .accepted {
                 let rand = Float.random(in: 1 ..< 12)
-                self.moneyBackLabel.text = String(format: "%.2f€", ceil((item?.finalPrice ?? 0) / rand))
-                self.totalAmountLabel.text = String(format: "sur %.f€", ceil(item?.finalPrice ?? 0))
-                let maxPrice:CGFloat = CGFloat(item?.finalPrice ?? 0)
-                let minPrice:CGFloat = CGFloat((item?.finalPrice ?? 0) / rand)
+                self.moneyBackLabel.text = String(format: "%.2f€", ceil((project.finalPrice ?? 0) / rand))
+                self.totalAmountLabel.text = String(format: "sur %.f€", ceil(project.finalPrice ?? 0))
+                let maxPrice:CGFloat = CGFloat(project.finalPrice ?? 0)
+                let minPrice:CGFloat = CGFloat((project.finalPrice ?? 0) / rand)
                 let percentagePrice:CGFloat = CGFloat(minPrice * 100) / CGFloat((maxPrice == 0) ? 1 : maxPrice)
                 let width:CGFloat = self.totalView.frame.width
                 let newWidth:CGFloat = CGFloat(percentagePrice * width) / 100

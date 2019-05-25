@@ -152,7 +152,7 @@ class ProfileVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
         let cell = self.bottomTableView.dequeueReusableCell(withIdentifier: "MoneyBackCell", for: indexPath) as! MoneyBackCell        
         cell.containerView.setSpecificShadow()
         cell.containerView.roundBorder(radius: 5)
-        cell.project = self.myFinancements[indexPath.row]
+        //cell.offer = self.myFinancements[indexPath.row]
         return cell
     }
     
