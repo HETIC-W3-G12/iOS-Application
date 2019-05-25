@@ -27,6 +27,16 @@ class OnGoingVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
         self.tableView.dataSource = self
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.navigationController?.navigationBar.isHidden = true
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        self.navigationController?.navigationBar.isHidden = false
+    }
+    
     
     @IBAction func backAction(_ sender: Any) {
         self.navigationController?.popViewController(animated: true)

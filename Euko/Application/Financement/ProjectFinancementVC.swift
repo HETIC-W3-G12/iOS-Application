@@ -63,7 +63,7 @@ class ProjectFinancementVC: UIViewController {
     
     @IBAction func validateAction(_ sender: Any) {
         let vc = self.storyboard?.instantiateViewController(withIdentifier: "CreationContractVC") as! CreationContractVC
-        vc.isNewProject = false
+        vc.isInvestor = true
         vc.projectId = self.projectId
         self.navigationController?.pushViewController(vc, animated: true)
     }

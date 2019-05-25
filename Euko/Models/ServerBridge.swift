@@ -19,6 +19,8 @@ public enum endpoints:String {
     case dashboard = "/users/dashboard"
     case projects = "/projects"
     case offers = "/offers"
+    case acceptOffer = "/offers/accept"
+    case refuseOffer = "/offers/refuse"
 }
 
 class ServerBridge {

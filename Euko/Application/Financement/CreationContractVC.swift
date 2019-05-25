@@ -10,7 +10,7 @@ import UIKit
 import SwiftyJSON
 import Alamofire
 
-class CreationContractVC: UIViewController, SHFSignatureProtocol {
+class CreationContractVC: UIViewController {
 
     @IBOutlet weak var clearButton: UIButton!
     @IBOutlet weak var drawSpaceView: SHFSignatureView!
@@ -20,10 +20,11 @@ class CreationContractVC: UIViewController, SHFSignatureProtocol {
     @IBOutlet weak var contractContent: UITextView!
     @IBOutlet weak var validateButton: UIButton!
     
-    var isNewProject:Bool = true
+    var isInvestor:Bool = true
     var projectId:String = ""
     var signatureImage:UIImage = UIImage()
     var params:Parameters = [:]
+    var offer:Offer?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -35,45 +36,54 @@ class CreationContractVC: UIViewController, SHFSignatureProtocol {
         self.validateButton.roundBorder()
     }
     
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-        self.navigationController?.navigationBar.isHidden = false
-        if (!self.isNewProject){
-            self.tabBarController?.tabBar.isHidden = false
-        }
-    }
-    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.navigationController?.navigationBar.isHidden = true
-        if (!self.isNewProject){
-            self.tabBarController?.tabBar.isHidden = true
+        self.tabBarController?.tabBar.isHidden = true
+        if (!self.isInvestor){
+            self.validateButton.setTitle("Je m'engage", for: .normal)
         }
     }
-    
+
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        self.navigationController?.navigationBar.isHidden = false
+        if (!self.isInvestor){
+        }
+    }
+
     @IBAction func backButton(_ sender: Any) {
         self.navigationController?.popViewController(animated: true)
     }
     
     
     @IBAction func validateAction(_ sender: Any) {
-        if (self.isNewProject){
-            //TODO: clean this
+        if (!self.isInvestor){
+            self.acceptOffer()
         } else {
             self.financeProject()
         }
     }
     
-    func drawingSignature() {
-    }
-    
-    func image(_ signature: UIImage?) {
-        self.signatureImage = signature ?? UIImage()
-    }
-
-    @IBAction func clearAction(_ sender: Any) {
-        self.drawSpaceView.clear()
-        self.signatureImage = UIImage()
+    func acceptOffer() {
+        let user:User = UserDefaults.getUser()!
+        let bearer:String = "Bearer \(user.token)"
+        let headers: HTTPHeaders = [ "Authorization": bearer, "Accept": "application/json"]
+        guard let id = self.offer?.id else { return }
+        self.params = ["offer_id": id]
+        
+        headersRequest(params: self.params, endpoint: .acceptOffer, method: .post, header: headers, handler: {
+            (success, json) in
+            if (success){
+                print(json ?? "Aucune valeur dans le JSON")
+                self.showSingleAlertWithCompletion(title: "Vous avez bien accepté l'offre", message: "Les fonds vous seront trans;is sous peu. Attention un pret vous engage.", handler: {
+                    _ in
+                    self.navigationController?.popToRootViewController(animated: true)
+                })
+            } else {
+                self.showSingleAlert(title: "Une erreur est survenue", message: "Veuillez réessayer")
+            }
+        })
     }
     
     func financeProject() {
@@ -95,5 +105,18 @@ class CreationContractVC: UIViewController, SHFSignatureProtocol {
             }
         })
     }
+}
+
+extension CreationContractVC: SHFSignatureProtocol {
+    func drawingSignature() {
+    }
     
+    func image(_ signature: UIImage?) {
+        self.signatureImage = signature ?? UIImage()
+    }
+    
+    @IBAction func clearAction(_ sender: Any) {
+        self.drawSpaceView.clear()
+        self.signatureImage = UIImage()
+    }
 }

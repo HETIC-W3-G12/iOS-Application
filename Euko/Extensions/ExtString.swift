@@ -60,4 +60,11 @@ extension String
         
         return date
     }
+    
+    func getOfferState() -> OfferState {
+        if self == "waiting" { return OfferState.waiting }
+        else if self == "refused" { return OfferState.refused }
+        else if self == "accepted" { return OfferState.accepted }
+        else { return OfferState.waiting }
+    }
 }

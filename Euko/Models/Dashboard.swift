@@ -15,17 +15,17 @@ protocol DashboardDelegate {
 }
 
 class Dashboard {
-    var project:Project?
+    var offer:Offer?
     var delegate:DashboardDelegate?
     var offers:[Offer] = []
     
-    init(project:Project? = nil, offers:[Offer] = []) {
-        self.project = project
+    init(offer:Offer? = nil, offers:[Offer] = []) {
+        self.offer = offer
         self.offers = offers
     }
     
-    func setProject(proj:Project){
-        self.project = proj
+    func setProject(proj:Offer){
+        self.offer = proj
     }
     
     func setOffers(off:[Offer]){
@@ -44,10 +44,16 @@ class Dashboard {
         
         headersRequest(params: params, endpoint: .dashboard, method: .get, header: headers, handler: { (success, json) in
             if (success){
-                print(json)
+                print(json!)
                 // Setting loan
-                let tmpProject:Project = Project()
+                let tmpTopOffer = Offer()
+                tmpTopOffer.id = json?["project"]["offers"][0]["id"].string ?? ""
+                tmpTopOffer.state = json?["project"]["offers"][0]["state"].string?.getOfferState()
+                tmpTopOffer.createdDate = json?["project"]["offers"][0]["createdDate"].string?.toDate()
+                tmpTopOffer.investorSignature = UIImage() // json?["project"]["offers"]["id"].string ?? ""
+                self.offer = tmpTopOffer
                 
+                let tmpProject:Project = Project()
                 tmpProject.id = json?["project"]["id"].string ?? ""
                 tmpProject.title = json?["project"]["title"].string ?? ""
                 tmpProject.description = json?["project"]["description"].string ?? ""
@@ -57,7 +63,7 @@ class Dashboard {
                 tmpProject.interests = json?["project"]["interests"].float ?? 0.01
                 tmpProject.date = json?["project"]["createdDate"].string?.substring(to: 9).toDate() ?? Date()
                 
-                self.project = tmpProject
+                self.offer?.project = tmpProject
                 
                 // Settin offers
                 var i = 0

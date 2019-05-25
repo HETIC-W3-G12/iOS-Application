@@ -65,10 +65,20 @@ class WalletVC: UIViewController, UITableViewDelegate, UITableViewDataSource, Da
     }
     
     func setupTopCell () {
-        if self.dashboard.project != nil {
-            let rand = Float.random(in: 1 ..< 12)
-            let loan = self.dashboard.project ?? Project()
+        if self.dashboard.offer?.project != nil {
             
+            guard let loan = self.dashboard.offer?.project else { return }
+            if loan.state == "waiting" {
+                self.topSeeMoreButton.setTitle("Accepter / Refuser", for: .normal)
+            } else if loan.state == "running" {
+                self.topSeeMoreButton.setTitle("Voir plus", for: .normal)
+                self.topSeeMoreButton.titleLabel?.textAlignment = NSTextAlignment.right
+            } else {
+                self.topViewContainer.isHidden = true
+                return
+            }
+            
+            let rand = Float.random(in: 1 ..< 12)
             self.topTitleLabel.text = loan.title
             self.topTotalAmount.text = String(format: "sur %.f€", loan.finalPrice)
             self.topCurrentAmount.text = String(format: "%.2f€", loan.finalPrice / rand)
@@ -90,11 +100,49 @@ class WalletVC: UIViewController, UITableViewDelegate, UITableViewDataSource, Da
     }
     
     @IBAction func seeMore(_ sender: Any) {
-        //TODO: Will load the contract
-        let vc = self.storyboard?.instantiateViewController(withIdentifier: "ProjectVC") as! ProjectVC
-        vc.project = self.dashboard.project ?? Project()
-        vc.isLoan = true
-        self.navigationController?.pushViewController(vc, animated: true)
+        guard let loan = self.dashboard.offer?.project else { return }
+        if loan.state == "waiting" {
+            self.tripleChoice()
+        } else if loan.state == "running" {
+            let vc = self.storyboard?.instantiateViewController(withIdentifier: "OnGoingVC") as! OnGoingVC
+            vc.offer = self.dashboard.offer
+            self.navigationController?.pushViewController(vc, animated: true)
+        }
+    }
+    
+    func tripleChoice(){
+        let alert = UIAlertController(title: "Important", message: "Un prêt vous engage", preferredStyle: .alert)
+        
+        alert.addAction(UIAlertAction(title: "Accepter", style: .default, handler: { _ in
+            let vc = self.storyboard?.instantiateViewController(withIdentifier: "CreationContractVC") as! CreationContractVC
+            vc.isInvestor = false
+            vc.offer = self.dashboard.offer
+            self.navigationController?.pushViewController(vc, animated: true)
+            
+        }))
+        alert.addAction(UIAlertAction(title: "Refuser", style: .destructive, handler: { _ in
+            let user:User = UserDefaults.getUser()!
+            let bearer:String = "Bearer \(user.token)"
+            let headers: HTTPHeaders = [ "Authorization": bearer, "Accept": "application/json"]
+            guard let id = self.dashboard.offer?.id else { return }
+            let params:Parameters = ["offer_id": id]
+            
+            headersRequest(params: params, endpoint: .refuseOffer , method: .post, header: headers, handler: {
+                (success, json) in
+                if (success){
+                    print(json ?? "Aucune valeur dans le JSON")
+                    self.showSingleAlertWithCompletion(title: "L'offre à bien été refusée", message: "", handler: {
+                        _ in
+                        self.navigationController?.popToRootViewController(animated: true)
+                    })
+                } else {
+                    self.showSingleAlert(title: "Une erreur est survenue", message: "Veuillez réessayer")
+                }
+            })
+        }))
+        alert.addAction(UIAlertAction(title: "Annuler", style: .cancel , handler: nil))
+        
+        self.present(alert, animated: true)
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
