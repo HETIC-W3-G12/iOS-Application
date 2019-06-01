@@ -3573,7 +3573,7 @@ depuis le 12/12/2018</string>
                                                                 <nil key="textColor"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
-                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="emR-lA-Kcd">
+                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="trailing" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="emR-lA-Kcd">
                                                                 <rect key="frame" x="146" y="4" width="170" height="36"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="height" constant="36" id="ayx-Qi-28E"/>

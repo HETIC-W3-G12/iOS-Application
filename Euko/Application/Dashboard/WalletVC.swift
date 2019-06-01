@@ -60,8 +60,22 @@ class WalletVC: UIViewController, UITableViewDelegate, UITableViewDataSource, Da
     }
 
     func reloadData(){
-        self.bottomTableView.reloadData()
         self.setupTopCell()
+        self.bottomTableView.reloadData()
+    }
+    
+    func hideTopElements() {
+        self.topGlobalProgressView.isHidden = true
+        self.topOnGoingProgressView.isHidden = true
+        self.topCurrentAmount.isHidden = true
+        self.topTotalAmount.isHidden = true
+    }
+    
+    func showTopElemets(){
+        self.topGlobalProgressView.isHidden = false
+        self.topOnGoingProgressView.isHidden = false
+        self.topCurrentAmount.isHidden = false
+        self.topTotalAmount.isHidden = false
     }
     
     func setupTopCell () {
@@ -70,28 +84,30 @@ class WalletVC: UIViewController, UITableViewDelegate, UITableViewDataSource, Da
             guard let loan = self.dashboard.offer?.project else { return }
             if loan.state == "waiting" {
                 self.topSeeMoreButton.setTitle("Accepter / Refuser", for: .normal)
+                self.hideTopElements()
             } else if loan.state == "running" {
+                self.showTopElemets()
                 self.topSeeMoreButton.setTitle("Voir plus", for: .normal)
                 self.topSeeMoreButton.titleLabel?.textAlignment = NSTextAlignment.right
+                self.topTitleLabel.text = loan.title
+                self.topTotalAmount.text = String(format: "sur %.f€", loan.finalPrice)
+                self.topCurrentAmount.text = String(format: "%.2f€", loan.finalPrice / 1)
+                
+                let maxPrice:CGFloat = CGFloat(loan.finalPrice)
+                let minPrice:CGFloat = CGFloat(loan.finalPrice / 1)
+                let percentagePrice:CGFloat = CGFloat(minPrice * 100) / CGFloat((maxPrice == 0) ? 1 : maxPrice)
+                
+                let width:CGFloat = self.topGlobalProgressView.frame.width
+                let newWidth:CGFloat = CGFloat(percentagePrice * width) / 100
+                let newTrailing:CGFloat = CGFloat(width - newWidth)
+                
+                self.topOnGoingTrailingConstraint.constant = newTrailing
             } else {
                 self.topViewContainer.isHidden = true
                 return
             }
             
-            let rand = Float.random(in: 1 ..< 12)
-            self.topTitleLabel.text = loan.title
-            self.topTotalAmount.text = String(format: "sur %.f€", loan.finalPrice)
-            self.topCurrentAmount.text = String(format: "%.2f€", loan.finalPrice / rand)
             
-            let maxPrice:CGFloat = CGFloat(loan.finalPrice)
-            let minPrice:CGFloat = CGFloat(loan.finalPrice / rand)
-            let percentagePrice:CGFloat = CGFloat(minPrice * 100) / CGFloat((maxPrice == 0) ? 1 : maxPrice)
-            
-            let width:CGFloat = self.topGlobalProgressView.frame.width
-            let newWidth:CGFloat = CGFloat(percentagePrice * width) / 100
-            let newTrailing:CGFloat = CGFloat(width - newWidth)
-            
-            self.topOnGoingTrailingConstraint.constant = newTrailing
             self.topViewContainer.isHidden = false
         } else {
             self.topViewContainer.isHidden = true
@@ -153,7 +169,29 @@ class WalletVC: UIViewController, UITableViewDelegate, UITableViewDataSource, Da
         let cell = self.bottomTableView.dequeueReusableCell(withIdentifier: "MoneyBackCell", for: indexPath) as! MoneyBackCell
         cell.containerView.setSpecificShadow()
         cell.containerView.roundBorder(radius: 5)
-        cell.offer = self.dashboard.offers[indexPath.row]    
+
+        if let project = self.dashboard.offers[indexPath.row].project {
+            cell.titleLabel.text = project.title
+            
+            if project.state == "waiting" {
+                cell.seeMoreButton.setTitle("En attente", for: .normal)
+                cell.seeMoreButton.isEnabled = false
+            } else if project.state == "refused" {
+                cell.seeMoreButton.setTitle("Proposition refusée", for: .normal)
+                cell.seeMoreButton.isEnabled = false
+            } else if project.state == "accepted" {
+                let finalPrice = Float(project.price) + (((Float(project.price) * 0.1) / 12) * Float(project.timeLaps))
+                cell.totalAmountLabel.text = String(format: "sur %.2f€", finalPrice)
+                let cgfinal = CGFloat(finalPrice)
+                let maxPrice:CGFloat = cgfinal
+                let minPrice:CGFloat = cgfinal / 1
+                let percentagePrice:CGFloat = CGFloat(minPrice * 100) / CGFloat((maxPrice == 0) ? 1 : maxPrice)
+                let width:CGFloat = cell.totalView.frame.width
+                let newWidth:CGFloat = CGFloat(percentagePrice * width) / 100
+                let newTrailing:CGFloat = CGFloat(width - newWidth)
+                cell.progressViewTrailing.constant = newTrailing
+            }
+        }
         return cell
     }
     
