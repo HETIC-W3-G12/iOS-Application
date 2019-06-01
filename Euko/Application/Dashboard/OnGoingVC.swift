@@ -29,19 +29,30 @@ class OnGoingVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
         self.tableView.delegate = self
         self.tableView.dataSource = self
         self.offer?.delegate = self
+        
+        self.seeContractButton.roundBorder()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.navigationController?.navigationBar.isHidden = true
+        self.tabBarController?.tabBar.isHidden = true
         
         self.offer?.fillDeadlines()
         self.setTopLabel()
     }
     
+    
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         self.navigationController?.navigationBar.isHidden = false
+        self.tabBarController?.tabBar.isHidden = false
+    }
+    
+    
+    @IBAction func seeContract(_ sender: Any) {
+        let vc = self.storyboard?.instantiateViewController(withIdentifier: "ContractDownloadVC") as! ContractDownloadVC
+        self.navigationController?.pushViewController(vc, animated: true)
     }
     
     

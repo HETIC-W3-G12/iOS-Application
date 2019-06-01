@@ -33,6 +33,7 @@ class ProjectFinancementVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.filltextField()
+        self.view.addDismisKeyBoardOnTouch()
     }
     
     override func viewWillAppear(_ animated: Bool) {

@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		3A42F7A5C9ED9482D6A6EAD2 /* Pods_Euko.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5E2071583A9DCDD53C28CDF1 /* Pods_Euko.framework */; };
+		5707694F22A2E97D00C2A07E /* ContractDownloadVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5707694E22A2E97D00C2A07E /* ContractDownloadVC.swift */; };
 		5709733B228D9E9E003797A4 /* ExtDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5709733A228D9E9E003797A4 /* ExtDate.swift */; };
 		5709733D228DA1D4003797A4 /* ExtNumber.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5709733C228DA1D4003797A4 /* ExtNumber.swift */; };
 		5709733F228DAE2C003797A4 /* Inscription.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5709733E228DAE2C003797A4 /* Inscription.swift */; };
@@ -71,6 +72,7 @@
 		11EC2400E0878F817E3CECCA /* Pods-EukoTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EukoTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-EukoTests/Pods-EukoTests.release.xcconfig"; sourceTree = "<group>"; };
 		257280F01BF655A7E6C430D1 /* Pods-EukoTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EukoTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-EukoTests/Pods-EukoTests.debug.xcconfig"; sourceTree = "<group>"; };
 		2E97DDA1E1FCA067628EB106 /* Pods_EukoTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_EukoTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		5707694E22A2E97D00C2A07E /* ContractDownloadVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContractDownloadVC.swift; sourceTree = "<group>"; };
 		5709733A228D9E9E003797A4 /* ExtDate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtDate.swift; sourceTree = "<group>"; };
 		5709733C228DA1D4003797A4 /* ExtNumber.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtNumber.swift; sourceTree = "<group>"; };
 		5709733E228DAE2C003797A4 /* Inscription.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Inscription.swift; sourceTree = "<group>"; };
@@ -307,6 +309,7 @@
 			isa = PBXGroup;
 			children = (
 				578E624C225A496F0029ED27 /* OnGoingVC.swift */,
+				5707694E22A2E97D00C2A07E /* ContractDownloadVC.swift */,
 				57CC251A223BBB6900124166 /* WalletVC.swift */,
 			);
 			path = Dashboard;
@@ -605,6 +608,7 @@
 				57E46A3521C4785800FB7236 /* ProjectVC.swift in Sources */,
 				574E599A228EA5E100B7C0F1 /* ExtTextField.swift in Sources */,
 				578E6243225399290029ED27 /* TestUploadVC.swift in Sources */,
+				5707694F22A2E97D00C2A07E /* ContractDownloadVC.swift in Sources */,
 				57F3A3F62270A2970087A133 /* LastOnBoarding.swift in Sources */,
 				573802742286DACA007933E8 /* ExtViewController.swift in Sources */,
 				576C5E1121FF12AE0069CFBB /* Polygon.swift in Sources */,
