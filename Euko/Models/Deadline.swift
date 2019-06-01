@@ -11,6 +11,7 @@ import Foundation
 enum DeadlineState:String {
     case waiting = "waiting"
     case done = "done"
+    case late = "late"
 }
 
 class Deadline {

@@ -7,11 +7,18 @@
 //
 
 import UIKit
+import Alamofire
+import SwiftyJSON
 
 enum OfferState:String {
     case waiting = "waiting"
     case refused = "refused"
     case accepted = "accepted"
+}
+
+protocol OfferDelegate {
+    func reloadData()
+    func couldNotGetDeadlines()
 }
 
 class Offer {
@@ -21,6 +28,8 @@ class Offer {
     var investorSignature:UIImage?
     var ownerSignature:UIImage?
     var project:Project?
+    
+    var delegate:OfferDelegate?
     
     var deadlines:[Deadline] = []
     
@@ -33,6 +42,39 @@ class Offer {
     }
     
     func fillDeadlines() {
-        //Todo : requete API pour recup toutes les echeances
+        let user:User = UserDefaults.getUser()!
+        let bearer:String = "Bearer \(user.token)"
+        let headers: HTTPHeaders = [ "Authorization": bearer, "Accept": "application/json"]
+        let params:Parameters = [:]
+        
+        deadlineRequest(params: params, endpoint: .offers, offerId: self.id ?? "", method: .get , header: headers, handler: { (success, jsonTab) in
+            if (success){
+                print(jsonTab!)
+                
+                guard let json = jsonTab?[0] else {
+                    self.delegate?.couldNotGetDeadlines()
+                    return
+                }
+                
+                var i:Int = 0
+                var tmpJson:[JSON] = json["refunds"].array ?? []
+                self.deadlines = []
+                while (i < tmpJson.count){
+                    let tmp:Deadline = Deadline()
+                    
+                    tmp.state = tmpJson[i]["state"].string?.toDeadlineState()
+                    tmp.createdDate = tmpJson[i]["createdDate"].string?.toDate()
+                    tmp.dueDate = tmpJson[i]["dueDate"].string?.toDate()
+                    tmp.amout = tmpJson[i]["amount"].double
+                    tmp.id = tmpJson[i]["id"].string
+                    
+                    self.deadlines.append(tmp)
+                    i += 1
+                }
+                self.delegate?.reloadData()
+            } else {
+                self.delegate?.couldNotGetDeadlines()
+            }
+        })
     }
 }

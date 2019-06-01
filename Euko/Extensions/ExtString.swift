@@ -44,7 +44,7 @@ extension String
         let indexRange = Range<String.Index>(uncheckedBounds: (lower: fromIndex, upper: toIndex))
         return String(self[indexRange])
     }
-    
+
     func character(_ at: Int) -> Character {
         return self[self.index(self.startIndex, offsetBy: at)]
     }
@@ -55,6 +55,7 @@ extension String
     
     func toDate() -> Date {
         let dateFormatter = DateFormatter()
+        //dateFormatter.locale = 
         dateFormatter.dateFormat = "yyyy-MM-dd"
         let date:Date = dateFormatter.date(from: self) ?? Date()
         
@@ -66,5 +67,15 @@ extension String
         else if self == "refused" { return OfferState.refused }
         else if self == "accepted" { return OfferState.accepted }
         else { return OfferState.waiting }
+    }
+    
+    func toDeadlineState() -> DeadlineState {
+        if self == "waiting" { return DeadlineState.waiting }
+        else if self == "late" { return DeadlineState.late }
+        else { return DeadlineState.done }
+    }
+    
+    func toInt() -> Int? {
+        return Int(self)
     }
 }
