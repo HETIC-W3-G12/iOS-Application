@@ -21,10 +21,10 @@ class CreationContractVC: UIViewController {
     @IBOutlet weak var validateButton: UIButton!
     
     var isInvestor:Bool = true
-    var projectId:String = ""
     var signatureImage:UIImage = UIImage()
     var params:Parameters = [:]
     var offer:Offer?
+    var projectPassed:Project?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -34,6 +34,47 @@ class CreationContractVC: UIViewController {
         self.clearButton.layer.borderColor = UIColor(red: 59/255, green: 84/255, blue: 213/255, alpha: 1).cgColor
         self.clearButton.roundBorder()
         self.validateButton.roundBorder()
+        
+        guard let user = UserDefaults.getUser() else { return }
+        var project:Project!
+        if !self.isInvestor {
+            guard let tmp = self.offer?.project else { return }
+            project = tmp
+        } else {
+            if self.projectPassed != nil {
+                project = self.projectPassed
+            }
+            else { return }
+        }
+        
+        
+        let first = user.firstName
+        let last = user.lastName
+        let place = user.birthPlace
+        let date = user.birthDate.toString()
+        let laps = project.timeLaps!
+        let inte = project.interests * 100
+        let created = project.date.toString()
+        let today = Date().toString()
+        let price:Int = project.price
+        let timelaps:Int = project.timeLaps!
+        let interestAmount:Float = Float(price) * ((inte/100 * Float(timelaps)) / 12)
+        let total:Float = Float(price) + interestAmount
+        let mensualite:Float = total / Float(laps)
+
+        let approuvedText = "Lu et approuvé le \(today)"
+        self.approuvedContent.text = approuvedText
+        
+
+        var contractText = ""
+        if (self.isInvestor == false){
+            contractText = "Je soussigné \(first) \(last), né à \(place) le \(date), m'engage à régler la somme de \(total) euros.\n\nCette somme comprend ma demande de prêt initiale de \(price) euros ainsi que les intérêts de \(inte)%, soit \(interestAmount)\n\nJe m'engage à régler cette somme aux travers de mensualités de \(mensualite) euros durant \(laps) mois consécutifs, à compter du \(created)"
+            
+        } else {
+            contractText = "Je soussigné \(first) \(last), né à \(place) le \(date), m'engage à régler la somme de \(total) euros.\n\nCette somme comprend ma demande de prêt initiale de \(price) euros ainsi que les intérêts de \(inte)%, soit \(String(format: "%.2f", interestAmount))\n\nJe m'engage à régler cette somme aux travers de mensualités de \(String(format: "%.2f", mensualite)) euros durant \(laps) mois consécutifs, à compter du \(created)"
+        }
+        self.contractContent.text = contractText
+
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -98,7 +139,7 @@ class CreationContractVC: UIViewController {
         guard let data = UIImage.resizeImage(image: self.signatureImage) else { return }
         let base64EncodedString = data.base64EncodedString()
         
-        self.params = ["project_id": self.projectId, "signature":base64EncodedString]
+        self.params = ["project_id": self.projectPassed?.id ?? "", "signature":base64EncodedString]
             
         headersRequest(params: self.params, endpoint: .offers, method: .post, header: headers, handler: {
             (success, json) in

@@ -28,6 +28,7 @@ class ProjectFinancementVC: UIViewController {
     @IBOutlet weak var checkButton: UIButton!
     
     var projectId:String = ""
+    var project:Project?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -64,7 +65,7 @@ class ProjectFinancementVC: UIViewController {
     @IBAction func validateAction(_ sender: Any) {
         let vc = self.storyboard?.instantiateViewController(withIdentifier: "CreationContractVC") as! CreationContractVC
         vc.isInvestor = true
-        vc.projectId = self.projectId
+        vc.projectPassed = self.project
         self.navigationController?.pushViewController(vc, animated: true)
     }
     @IBAction func backAction(_ sender: Any) {
