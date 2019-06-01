@@ -70,7 +70,11 @@ class CreationContractVC: UIViewController {
         let bearer:String = "Bearer \(user.token)"
         let headers: HTTPHeaders = [ "Authorization": bearer, "Accept": "application/json"]
         guard let id = self.offer?.id else { return }
-        self.params = ["offer_id": id]
+        
+        guard let data = UIImage.resizeImage(image: self.signatureImage) else { return }
+        let base64EncodedString = data.base64EncodedString()
+        
+        self.params = ["offer_id": id, "signature":base64EncodedString]
         
         headersRequest(params: self.params, endpoint: .acceptOffer, method: .post, header: headers, handler: {
             (success, json) in
@@ -90,7 +94,11 @@ class CreationContractVC: UIViewController {
         let user:User = UserDefaults.getUser()!
         let bearer:String = "Bearer \(user.token)"
         let headers: HTTPHeaders = [ "Authorization": bearer, "Accept": "application/json"]
-        self.params = ["project_id": self.projectId]
+        
+        guard let data = UIImage.resizeImage(image: self.signatureImage) else { return }
+        let base64EncodedString = data.base64EncodedString()
+        
+        self.params = ["project_id": self.projectId, "signature":base64EncodedString]
             
         headersRequest(params: self.params, endpoint: .offers, method: .post, header: headers, handler: {
             (success, json) in
