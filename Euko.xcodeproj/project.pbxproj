@@ -32,6 +32,7 @@
 		5738027C2286DB11007933E8 /* ExtNavigationBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5738027B2286DB11007933E8 /* ExtNavigationBar.swift */; };
 		574E599A228EA5E100B7C0F1 /* ExtTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 574E5999228EA5E100B7C0F1 /* ExtTextField.swift */; };
 		5756536E22A5211D0065BE58 /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5756536D22A5211D0065BE58 /* WebViewController.swift */; };
+		5756537022A569300065BE58 /* CollectionBoarding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5756536F22A569300065BE58 /* CollectionBoarding.swift */; };
 		575B446E2239109E00FD5C97 /* InscriptionValidationVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 575B446D2239109E00FD5C97 /* InscriptionValidationVC.swift */; };
 		576C5E1121FF12AE0069CFBB /* Polygon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 576C5E1021FF12AE0069CFBB /* Polygon.swift */; };
 		5776C18E21BA6C9A00E51C59 /* ConnexionVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5776C18D21BA6C9A00E51C59 /* ConnexionVC.swift */; };
@@ -101,6 +102,7 @@
 		5738027B2286DB11007933E8 /* ExtNavigationBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtNavigationBar.swift; sourceTree = "<group>"; };
 		574E5999228EA5E100B7C0F1 /* ExtTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtTextField.swift; sourceTree = "<group>"; };
 		5756536D22A5211D0065BE58 /* WebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewController.swift; sourceTree = "<group>"; };
+		5756536F22A569300065BE58 /* CollectionBoarding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionBoarding.swift; sourceTree = "<group>"; };
 		575B446D2239109E00FD5C97 /* InscriptionValidationVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InscriptionValidationVC.swift; sourceTree = "<group>"; };
 		576C5E1021FF12AE0069CFBB /* Polygon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Polygon.swift; sourceTree = "<group>"; };
 		5776C18D21BA6C9A00E51C59 /* ConnexionVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnexionVC.swift; sourceTree = "<group>"; };
@@ -341,6 +343,7 @@
 			children = (
 				57E2D27F226F36B800E55703 /* OnBoardingVC.swift */,
 				57F3A3F52270A2970087A133 /* LastOnBoarding.swift */,
+				5756536F22A569300065BE58 /* CollectionBoarding.swift */,
 			);
 			path = OnBoarding;
 			sourceTree = "<group>";
@@ -624,6 +627,7 @@
 				57F3A3F62270A2970087A133 /* LastOnBoarding.swift in Sources */,
 				573802742286DACA007933E8 /* ExtViewController.swift in Sources */,
 				576C5E1121FF12AE0069CFBB /* Polygon.swift in Sources */,
+				5756537022A569300065BE58 /* CollectionBoarding.swift in Sources */,
 				572294FC21C4449200C106BC /* Project.swift in Sources */,
 				57933673229820FF001A6F25 /* Deadline.swift in Sources */,
 				57C34410223AA6E8007A0B03 /* ProfileVC.swift in Sources */,

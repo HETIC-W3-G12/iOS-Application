@@ -117,15 +117,9 @@ class CreateProjectVC: UIViewController {
     
     func areTextFieldsCorrects(title:String, description:String) -> Bool {
         if (title == ""){
-            UIView.animate(withDuration: 0.5, animations: {
-                self.titletextField.backgroundColor = UIColor(red: 1, green: 0, blue: 0, alpha: 0.7)
-            })
             return false
         }
         if (description == ""){
-            UIView.animate(withDuration: 0.5, animations: {
-                self.descriptionTextView.backgroundColor = UIColor(red: 1, green: 0, blue: 0, alpha: 0.7)
-            })
             return false
         }
         return true

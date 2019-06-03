@@ -25,6 +25,7 @@ class ConnexionVC: UIViewController {
         super.viewDidLoad()
         
         self.setupView()
+        self.activityIndicator.isHidden = true
         self.view.addDismisKeyBoardOnTouch()
     }
 

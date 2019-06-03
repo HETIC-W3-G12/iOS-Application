@@ -13,11 +13,11 @@ extension UIImage {
         guard let image = image else { return nil }
         var actualHeight: Float = Float(image.size.height)
         var actualWidth: Float = Float(image.size.width)
-        let maxHeight: Float = 150.0
-        let maxWidth: Float = 150.0
+        let maxHeight: Float = 200.0
+        let maxWidth: Float = 200.0
         var imgRatio: Float = actualWidth / actualHeight
         let maxRatio: Float = maxWidth / maxHeight
-        let compressionQuality: Float = 0.1
+        let compressionQuality: Float = 1
         //50 percent compression
         
         if actualHeight > maxHeight || actualWidth > maxWidth {

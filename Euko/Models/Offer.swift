@@ -82,17 +82,21 @@ class Offer {
     }
     
     func setInvestorImage(json:JSON){
-        let bufferData = json["signature_investor"]["Body"]["data"].array
-        let bytes = bufferData!.compactMap { $0.uInt8 }
+        guard let bufferData = json["signature_investor"]["Body"]["data"].array else { return }
+        let bytes = bufferData.compactMap { $0.uInt8 }
         let imageData = NSData(bytes: bytes, length: bytes.count)
         let data = Data(referencing: imageData)
+        
+        let base = json["signature_investor"]["Body"]["data"].string ?? ""
+        let decodedData = Data(base64Encoded: base)
+        self.investorSignature = UIImage(data: decodedData ?? Data())
         
         self.investorSignature = UIImage(data: data)
     }
     
     func setOwnerImage(json:JSON){
-        let bufferData = json["signature_owner"]["Body"]["data"].array
-        let bytes = bufferData!.compactMap { $0.uInt8 }
+        guard let bufferData = json["signature_owner"]["Body"]["data"].array else { return }
+        let bytes = bufferData.compactMap { $0.uInt8 }
         let imageData = NSData(bytes: bytes, length: bytes.count)
         let data = Data(referencing: imageData)
         

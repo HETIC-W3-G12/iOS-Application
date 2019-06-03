@@ -35,6 +35,9 @@ class ProjectFinancementVC: UIViewController {
         super.viewDidLoad()
         self.filltextField()
         self.view.addDismisKeyBoardOnTouch()
+        self.validateButton.roundBorder()
+        self.cguButton.layer.borderWidth = 2
+        self.cguButton.layer.borderColor = UIColor(red: 59/255, green: 84/255, blue: 213/255, alpha: 1).cgColor
     }
     
     override func viewWillAppear(_ animated: Bool) {
