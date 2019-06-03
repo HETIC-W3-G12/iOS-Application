@@ -70,9 +70,11 @@ class WalletVC: UIViewController, UITableViewDelegate, UITableViewDataSource, Da
         self.topOnGoingProgressView.isHidden = true
         self.topCurrentAmount.isHidden = true
         self.topTotalAmount.isHidden = true
+        self.topTimeStampLabel.isHidden = true
     }
     
     func showTopElemets(){
+        self.topTimeStampLabel.isHidden = false
         self.topGlobalProgressView.isHidden = false
         self.topOnGoingProgressView.isHidden = false
         self.topCurrentAmount.isHidden = false
@@ -124,6 +126,7 @@ class WalletVC: UIViewController, UITableViewDelegate, UITableViewDataSource, Da
         } else if loan.state == "running" {
             let vc = self.storyboard?.instantiateViewController(withIdentifier: "OnGoingVC") as! OnGoingVC
             vc.offer = self.dashboard.offer
+            vc.isInvestor = false
             self.navigationController?.pushViewController(vc, animated: true)
         }
     }
@@ -207,6 +210,7 @@ class WalletVC: UIViewController, UITableViewDelegate, UITableViewDataSource, Da
                 
         let vc = self.storyboard?.instantiateViewController(withIdentifier: "OnGoingVC") as! OnGoingVC
         vc.offer = self.dashboard.offers[indexPath.row]
+        vc.isInvestor = true
         self.navigationController?.pushViewController(vc, animated: true)
     }
 }

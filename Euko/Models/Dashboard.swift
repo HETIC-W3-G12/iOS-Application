@@ -62,7 +62,7 @@ class Dashboard {
                 tmpProject.timeLaps = json?["project"]["timeLaps"].int ?? 0
                 tmpProject.interests = json?["project"]["interests"].float ?? 0.01
                 tmpProject.date = json?["project"]["createdDate"].string?.substring(to: 9).toDate() ?? Date()
-                tmpProject.finalPrice = (Float(tmpProject.price) * tmpProject.interests)
+                tmpProject.finalPrice = (Float(tmpProject.price) * tmpProject.interests * 10)
                 
                 self.offer?.project = tmpProject
                 

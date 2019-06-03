@@ -29,6 +29,7 @@ class ProjectFinancementVC: UIViewController {
     
     var projectId:String = ""
     var project:Project?
+    var selected:Bool = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -64,20 +65,32 @@ class ProjectFinancementVC: UIViewController {
     }
     
     @IBAction func validateAction(_ sender: Any) {
-        let vc = self.storyboard?.instantiateViewController(withIdentifier: "CreationContractVC") as! CreationContractVC
-        vc.isInvestor = true
-        vc.projectPassed = self.project
-        self.navigationController?.pushViewController(vc, animated: true)
+        if self.selected {
+            let vc = self.storyboard?.instantiateViewController(withIdentifier: "CreationContractVC") as! CreationContractVC
+            vc.isInvestor = true
+            vc.projectPassed = self.project
+            self.navigationController?.pushViewController(vc, animated: true)
+        } else {
+            self.showSingleAlert(title: "Important", message: "Vous devez accepter les CGU pour continuer")
+        }
     }
     @IBAction func backAction(_ sender: Any) {
         self.navigationController?.popViewController(animated: true)
     }
     
     @IBAction func checkAction(_ sender: Any) {
-        
+        if (!self.selected){
+            self.checkButton.setImage(UIImage(named: "checkedButton"), for: .normal)
+            self.selected = true
+        } else {
+            self.checkButton.setImage(UIImage(), for: .normal)
+            self.selected = false
+        }
     }
     
     @IBAction func cguAction(_ sender: Any) {
-        
+        let vc = self.storyboard?.instantiateViewController(withIdentifier: "WebViewController") as! WebViewController
+        vc.urlString = " https://euko-site.000webhostapp.com/"
+        self.navigationController?.pushViewController(vc, animated: true)
     }
 }

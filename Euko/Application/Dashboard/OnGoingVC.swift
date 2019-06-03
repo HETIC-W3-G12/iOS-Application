@@ -20,6 +20,8 @@ class OnGoingVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     var offer:Offer?
     
+    var isInvestor:Bool = false
+    
     var received:Double = 0
     var total:Double = 0
     
@@ -71,8 +73,13 @@ class OnGoingVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
             self.total += item.amout ?? 0
         }
         
-        self.firstLabel.text = String(format: "Vous avez déjà reçu un total de %.2f€ sur %.2f€", self.received, self.total)
-        self.secondLabel.text = String(format: "Dont %.2f€ d'intérêts", self.received * 0.1)
+        if (self.isInvestor == true){
+            self.firstLabel.text = String(format: "Vous avez déjà reçu un total de %.2f€ sur %.2f€", self.received, self.total)
+            self.secondLabel.text = String(format: "Dont %.2f€ d'intérêts", self.received * 0.1)
+        } else {
+            self.firstLabel.text = String(format: "Vous avez déjà envoyé un total de %.2f€ sur %.2f€", self.received, self.total)
+            self.secondLabel.text = String(format: "Dont %.2f€ d'intérêts", self.received * 0.1)
+        }
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

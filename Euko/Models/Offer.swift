@@ -47,11 +47,11 @@ class Offer {
         let headers: HTTPHeaders = [ "Authorization": bearer, "Accept": "application/json"]
         let params:Parameters = [:]
         
-        deadlineRequest(params: params, endpoint: .offers, offerId: self.id ?? "", method: .get , header: headers, handler: { (success, jsonTab) in
+        deadlineRequest(params: params, endpoint: .offers, offerId: self.id ?? "", method: .get , header: headers, handler: { (success, json) in
             if (success){
-                print(jsonTab!)
+                print(json!)
                 
-                guard let json = jsonTab?[0] else {
+                guard let json = json else {
                     self.delegate?.couldNotGetDeadlines()
                     return
                 }
