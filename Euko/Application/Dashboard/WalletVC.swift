@@ -47,6 +47,7 @@ class WalletVC: UIViewController, UITableViewDelegate, UITableViewDataSource, Da
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.navigationController?.navigationBar.isHidden = true
+        self.tabBarController?.tabBar.isHidden = false
         
         self.dashboard.fillDashboard()
         self.dashboard.orderOffersByDate()
@@ -84,6 +85,7 @@ class WalletVC: UIViewController, UITableViewDelegate, UITableViewDataSource, Da
             guard let loan = self.dashboard.offer?.project else { return }
             if loan.state == "waiting" {
                 self.topSeeMoreButton.setTitle("Accepter / Refuser", for: .normal)
+                self.topTitleLabel.text = loan.title
                 self.hideTopElements()
             } else if loan.state == "running" {
                 self.showTopElemets()

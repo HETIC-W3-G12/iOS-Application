@@ -29,6 +29,7 @@ class InscriptionNextVC: UIViewController {
         super.viewDidLoad()
         
         self.saveButton.roundBorder()
+        self.view.addDismisKeyBoardOnTouch()
     }
     
     override func viewWillAppear(_ animated: Bool) {

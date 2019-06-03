@@ -25,6 +25,7 @@ class CreationContractVC: UIViewController {
     var params:Parameters = [:]
     var offer:Offer?
     var projectPassed:Project?
+    var owner:User?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -35,44 +36,11 @@ class CreationContractVC: UIViewController {
         self.clearButton.roundBorder()
         self.validateButton.roundBorder()
         
-        guard let user = UserDefaults.getUser() else { return }
-        var project:Project!
-        if !self.isInvestor {
-            guard let tmp = self.offer?.project else { return }
-            project = tmp
-        } else {
-            if self.projectPassed != nil {
-                project = self.projectPassed
-            }
-            else { return }
-        }
-        
-        
-        let first = user.firstName
-        let last = user.lastName
-        let place = user.birthPlace
-        let date = user.birthDate.toString()
-        let laps = project.timeLaps!
-        let inte = project.interests * 100
-        let created = project.date.toString()
         let today = Date().toString()
-        let price:Int = project.price
-        let timelaps:Int = project.timeLaps!
-        let interestAmount:Float = Float(price) * ((inte/100 * Float(timelaps)) / 12)
-        let total:Float = Float(price) + interestAmount
-        let mensualite:Float = total / Float(laps)
-
         let approuvedText = "Lu et approuvé le \(today)"
         self.approuvedContent.text = approuvedText
-        
-
-        var contractText = ""
-        if (self.isInvestor == false){
-            contractText = "Je soussigné \(first) \(last), né à \(place) le \(date), m'engage à régler la somme de \(total) euros.\n\nCette somme comprend ma demande de prêt initiale de \(price) euros ainsi que les intérêts de \(inte)%, soit \(interestAmount)\n\nJe m'engage à régler cette somme aux travers de mensualités de \(mensualite) euros durant \(laps) mois consécutifs, à compter du \(created)"
-            
-        } else {
-            contractText = "Je soussigné \(first) \(last), né à \(place) le \(date), m'engage à régler la somme de \(total) euros.\n\nCette somme comprend ma demande de prêt initiale de \(price) euros ainsi que les intérêts de \(inte)%, soit \(String(format: "%.2f", interestAmount))\n\nJe m'engage à régler cette somme aux travers de mensualités de \(String(format: "%.2f", mensualite)) euros durant \(laps) mois consécutifs, à compter du \(created)"
-        }
+    
+        let contractText = "Chargement..."
         self.contractContent.text = contractText
 
     }
@@ -83,6 +51,9 @@ class CreationContractVC: UIViewController {
         self.tabBarController?.tabBar.isHidden = true
         if (!self.isInvestor){
             self.validateButton.setTitle("Je m'engage", for: .normal)
+            self.getOfferDetails()
+        } else {
+            self.getProjectOwner()
         }
     }
 
@@ -106,13 +77,115 @@ class CreationContractVC: UIViewController {
         }
     }
     
+    func updateContract(){
+        guard let user = UserDefaults.getUser() else { return }
+        var project:Project!
+        if !self.isInvestor {
+            guard let tmp = self.offer?.project else { return }
+            project = tmp
+        } else {
+            if self.projectPassed != nil {
+                project = self.projectPassed
+            }
+            else { return }
+        }
+        
+        
+        let ownerFirst = self.owner?.firstName.capitalized ?? ""
+        let ownerLast = self.owner?.lastName.capitalized ?? ""
+        let ownerBirthPlace = self.owner?.birthPlace.capitalized ?? ""
+        let ownerBirthDate = self.owner?.birthDate.toString() ?? ""
+        
+        let first = user.firstName.capitalized
+        let last = user.lastName.capitalized
+        let place = user.birthPlace.capitalized
+        let date = user.birthDate.toString()
+        let laps = project.timeLaps!
+        let inte = project.interests * 100
+        let created = project.date.toString()
+        let price:Int = project.price
+        let timelaps:Int = project.timeLaps!
+        let interestAmount:Float = Float(price) * ((inte/100 * Float(timelaps)) / 12)
+        let total:Float = Float(price) + interestAmount
+        let mensualite:String = String(format: "%.2f", total / Float(laps))
+
+        if (self.isInvestor){
+            let contractText = "\(ownerFirst) \(ownerLast), né à \(ownerBirthPlace) le \(ownerBirthDate), s'engage à régler la somme de \(total) euros à \(first) \(last) né à \(place) le \(date).\n\nCette somme comprend la demande de prêt initiale de \(price) euros ainsi que les intérêts de \(inte)%, soit \(interestAmount) euros.\n\n\(first) \(last), s'engage à régler cette somme aux travers de mensualités de \(mensualite) euros durant \(laps) mois consécutifs, à compter du \(created)"
+            
+            self.contractContent.text = contractText
+        } else {
+            let contractText = "\(first) \(last), né à \(place) le \(date), s'engage à régler la somme de \(total) euros à \(ownerFirst) \(ownerLast) né à \(ownerBirthPlace) le \(ownerBirthDate).\n\nCette somme comprend la demande de prêt initiale de \(price) euros ainsi que les intérêts de \(inte)%, soit \(interestAmount) euros.\n\n\(first) \(last), s'engage à régler cette somme aux travers de mensualités de \(mensualite) euros durant \(laps) mois consécutifs, à compter du \(created)"
+            
+            self.contractContent.text = contractText
+        }
+    }
+    
+    func getProjectOwner(){
+        let user:User = UserDefaults.getUser()!
+        let bearer:String = "Bearer \(user.token)"
+        let headers: HTTPHeaders = [ "Authorization": bearer, "Accept": "application/json"]
+        let params:Parameters  = [:]
+        guard let id:String = self.projectPassed?.id else { return }
+        ownerRequest(params: params, endpoint: .projects, projectId: id, method: .get, header: headers, handler: {
+            (success, json) in
+            if (success) {
+                print(json ?? "Aucune valeur dans le JSON")
+                let tmpUser:User = User()
+                tmpUser.firstName = json?["user"]["firstname"].string ?? "..."
+                tmpUser.lastName = json?["user"]["lastname"].string ?? "..."
+                tmpUser.birthDate = json?["user"]["birthdate"].string?.toDate() ?? Date()
+                tmpUser.birthPlace = json?["user"]["birthplace"].string ?? "..."
+                self.owner = tmpUser
+                self.updateContract()
+            } else {
+                self.showSingleAlert(title: "Une erreur est survenue", message: "Veuillez réessayer")
+            }
+        })
+    }
+    
+    func getOfferDetails(){
+        
+        let user:User = UserDefaults.getUser()!
+        let bearer:String = "Bearer \(user.token)"
+        let headers:HTTPHeaders = [ "Authorization": bearer, "Accept": "application/json"]
+        let params:Parameters = [:]
+        
+        guard let id:String = self.offer?.id else { return }
+        
+        deadlineRequest(params: params, endpoint: .offers, offerId: id, method: .get , header: headers, handler: { (success, json) in
+            if (success){
+                print(json!)
+                
+                guard let json = json else { return }
+                let tmpUser = User(id: json["project"]["user"]["id"].string ?? "...",
+                                   token: "",
+                                   email: "",
+                                   password: "",
+                                   firstName: json["user"]["firstname"].string ?? "...",
+                                   lastName: json["user"]["lastname"].string ?? "...",
+                                   address: json["user"]["adress"].string ?? "...",
+                                   postCode: 0,
+                                   city: json["user"]["city"].string ?? "...",
+                                   birthPlace: json["user"]["birthplace"].string ?? "...",
+                                   birthDate: json["user"]["birthdate"].string?.toDate() ?? Date())
+                self.owner = tmpUser
+                self.updateContract()
+            } else {
+                self.showSingleAlert(title: "Une erreur est survenue", message: "Veuillez réessayer")
+            }
+        })
+    }
+    
     func acceptOffer() {
         let user:User = UserDefaults.getUser()!
         let bearer:String = "Bearer \(user.token)"
         let headers: HTTPHeaders = [ "Authorization": bearer, "Accept": "application/json"]
         guard let id = self.offer?.id else { return }
         
-        guard let data = UIImage.resizeImage(image: self.signatureImage) else { return }
+        guard let data = UIImage.resizeImage(image: self.signatureImage) else {
+            self.showSingleAlert(title: "Important", message: "Veuillez signer le contrat avant de vous engager")
+            return
+        }
         let base64EncodedString = data.base64EncodedString()
         
         self.params = ["offer_id": id, "signature":base64EncodedString]
@@ -121,7 +194,7 @@ class CreationContractVC: UIViewController {
             (success, json) in
             if (success){
                 print(json ?? "Aucune valeur dans le JSON")
-                self.showSingleAlertWithCompletion(title: "Vous avez bien accepté l'offre", message: "Les fonds vous seront trans;is sous peu. Attention un pret vous engage.", handler: {
+                self.showSingleAlertWithCompletion(title: "Vous avez bien accepté l'offre", message: "Les fonds vous arriveront sous peu. Attention vous vous êtes engagé à rembourser.", handler: {
                     _ in
                     self.navigationController?.popToRootViewController(animated: true)
                 })
@@ -136,7 +209,10 @@ class CreationContractVC: UIViewController {
         let bearer:String = "Bearer \(user.token)"
         let headers: HTTPHeaders = [ "Authorization": bearer, "Accept": "application/json"]
         
-        guard let data = UIImage.resizeImage(image: self.signatureImage) else { return }
+        guard let data = UIImage.resizeImage(image: self.signatureImage) else {
+            self.showSingleAlert(title: "Important", message: "Veuillez signer le contrat avant de vous engager")
+            return
+        }
         let base64EncodedString = data.base64EncodedString()
         
         self.params = ["project_id": self.projectPassed?.id ?? "", "signature":base64EncodedString]

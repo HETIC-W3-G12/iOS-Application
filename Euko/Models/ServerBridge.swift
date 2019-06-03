@@ -64,6 +64,26 @@ func headersRequest(params:Parameters, endpoint:endpoints, method:HTTPMethod,
     }
 }
 
+func ownerRequest(params:Parameters, endpoint:endpoints, projectId:String, method:HTTPMethod,
+                  header:HTTPHeaders, handler: @escaping ((_ success: Bool, _ json:JSON?) -> Void)){
+    print("URL : " + ServerBridge.baseUrl + endpoint.rawValue + "/\(projectId)")
+    Alamofire.request(ServerBridge.baseUrl + endpoint.rawValue + "/\(projectId)",
+        method: method,
+        parameters:params,
+        headers:header).validate().responseJSON
+        { response in
+            switch response.result {
+            case .success(let value):
+                let json = JSON(value)
+                handler(true, json)
+            case .failure(let error):
+                print(error)
+                handler(false, nil)
+            }
+    }
+}
+
+
 func deadlineRequest(params:Parameters, endpoint:endpoints, offerId:String, method:HTTPMethod,
                      header:HTTPHeaders, handler: @escaping ((_ success: Bool, _ json:JSON?) -> Void)){
     print("URL : " + ServerBridge.baseUrl + endpoint.rawValue + "/\(offerId)")
