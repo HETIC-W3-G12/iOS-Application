@@ -3376,8 +3376,10 @@ depuis le 12/12/2018</string>
                     <connections>
                         <outlet property="Aapprouved" destination="WNZ-Wu-jdH" id="xO8-Dz-LGU"/>
                         <outlet property="Afirstname" destination="CT8-Da-BHZ" id="ywZ-0F-Lui"/>
+                        <outlet property="Asignature" destination="OQz-Te-gPv" id="Kvt-f1-2Uf"/>
                         <outlet property="Bapprouved" destination="GC5-OM-bw1" id="SbW-FV-i0D"/>
                         <outlet property="Bfirstname" destination="kyK-pw-2HU" id="PbD-gw-uNt"/>
+                        <outlet property="Bsignature" destination="MOy-SL-mav" id="KU3-rq-boW"/>
                         <outlet property="content" destination="jsJ-qp-w8I" id="pph-Qf-EEg"/>
                         <outlet property="contractTitle" destination="isO-bB-Icd" id="VAe-kN-zmw"/>
                         <outlet property="saveButton" destination="DBy-NX-TJf" id="CPS-xI-y5i"/>

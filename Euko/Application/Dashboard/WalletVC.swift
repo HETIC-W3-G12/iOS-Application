@@ -207,10 +207,17 @@ class WalletVC: UIViewController, UITableViewDelegate, UITableViewDataSource, Da
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         self.bottomTableView.deselectRow(at: indexPath, animated: true)
-                
-        let vc = self.storyboard?.instantiateViewController(withIdentifier: "OnGoingVC") as! OnGoingVC
-        vc.offer = self.dashboard.offers[indexPath.row]
-        vc.isInvestor = true
-        self.navigationController?.pushViewController(vc, animated: true)
+
+        let tmpOffer = self.dashboard.offers[indexPath.row]
+        if tmpOffer.state == OfferState.waiting {
+            self.showSingleAlert(title: "En attente", message: "Nous sommes en attente du retour du demandeur.")
+        } else if tmpOffer.state == OfferState.accepted {
+            let vc = self.storyboard?.instantiateViewController(withIdentifier: "OnGoingVC") as! OnGoingVC
+            vc.offer = self.dashboard.offers[indexPath.row]
+            vc.isInvestor = true
+            self.navigationController?.pushViewController(vc, animated: true)
+        } else if tmpOffer.state == OfferState.refused {
+            self.showSingleAlert(title: "Désolé...", message: "Le propriétaire de l'application n'à pas accepté votre offre")
+        }
     }
 }

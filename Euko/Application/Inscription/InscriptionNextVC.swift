@@ -98,7 +98,7 @@ class InscriptionNextVC: UIViewController {
                 let postCode:Int = json?["user"]["postCode"].int ?? 0
                 let token:String = json?["token"].string ?? ""
                 
-                self.inscription?.user = User(id: id, token: token, email: email, password: "",
+                self.inscription?.user = User(id: id, token: token, email: email, password: tmpUser.password,
                                               firstName: firstname, lastName: lastname, address: adress,
                                               postCode: postCode, city: city, birthPlace: birthplace, birthDate: birthdate)
                 

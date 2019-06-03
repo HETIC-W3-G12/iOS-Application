@@ -54,6 +54,7 @@ class OnGoingVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     @IBAction func seeContract(_ sender: Any) {
         let vc = self.storyboard?.instantiateViewController(withIdentifier: "ContractDownloadVC") as! ContractDownloadVC
+        vc.offer = self.offer
         self.navigationController?.pushViewController(vc, animated: true)
     }
     

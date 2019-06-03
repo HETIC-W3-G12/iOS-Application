@@ -56,6 +56,9 @@ class Offer {
                     return
                 }
                 
+                self.setOwnerImage(json: json)
+                self.setInvestorImage(json: json)
+                
                 var i:Int = 0
                 var tmpJson:[JSON] = json["refunds"].array ?? []
                 self.deadlines = []
@@ -76,5 +79,23 @@ class Offer {
                 self.delegate?.couldNotGetDeadlines()
             }
         })
+    }
+    
+    func setInvestorImage(json:JSON){
+        let bufferData = json["signature_investor"]["Body"]["data"].array
+        let bytes = bufferData!.compactMap { $0.uInt8 }
+        let imageData = NSData(bytes: bytes, length: bytes.count)
+        let data = Data(referencing: imageData)
+        
+        self.investorSignature = UIImage(data: data)
+    }
+    
+    func setOwnerImage(json:JSON){
+        let bufferData = json["signature_owner"]["Body"]["data"].array
+        let bytes = bufferData!.compactMap { $0.uInt8 }
+        let imageData = NSData(bytes: bytes, length: bytes.count)
+        let data = Data(referencing: imageData)
+        
+        self.ownerSignature = UIImage(data: data)
     }
 }

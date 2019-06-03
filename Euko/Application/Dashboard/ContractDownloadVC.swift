@@ -20,12 +20,17 @@ class ContractDownloadVC: UIViewController {
     @IBOutlet weak var Asignature: UIImageView!
     @IBOutlet weak var Bsignature: UIImageView!
     
+    var offer:Offer?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         self.saveButton.roundBorder()
         self.saveButton.layer.borderWidth = 2
         self.saveButton.layer.borderColor = UIColor(red: 59/255, green: 84/255, blue: 213/255, alpha: 1).cgColor
+        
+        self.Asignature.image  = self.offer?.ownerSignature
+        self.Bsignature.image  = self.offer?.investorSignature
     }
     
     override func viewWillAppear(_ animated: Bool) {

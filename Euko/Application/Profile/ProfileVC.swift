@@ -178,7 +178,7 @@ class ProfileVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     @IBAction func deleteAction(_ sender: Any) {
         //TODO: Temporary deconnexion
         
-        let vc = self.storyboard?.instantiateViewController(withIdentifier: "ConnexionVC") as! ConnexionVC
+        let vc = self.storyboard?.instantiateViewController(withIdentifier: "connexionNavigationController") as! UINavigationController
         UserDefaults.deleteUser()
         let appdelegate = UIApplication.shared.delegate as! AppDelegate
         appdelegate.window!.rootViewController = vc
