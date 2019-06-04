@@ -10,8 +10,6 @@ import UIKit
 
 class ProjectFinancementVC: UIViewController {
 
-    // VC ou on rentre la CB ou RIB - A voir
-    
     @IBOutlet weak var backView: UIView!
     @IBOutlet weak var titlePriceLabel: UILabel!
     @IBOutlet weak var backButton: UIButton!

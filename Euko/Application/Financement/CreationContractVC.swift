@@ -126,7 +126,7 @@ class CreationContractVC: UIViewController {
         let headers: HTTPHeaders = [ "Authorization": bearer, "Accept": "application/json"]
         let params:Parameters  = [:]
         guard let id:String = self.projectPassed?.id else { return }
-        ownerRequest(params: params, endpoint: .projects, projectId: id, method: .get, header: headers, handler: {
+        idRequest(params: params, endpoint: .projects, id: id, method: .get, header: headers, handler: {
             (success, json) in
             if (success) {
                 print(json ?? "Aucune valeur dans le JSON")
@@ -152,7 +152,7 @@ class CreationContractVC: UIViewController {
         
         guard let id:String = self.offer?.id else { return }
         
-        deadlineRequest(params: params, endpoint: .offers, offerId: id, method: .get , header: headers, handler: { (success, json) in
+        idRequest(params: params, endpoint: .offers, id: id, method: .get , header: headers, handler: { (success, json) in
             if (success){
                 print(json!)
                 

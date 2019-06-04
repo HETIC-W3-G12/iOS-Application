@@ -12,6 +12,7 @@ import SwiftyJSON
 
 protocol DashboardDelegate {
     func reloadData()
+    func errorOnRequest()
 }
 
 class Dashboard {
@@ -92,10 +93,9 @@ class Dashboard {
                 }
                 self.offers = tmpOffers
                 self.delegate?.reloadData()
-                //TODO: Alors, j'ai remplacé le tableu de projets par un tableau d'offers qui contient des projets, il faut donc maintenant supprimer l'ancien tableau (OK) et faire suivre les offers dans le dashboardVC qui lui ne gere que les projects
             }
             else {
-                //TODO: Something
+                self.delegate?.errorOnRequest()
             }
         })
     }

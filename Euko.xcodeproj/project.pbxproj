@@ -30,7 +30,6 @@
 		573802782286DAF4007933E8 /* ExtView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 573802772286DAF4007933E8 /* ExtView.swift */; };
 		5738027A2286DB01007933E8 /* ExtUserDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 573802792286DB01007933E8 /* ExtUserDefaults.swift */; };
 		5738027C2286DB11007933E8 /* ExtNavigationBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5738027B2286DB11007933E8 /* ExtNavigationBar.swift */; };
-		574E599A228EA5E100B7C0F1 /* ExtTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 574E5999228EA5E100B7C0F1 /* ExtTextField.swift */; };
 		5756536E22A5211D0065BE58 /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5756536D22A5211D0065BE58 /* WebViewController.swift */; };
 		5756537022A569300065BE58 /* CollectionBoarding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5756536F22A569300065BE58 /* CollectionBoarding.swift */; };
 		575B446E2239109E00FD5C97 /* InscriptionValidationVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 575B446D2239109E00FD5C97 /* InscriptionValidationVC.swift */; };
@@ -100,7 +99,6 @@
 		573802772286DAF4007933E8 /* ExtView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtView.swift; sourceTree = "<group>"; };
 		573802792286DB01007933E8 /* ExtUserDefaults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtUserDefaults.swift; sourceTree = "<group>"; };
 		5738027B2286DB11007933E8 /* ExtNavigationBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtNavigationBar.swift; sourceTree = "<group>"; };
-		574E5999228EA5E100B7C0F1 /* ExtTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtTextField.swift; sourceTree = "<group>"; };
 		5756536D22A5211D0065BE58 /* WebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewController.swift; sourceTree = "<group>"; };
 		5756536F22A569300065BE58 /* CollectionBoarding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionBoarding.swift; sourceTree = "<group>"; };
 		575B446D2239109E00FD5C97 /* InscriptionValidationVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InscriptionValidationVC.swift; sourceTree = "<group>"; };
@@ -242,7 +240,6 @@
 				5709733A228D9E9E003797A4 /* ExtDate.swift */,
 				5709733C228DA1D4003797A4 /* ExtNumber.swift */,
 				57097340228DB068003797A4 /* ExtImage.swift */,
-				574E5999228EA5E100B7C0F1 /* ExtTextField.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -621,7 +618,6 @@
 				578E624B225A47930029ED27 /* OnGoingTVC.swift in Sources */,
 				573022B821C998F90000A495 /* CreateProjectVC.swift in Sources */,
 				57E46A3521C4785800FB7236 /* ProjectVC.swift in Sources */,
-				574E599A228EA5E100B7C0F1 /* ExtTextField.swift in Sources */,
 				578E6243225399290029ED27 /* TestUploadVC.swift in Sources */,
 				5707694F22A2E97D00C2A07E /* ContractDownloadVC.swift in Sources */,
 				57F3A3F62270A2970087A133 /* LastOnBoarding.swift in Sources */,

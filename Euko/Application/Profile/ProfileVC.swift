@@ -106,7 +106,6 @@ class ProfileVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     //Mark:- History
     func setupTopCell () {
-        //TODO: replace the rand with the current amount refounded
         let rand = Float.random(in: 1 ..< 12)
 
         
@@ -152,7 +151,6 @@ class ProfileVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
         let cell = self.bottomTableView.dequeueReusableCell(withIdentifier: "MoneyBackCell", for: indexPath) as! MoneyBackCell        
         cell.containerView.setSpecificShadow()
         cell.containerView.roundBorder(radius: 5)
-        //cell.offer = self.myFinancements[indexPath.row]
         return cell
     }
     
@@ -172,12 +170,10 @@ class ProfileVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     //Mark:- Profile
     @IBAction func saveAction(_ sender: Any) {
-        
+        // Feature not implemented yet
     }
     
     @IBAction func deleteAction(_ sender: Any) {
-        //TODO: Temporary deconnexion
-        
         let vc = self.storyboard?.instantiateViewController(withIdentifier: "connexionNavigationController") as! UINavigationController
         UserDefaults.deleteUser()
         let appdelegate = UIApplication.shared.delegate as! AppDelegate

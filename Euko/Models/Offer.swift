@@ -47,7 +47,7 @@ class Offer {
         let headers: HTTPHeaders = [ "Authorization": bearer, "Accept": "application/json"]
         let params:Parameters = [:]
         
-        deadlineRequest(params: params, endpoint: .offers, offerId: self.id ?? "", method: .get , header: headers, handler: { (success, json) in
+        idRequest(params: params, endpoint: .offers, id: self.id ?? "", method: .get , header: headers, handler: { (success, json) in
             if (success){
                 print(json!)
                 
@@ -86,10 +86,6 @@ class Offer {
         let bytes = bufferData.compactMap { $0.uInt8 }
         let imageData = NSData(bytes: bytes, length: bytes.count)
         let data = Data(referencing: imageData)
-        
-//        let base = json["signature_investor"]["Body"]["data"].string ?? ""
-//        let decodedData = Data(base64Encoded: base)
-//        self.investorSignature = UIImage(data: decodedData ?? Data())
         
         self.investorSignature = UIImage(data: data)
     }

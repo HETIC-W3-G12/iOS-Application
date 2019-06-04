@@ -41,7 +41,7 @@ class ConnexionVC: UIViewController {
         let password = self.passwordTF.text ?? ""
 
         if (username == "" || password == ""){
-            //TODO: Error on textfields
+            self.showSingleAlertWithCompletion(title: "Erreur", message: "Email ou mot de passe vide")
         } else {
             self.connect(username: username, password: password)
         }

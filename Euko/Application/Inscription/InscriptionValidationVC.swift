@@ -25,13 +25,6 @@ class InscriptionValidationVC: UIViewController, UIImagePickerControllerDelegate
     
     let imagePicker = UIImagePickerController()
     var isTakingSelfie:Bool = false
-    var allUploadFinished:Bool = false {
-        didSet (value) {
-            if value == true {
-                //Todo: all has been uploaded, move to next vc
-            }
-        }
-    }
     var inscription:Inscription? = nil
     
     override func viewDidLoad() {

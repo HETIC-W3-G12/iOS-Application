@@ -59,6 +59,10 @@ class WalletVC: UIViewController, UITableViewDelegate, UITableViewDataSource, Da
         super.viewWillDisappear(animated)
         self.navigationController?.navigationBar.isHidden = false
     }
+    
+    func errorOnRequest() {
+        self.showSingleAlert(title: "Erreur lors du chargement", message: "Veuillez vérifier votre connexion internet")
+    }
 
     func reloadData(){
         self.setupTopCell()
@@ -95,7 +99,7 @@ class WalletVC: UIViewController, UITableViewDelegate, UITableViewDataSource, Da
                 self.topSeeMoreButton.titleLabel?.textAlignment = NSTextAlignment.right
                 self.topTitleLabel.text = loan.title
                 self.topTotalAmount.text = String(format: "sur %.f€", loan.finalPrice)
-                self.topCurrentAmount.text = String(format: "%.2f€", loan.finalPrice / 1)
+                self.topCurrentAmount.text = String(format: "%.2f€", 0) //loan.finalPrice / 1)
                 
                 let maxPrice:CGFloat = CGFloat(loan.finalPrice)
                 let minPrice:CGFloat = CGFloat(loan.finalPrice / 1)

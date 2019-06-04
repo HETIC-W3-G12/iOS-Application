@@ -16,7 +16,13 @@ class WebViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        //self.web.loadRequest(URLRequest(url: URL(string: self.urlString)!))
+        guard let url = URL(string: urlString) else {
+            self.showSingleAlertWithCompletion(title: "Erreur lors du chargement des CGU...", message: "", handler: { _ in
+                self.navigationController?.popViewController(animated: true)
+            })
+            return
+        }
+        let request = URLRequest(url: url)
+        self.web.loadRequest(request)
     }
-    
 }

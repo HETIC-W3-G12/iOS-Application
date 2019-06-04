@@ -31,13 +31,7 @@ class ProjectCell: UITableViewCell {
         
         self.shadowView.roundBorder(radius: 5)
         self.smallView.roundBorder(radius: 5)
-        self.insideView.roundBorder(radius: 5)
-        
-        /*self.shadowView.layer.cornerRadius = 0
-        self.shadowView.layer.shadowColor = UIColor.black.cgColor
-        self.shadowView.layer.shadowOpacity = 0.2
-        self.shadowView.layer.shadowOffset = CGSize(width: -5, height: 5)
-        self.shadowView.layer.shadowRadius = 3*/
+        self.insideView.roundBorder(radius: 5)        
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

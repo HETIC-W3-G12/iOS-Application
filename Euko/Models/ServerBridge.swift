@@ -24,7 +24,6 @@ public enum endpoints:String {
 }
 
 class ServerBridge {
-    //static let baseUrl:String = "https://euko-api-staging-pr-42.herokuapp.com"
     static let baseUrl:String = "https://euko-api-staging.herokuapp.com"
 }
 
@@ -64,33 +63,13 @@ func headersRequest(params:Parameters, endpoint:endpoints, method:HTTPMethod,
     }
 }
 
-func ownerRequest(params:Parameters, endpoint:endpoints, projectId:String, method:HTTPMethod,
+func idRequest(params:Parameters, endpoint:endpoints, id:String, method:HTTPMethod,
                   header:HTTPHeaders, handler: @escaping ((_ success: Bool, _ json:JSON?) -> Void)){
-    print("URL : " + ServerBridge.baseUrl + endpoint.rawValue + "/\(projectId)")
-    Alamofire.request(ServerBridge.baseUrl + endpoint.rawValue + "/\(projectId)",
+    print("URL : " + ServerBridge.baseUrl + endpoint.rawValue + "/\(id)")
+    Alamofire.request(ServerBridge.baseUrl + endpoint.rawValue + "/\(id)",
         method: method,
         parameters:params,
         headers:header).validate().responseJSON
-        { response in
-            switch response.result {
-            case .success(let value):
-                let json = JSON(value)
-                handler(true, json)
-            case .failure(let error):
-                print(error)
-                handler(false, nil)
-            }
-    }
-}
-
-
-func deadlineRequest(params:Parameters, endpoint:endpoints, offerId:String, method:HTTPMethod,
-                     header:HTTPHeaders, handler: @escaping ((_ success: Bool, _ json:JSON?) -> Void)){
-    print("URL : " + ServerBridge.baseUrl + endpoint.rawValue + "/\(offerId)")
-    Alamofire.request(ServerBridge.baseUrl + endpoint.rawValue + "/\(offerId)",
-                      method: method,
-                      parameters:params,
-                      headers:header).validate().responseJSON
         { response in
             switch response.result {
             case .success(let value):
