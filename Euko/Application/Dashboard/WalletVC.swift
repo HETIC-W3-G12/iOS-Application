@@ -181,10 +181,18 @@ class WalletVC: UIViewController, UITableViewDelegate, UITableViewDataSource, Da
             if project.state == "waiting" {
                 cell.seeMoreButton.setTitle("En attente", for: .normal)
                 cell.seeMoreButton.isEnabled = false
+                cell.totalView.isHidden = true
+                cell.totalAmountLabel.isHidden = true
+                cell.progressView.isHidden = true
+                cell.moneyBackLabel.isHidden = true
             } else if project.state == "refused" {
                 cell.seeMoreButton.setTitle("Proposition refusée", for: .normal)
                 cell.seeMoreButton.isEnabled = false
-            } else if project.state == "accepted" {
+                cell.totalView.isHidden = true
+                cell.totalAmountLabel.isHidden = true
+                cell.progressView.isHidden = true
+                cell.moneyBackLabel.isHidden = true
+            } else if project.state == "running" {
                 let finalPrice = Float(project.price) + (((Float(project.price) * 0.1) / 12) * Float(project.timeLaps))
                 cell.totalAmountLabel.text = String(format: "sur %.2f€", finalPrice)
                 let cgfinal = CGFloat(finalPrice)
@@ -194,7 +202,12 @@ class WalletVC: UIViewController, UITableViewDelegate, UITableViewDataSource, Da
                 let width:CGFloat = cell.totalView.frame.width
                 let newWidth:CGFloat = CGFloat(percentagePrice * width) / 100
                 let newTrailing:CGFloat = CGFloat(width - newWidth)
+                cell.moneyBackLabel.text = "0€"
                 cell.progressViewTrailing.constant = newTrailing
+                cell.totalView.isHidden = false
+                cell.totalAmountLabel.isHidden = false
+                cell.progressView.isHidden = false
+                cell.moneyBackLabel.isHidden = false
             }
         }
         return cell
@@ -208,15 +221,15 @@ class WalletVC: UIViewController, UITableViewDelegate, UITableViewDataSource, Da
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         self.bottomTableView.deselectRow(at: indexPath, animated: true)
 
-        let tmpOffer = self.dashboard.offers[indexPath.row]
-        if tmpOffer.state == OfferState.waiting {
+        guard let tmpProject = self.dashboard.offers[indexPath.row].project else { return }
+        if tmpProject.state == "waiting" {
             self.showSingleAlert(title: "En attente", message: "Nous sommes en attente du retour du demandeur.")
-        } else if tmpOffer.state == OfferState.accepted {
+        } else if tmpProject.state == "running" {
             let vc = self.storyboard?.instantiateViewController(withIdentifier: "OnGoingVC") as! OnGoingVC
             vc.offer = self.dashboard.offers[indexPath.row]
             vc.isInvestor = true
             self.navigationController?.pushViewController(vc, animated: true)
-        } else if tmpOffer.state == OfferState.refused {
+        } else {
             self.showSingleAlert(title: "Désolé...", message: "Le propriétaire de l'application n'à pas accepté votre offre")
         }
     }

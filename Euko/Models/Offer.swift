@@ -13,7 +13,7 @@ import SwiftyJSON
 enum OfferState:String {
     case waiting = "waiting"
     case refused = "refused"
-    case accepted = "accepted"
+    case accepted = "running"
 }
 
 protocol OfferDelegate {
@@ -87,9 +87,9 @@ class Offer {
         let imageData = NSData(bytes: bytes, length: bytes.count)
         let data = Data(referencing: imageData)
         
-        let base = json["signature_investor"]["Body"]["data"].string ?? ""
-        let decodedData = Data(base64Encoded: base)
-        self.investorSignature = UIImage(data: decodedData ?? Data())
+//        let base = json["signature_investor"]["Body"]["data"].string ?? ""
+//        let decodedData = Data(base64Encoded: base)
+//        self.investorSignature = UIImage(data: decodedData ?? Data())
         
         self.investorSignature = UIImage(data: data)
     }

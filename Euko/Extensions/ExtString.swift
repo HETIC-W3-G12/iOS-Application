@@ -54,10 +54,17 @@ extension String
     }
     
     func toDate() -> Date {
+        var str = ""
+        if self.count > 9 {
+            str = self.substring(to: 9)
+        } else {
+            str = self
+        }
         let dateFormatter = DateFormatter()
-        //dateFormatter.locale = 
+        dateFormatter.locale = Locale(identifier: "fr_FR")
         dateFormatter.dateFormat = "yyyy-MM-dd"
-        let date:Date = dateFormatter.date(from: self) ?? Date()
+        
+        let date:Date = dateFormatter.date(from: str) ?? Date()
         
         return date
     }
