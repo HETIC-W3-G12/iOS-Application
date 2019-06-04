@@ -8,62 +8,70 @@
 
 import UIKit
 
-class OnBoardingVC: UIPageViewController, UIPageViewControllerDataSource {
-
-    var vcArray:[UIViewController?] = []
-    var actualVC:Int = 0
+class OnBoardingVC: UIPageViewController {
+    
+    var orderedViewControllers: [UIViewController] = []
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.dataSource = self
-        self.view.backgroundColor = UIColor(red: 59/255, green: 84/255, blue: 213/255, alpha: 1)
         
-        self.setVcArray()
-        self.setViewControllers([self.vcArray[0]!], direction: .forward, animated: true, completion: nil)
-        self.actualVC = 0
+        self.orderedViewControllers = [self.newOnboardingVC(id: "FirstBoardingVC"),
+                                       self.newOnboardingVC(id: "SecondBoardingVC"),
+                                       self.newOnboardingVC(id: "ThirdBoardingVC")]
+        
+        if let firstViewController = orderedViewControllers.first {
+            setViewControllers([firstViewController], direction: .forward, animated: true, completion: nil)
+        }
     }
     
-    func setVcArray(){
-        self.vcArray.append(self.getStepOne())
-        self.vcArray.append(self.getStepTwo())
-        self.vcArray.append(self.getStepThree())
+    private func newOnboardingVC(id: String) -> UIViewController {
+        return UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "\(id)")
     }
-    
-    func getStepOne() -> UIViewController {
-        return (self.storyboard?.instantiateViewController(withIdentifier: "FirstBoardingVC"))!
-    }
-   
-    func getStepTwo() -> UIViewController {
-        return (self.storyboard?.instantiateViewController(withIdentifier: "SecondBoardingVC"))!
-    }
-    
-    func getStepThree() -> UIViewController {
-        return (self.storyboard?.instantiateViewController(withIdentifier: "ThirdBoardingVC"))!
-    }
-    
-    func presentationCount(for pageViewController: UIPageViewController) -> Int {
-        return self.vcArray.count
-    }
-    
-    func presentationIndex(for pageViewController: UIPageViewController) -> Int {
-        return 0
-    }
+
+}
+
+extension OnBoardingVC: UIPageViewControllerDataSource {
     
     func pageViewController(_ pageViewController: UIPageViewController, viewControllerBefore viewController: UIViewController) -> UIViewController? {
-        if (self.actualVC - 1 < 0){
+        guard let viewControllerIndex = orderedViewControllers.firstIndex(of: viewController) else {
             return nil
-        } else {
-            self.actualVC = self.actualVC - 1
-            return self.vcArray[self.actualVC]
         }
+        
+        let previousIndex = viewControllerIndex - 1
+        
+        guard previousIndex >= 0 else {
+            return nil
+        }
+        
+        guard orderedViewControllers.count > previousIndex else {
+            return nil
+        }
+        
+        return orderedViewControllers[previousIndex]
     }
     
     func pageViewController(_ pageViewController: UIPageViewController, viewControllerAfter viewController: UIViewController) -> UIViewController? {
-        if (self.actualVC + 1 > self.vcArray.count - 1){
+        guard let viewControllerIndex = orderedViewControllers.firstIndex(of: viewController) else {
             return nil
-        } else {
-            self.actualVC = self.actualVC + 1
-            return self.vcArray[self.actualVC]
         }
+        
+        let nextIndex = viewControllerIndex + 1
+        let orderedViewControllersCount = orderedViewControllers.count
+        
+        guard orderedViewControllersCount != nextIndex else {
+            return nil
+        }
+        
+        guard orderedViewControllersCount > nextIndex else {
+            return nil
+        }
+        
+        return orderedViewControllers[nextIndex]
     }
+    
+    
 }
+
+
