@@ -537,6 +537,7 @@
                                             <outlet property="interestPriceSecondLabel" destination="jNd-9y-k95" id="Kxt-85-ddS"/>
                                             <outlet property="priceLabel" destination="vyT-dv-Jid" id="z7m-eo-8nA"/>
                                             <outlet property="shadowView" destination="AS2-fh-egk" id="LJA-2u-K4S"/>
+                                            <outlet property="smallTopConstraint" destination="o6R-CI-xSE" id="XSN-Ay-ANr"/>
                                             <outlet property="smallView" destination="XiE-1a-HSx" id="Vb9-bf-XcX"/>
                                             <outlet property="titleLabel" destination="9PF-7z-jJo" id="THa-Iy-o64"/>
                                             <outlet property="topConstraint" destination="oF1-tX-vUQ" id="9ws-SR-vAC"/>

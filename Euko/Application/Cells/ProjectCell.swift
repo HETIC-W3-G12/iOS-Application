@@ -22,6 +22,8 @@ class ProjectCell: UITableViewCell {
     @IBOutlet weak var smallView: UIView!
     
     @IBOutlet weak var topConstraint: NSLayoutConstraint!
+    @IBOutlet weak var smallTopConstraint: NSLayoutConstraint!
+    
     
     override func awakeFromNib() {
         super.awakeFromNib()

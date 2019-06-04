@@ -144,8 +144,10 @@ extension ProjectListVC: UITableViewDelegate, UITableViewDataSource{
         
         if (indexPath.row != 0){
             cell.topConstraint.constant = 10
+            cell.smallTopConstraint.constant = 30
         } else {
             cell.topConstraint.constant = 25
+            cell.smallTopConstraint.constant = 45
         }
         
         cell.priceLabel.text = String(format: "%d€", self.projects[indexPath.row].price)
