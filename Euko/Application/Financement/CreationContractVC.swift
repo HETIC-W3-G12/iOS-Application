@@ -144,7 +144,6 @@ class CreationContractVC: UIViewController {
     }
     
     func getOfferDetails(){
-        
         let user:User = UserDefaults.getUser()!
         let bearer:String = "Bearer \(user.token)"
         let headers:HTTPHeaders = [ "Authorization": bearer, "Accept": "application/json"]
