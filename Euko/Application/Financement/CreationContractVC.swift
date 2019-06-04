@@ -110,7 +110,7 @@ class CreationContractVC: UIViewController {
         let mensualite:String = String(format: "%.2f", total / Float(laps))
 
         if (self.isInvestor){
-            let contractText = "\(ownerFirst) \(ownerLast), né à \(ownerBirthPlace) le \(ownerBirthDate), s'engage à régler la somme de \(total) euros à \(first) \(last) né à \(place) le \(date).\n\nCette somme comprend la demande de prêt initiale de \(price) euros ainsi que les intérêts de \(inte)%, soit \(interestAmount) euros.\n\n\(first) \(last), s'engage à régler cette somme aux travers de mensualités de \(mensualite) euros durant \(laps) mois consécutifs, à compter du \(created)"
+            let contractText = "\(ownerFirst) \(ownerLast), né à \(ownerBirthPlace) le \(ownerBirthDate), s'engage à régler la somme de \(total) euros à \(first) \(last) né à \(place) le \(date).\n\nCette somme comprend la demande de prêt initiale de \(price) euros ainsi que les intérêts de \(inte)%, soit \(interestAmount) euros.\n\n\(ownerFirst) \(ownerLast), s'engage à régler cette somme aux travers de mensualités de \(mensualite) euros durant \(laps) mois consécutifs, à compter du \(created)"
             
             self.contractContent.text = contractText
         } else {
@@ -193,7 +193,7 @@ class CreationContractVC: UIViewController {
             (success, json) in
             if (success){
                 print(json ?? "Aucune valeur dans le JSON")
-                self.showSingleAlertWithCompletion(title: "Vous avez bien accepté l'offre", message: "Les fonds vous arriveront sous peu. Attention vous vous êtes engagé à rembourser.", handler: {
+                self.showSingleAlertWithCompletion(title: "Contrat signé", message: "Les fonds vous arriveront sous peu de temps. Retrouvez dès à présent votre contrat dans votre dashboard.", handler: {
                     _ in
                     self.navigationController?.popToRootViewController(animated: true)
                 })

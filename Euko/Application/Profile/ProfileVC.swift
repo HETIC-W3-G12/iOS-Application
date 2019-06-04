@@ -45,11 +45,7 @@ class ProfileVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     let myLoan:Project = Project(id: "ok", title: "Vélo", description: "J'ai besoin d'un vélo pour aller au travail tous les jours sans avoir a prendre les transports en commun ni m'acheter une voiture.", state: "ok", price: 350, timeLaps: 12, interests: 0.1, finalPrice: 385, date: Date(timeIntervalSince1970: 16))
     
     let myFinancements:[Project] = [Project(id: "ok", title: "Balenciaga", description: "J'en ai vraiment trop besoin !", state: "ok", price: 300, timeLaps: 12, interests: 0.1, finalPrice: 330, date: Date(timeIntervalSince1970: 13)),
-                                    Project(id: "ok", title: "Projet de test 2", description: "Description de test 2", state: "ok", price: 100, timeLaps: 12, interests: 0.1, finalPrice: 110, date: Date(timeIntervalSince1970: 15)),
-                                    Project(id: "ok", title: "Projet de test 3", description: "Description de test 2", state: "ok", price: 100, timeLaps: 12, interests: 0.1, finalPrice: 760, date: Date(timeIntervalSince1970: 15)),
-                                    Project(id: "ok", title: "Projet de test 4", description: "Description de test 2", state: "ok", price: 100, timeLaps: 12, interests: 0.1, finalPrice: 480, date: Date(timeIntervalSince1970: 15)),
-                                    Project(id: "ok", title: "Projet de test 5", description: "Description de test 2", state: "ok", price: 100, timeLaps: 12, interests: 0.1, finalPrice: 200, date: Date(timeIntervalSince1970: 15)),
-                                    Project(id: "ok", title: "Projet de test 6", description: "Description de test 3", state: "ok", price: 100, timeLaps: 12, interests: 0.1, finalPrice: 510, date: Date(timeIntervalSince1970: 15))]
+                                    Project(id: "ok", title: "Projet de test 2", description: "Description de test 2", state: "ok", price: 100, timeLaps: 12, interests: 0.1, finalPrice: 110, date: Date(timeIntervalSince1970: 15))]
    
     // Mark:- Default
     override func viewWillAppear(_ animated: Bool) {
@@ -110,8 +106,8 @@ class ProfileVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
         
         self.topTitleLabel.text = self.myLoan.title
-        self.topTotalAmount.text = String(format: "sur %.f€", self.myLoan.finalPrice)
-        self.topCurrentAmount.text = String(format: "%.2f€", self.myLoan.finalPrice / rand)
+        self.topTotalAmount.text = "\(self.myLoan.price)€"
+        self.topCurrentAmount.text = "\(self.myLoan.price)€"
         
         let maxPrice:CGFloat = CGFloat(self.myLoan.finalPrice)
         let minPrice:CGFloat = CGFloat(self.myLoan.finalPrice / rand)
@@ -121,7 +117,7 @@ class ProfileVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
         let newWidth:CGFloat = CGFloat(percentagePrice * width) / 100
         let newTrailing:CGFloat = CGFloat(width - newWidth)
         
-        self.topOnGoingTrailingConstraint.constant = newTrailing
+        self.topOnGoingTrailingConstraint.constant = 0
     }
     
     @IBAction func seeMore(_ sender: Any) {
@@ -151,6 +147,10 @@ class ProfileVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
         let cell = self.bottomTableView.dequeueReusableCell(withIdentifier: "MoneyBackCell", for: indexPath) as! MoneyBackCell        
         cell.containerView.setSpecificShadow()
         cell.containerView.roundBorder(radius: 5)
+        let tmp = self.myFinancements[indexPath.row]
+        cell.titleLabel.text = tmp.title
+        cell.totalAmountLabel.text = "\(tmp.price)€"
+        cell.moneyBackLabel.text = "\(tmp.price)€"
         return cell
     }
     

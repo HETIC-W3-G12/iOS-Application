@@ -66,7 +66,7 @@ class ProjectRecapVC: UIViewController {
     
     func createProjectWithParameters(parameters: Parameters){
         if (UserDefaults.hasLoan()){
-            self.showSingleAlertWithCompletion(title: "Vous avez déjà une demande en cous..", message: "Vous ne pouvez pas faire deux demandes de prêt en même temps", handler: { _ in
+            self.showSingleAlertWithCompletion(title: "Vous avez déjà une demande en cours...", message: "Vous ne pouvez pas faire deux demandes de prêt en même temps.", handler: { _ in
                 self.navigationController?.popToRootViewController(animated: true)
             })
             return

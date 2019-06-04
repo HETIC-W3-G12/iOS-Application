@@ -23,11 +23,12 @@ class WalletVC: UIViewController, UITableViewDelegate, UITableViewDataSource, Da
     @IBOutlet weak var topTotalAmount: UILabel!
     @IBOutlet weak var topCurrentAmount: UILabel!
     @IBOutlet weak var topOnGoingTrailingConstraint: NSLayoutConstraint!
-
+    @IBOutlet weak var noFinancementLabel: UILabel!
     @IBOutlet weak var bottomTableView: UITableView!
     @IBOutlet weak var bottomTableViewHeightConstraint: NSLayoutConstraint!
     
-
+    
+    
     var dashboard:Dashboard = Dashboard()
     
     override func viewDidLoad() {
@@ -39,8 +40,7 @@ class WalletVC: UIViewController, UITableViewDelegate, UITableViewDataSource, Da
         
         self.topViewContainer.setSpecificShadow()
         self.topViewContainer.roundBorder(radius: 5)
-        
-        
+        self.noFinancementLabel.isHidden = false
         self.dashboard.delegate = self
     }
     
@@ -66,6 +66,7 @@ class WalletVC: UIViewController, UITableViewDelegate, UITableViewDataSource, Da
 
     func reloadData(){
         self.setupTopCell()
+        self.noFinancementLabel.isHidden = (self.dashboard.offers.count > 0)
         self.bottomTableView.reloadData()
     }
     
@@ -93,6 +94,10 @@ class WalletVC: UIViewController, UITableViewDelegate, UITableViewDataSource, Da
                 self.topSeeMoreButton.setTitle("Accepter / Refuser", for: .normal)
                 self.topTitleLabel.text = loan.title
                 self.hideTopElements()
+            } else if loan.state == "valid" {
+                self.hideTopElements()
+                self.topSeeMoreButton.setTitle("En attente", for: .normal)
+                self.topTitleLabel.text = loan.title
             } else if loan.state == "running" {
                 self.showTopElemets()
                 self.topSeeMoreButton.setTitle("Voir plus", for: .normal)
@@ -138,14 +143,14 @@ class WalletVC: UIViewController, UITableViewDelegate, UITableViewDataSource, Da
     func tripleChoice(){
         let alert = UIAlertController(title: "Important", message: "Un prêt vous engage", preferredStyle: .alert)
         
-        alert.addAction(UIAlertAction(title: "Accepter", style: .default, handler: { _ in
+        alert.addAction(UIAlertAction(title: "Signer le contrat", style: .default, handler: { _ in
             let vc = self.storyboard?.instantiateViewController(withIdentifier: "CreationContractVC") as! CreationContractVC
             vc.isInvestor = false
             vc.offer = self.dashboard.offer
             self.navigationController?.pushViewController(vc, animated: true)
             
         }))
-        alert.addAction(UIAlertAction(title: "Refuser", style: .destructive, handler: { _ in
+        alert.addAction(UIAlertAction(title: "Refuser l'offre", style: .destructive, handler: { _ in
             let user:User = UserDefaults.getUser()!
             let bearer:String = "Bearer \(user.token)"
             let headers: HTTPHeaders = [ "Authorization": bearer, "Accept": "application/json"]

@@ -33,8 +33,8 @@ class ContractDownloadVC: UIViewController {
         self.saveButton.layer.borderWidth = 2
         self.saveButton.layer.borderColor = UIColor(red: 59/255, green: 84/255, blue: 213/255, alpha: 1).cgColor
         
-        self.Asignature.image  = self.offer?.ownerSignature
-        self.Bsignature.image  = self.offer?.investorSignature
+        self.Asignature.image  = self.offer?.investorSignature
+        self.Bsignature.image  = self.offer?.ownerSignature
     }
     
     override func viewWillAppear(_ animated: Bool) {

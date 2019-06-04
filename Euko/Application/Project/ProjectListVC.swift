@@ -159,11 +159,6 @@ extension ProjectListVC: UITableViewDelegate, UITableViewDataSource{
         
         let interest = (Float(self.projects[indexPath.row].price) * (Float(self.projects[indexPath.row].timeLaps) / 12)) / 10
         cell.interestPriceSecondLabel.text = String(format: "(%.2f€)", interest)
-        
-        let price:Int = self.projects[indexPath.row].price
-        let timeLaps:Int = self.projects[indexPath.row].timeLaps
-        cell.infoLabel.text = "\(price)€ pendant \(timeLaps) mois"
-        
         return cell
     }
     
