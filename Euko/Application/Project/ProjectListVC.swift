@@ -153,8 +153,10 @@ extension ProjectListVC: UITableViewDelegate, UITableViewDataSource{
         cell.titleLabel.text = self.projects[indexPath.row].title
         cell.descriptionLabel.text = self.projects[indexPath.row].description
         
-        cell.interestPriceLabel.text = String(format: "+%.f%%", self.projects[indexPath.row].interests * 1000)
-        cell.interestPriceSecondLabel.text = String(format: "(%.2f€)", self.projects[indexPath.row].finalPrice - Float(self.projects[indexPath.row].price))
+        cell.interestPriceLabel.text = String(format: "+%.f%%", self.projects[indexPath.row].interests * 100)
+        
+        let interest = (Float(self.projects[indexPath.row].price) * (Float(self.projects[indexPath.row].timeLaps) / 12)) / 10
+        cell.interestPriceSecondLabel.text = String(format: "(%.2f€)", interest)
         
         let price:Int = self.projects[indexPath.row].price
         let timeLaps:Int = self.projects[indexPath.row].timeLaps

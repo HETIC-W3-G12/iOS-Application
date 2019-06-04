@@ -24,7 +24,7 @@ public enum endpoints:String {
 }
 
 class ServerBridge {
-    static let baseUrl:String = "https://euko-api-staging.herokuapp.com"
+    static let baseUrl:String = "https://euko-api.herokuapp.com"
 }
 
 func defaultRequest(params:Parameters, endpoint:endpoints, method:HTTPMethod, handler: @escaping ((_ success: Bool, _ json:JSON?) -> Void)){

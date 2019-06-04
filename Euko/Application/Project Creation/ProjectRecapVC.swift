@@ -65,6 +65,12 @@ class ProjectRecapVC: UIViewController {
     
     
     func createProjectWithParameters(parameters: Parameters){
+        if (UserDefaults.hasLoan()){
+            self.showSingleAlertWithCompletion(title: "Vous avez déjà une demande en cous..", message: "Vous ne pouvez pas faire deux demandes de prêt en même temps", handler: { _ in
+                self.navigationController?.popToRootViewController(animated: true)
+            })
+            return
+        }
         let user:User = UserDefaults.getUser()!
         let token:String = user.token
         if (token != ""){
@@ -76,6 +82,7 @@ class ProjectRecapVC: UIViewController {
             headersRequest(params: parameters, endpoint: endpoints.projects, method: .post, header: headers, handler: {
                 (success, json) in
                 if (success){
+                    UserDefaults.setLoan(bool: true)
                     self.navigationController?.popToRootViewController(animated: true)
                 } else {
                     self.showSingleAlert(title: "Une erreure s'est produite", message: "Veuillez vérifier votre connexion internet.")

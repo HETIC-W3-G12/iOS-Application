@@ -81,9 +81,11 @@ class ProjectFinancementVC: UIViewController {
     
     @IBAction func checkAction(_ sender: Any) {
         if (!self.selected){
+            self.checkButton.backgroundColor = UIColor(red: 59/255, green: 84/255, blue: 213/255, alpha: 1)
             self.checkButton.setImage(UIImage(named: "checkedButton"), for: .normal)
             self.selected = true
         } else {
+            self.checkButton.backgroundColor = UIColor(red: 240/255, green: 243/255, blue: 255/255, alpha: 1)
             self.checkButton.setImage(UIImage(), for: .normal)
             self.selected = false
         }

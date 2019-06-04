@@ -105,8 +105,8 @@ class CreationContractVC: UIViewController {
         let created = project.date.toString()
         let price:Int = project.price
         let timelaps:Int = project.timeLaps!
-        let interestAmount:Float = Float(price) * ((inte/100 * Float(timelaps)) / 12)
-        let total:Float = Float(price) + interestAmount
+        let interestAmount:String = String(format: "%.2f", Float(price) * ((inte/100 * Float(timelaps)) / 12))
+        let total:Float = Float(price) + (Float(price) * ((inte/100 * Float(timelaps)) / 12))
         let mensualite:String = String(format: "%.2f", total / Float(laps))
 
         if (self.isInvestor){

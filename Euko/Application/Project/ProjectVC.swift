@@ -65,12 +65,12 @@ class ProjectVC: UIViewController {
 
         if (self.isLoan){
             self.payButton.isHidden = true
-            let totalAmount = self.project.finalPrice!
+            let totalAmount = Float(self.project.price) + (Float(self.project.price) * (Float(self.project.timeLaps) / 12)) / 10
             self.secondInformationLabel.text = String(format: "%.2f€",  totalAmount)
             self.changingLabel.text = "à rembourser"
         } else {
             self.payButton.isHidden = false
-            let margin:Float = self.project.finalPrice - Float(self.project.price)
+            let margin:Float = (Float(self.project.price) * (Float(self.project.timeLaps) / 12)) / 10
             self.secondInformationLabel.text = String(format: "%.2f€",  margin)
             self.changingLabel.text = "de bénéfices"
         }

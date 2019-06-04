@@ -14,6 +14,15 @@ extension UserDefaults {
     static let USER_FLAG = "userflag"
     static let OPEN_FLAG = "openFlag"
     
+    static func setLoan(bool:Bool){
+        UserDefaults.standard.set(bool, forKey:"hasloan")
+    }
+    
+    static func hasLoan() -> Bool {
+        let bool = self.standard.bool(forKey: "hasloan")
+        return bool
+    }
+    
     static func setUser(user:User) {
         let userData:Data = NSKeyedArchiver.archivedData(withRootObject: user)
         UserDefaults.standard.set(userData, forKey:USER_FLAG)
