@@ -18,7 +18,6 @@ class ConnexionVC: UIViewController {
     @IBOutlet weak var connexionButton: UIButton!
     @IBOutlet weak var signInButton: UIButton!
     
-    @IBOutlet weak var activityView: UIView!
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     
     //MARK:- override
@@ -26,6 +25,7 @@ class ConnexionVC: UIViewController {
         super.viewDidLoad()
         
         self.setupView()
+        self.activityIndicator.isHidden = true
         self.view.addDismisKeyBoardOnTouch()
     }
 
@@ -41,7 +41,7 @@ class ConnexionVC: UIViewController {
         let password = self.passwordTF.text ?? ""
 
         if (username == "" || password == ""){
-            //TODO: Error on textfields
+            self.showSingleAlertWithCompletion(title: "Erreur", message: "Email ou mot de passe vide")
         } else {
             self.connect(username: username, password: password)
         }
@@ -58,17 +58,15 @@ class ConnexionVC: UIViewController {
         self.connexionButton.roundBorder()
         self.connexionShadow.setSpecificShadow()
         self.connexionShadow.roundBorder()
-        self.activityView.layer.cornerRadius = 5
-        self.activityView.isHidden = true
     }
     
     func startActivity(){
-        self.activityView.isHidden = false
+        self.activityIndicator.isHidden = false
         self.activityIndicator.startAnimating()
     }
     
     func stopActivity(){
-        self.activityView.isHidden = true
+        self.activityIndicator.isHidden = true
         self.activityIndicator.stopAnimating()
     }
     

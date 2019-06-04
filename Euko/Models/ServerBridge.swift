@@ -19,10 +19,11 @@ public enum endpoints:String {
     case dashboard = "/users/dashboard"
     case projects = "/projects"
     case offers = "/offers"
+    case acceptOffer = "/offers/accept"
+    case refuseOffer = "/offers/refuse"
 }
 
 class ServerBridge {
-    //static let baseUrl:String = "https://euko-api-staging-pr-42.herokuapp.com"
     static let baseUrl:String = "https://euko-api-staging.herokuapp.com"
 }
 
@@ -50,6 +51,25 @@ func headersRequest(params:Parameters, endpoint:endpoints, method:HTTPMethod,
                       method: method,
                       parameters:params,
                       headers:header).validate().responseJSON
+        { response in
+            switch response.result {
+            case .success(let value):
+                let json = JSON(value)
+                handler(true, json)
+            case .failure(let error):
+                print(error)
+                handler(false, nil)
+            }
+    }
+}
+
+func idRequest(params:Parameters, endpoint:endpoints, id:String, method:HTTPMethod,
+                  header:HTTPHeaders, handler: @escaping ((_ success: Bool, _ json:JSON?) -> Void)){
+    print("URL : " + ServerBridge.baseUrl + endpoint.rawValue + "/\(id)")
+    Alamofire.request(ServerBridge.baseUrl + endpoint.rawValue + "/\(id)",
+        method: method,
+        parameters:params,
+        headers:header).validate().responseJSON
         { response in
             switch response.result {
             case .success(let value):

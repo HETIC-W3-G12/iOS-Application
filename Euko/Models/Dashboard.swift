@@ -12,30 +12,29 @@ import SwiftyJSON
 
 protocol DashboardDelegate {
     func reloadData()
+    func errorOnRequest()
 }
 
 class Dashboard {
-    var project:Project?
-    var offers:[Project]
+    var offer:Offer?
     var delegate:DashboardDelegate?
+    var offers:[Offer] = []
     
-    var tmp:[Offer] = []
-    
-    init(project:Project? = nil, offers:[Project] = []) {
-        self.project = project
+    init(offer:Offer? = nil, offers:[Offer] = []) {
+        self.offer = offer
         self.offers = offers
     }
     
-    func setProject(proj:Project){
-        self.project = proj
+    func setProject(proj:Offer){
+        self.offer = proj
     }
     
-    func setOffers(off:[Project]){
+    func setOffers(off:[Offer]){
         self.offers = off
     }
 
     func orderOffersByDate() {
-        self.offers.sort(by: {$0.date.compare($1.date) == .orderedDescending})
+        self.offers.sort(by: {$0.project?.date.compare($1.project?.date ?? Date()) == .orderedDescending})
     }
     
     func fillDashboard() {
@@ -46,20 +45,27 @@ class Dashboard {
         
         headersRequest(params: params, endpoint: .dashboard, method: .get, header: headers, handler: { (success, json) in
             if (success){
-                print(json)
+                print(json!)
                 // Setting loan
+                let tmpTopOffer = Offer()
+                tmpTopOffer.id = json?["project"]["offers"][0]["id"].string ?? ""
+                tmpTopOffer.state = json?["project"]["offers"][0]["state"].string?.getOfferState()
+                tmpTopOffer.createdDate = json?["project"]["offers"][0]["createdDate"].string?.toDate()
+                tmpTopOffer.investorSignature = UIImage() // json?["project"]["offers"]["id"].string ?? ""
+                self.offer = tmpTopOffer
+                
                 let tmpProject:Project = Project()
+                tmpProject.id = json?["project"]["id"].string ?? ""
+                tmpProject.title = json?["project"]["title"].string ?? ""
+                tmpProject.description = json?["project"]["description"].string ?? ""
+                tmpProject.state = json?["project"]["state"].string ?? ""
+                tmpProject.price = json?["project"]["price"].int ?? 0
+                tmpProject.timeLaps = json?["project"]["timeLaps"].int ?? 0
+                tmpProject.interests = json?["project"]["interests"].float ?? 0.01
+                tmpProject.date = json?["project"]["createdDate"].string?.substring(to: 9).toDate() ?? Date()
+                tmpProject.finalPrice = (Float(tmpProject.price) * tmpProject.interests * 10)
                 
-                tmpProject.id = json?["projects"]["id"].string ?? ""
-                tmpProject.title = json?["projects"]["title"].string ?? ""
-                tmpProject.description = json?["projects"]["description"].string ?? ""
-                tmpProject.state = json?["projects"]["state"].string ?? ""
-                tmpProject.price = json?["projects"]["price"].int ?? 0
-                tmpProject.timeLaps = json?["projects"]["timeLaps"].int ?? 0
-                tmpProject.interests = json?["projects"]["interests"].float ?? 0.01
-                tmpProject.date = json?["projects"]["createdDate"].string?.substring(to: 9).toDate() ?? Date()
-                
-                self.project = tmpProject
+                self.offer?.project = tmpProject
                 
                 // Settin offers
                 var i = 0
@@ -85,12 +91,11 @@ class Dashboard {
                     tmpOffers.append(tmpOffer)
                     i += 1
                 }
-                self.tmp = tmpOffers
+                self.offers = tmpOffers
                 self.delegate?.reloadData()
-                //TODO: Alors, j'ai remplacé le tableu de projets par un tableau d'offers qui contient des projets, il faut donc maintenant supprimer l'ancien tableau et faire suivre les offers dans le dashboardVC qui lui ne gere que les projects
             }
             else {
-                //TODO: Something
+                self.delegate?.errorOnRequest()
             }
         })
     }

@@ -16,15 +16,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var userLoggedIn:Bool = false
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        /*
-        let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "TabBarController") as! TabBarController
-        window?.rootViewController = vc
-        */
-        
-        /*
-        let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "ProfileVC") as! ProfileVC
-        window?.rootViewController = vc
-        */
         UIApplication.shared.statusBarStyle = .lightContent
         
         if (!self.firstOpening()){

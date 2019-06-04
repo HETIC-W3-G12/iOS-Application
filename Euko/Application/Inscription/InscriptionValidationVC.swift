@@ -25,13 +25,6 @@ class InscriptionValidationVC: UIViewController, UIImagePickerControllerDelegate
     
     let imagePicker = UIImagePickerController()
     var isTakingSelfie:Bool = false
-    var allUploadFinished:Bool = false {
-        didSet (value) {
-            if value == true {
-                //Todo: all has been uploaded, move to next vc
-            }
-        }
-    }
     var inscription:Inscription? = nil
     
     override func viewDidLoad() {
@@ -103,10 +96,7 @@ extension InscriptionValidationVC: InscriptionDelegate {
         self.showSingleAlertWithCompletion(title: "Inscription terminée",
                                            message: "",
                                            handler: { _ in
-                                            
-                                            let vc = self.storyboard?.instantiateViewController(withIdentifier: "TabBarController") as! TabBarController
-                                            let appdelegate = UIApplication.shared.delegate as! AppDelegate
-                                            appdelegate.window!.rootViewController = vc
+                                            self.connect()
         })
     }
     
@@ -122,5 +112,41 @@ extension InscriptionValidationVC: InscriptionDelegate {
                                            message: "Veulliez es vérifier avant de recommencer",
                                            handler: { _ in
         })
+    }
+    
+    func connect(){
+        let parameters:Parameters = ["email":self.inscription?.user?.email ?? "", "password":self.inscription?.user?.password ?? ""]
+        
+        defaultRequest(params: parameters, endpoint: endpoints.connexion, method: .post, handler: { (success, json) in
+            print(json ?? "Aucun JSON disponible")
+            if (success){
+                //TODO: parse json
+                let adress:String = json?["user"]["adress"].string ?? ""
+                let lastname:String = json?["user"]["lastname"].string ?? ""
+                let firstname:String = json?["user"]["firstname"].string ?? ""
+                let birthdate:Date = json?["user"]["birthdate"].string?.toDate() ?? "".toDate()
+                let email:String = json?["user"]["email"].string ?? ""
+                let id:String = json?["user"]["id"].string ?? ""
+                let birthplace:String = json?["user"]["birthplace"].string ?? ""
+                let city:String = json?["user"]["city"].string ?? ""
+                let postCode:Int = json?["user"]["postCode"].int ?? 0
+                let token:String = json?["token"].string ?? ""
+                
+                let user = User(id: id, token: token, email: email, password: "",
+                                firstName: firstname, lastName: lastname, address: adress,
+                                postCode: postCode, city: city, birthPlace: birthplace, birthDate: birthdate)
+                UserDefaults.setUser(user: user)
+                self.nextVC()
+            }
+            else {
+                self.showSingleAlert(title: "Identifiants inccorects", message: "L'email ou le mot de passe sont incorrects")
+            }
+        })
+    }
+    
+    func nextVC(){
+        let vc = self.storyboard?.instantiateViewController(withIdentifier: "TabBarController") as! TabBarController
+        let appdelegate = UIApplication.shared.delegate as! AppDelegate
+        appdelegate.window!.rootViewController = vc
     }
 }

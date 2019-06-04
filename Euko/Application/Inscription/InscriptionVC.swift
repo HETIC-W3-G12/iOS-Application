@@ -73,7 +73,7 @@ class InscriptionVC: UIViewController, UITextFieldDelegate {
     
     @IBAction func backAction(_ sender: Any) {
         self.dismiss(animated: true, completion: nil)
-        //self.navigationController?.popViewController(animated: true)
+        self.navigationController?.popViewController(animated: true)
     }
 
     

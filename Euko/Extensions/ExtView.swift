@@ -22,7 +22,6 @@ extension UIView {
         
         layer.shadowPath = UIBezierPath(rect: self.bounds).cgPath
         layer.shouldRasterize = true
-        //layer.rasterizationScale = scale ? UIScreen.main.scale : 1
         layer.rasterizationScale = 1
     }
     
@@ -41,7 +40,6 @@ extension UIView {
     }
     
     func setBasicBlueShadow(){
-        //self.layer.shadowColor = UIColor.blue.cgColor
         self.layer.shadowColor = UIColor(red: 59/255, green: 84/255, blue: 213/255, alpha: 0.16).cgColor
         self.layer.shadowOpacity = 0.3
         self.layer.shadowOffset = CGSize.zero

@@ -79,6 +79,7 @@ class ProjectVC: UIViewController {
     @IBAction func payAction(_ sender: Any) {
         let vc = self.storyboard?.instantiateViewController(withIdentifier: "ProjectFinancementVC") as! ProjectFinancementVC
         vc.projectId = self.project.id ?? ""
+        vc.project = self.project
         self.navigationController?.pushViewController(vc, animated: true)
     }
 }
