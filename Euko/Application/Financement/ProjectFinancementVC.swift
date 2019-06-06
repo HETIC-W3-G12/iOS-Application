@@ -59,6 +59,8 @@ class ProjectFinancementVC: UIViewController {
         self.cityTF.text = user.city
         self.addressTF.text = user.address
         
+        self.titlePriceLabel.text = "\(self.project?.price ?? 430)€"
+        
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy-MM-dd"
         let dateString = dateFormatter.string(from: user.birthDate)

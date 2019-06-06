@@ -1125,8 +1125,8 @@
                                             <constraint firstAttribute="width" constant="289" id="TCI-2v-3ib"/>
                                             <constraint firstAttribute="height" constant="48" id="fLq-lB-dbU"/>
                                         </constraints>
-                                        <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="21"/>
-                                        <state key="normal" title="Valider le financement">
+                                        <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="17"/>
+                                        <state key="normal" title="Signer le contrat">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
                                         <connections>
@@ -2870,8 +2870,8 @@
                                             <constraint firstAttribute="width" constant="280" id="TAH-Bb-zVg"/>
                                             <constraint firstAttribute="height" constant="48" id="kbz-a2-GsJ"/>
                                         </constraints>
-                                        <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="17"/>
-                                        <state key="normal" title="Valider le contrat">
+                                        <fontDescription key="fontDescription" name="AvenirNext-Bold" family="Avenir Next" pointSize="17"/>
+                                        <state key="normal" title="Confirmer le financement">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
                                         <connections>
@@ -3647,11 +3647,11 @@ depuis le 12/12/2018</string>
             </objects>
             <point key="canvasLocation" x="2575" y="24"/>
         </scene>
-        <!--En cours-->
+        <!--Dashboard-->
         <scene sceneID="GPK-oy-5GW">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="p8q-AA-c2u" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" tag="2" title="En cours" image="wallet" landscapeImage="wallet" largeContentSizeImage="wallet" selectedImage="wallet" id="ebC-O1-oIb"/>
+                    <tabBarItem key="tabBarItem" tag="2" title="Dashboard" image="wallet" landscapeImage="wallet" largeContentSizeImage="wallet" selectedImage="wallet" id="ebC-O1-oIb"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="YP5-h4-MDW">
                         <rect key="frame" x="0.0" y="20" width="375" height="44"/>
